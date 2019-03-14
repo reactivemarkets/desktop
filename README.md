@@ -56,7 +56,7 @@ desktop --help
 
 ## Configuration
 
-Applications are defined via configuration files, our preference is to define your application via a YAML file. This is easier to read, maintain and allows you to group all objects into a single file.
+Applications are defined via configuration files, it is recommended to define your application in YAML. This is easier to read, maintain and allows you to grouping objects into a single file.
 
 The command line interface allows you to create a basic configuration file in the current working directory:
 
@@ -70,7 +70,11 @@ To run that config file specifiy the `--file` flag:
 desktop --file application.yaml
 ```
 
-Configuration can be loaded locally or from a url.
+Configuration can be loaded locally or from a url:
+
+```bash
+desktop -f https://gitlab.com/reactivemarkets/desktop/examples/config/raw/master/examples/single-window.yaml
+```
 
 ## Building from source
 
