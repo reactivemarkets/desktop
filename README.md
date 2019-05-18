@@ -56,7 +56,7 @@ desktop --help
 
 ## Configuration
 
-Applications are defined via configuration files, it is recommended to define your application in YAML. This is easier to read, maintain and allows you to grouping objects into a single file.
+Applications are defined via configuration files, it is recommended to define your application in YAML. This is easier to read, maintain and allows you to group objects into a single file.
 
 The command line interface allows you to create a basic configuration file in the current working directory:
 
