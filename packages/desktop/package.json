@@ -1,0 +1,53 @@
+{
+  "name": "@reactivemarkets/desktop",
+  "productName": "desktop",
+  "version": "0.4.1",
+  "description": "Multi-window, cross-platform desktop applications.",
+  "bin": {
+    "desktop": "cli.js"
+  },
+  "files": [
+    "cli.js",
+    "install.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rimraf dist pack",
+    "copy": "copyfiles -f \"../../node_modules/@reactivemarkets/desktop-*/**/*.asar\" dist",
+    "pack": "npm run pack:win32 && npm run pack:darwin && npm run pack:linux",
+    "pack:darwin": "electron-packager dist --prebuilt-asar dist/app.asar --extra-resource dist/api.asar --overwrite --platform darwin --icon src/img/desktop.icns --arch x64 --app-copyright=\"Copyright © ReactiveMarkets\" --out pack",
+    "pack:linux": "electron-packager dist --prebuilt-asar dist/app.asar --extra-resource dist/api.asar --overwrite --platform linux --arch x64 --app-copyright=\"Copyright © ReactiveMarkets\" --out pack",
+    "pack:win32": "electron-packager dist --prebuilt-asar dist/app.asar --extra-resource dist/api.asar --overwrite --platform win32 --icon src/img/desktop.ico --arch x64 --app-copyright=\"Copyright © ReactiveMarkets\" --out pack",
+    "package": "npm run clean && npm run copy && npm run pack && npm run installer && npm run zip",
+    "postinstall": "node install.js",
+    "installer": "npm run installer:debian && npm run installer:dmg && npm run installer:windows",
+    "installer:debian": "electron-installer-debian --src pack/desktop-linux-x64/ --dest pack/ --arch amd64 --options.version $npm_package_version --config debian.json",
+    "installer:dmg": "electron-installer-dmg pack/desktop-darwin-x64/desktop.app desktop-$npm_package_version --overwrite --title Desktop --background src/img/dmg-background.png --icon src/img/desktop.icns --protocol=desktop --protocol-name \"Desktop Protocol\" --darwin-dark-mode-support --out pack",
+    "installer:windows": "electron-installer-windows --src pack/desktop-win32-x64/ --dest pack/desktop-$npm_package_version-win32-x64-exe/ --options.version $npm_package_version --config windows.json",
+    "zip": "npm run zip:darwin && npm run zip:linux && npm run zip:win32 && npm run zip:win32:installer",
+    "zip:darwin": "pushd pack/desktop-darwin-x64 && zip -r -q --symlinks ../desktop-$npm_package_version-darwin-x64.zip * && popd",
+    "zip:linux": "pushd pack/desktop-linux-x64 && zip -r -q --symlinks ../desktop-$npm_package_version-linux-x64.zip * && popd",
+    "zip:win32": "pushd pack/desktop-win32-x64 && zip -r -q --symlinks ../desktop-$npm_package_version-win32-x64.zip * && popd",
+    "zip:win32:installer": "pushd pack/desktop-$npm_package_version-win32-x64-exe && zip -q ../desktop-$npm_package_version-win32-x64-setup.zip * && popd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/reactivemarkets/desktop/desktop.git"
+  },
+  "keywords": [
+    "reactivemarkets",
+    "electron",
+    "multi-window",
+    "os",
+    "cross-platform",
+    "desktop"
+  ],
+  "author": "ReactiveMarkets",
+  "license": "ISC",
+  "dependencies": {
+    "extract-zip": "^1.6.7",
+    "request": "^2.88.0"
+  }
+}

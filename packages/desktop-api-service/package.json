@@ -1,0 +1,36 @@
+{
+  "name": "@reactivemarkets/desktop-api-service",
+  "version": "0.4.1",
+  "description": "Exposes a REST api and websocket endpoint for Desktop",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "main.js",
+  "scripts": {
+    "build": "webpack --progress --config webpack.config.prod.js",
+    "build:dev": "webpack --progress --config webpack.config.dev.js",
+    "clean": "rimraf dist",
+    "lint": "tslint -p tsconfig.json -c tslint.yaml",
+    "pack": "npm run pack:pre && npm run pack:asar && npm run pack:post",
+    "pack:pre": "copyfiles -f package.json dist",
+    "pack:asar": "asar pack ./dist ./dist/api.asar",
+    "pack:post": "rimraf ./dist/package.json",
+    "prepublishOnly": "npm run build && npm run pack",
+    "serve": "node ./dist/main.js",
+    "start": "npm run build:dev && npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/reactivemarkets/desktop/api-service.git"
+  },
+  "keywords": [
+    "reactivemarkets",
+    "desktop",
+    "api"
+  ],
+  "files": [
+    "dist/api.asar"
+  ],
+  "author": "ReactiveMarkets",
+  "license": "ISC"
+}

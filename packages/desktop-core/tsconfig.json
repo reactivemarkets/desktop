@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": [
+            "esnext.array",
+            "esnext.asynciterable",
+            "esnext",
+            "dom"
+        ],
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "outDir": "./build/",
+        "sourceMap": true,
+        "strict": true,
+        "target": "es6",
+    },
+    "include": ["src"],
+    "exclude": ["**/__tests__/**"]
+}

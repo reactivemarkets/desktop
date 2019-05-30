@@ -1,0 +1,39 @@
+{
+  "name": "@reactivemarkets/desktop-core",
+  "version": "0.4.1",
+  "description": "A cross platform hosting environment for multi-window applications",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/api.js",
+  "scripts": {
+    "build": "webpack --progress --config webpack.config.prod.js",
+    "build:dev": "webpack --progress --config webpack.config.dev.js",
+    "clean": "rimraf dist",
+    "lint": "tslint -p tsconfig.json -c tslint.yaml -e \"**/__tests__/**\"",
+    "pack": "npm run pack:pre && npm run pack:asar && npm run pack:post",
+    "pack:pre": "copyfiles -f desktop.json dist && rname dist/desktop.json dist/package.json",
+    "pack:asar": "asar pack ./dist ./dist/app.asar",
+    "pack:post": "rimraf ./dist/package.json",
+    "prepublishOnly": "npm run build && npm run pack",
+    "serve": "electron ./dist/main.js --url https://desktop.reactivemarkets.com",
+    "start": "npm run build:dev && npm run serve",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/reactivemarkets/desktop/core.git"
+  },
+  "keywords": [
+    "electron",
+    "reactivemarkets",
+    "desktop",
+    "core"
+  ],
+  "files": [
+    "dist/api.js",
+    "dist/app.asar"
+  ],
+  "author": "ReactiveMarkets",
+  "license": "ISC"
+}

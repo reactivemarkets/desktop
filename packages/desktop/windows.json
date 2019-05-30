@@ -1,0 +1,8 @@
+{
+    "icon": "src/img/desktop.ico",
+    "name": "desktop",
+    "exe": "desktop.exe",
+    "productName": "Desktop",
+    "description": "Multi-window, cross-platform desktop applications.",
+    "homePage": "https://desktop.reactivemarkets.com"
+}
