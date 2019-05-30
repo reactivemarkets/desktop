@@ -1,0 +1,16 @@
+{
+    "icon": {
+        "32x32": "src/img/desktop.iconset/icon_32x32.png",
+        "128x128": "src/img/desktop.iconset/icon_128x128.png",
+        "256x256": "src/img/desktop.iconset/icon_256x256.png",
+        "scalable": "src/img/desktop.svg"
+    },
+    "lintianOverrides": [
+        "changelog-file-missing-in-native-package"
+    ],
+    "name": "desktop",
+    "bin": "desktop",
+    "productName": "Desktop",
+    "description": "Multi-window, cross-platform desktop applications.",
+    "homePage": "https://desktop.reactivemarkets.com"
+}

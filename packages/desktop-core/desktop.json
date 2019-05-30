@@ -1,0 +1,23 @@
+{
+    "name": "desktop",
+    "version": "1.0.0",
+    "description": "A cross platform hosting environment for multi-window applications",
+    "main": "main.js",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.com/reactivemarkets/desktop/desktop.git"
+    },
+    "keywords": [
+        "electron",
+        "reactivemarkets",
+        "desktop",
+        "core"
+    ],
+    "files": [
+        "main.js",
+        "dist/app.asar"
+    ],
+    "author": "ReactiveMarkets",
+    "license": "ISC"
+}

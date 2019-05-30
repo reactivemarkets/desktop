@@ -1,0 +1,12 @@
+---
+extends: "tslint:recommended"
+rules:
+  arrow-return-shorthand: true
+  completed-docs: false
+  max-line-length:
+    options: [140]
+  no-implicit-dependencies: [false]
+  no-submodule-imports: false
+  no-unused-variable: false
+  no-inferred-empty-object-type: false
+  typedef: false
