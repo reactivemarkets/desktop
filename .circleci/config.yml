@@ -1,0 +1,42 @@
+---
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.15
+    working_directory: ~/
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+
+      - run:
+          name: restore-packages
+          command: npm ci
+
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: lint
+          command: npm run lint
+
+      - run:
+          name: build
+          command: npm run build
+
+      - run:
+          name: test
+          command: npm run test
+
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+              npm run publish
+            fi
+
