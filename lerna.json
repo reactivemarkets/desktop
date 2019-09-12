@@ -9,6 +9,18 @@
     "command": {
         "bootstrap": {
             "hoist": true
+        },
+        "version": {
+            "allowBranch": "master",
+            "conventionalCommits": true,
+            "createRelease": "github",
+            "gitRemote": "upstream",
+            "message": "chore(release): publish %v"
         }
-    }
+    },
+    "ignoreChanges": [
+        "**/__fixtures__/**",
+        "**/__tests__/**",
+        "**/*.md"
+    ]
 }
