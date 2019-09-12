@@ -12,7 +12,7 @@
     "convert": "run-s link bootstrap",
     "link": "lerna link convert",
     "lint": "lerna run lint",
-    "pack": "lerna run pack --ignore @reactivemarkets/desktop",
+    "asar": "lerna run asar",
     "package": "lerna run package --stream",
     "package:linux": "lerna run package:linux --stream",
     "package:darwin": "lerna run package:darwin --stream",
