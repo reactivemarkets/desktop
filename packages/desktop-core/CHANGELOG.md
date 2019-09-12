@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://gitlab.com/reactivemarkets/desktop/core/compare/v0.4.2...v0.4.3) (2019-09-12)
+
+
+### Bug Fixes
+
+* correcting npm packaging ([d058563](https://gitlab.com/reactivemarkets/desktop/core/commit/d058563))
+
+
+
+
+
 ## 0.4.2 (2019-09-12)
 
 
