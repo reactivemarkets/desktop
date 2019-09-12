@@ -15,8 +15,12 @@
         "outDir": "./build/",
         "sourceMap": true,
         "strict": true,
-        "target": "es6",
+        "target": "es6"
     },
-    "include": ["src"],
-    "exclude": ["**/__tests__/**"]
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "**/__tests__/**"
+    ]
 }
