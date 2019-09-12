@@ -18,10 +18,8 @@ const maxsize = 10_000_000;
 const maxFiles = 10;
 const tailable = true;
 
-let dirname = process.env.DESKTOP_LOGS_PATH;
-if (dirname === undefined) {
-    dirname = app.getPath("logs");
-}
+app.setAppLogsPath(process.env.DESKTOP_LOGS_PATH);
+const dirname = app.getPath("logs");
 
 let level = process.env.DESKTOP_LOG_LEVEL;
 if (level === undefined) {
