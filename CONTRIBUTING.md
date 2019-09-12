@@ -4,6 +4,10 @@ We welcome all contributions!
 
 Before creating a PR, please raise an issue to discuss it.
 
+## Commits
+
+We use [convention commits](https://www.conventionalcommits.org) style of commit messages.
+
 ## Style
 
 The codebase is written in typescript, this is set to be strict with all warnings and errors turned on. We also use ts-lint with pretty much all rules turned on. Both are run as part of the build.
