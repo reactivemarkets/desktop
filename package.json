@@ -1,16 +1,23 @@
 {
   "name": "root",
   "private": true,
+  "license": "ISC",
   "scripts": {
     "postinstall": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "clean": "lerna run clean && lerna clean --yes",
+    "clean": "run-s clean:packages clean:modules",
+    "clean:packages": "lerna run clean",
+    "clean:modules": "lerna clean --yes",
+    "convert": "run-s link bootstrap",
+    "link": "lerna link convert",
     "lint": "lerna run lint",
     "pack": "lerna run pack --ignore @reactivemarkets/desktop",
     "package": "lerna run package --stream",
-    "test": "lerna run test",
     "publish": "lerna publish from-package --no-git-reset --yes",
-    "version": "lerna version --no-git-tag-version --no-push"
+    "release": "lerna version --yes",
+    "test": "lerna run test --stream",
+    "watch": "lerna run watch --parallel"
   },
   "devDependencies": {
     "@types/compression": "0.0.36",
@@ -46,6 +53,7 @@
     "jest": "^24.8.0",
     "js-yaml": "^3.13.1",
     "lerna": "^3.14.1",
+    "npm-run-all": "^4.1.5",
     "rename-cli": "^6.0.0",
     "response-time": "^2.3.2",
     "rimraf": "^2.6.3",
