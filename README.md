@@ -1,5 +1,9 @@
 # Desktop
 
+[![CircleCI](https://circleci.com/gh/reactivemarkets/desktop/tree/master.svg?style=shield)](https://circleci.com/gh/reactivemarkets/desktop/tree/master)
+[![codecov](https://codecov.io/gh/reactivemarkets/desktop/branch/master/graph/badge.svg)](https://codecov.io/gh/reactivemarkets/desktop)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=reactivemarkets/desktop)](https://dependabot.com) [![GitHub license](https://img.shields.io/badge/license-ISC-brightgreen.svg)](https://github.com/reactivemarkets/desktop/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/@reactivemarkets/desktop.svg?style=flat)](https://www.npmjs.com/package/@reactivemarkets/desktop)
+
 Desktop is an open source application for managing multi-window, cross-platform desktop applications; providing deployment, configuration, notifications, logging, monitoring...
 
 Desktop builds on the [Electron Framework](https://github.com/electron/electron) as well as many other open source packages including [socket.io](https://github.com/socketio/socket.io), [winston](https://github.com/winstonjs/winston) and [yargs](https://github.com/yargs/yargs). The aim is to reuse proven design practices from production systems.
