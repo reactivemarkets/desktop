@@ -14,7 +14,7 @@ export const handler = (options: IStartOptions) => {
         logger.info("another instance is already running. exiting...");
         app.exit();
     } else {
-        app.enableMixedSandbox();
+        app.enableSandbox();
         app.setAsDefaultProtocolClient("desktop");
         registerApplicationEventHandlers(app);
 

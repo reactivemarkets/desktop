@@ -20,16 +20,30 @@ export const handler = (options: IClearOptions) => {
 
         switch (area) {
             case CacheArea.HostResolver:
-                defaultSession.clearHostResolverCache(() => {
-                    logger.info("Host resolver cache cleared");
-                    app.exit();
-                });
+                defaultSession
+                    .clearHostResolverCache()
+                    .then(() => {
+                        logger.info("Host resolver cache cleared");
+                    })
+                    .catch(() => {
+                        logger.error("Failed to clear the host resolver cache.");
+                    })
+                    .finally(() => {
+                        app.exit();
+                    });
                 break;
             case CacheArea.Http:
-                defaultSession.clearCache(() => {
-                    logger.info("Http cache cleared");
-                    app.exit();
-                });
+                defaultSession
+                    .clearCache()
+                    .then(() => {
+                        logger.info("HTTP session cache cleared.");
+                    })
+                    .catch(() => {
+                        logger.error("Failed to clear the session's HTTP cache.");
+                    })
+                    .finally(() => {
+                        app.exit();
+                    });
             default:
                 app.exit();
         }
