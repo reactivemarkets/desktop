@@ -16,7 +16,7 @@ jobs:
         node-version: [10.x]
         include:
           - os: ubuntu-latest
-            plafform: linux
+            platform: linux
           - os: windows-latest
             platform: win32
           - os: macOS-latest
