@@ -12,7 +12,7 @@
     "clean": "rimraf dist",
     "lint": "tslint -p tsconfig.json -c tslint.yaml -e \"**/__tests__/**\"",
     "pack": "npm run pack:pre && npm run pack:asar && npm run pack:post",
-    "pack:pre": "copyfiles -f desktop.json dist && rname dist/desktop.json dist/package.json",
+    "pack:pre": "copyfiles -f desktop.json dist && renamer -f desktop -e name -r package dist/desktop.json",
     "pack:asar": "asar pack ./dist ./dist/app.asar",
     "pack:post": "rimraf ./dist/package.json",
     "prepublishOnly": "npm run build && npm run pack",
