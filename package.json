@@ -36,7 +36,7 @@
     "@types/socket.io": "^2.1.2",
     "@types/uuid": "^3.4.5",
     "@types/yargs": "^13.0.2",
-    "acorn": "^7.0.0",
+    "acorn": "^7.1.0",
     "asar": "^2.0.1",
     "bufferutil": "^4.0.1",
     "clean-webpack-plugin": "^3.0.0",
