@@ -65,6 +65,38 @@ jobs:
             sudo npm install -g --silent codecov
             codecov -f packages/*/coverage/*.json
 
+  build-analyze:
+    docker:
+      - image: circleci/node:10.15
+    steps:
+      - run: |
+          curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
+
+      - checkout
+
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: restore-packages
+          command: |
+            if [ ! -d node_modules ]; then
+              npm ci
+            fi
+
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: build
+          command: npm run build
+
+      - run:
+          name: fossa
+          command: fossa
+
   deploy:
     docker:
       - image: circleci/node:10.15
@@ -100,6 +132,10 @@ workflows:
             tags:
               only: /.*/
       - build-coverage
+      - build-analyze:
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
             - build
