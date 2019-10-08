@@ -92,3 +92,7 @@ cd desktop
 npm ci
 npm run build
 ```
+
+## License
+
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B13613%2Fgit%40github.com%3Areactivemarkets%2Fdesktop.git.svg?type=large)](https://app.fossa.com/projects/custom%2B13613%2Fgit%40github.com%3Areactivemarkets%2Fdesktop.git?ref=badge_large)
