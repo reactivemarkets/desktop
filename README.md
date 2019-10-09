@@ -77,7 +77,7 @@ desktop --file application.yaml
 Configuration can be loaded locally or from a url:
 
 ```bash
-desktop -f https://gitlab.com/reactivemarkets/desktop/examples/config/raw/master/examples/single-window.yaml
+desktop -f https://raw.githubusercontent.com/desktop-examples/config/master/examples/single-window.yaml
 ```
 
 ## Building from source
