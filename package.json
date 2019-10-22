@@ -50,7 +50,7 @@
     "electron-installer-windows": "^2.0.0",
     "electron-packager": "^14.0.6",
     "express": "^4.17.1",
-    "flat": "^4.1.0",
+    "flat": "^5.0.0",
     "helmet": "^3.21.2",
     "ix": "^2.5.3",
     "jest": "^24.9.0",
