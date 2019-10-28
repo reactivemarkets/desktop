@@ -48,7 +48,7 @@
     "electron-installer-debian": "^2.0.1",
     "electron-installer-dmg": "^3.0.0",
     "electron-installer-windows": "^2.0.0",
-    "electron-packager": "^14.0.6",
+    "electron-packager": "^14.1.0",
     "express": "^4.17.1",
     "flat": "^5.0.0",
     "helmet": "^3.21.2",
