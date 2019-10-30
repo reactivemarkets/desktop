@@ -34,7 +34,7 @@
     "@types/request": "^2.48.3",
     "@types/response-time": "^2.3.4",
     "@types/socket.io": "^2.1.4",
-    "@types/uuid": "^3.4.5",
+    "@types/uuid": "^3.4.6",
     "@types/yargs": "^13.0.3",
     "acorn": "^7.1.0",
     "asar": "^2.0.1",
