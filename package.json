@@ -25,7 +25,7 @@
   "devDependencies": {
     "@types/compression": "^1.0.1",
     "@types/cors": "^2.8.6",
-    "@types/express": "^4.17.1",
+    "@types/express": "^4.17.2",
     "@types/extract-zip": "^1.6.2",
     "@types/flat": "0.0.28",
     "@types/helmet": "0.0.45",
