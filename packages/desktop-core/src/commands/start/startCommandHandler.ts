@@ -18,7 +18,7 @@ export const handler = (options: IStartOptions) => {
         app.setAsDefaultProtocolClient("desktop");
         registerApplicationEventHandlers(app);
 
-        const onReady = new Promise<void>((resolve) => app.once("ready", resolve));
+        const onReady = new Promise<void>((resolve) => app.once("ready", (launchInfo: unknown) => resolve));
 
         const configPromises = new Array<Promise<void>>();
 

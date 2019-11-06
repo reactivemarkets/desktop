@@ -59,9 +59,9 @@ export class DefaultSessionService implements ISessionService {
                 proxyRules,
             };
 
-            defaultSession.setProxy(config, () => {
-                this.logger.info(`Proxy configured: ${JSON.stringify(config)}`);
-            });
+            await defaultSession.setProxy(config);
+
+            this.logger.info(`Proxy configured: ${JSON.stringify(config)}`);
         }
 
         return Promise.resolve();
