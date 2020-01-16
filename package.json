@@ -66,7 +66,7 @@
     "tslint": "^5.20.1",
     "typescript": "^3.7.4",
     "utf-8-validate": "^5.0.2",
-    "uuid": "^3.3.3",
+    "uuid": "^3.4.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-merge": "^4.2.2",
