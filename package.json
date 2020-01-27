@@ -29,7 +29,7 @@
     "@types/extract-zip": "^1.6.2",
     "@types/flat": "0.0.28",
     "@types/helmet": "0.0.45",
-    "@types/jest": "^24.9.1",
+    "@types/jest": "^25.1.0",
     "@types/js-yaml": "^3.12.2",
     "@types/request": "^2.48.4",
     "@types/response-time": "^2.3.4",
