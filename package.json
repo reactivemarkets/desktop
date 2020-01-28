@@ -47,7 +47,7 @@
     "electron-fetch": "^1.4.0",
     "electron-installer-debian": "^3.0.0",
     "electron-installer-dmg": "^3.0.0",
-    "electron-installer-windows": "^2.0.0",
+    "electron-installer-windows": "^3.0.0",
     "electron-packager": "^14.2.0",
     "express": "^4.17.1",
     "flat": "^5.0.0",
