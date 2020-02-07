@@ -23,7 +23,7 @@
     "watch": "lerna run watch --parallel"
   },
   "devDependencies": {
-    "@types/compression": "^1.0.1",
+    "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.6",
     "@types/express": "^4.17.2",
     "@types/extract-zip": "^1.6.2",
