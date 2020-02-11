@@ -51,6 +51,6 @@
   "license": "ISC",
   "dependencies": {
     "extract-zip": "^1.6.7",
-    "request": "^2.88.0"
+    "request": "^2.88.2"
   }
 }
