@@ -35,7 +35,7 @@
     "@types/response-time": "^2.3.4",
     "@types/socket.io": "^2.1.4",
     "@types/uuid": "^3.4.7",
-    "@types/yargs": "^15.0.3",
+    "@types/yargs": "^15.0.4",
     "acorn": "^7.1.0",
     "asar": "^2.1.0",
     "bufferutil": "^4.0.1",
