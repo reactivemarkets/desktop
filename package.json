@@ -71,7 +71,7 @@
     "webpack-cli": "^3.3.11",
     "webpack-merge": "^4.2.2",
     "winston": "^3.2.1",
-    "yargs": "^15.1.0"
+    "yargs": "^15.2.0"
   },
   "workspaces": [
     "packages/*"
