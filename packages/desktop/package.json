@@ -50,7 +50,7 @@
   "author": "ReactiveMarkets",
   "license": "ISC",
   "dependencies": {
-    "extract-zip": "^1.6.7",
+    "extract-zip": "^1.6.8",
     "request": "^2.88.2"
   }
 }
