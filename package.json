@@ -30,7 +30,7 @@
     "@types/flat": "5.0.0",
     "@types/helmet": "0.0.45",
     "@types/jest": "^25.1.4",
-    "@types/js-yaml": "^3.12.2",
+    "@types/js-yaml": "^3.12.3",
     "@types/request": "^2.48.4",
     "@types/response-time": "^2.3.4",
     "@types/socket.io": "^2.1.4",
