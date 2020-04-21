@@ -1,5 +1,5 @@
 import { CacheArea } from "./cacheArea";
-import { handler } from "./clearCommandHandler";
+import { handler } from "./handler";
 
 export const command = "clear [area]";
 

@@ -1,6 +1,6 @@
 import { ConfigurationKind, Output } from "../../configuration";
 
-import { handler } from "./initCommandHandler";
+import { handler } from "./handler";
 
 export const command = "init";
 
