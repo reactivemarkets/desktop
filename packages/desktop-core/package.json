@@ -9,7 +9,7 @@
   "scripts": {
     "build": "webpack --progress --config webpack.config.prod.js",
     "build:dev": "webpack --progress --config webpack.config.dev.js",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist coverage",
     "lint": "tslint -p tsconfig.json -c tslint.yaml -e \"**/__tests__/**\"",
     "asar": "run-s asar:pre asar:pack asar:post",
     "asar:pre": "copyfiles -f desktop.json dist && renamer -f desktop -e name -r package dist/desktop.json",
