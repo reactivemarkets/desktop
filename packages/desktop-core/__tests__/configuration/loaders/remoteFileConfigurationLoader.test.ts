@@ -1,14 +1,15 @@
+import { mock } from "jest-mock-extended";
+
 import { RemoteFileConfigurationLoader } from "../../../src/configuration/loaders/remoteFileConfigurationLoader";
 import { IConfigurationParser } from "../../../src/configuration/parsers/iConfigurationParser";
 
-// tslint:disable:variable-name
 describe("canLoad", () => {
 
     describe("can load from", () => {
 
         test("http", () => {
 
-            const parser = new (jest.fn<IConfigurationParser<{}>, string[]>())();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const loader = new RemoteFileConfigurationLoader(parser, "yaml");
 
@@ -18,7 +19,7 @@ describe("canLoad", () => {
 
         test("https", () => {
 
-            const parser = new (jest.fn<IConfigurationParser<{}>, string[]>())();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const loader = new RemoteFileConfigurationLoader(parser, "yaml");
 
@@ -31,7 +32,7 @@ describe("canLoad", () => {
 
         test("a local file", () => {
 
-            const parser = new (jest.fn<IConfigurationParser<{}>, string[]>())();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const loader = new RemoteFileConfigurationLoader(parser, "yaml");
 
@@ -40,7 +41,7 @@ describe("canLoad", () => {
         });
         test("a network file", () => {
 
-            const parser = new (jest.fn<IConfigurationParser<{}>, string[]>())();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const loader = new RemoteFileConfigurationLoader(parser, "yaml");
 

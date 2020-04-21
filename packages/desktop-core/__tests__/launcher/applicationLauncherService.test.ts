@@ -1,3 +1,5 @@
+import { mock } from "jest-mock-extended";
+
 import { ConfigurationKind } from "../../src/configuration/configurationKind";
 import { IConfiguration } from "../../src/configuration/iConfiguration";
 import { ServiceHost } from "../../src/configuration/serviceHost";
@@ -11,9 +13,9 @@ describe("canLaunch", () => {
 
         test("when kind is application", () => {
 
-            const windowFactory = new (jest.fn<IWindowFactory, string[]>())();
+            const windowFactory = mock<IWindowFactory>();
 
-            const logger = new (jest.fn<ILogger, string[]>())();
+            const logger = mock<ILogger>();
 
             const launcher = new ApplicationLauncherService(logger, windowFactory);
 
@@ -35,9 +37,9 @@ describe("canLaunch", () => {
     describe("can't launch", () => {
 
         test("when kind is service", () => {
-            const windowFactory = new (jest.fn<IWindowFactory, string[]>())();
+            const windowFactory = mock<IWindowFactory>();
 
-            const logger = new (jest.fn<ILogger, string[]>())();
+            const logger = mock<ILogger>();
 
             const launcher = new ApplicationLauncherService(logger, windowFactory);
 

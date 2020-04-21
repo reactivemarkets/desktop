@@ -1,3 +1,5 @@
+import { mock } from "jest-mock-extended";
+
 import { ConfigurationKind } from "../../src/configuration/configurationKind";
 import { IConfiguration } from "../../src/configuration/iConfiguration";
 import { IRegistryService } from "../../src/registry/iRegistryService";
@@ -27,11 +29,8 @@ describe("getRegistry", () => {
             },
         };
 
-        const unsortedRegistry = new (jest.fn<IRegistryService, string[]>(() => ({
-            getRegistry: jest.fn(() => Promise.resolve<IConfiguration[]>([application, session])),
-            registerConfig: jest.fn(),
-            registerUrl: jest.fn(),
-        })))();
+        const unsortedRegistry = mock<IRegistryService>();
+        unsortedRegistry.getRegistry.mockReturnValue(Promise.resolve<IConfiguration[]>([application, session]));
 
         const service = new PriorityConfigurationRegistryService(unsortedRegistry);
 
