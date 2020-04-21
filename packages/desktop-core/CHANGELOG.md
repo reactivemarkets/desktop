@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://github.com/reactivemarkets/desktop/compare/v0.4.4...v0.4.5) (2020-04-21)
+
+
+### Bug Fixes
+
+* **core:** logged whether the app is packaged ([7268b52](https://github.com/reactivemarkets/desktop/commit/7268b52b8aa07acc31aef806a8a52785d1631164))
+
+
+
+
+
 ## [0.4.4](https://github.com/reactivemarkets/desktop/compare/v0.4.3...v0.4.4) (2020-04-21)
 
 
