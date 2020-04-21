@@ -36,7 +36,7 @@ jobs:
       - name: Build asar
         run: |
           npm run asar
-      - name: npm package
+      - name: Build packages
         run: |
           npm run package:${{ matrix.platform }}
       - name: "Get upload_url"
