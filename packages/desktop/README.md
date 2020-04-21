@@ -76,10 +76,10 @@ Configuration can be loaded locally or from a url.
 
 To install all dependencies and build run:
 
-**Note:** To be able to build for all platforms you will need to install some dependencies. On mac: `brew install mono fakeroot dpkg wine`
+**Note:** To be able to build packages for all platforms you will need to install some dependencies. On mac: `brew install mono fakeroot dpkg wine`
 
 ```bash
-git clone https://gitlab.com/reactivemarkets/desktop/desktop.git
+git clone https://github.com/reactivemarkets/desktop.git
 cd desktop
 npm ci
 npm run build
