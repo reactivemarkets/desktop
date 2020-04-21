@@ -1,6 +1,6 @@
 # Desktop Core
 
-The architecture for [Desktop](https://gitlab.com/reactivemarkets/desktop/desktop) is modular with the build combining many asar files into one package.
+The architecture for [Desktop](https://github.com/reactivemarkets/desktop) is modular with the build combining many asar files into one package.
 
 The Core framework runs in the main electron process is responsible for configuration, launching and orchestration of applications & services.
 
@@ -18,8 +18,8 @@ npm run start
 To install all dependencies and build run:
 
 ```bash
-git clone https://gitlab.com/reactivemarkets/desktop/core.git
-cd core
-npm install
+git clone https://github.com/reactivemarkets/desktop.git
+cd desktop
+npm ci
 npm run build
 ```
