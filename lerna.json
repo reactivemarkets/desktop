@@ -19,6 +19,8 @@
         }
     },
     "ignoreChanges": [
+        ".dependabot/",
+        ".github/",
         "**/__fixtures__/**",
         "**/__tests__/**",
         "**/*.md"
