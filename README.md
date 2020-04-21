@@ -97,4 +97,4 @@ npm run build
 
 ## License
 
-[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B13613%2Fgit%40github.com%3Areactivemarkets%2Fdesktop.git.svg?type=large)](https://app.fossa.com/projects/custom%2B13613%2Fgit%40github.com%3Areactivemarkets%2Fdesktop.git?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Freactivemarkets%2Fdesktop.svg?type=large)](https://app.fossa.com/api/projects/git%2Bgithub.com%2Freactivemarkets%2Fdesktop.svg?type=large)
