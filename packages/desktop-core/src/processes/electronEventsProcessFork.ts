@@ -13,7 +13,6 @@ export class ElectronEventsProcessFork implements IProcessFork {
     }
 
     public async fork(args: string[], env: IEnvironmentVariables) {
-
         return this
             .processFork
             .fork(args, env)

@@ -17,7 +17,6 @@ export class ElectronServiceLauncherService implements ILauncherService {
     }
 
     public canLaunch = (configuration: IConfiguration) => {
-
         if (configuration.kind !== ConfigurationKind.Service) {
             return false;
         }

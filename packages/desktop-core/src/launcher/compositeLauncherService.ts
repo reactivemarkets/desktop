@@ -10,7 +10,6 @@ export class CompositeLauncherService implements ILauncherService {
     }
 
     public canLaunch(configuration: IConfiguration): boolean {
-
         return this
             .launchers
             .some((launcher) => launcher.canLaunch(configuration));

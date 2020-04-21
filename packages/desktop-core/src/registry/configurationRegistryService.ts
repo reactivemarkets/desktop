@@ -20,7 +20,6 @@ export class ConfigurationRegistryService implements IRegistryService {
     }
 
     public async registerConfig(path: string) {
-
         return this
             .loader
             .load(path)
@@ -34,7 +33,6 @@ export class ConfigurationRegistryService implements IRegistryService {
     }
 
     public async registerUrl(url: string) {
-
         return this
             .generator
             .generate(ConfigurationKind.Application, url, url)

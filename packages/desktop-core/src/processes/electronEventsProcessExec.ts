@@ -13,7 +13,6 @@ export class ElectronEventsProcessExec implements IProcessExec {
     }
 
     public async exec(file: string, args?: string[], env?: IEnvironmentVariables) {
-
         return this
             .processExec
             .exec(file, args, env)
