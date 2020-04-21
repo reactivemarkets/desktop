@@ -14,7 +14,7 @@ const getExecutablePath = () => {
         case "win32":
             return path.join(__dirname, "desktop", "desktop.exe");
         default:
-            throw new Error(`${platform} is not currently supported.`);
+            throw new Error(platform + " is not currently supported.");
     }
 };
 

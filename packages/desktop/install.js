@@ -26,16 +26,16 @@ const desktopUrl = `${baseUrl}/v${version}/desktop-${version}-${platform}-${arch
 const desktopZipDestination = path.join(__dirname, "desktop.zip");
 const desktopExtractDestination = path.join(__dirname, "desktop");
 
-console.log(`${version}: Downloading from ${desktopUrl}`);
+console.log(version + ": Downloading from " + desktopUrl);
 
 download(desktopUrl, desktopZipDestination, (err) => {
     if (err) {
-        console.error(`Error: ${err}`);
+        console.error("Error: " + err);
 
         return;
     } 
 
-    console.log(`Status: Extracting to ${desktopExtractDestination}`);
+    console.log("Status: Extracting to " + desktopExtractDestination);
 
     const extractOptions = {
         dir: desktopExtractDestination,
@@ -43,11 +43,12 @@ download(desktopUrl, desktopZipDestination, (err) => {
 
     extract(desktopZipDestination, extractOptions)
         .then(() => {
-            console.log(`Status: Deleting ${desktopZipDestination}`);
+            console.log("Status: Deleting " + desktopZipDestination);
 
             return util.promisify(fs.unlink)(desktopZipDestination);
         })
         .catch((error) => {
-            console.error(`Status: Failed to extract to ${desktopZipDestination}: ${error}`);
+            console.error("Status: Failed to extract to " + desktopZipDestination);
+            console.error("Error: " + error);
         });
 });
