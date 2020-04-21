@@ -14,8 +14,8 @@ export const handler = (options: IStartOptions) => {
         logger.info("another instance is already running. exiting...");
         app.exit();
     } else {
-        app.allowRendererProcessReuse = true;
         app.enableSandbox();
+        app.allowRendererProcessReuse = true;
         app.setAsDefaultProtocolClient("desktop");
         registerApplicationEventHandlers(app);
 
