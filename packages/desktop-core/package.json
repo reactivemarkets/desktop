@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/reactivemarkets/desktop/core.git"
+    "url": "git@github.com:reactivemarkets/desktop.git"
   },
   "keywords": [
     "electron",
@@ -35,5 +35,5 @@
     "dist/app.asar"
   ],
   "author": "ReactiveMarkets",
-  "license": "ISC"
+  "license": "Apache"
 }

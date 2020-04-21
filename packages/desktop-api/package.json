@@ -1,5 +1,5 @@
 {
-  "name": "@reactivemarkets/desktop-api-service",
+  "name": "@reactivemarkets/desktop-api",
   "version": "0.4.3",
   "description": "Exposes a REST api and websocket endpoint for Desktop",
   "publishConfig": {
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/reactivemarkets/desktop/api-service.git"
+    "url": "git@github.com:reactivemarkets/desktop.git"
   },
   "keywords": [
     "reactivemarkets",
@@ -32,5 +32,5 @@
     "dist/api.asar"
   ],
   "author": "ReactiveMarkets",
-  "license": "ISC"
+  "license": "Apache"
 }

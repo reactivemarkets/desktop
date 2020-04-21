@@ -37,7 +37,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/reactivemarkets/desktop/desktop.git"
+    "url": "git@github.com:reactivemarkets/desktop.git"
   },
   "keywords": [
     "reactivemarkets",
@@ -48,7 +48,7 @@
     "desktop"
   ],
   "author": "ReactiveMarkets",
-  "license": "ISC",
+  "license": "Apache",
   "dependencies": {
     "cli-progress": "^3.8.0",
     "extract-zip": "^2.0.0",
