@@ -1,14 +1,15 @@
+import { mock } from "jest-mock-extended";
+
 import { DirectoryConfigurationLoader } from "../../../src/configuration/loaders/directoryConfigurationLoader";
 import { IConfigurationLoader } from "../../../src/configuration/loaders/iConfigurationLoader";
 
-// tslint:disable:variable-name
 describe("canLoad", () => {
 
     describe("can load from", () => {
 
         test("directory", () => {
 
-            const fileLoader = new (jest.fn<IConfigurationLoader<{}>, string[]>())();
+            const fileLoader = mock<IConfigurationLoader<{}>>();
 
             const loader = new DirectoryConfigurationLoader(fileLoader);
 
@@ -21,7 +22,7 @@ describe("canLoad", () => {
 
         test("http", () => {
 
-            const fileLoader = new (jest.fn<IConfigurationLoader<{}>, string[]>())();
+            const fileLoader = mock<IConfigurationLoader<{}>>();
 
             const loader = new DirectoryConfigurationLoader(fileLoader);
 
@@ -31,7 +32,7 @@ describe("canLoad", () => {
 
         test("https", () => {
 
-            const fileLoader = new (jest.fn<IConfigurationLoader<{}>, string[]>())();
+            const fileLoader = mock<IConfigurationLoader<{}>>();
 
             const loader = new DirectoryConfigurationLoader(fileLoader);
 
@@ -41,7 +42,7 @@ describe("canLoad", () => {
 
         test("an extension", () => {
 
-            const fileLoader = new (jest.fn<IConfigurationLoader<{}>, string[]>())();
+            const fileLoader = mock<IConfigurationLoader<{}>>();
 
             const loader = new DirectoryConfigurationLoader(fileLoader);
 

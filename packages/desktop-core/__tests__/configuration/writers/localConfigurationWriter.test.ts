@@ -1,3 +1,5 @@
+import { mock } from "jest-mock-extended";
+
 import { IConfigurationParser } from "../../../src/configuration/parsers/iConfigurationParser";
 import { LocalConfigurationWriter } from "../../../src/configuration/writers/localConfigurationWriter";
 
@@ -6,9 +8,7 @@ describe("canWrite", () => {
     describe("can write to", () => {
 
         test("specified extension", () => {
-            const mockParser = jest.fn<IConfigurationParser<{}>, string[]>();
-
-            const parser = new mockParser();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const writer = new LocalConfigurationWriter(parser, "yaml");
 
@@ -20,9 +20,7 @@ describe("canWrite", () => {
     describe("can't write to", () => {
 
         test("unspecified extension", () => {
-            const mockParser = jest.fn<IConfigurationParser<{}>, string[]>();
-
-            const parser = new mockParser();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const writer = new LocalConfigurationWriter(parser, "yaml");
 

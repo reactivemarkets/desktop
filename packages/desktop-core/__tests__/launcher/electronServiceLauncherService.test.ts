@@ -1,3 +1,5 @@
+import { mock } from "jest-mock-extended";
+
 import { ConfigurationKind } from "../../src/configuration/configurationKind";
 import { IConfiguration } from "../../src/configuration/iConfiguration";
 import { ServiceHost } from "../../src/configuration/serviceHost";
@@ -7,13 +9,13 @@ import { IWindowFactory } from "../../src/windowing/iWindowFactory";
 
 describe("canLaunch", () => {
 
-    describe("can launcher", () => {
+    describe("can launch", () => {
 
         test("when kind is service and host is electron", () => {
 
-            const windowFactory = new (jest.fn<IWindowFactory, string[]>())();
+            const windowFactory = mock<IWindowFactory>();
 
-            const logger = new (jest.fn<ILogger, string[]>())();
+            const logger = mock<ILogger>();
 
             const launcher = new ElectronServiceLauncherService(logger, windowFactory);
 
@@ -36,9 +38,9 @@ describe("canLaunch", () => {
     describe("can't launch", () => {
 
         test("when host is node", () => {
-            const windowFactory = new (jest.fn<IWindowFactory, string[]>())();
+            const windowFactory = mock<IWindowFactory>();
 
-            const logger = new (jest.fn<ILogger, string[]>())();
+            const logger = mock<ILogger>();
 
             const launcher = new ElectronServiceLauncherService(logger, windowFactory);
 
@@ -58,9 +60,9 @@ describe("canLaunch", () => {
         });
 
         test("when kind is application", () => {
-            const windowFactory = new (jest.fn<IWindowFactory, string[]>())();
+            const windowFactory = mock<IWindowFactory>();
 
-            const logger = new (jest.fn<ILogger, string[]>())();
+            const logger = mock<ILogger>();
 
             const launcher = new ElectronServiceLauncherService(logger, windowFactory);
 

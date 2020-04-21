@@ -1,14 +1,15 @@
+import { mock } from "jest-mock-extended";
+
 import { LocalFileConfigurationLoader } from "../../../src/configuration/loaders/localFileConfigurationLoader";
 import { IConfigurationParser } from "../../../src/configuration/parsers/iConfigurationParser";
 
-// tslint:disable:variable-name
 describe("canLoad", () => {
 
     describe("can load from", () => {
 
         test("extension", () => {
 
-            const parser = new (jest.fn<IConfigurationParser<{}>, string[]>())();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "yaml");
 
@@ -18,7 +19,7 @@ describe("canLoad", () => {
 
         test("a local file", () => {
 
-            const parser = new (jest.fn<IConfigurationParser<{}>, string[]>())();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "yaml");
 
@@ -28,7 +29,7 @@ describe("canLoad", () => {
 
         test("a network file", () => {
 
-            const parser = new (jest.fn<IConfigurationParser<{}>, string[]>())();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "yaml");
 
@@ -41,7 +42,7 @@ describe("canLoad", () => {
 
         test("http", () => {
 
-            const parser = new (jest.fn<IConfigurationParser<{}>, string[]>())();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "json");
 
@@ -51,7 +52,7 @@ describe("canLoad", () => {
 
         test("https", () => {
 
-            const parser = new (jest.fn<IConfigurationParser<{}>, string[]>())();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "yaml");
 
@@ -61,7 +62,7 @@ describe("canLoad", () => {
 
         test("an unknown extension", () => {
 
-            const parser = new (jest.fn<IConfigurationParser<{}>, string[]>())();
+            const parser = mock<IConfigurationParser<{}>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "yaml");
 

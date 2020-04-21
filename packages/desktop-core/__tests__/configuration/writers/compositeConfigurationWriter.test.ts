@@ -1,16 +1,15 @@
+import { mock } from "jest-mock-extended";
+
 import { CompositeConfigurationWriter } from "../../../src/configuration/writers/compositeConfigurationWriter";
+import { IConfigurationWriter } from "../../../src/configuration/writers/iConfigurationWriter";
 
 describe("canWrite", () => {
 
     describe("can write", () => {
 
         test("when 1 writer can", () => {
-            const canWrite = jest.fn(() => ({
-                canWrite: jest.fn(() => true),
-                write: jest.fn(),
-            }));
-
-            const jsonWriter = new canWrite();
+            const jsonWriter = mock<IConfigurationWriter<any>>();
+            jsonWriter.canWrite.mockReturnValue(true);
 
             const writer = new CompositeConfigurationWriter(jsonWriter);
 
@@ -19,19 +18,11 @@ describe("canWrite", () => {
         });
 
         test("when at least 1 writer can", () => {
-            const cantWrite = jest.fn(() => ({
-                canWrite: jest.fn(() => false),
-                write: jest.fn(),
-            }));
+            const yamlWriter = mock<IConfigurationWriter<any>>();
+            yamlWriter.canWrite.mockReturnValue(false);
 
-            const yamlWriter = new cantWrite();
-
-            const canWrite = jest.fn(() => ({
-                canWrite: jest.fn(() => true),
-                write: jest.fn(),
-            }));
-
-            const jsonWriter = new canWrite();
+            const jsonWriter = mock<IConfigurationWriter<any>>();
+            jsonWriter.canWrite.mockReturnValue(true);
 
             const writer = new CompositeConfigurationWriter(yamlWriter, jsonWriter);
 
@@ -43,19 +34,11 @@ describe("canWrite", () => {
     describe("can't write", () => {
 
         test("when all writers can't", () => {
-            const cantWrite = jest.fn(() => ({
-                canWrite: jest.fn(() => false),
-                write: jest.fn(),
-            }));
+            const yamlWriter = mock<IConfigurationWriter<any>>();
+            yamlWriter.canWrite.mockReturnValue(false);
 
-            const yamlWriter = new cantWrite();
-
-            const canWrite = jest.fn(() => ({
-                canWrite: jest.fn(() => false),
-                write: jest.fn(),
-            }));
-
-            const jsonWriter = new canWrite();
+            const jsonWriter = mock<IConfigurationWriter<any>>();
+            jsonWriter.canWrite.mockReturnValue(false);
 
             const writer = new CompositeConfigurationWriter(yamlWriter, jsonWriter);
 
