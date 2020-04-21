@@ -1,9 +1,9 @@
 ---
 name: Package
 on:
-  push:
-    tags:
-      - v*
+  release:
+    types:
+      - published
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -39,23 +39,24 @@ jobs:
       - name: npm package
         run: |
           npm run package:${{ matrix.platform }}
+      - name: "Get upload_url"
+        run: echo "::set-output name=upload_url::https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)/assets{?name,label}"  
+        id: release
       - name: Upload Package Zip
-        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: packages/desktop/pack/desktop-${GITHUB_REF##*/v}-${{ matrix.platform }}.zip
           asset_name: desktop-${GITHUB_REF##*/v}-${{ matrix.platform }}.zip
           asset_content_type: application/zip
       - name: Upload Package Installer
-        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: packages/desktop/pack/${{ matrix.installer }}
           asset_name: ${{ matrix.installer }}
           asset_content_type: application/octet-stream
