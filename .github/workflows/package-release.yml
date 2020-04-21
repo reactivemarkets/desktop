@@ -14,12 +14,15 @@ jobs:
         include:
           - os: ubuntu-latest
             platform: linux
+            arch: x64
             installer: desktop_${GITHUB_REF##*/v}_amd64.deb
           - os: windows-latest
             platform: win32
+            arch: x64
             installer: desktop-${GITHUB_REF##*/v}-win32-x64-setup.zip
           - os: macOS-latest
             platform: darwin
+            arch: x64
             installer: desktop-${GITHUB_REF##*/v}.dmg
     steps:
       - uses: actions/checkout@v2
@@ -48,8 +51,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/desktop-${GITHUB_REF##*/v}-${{ matrix.platform }}.zip
-          asset_name: desktop-${GITHUB_REF##*/v}-${{ matrix.platform }}.zip
+          asset_path: packages/desktop/pack/desktop-${GITHUB_REF##*/v}-${{ matrix.platform }}-${{ matrix.arch }}.zip
+          asset_name: desktop-${GITHUB_REF##*/v}-${{ matrix.platform }}-${{ matrix.arch }}.zip
           asset_content_type: application/zip
       - name: Upload Package Installer
         uses: actions/upload-release-asset@v1
