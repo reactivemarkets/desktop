@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/markmcdowell/desktop/compare/v0.4.5...v0.4.6) (2020-04-21)
+
+
+### Bug Fixes
+
+* **desktop:** using cd instead of pushd ([be91421](https://github.com/markmcdowell/desktop/commit/be914212446b58c1becc3311a7356803cd8a5772))
+
+
+
+
+
 ## [0.4.5](https://github.com/markmcdowell/desktop/compare/v0.4.4...v0.4.5) (2020-04-21)
 
 

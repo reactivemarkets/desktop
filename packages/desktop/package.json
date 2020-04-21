@@ -1,7 +1,7 @@
 {
   "name": "@reactivemarkets/desktop",
   "productName": "desktop",
-  "version": "0.4.4",
+  "version": "0.4.6",
   "description": "Multi-window, cross-platform desktop applications.",
   "bin": {
     "desktop": "cli.js"
