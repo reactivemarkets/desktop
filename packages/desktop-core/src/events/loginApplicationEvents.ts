@@ -20,7 +20,6 @@ export const registerLoginEventsHandler = (app: App) => {
         const id = `${webContents.id}`;
 
         routerService.on(ReservedChannels.login_auth, (loginAuth: ILoginResponse) => {
-
             if (loginAuth.id === id) {
 
                 const { username, password } = loginAuth.auth;
