@@ -1,4 +1,4 @@
-import { handler } from "./startCommandHandler";
+import { handler } from "./handler";
 
 export const command = ["start", "$0", "up", "run"];
 

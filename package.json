@@ -6,6 +6,7 @@
     "postinstall": "lerna bootstrap",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build --stream",
+    "build:dev": "lerna run build:dev --stream",
     "clean": "run-s clean:packages clean:modules",
     "clean:packages": "lerna run clean",
     "clean:modules": "lerna clean --yes",
@@ -19,6 +20,7 @@
     "package:win32": "lerna run package:win32 --stream",
     "publish": "lerna publish from-package --no-git-reset --yes",
     "release": "lerna version --yes",
+    "start": "lerna run start --scope='*/desktop-core' --stream",
     "test": "lerna run test --stream",
     "watch": "lerna run watch --parallel"
   },

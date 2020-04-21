@@ -14,11 +14,14 @@ export const handler = (options: IStartOptions) => {
         logger.info("another instance is already running. exiting...");
         app.exit();
     } else {
+        app.allowRendererProcessReuse = true;
         app.enableSandbox();
         app.setAsDefaultProtocolClient("desktop");
         registerApplicationEventHandlers(app);
 
-        const onReady = new Promise<void>((resolve) => app.once("ready", (launchInfo: unknown) => resolve));
+        const onReady = new Promise<void>((resolve) => app.once("ready", () => {
+            resolve();
+        }));
 
         const configPromises = new Array<Promise<void>>();
 

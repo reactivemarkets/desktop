@@ -3,7 +3,7 @@ import { app } from "electron";
 import { cleanCommandLine, parseCommandLine } from "./configuration/commandLine";
 import { logger } from "./logging";
 
-const appName = app.getName();
+const appName = app.name;
 const appPath = app.getAppPath();
 const appVersion = app.getVersion();
 const locale = app.getLocale();
