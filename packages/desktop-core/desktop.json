@@ -19,5 +19,5 @@
         "dist/app.asar"
     ],
     "author": "ReactiveMarkets",
-    "license": "ISC"
+    "license": "Apache"
 }

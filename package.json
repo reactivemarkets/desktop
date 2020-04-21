@@ -1,7 +1,7 @@
 {
   "name": "root",
   "private": true,
-  "license": "ISC",
+  "license": "Apache",
   "scripts": {
     "postinstall": "lerna bootstrap",
     "bootstrap": "lerna bootstrap",
@@ -78,7 +78,7 @@
   ],
   "dependencies": {
     "@reactivemarkets/desktop": "file:packages/desktop",
-    "@reactivemarkets/desktop-api-service": "file:packages/desktop-api-service",
+    "@reactivemarkets/desktop-api": "file:packages/desktop-api",
     "@reactivemarkets/desktop-core": "file:packages/desktop-core"
   }
 }
