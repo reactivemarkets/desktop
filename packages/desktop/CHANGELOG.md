@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://github.com/reactivemarkets/desktop/compare/v0.4.6...v0.4.7) (2020-04-22)
+
+
+### Bug Fixes
+
+* **desktop:** ensuring support for older node versions ([df513a9](https://github.com/reactivemarkets/desktop/commit/df513a906d23bd09f98f843144e43c4f8f514675))
+
+
+
+
+
 ## [0.4.6](https://github.com/reactivemarkets/desktop/compare/v0.4.5...v0.4.6) (2020-04-21)
 
 
