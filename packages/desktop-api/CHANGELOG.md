@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8](https://github.com/reactivemarkets/desktop/compare/v0.4.7...v0.4.8) (2020-04-22)
+
+
+### Bug Fixes
+
+* **desktop:** adding cross-var for npm variables ([e2d1bad](https://github.com/reactivemarkets/desktop/commit/e2d1bad41bde3f9818ab5216060db2358b6e5a63))
+
+
+
+
+
 ## [0.4.4](https://github.com/reactivemarkets/desktop/compare/v0.4.3...v0.4.4) (2020-04-21)
 
 
