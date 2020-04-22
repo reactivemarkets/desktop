@@ -1,8 +1,8 @@
 "use strict";
 
-const request = require('request');
-const fs = require('fs');
 const cliProgress = require('cli-progress');
+const fs = require('fs');
+const fetch = require('node-fetch');
 
 module.exports = (url, filename, callback) => {
 
@@ -10,30 +10,42 @@ module.exports = (url, filename, callback) => {
         format: 'Status: {bar} {percentage}% | ETA: {eta_formatted}'
     }, cliProgress.Presets.shades_classic);
 
-    const r = request.get(url);
-    r.on('response', (response) => {
-        if (response.statusCode !== 200) {
-            return callback('Response status was ' + response.statusCode);
-        }
-
-        let receivedBytes = 0
-        const file = fs.createWriteStream(filename);
-        const totalBytes = response.headers['content-length'];
-        progressBar.start(totalBytes, 0);
-
-        r.on('data', (chunk) => {
-            receivedBytes += chunk.length;
-            progressBar.update(receivedBytes);
+    fetch(url)
+        .then((response) => {
+            if (response.ok) {
+                return response;
+            } else {
+                throw new Error('Response status was ' + response.status + ' ' + response.statusText);
+            }
         })
-            .pipe(file)
-            .on('error', (err) => {
-                fs.unlink(filename);
-                progressBar.stop();
-                return callback(err.message);
-            })
-            .on('close', () => {
-                progressBar.stop();
-                return callback();
-            });
-    });
+        .then((response) => {
+            let receivedBytes = 0
+            const file = fs.createWriteStream(filename);
+            const totalBytes = response.headers.get('content-length');
+            progressBar.start(totalBytes, 0);
+            response
+                .body
+                .on('data', (chunk) => {
+                    receivedBytes += chunk.length;
+                    progressBar.update(receivedBytes);
+                })
+                .pipe(file)
+                .on('error', (err) => {
+                    fs.unlink(filename);
+                    progressBar.stop();
+
+                    callback(err.message);
+
+                    return;
+                })
+                .on('close', () => {
+                    progressBar.stop();
+                    callback();
+
+                    return;
+                });
+        })
+        .catch((err) => {
+            callback(err);
+        });
 }
