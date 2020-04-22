@@ -12,7 +12,7 @@ export class DesktopEnvironmentProcessFork implements IProcessFork {
 
     public fork = async (args: string[], env: IEnvironmentVariables) => {
 
-        env.DESKTOP_APP_NAME = app.getName();
+        env.DESKTOP_APP_NAME = app.name;
         env.DESKTOP_APP_VERSION = app.getVersion();
         env.DESKTOP_APP_PATH = app.getAppPath();
         env.DESKTOP_APP_DATA_PATH = app.getPath("appData");
