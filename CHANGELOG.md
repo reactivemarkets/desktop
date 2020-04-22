@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.9](https://github.com/markmcdowell/desktop/compare/v0.4.8...v0.4.9) (2020-04-22)
+
+
+### Bug Fixes
+
+* **desktop:** adding proxy support to initial download ([6d93122](https://github.com/markmcdowell/desktop/commit/6d931225d1f5f7d6523164aa08560f038b412627))
+* **desktop:** download.js was missing from the package ([9f6abce](https://github.com/markmcdowell/desktop/commit/9f6abce55d29dc5b2098661aafd3492c5c3d7f06))
+* **desktop:** moving from request to node-fetch ([541e1e5](https://github.com/markmcdowell/desktop/commit/541e1e50f4d7399728159a4aeeeb6e5a0c669f7c))
+
+
+
+
+
 ## [0.4.8](https://github.com/markmcdowell/desktop/compare/v0.4.7...v0.4.8) (2020-04-22)
 
 
