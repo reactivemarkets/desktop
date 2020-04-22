@@ -46,17 +46,24 @@ jobs:
         run: |
           npm run package:${{ matrix.platform }}
       - name: Get upload_url
-        run: echo "::set-output name=upload_url::https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)/assets{?name,label}"  
+        run: | 
+          echo "::set-output name=upload_url::https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)/assets{?name,label}"  
         id: release
+        shell: bash
       - name: Get version
-        run: echo "::set-output name=version::${GITHUB_REF##*/v}"
+        run: |
+          echo "::set-output name=version::${GITHUB_REF##*/v}"
         id: version
+        shell: bash
       - name: Get zip file
         run: echo "::set-output name=filename::desktop-${{ steps.version.outputs.version }}-${{ matrix.platform }}-${{ matrix.arch }}.zip"
         id: zip
+        shell: bash
       - name: Get installer file
-        run: echo "::set-output name=filename::${{ matrix.installer-prefix }}${{ steps.version.outputs.version }}${{ matrix.installer-postfix }}"
+        run: | 
+          echo "::set-output name=filename::${{ matrix.installer-prefix }}${{ steps.version.outputs.version }}${{ matrix.installer-postfix }}"
         id: installer
+        shell: bash
       - name: Upload Package Zip
         uses: actions/upload-release-asset@v1
         env:
