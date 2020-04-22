@@ -15,15 +15,18 @@ jobs:
           - os: ubuntu-latest
             platform: linux
             arch: x64
-            installer: desktop_${GITHUB_REF##*/v}_amd64.deb
+            installer-prefix: desktop_
+            installer-postfix: _amd64.deb
           - os: windows-latest
             platform: win32
             arch: x64
-            installer: desktop-${GITHUB_REF##*/v}-win32-x64-setup.zip
+            installer-prefix: desktop-
+            installer-postfix: -win32-x64-setup.zip
           - os: macOS-latest
             platform: darwin
             arch: x64
-            installer: desktop-${GITHUB_REF##*/v}.dmg
+            installer-prefix: desktop-
+            installer-postfix: .dmg
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -42,17 +45,26 @@ jobs:
       - name: Build packages
         run: |
           npm run package:${{ matrix.platform }}
-      - name: "Get upload_url"
+      - name: Get upload_url
         run: echo "::set-output name=upload_url::https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)/assets{?name,label}"  
         id: release
+      - name: Get version
+        run: echo "::set-output name=version::${GITHUB_REF##*/v}"
+        id: version
+      - name: Get zip file
+        run: echo "::set-output name=filename::desktop-${{ steps.version.outputs.version }}-${{ matrix.platform }}-${{ matrix.arch }}.zip"
+        id: zip
+      - name: Get installer file
+        run: echo "::set-output name=filename::${{ matrix.installer-prefix }}${{ steps.version.outputs.version }}${{ matrix.installer-postfix }}"
+        id: installer
       - name: Upload Package Zip
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/desktop-${GITHUB_REF##*/v}-${{ matrix.platform }}-${{ matrix.arch }}.zip
-          asset_name: desktop-${GITHUB_REF##*/v}-${{ matrix.platform }}-${{ matrix.arch }}.zip
+          asset_path: packages/desktop/pack/${{ steps.zip.outputs.filename }}
+          asset_name: ${{ steps.zip.outputs.filename }}
           asset_content_type: application/zip
       - name: Upload Package Installer
         uses: actions/upload-release-asset@v1
@@ -60,6 +72,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/${{ matrix.installer }}
-          asset_name: ${{ matrix.installer }}
+          asset_path: packages/desktop/pack/${{ steps.installer.outputs.filename }}
+          asset_name: ${{ steps.installer.outputs.filename }}
           asset_content_type: application/octet-stream
