@@ -3,6 +3,8 @@
 const cliProgress = require('cli-progress');
 const fs = require('fs');
 const fetch = require('node-fetch');
+const proxy = require('./proxy');
+const HttpsProxyAgent = require('https-proxy-agent');
 
 module.exports = (url, filename, callback) => {
 
@@ -10,7 +12,13 @@ module.exports = (url, filename, callback) => {
         format: 'Status: {bar} {percentage}% | ETA: {eta_formatted}'
     }, cliProgress.Presets.shades_classic);
 
-    fetch(url)
+    const options = {};
+    const proxyString = proxy();
+    if (proxyString !== undefined) {
+        options.agent = new HttpsProxyAgent(proxyString);
+    }
+
+    fetch(url, options)
         .then((response) => {
             if (response.ok) {
                 return response;
