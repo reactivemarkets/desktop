@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.10](https://github.com/markmcdowell/desktop/compare/v0.4.9...v0.4.10) (2020-04-22)
+
+
+### Bug Fixes
+
+* **desktop:** windows doesn't have a zip command ([23fe73f](https://github.com/markmcdowell/desktop/commit/23fe73f86266bb823414fb2d988c4be4a0782338))
+
+
+
+
+
 ## [0.4.9](https://github.com/markmcdowell/desktop/compare/v0.4.8...v0.4.9) (2020-04-22)
 
 
