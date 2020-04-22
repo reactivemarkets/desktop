@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.11](https://github.com/reactivemarkets/desktop/compare/v0.4.10...v0.4.11) (2020-04-22)
+
+
+### Bug Fixes
+
+* **desktop:** window specific package was missing installer ([39e485f](https://github.com/reactivemarkets/desktop/commit/39e485f882861e34d99c71627370b5be10002648))
+
+
+
+
+
 ## [0.4.10](https://github.com/reactivemarkets/desktop/compare/v0.4.9...v0.4.10) (2020-04-22)
 
 

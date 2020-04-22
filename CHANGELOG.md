@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.11](https://github.com/markmcdowell/desktop/compare/v0.4.10...v0.4.11) (2020-04-22)
+
+
+### Bug Fixes
+
+* **core:** app.getName() is deprecated ([f0b396f](https://github.com/markmcdowell/desktop/commit/f0b396ff674f24812e6d5cc6b203a728f8a2063a))
+* **desktop:** window specific package was missing installer ([39e485f](https://github.com/markmcdowell/desktop/commit/39e485f882861e34d99c71627370b5be10002648))
+
+
+
+
+
 ## [0.4.10](https://github.com/markmcdowell/desktop/compare/v0.4.9...v0.4.10) (2020-04-22)
 
 
