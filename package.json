@@ -68,7 +68,7 @@
     "socket.io": "^2.3.0",
     "ts-jest": "^25.4.0",
     "ts-loader": "^7.0.1",
-    "tslint": "^5.20.1",
+    "tslint": "^6.1.2",
     "typescript": "^3.8.3",
     "utf-8-validate": "^5.0.2",
     "uuid": "^7.0.3",
