@@ -1,7 +1,7 @@
 import { App } from "electron";
 
+import { ReservedChannels } from "../../common";
 import { routerService } from "../router";
-import { ReservedChannels } from "../transports";
 
 export interface ILoginAuth {
     readonly password: string;
@@ -19,7 +19,7 @@ export const registerLoginEventsHandler = (app: App) => {
 
         const id = `${webContents.id}`;
 
-        routerService.on(ReservedChannels.login_auth, (loginAuth: ILoginResponse) => {
+        routerService.on(ReservedChannels.application_login_auth, (loginAuth: ILoginResponse) => {
             if (loginAuth.id === id) {
 
                 const { username, password } = loginAuth.auth;
@@ -28,7 +28,7 @@ export const registerLoginEventsHandler = (app: App) => {
             }
         });
 
-        routerService.send(ReservedChannels.login, {
+        routerService.send(ReservedChannels.application_login, {
             authInfo,
             id,
         });

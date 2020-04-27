@@ -6,13 +6,21 @@ import { IWindowFactory } from "./iWindowFactory";
 
 export class BrowserWindowFactory implements IWindowFactory {
 
+    private readonly preload: string;
+
+    public constructor(preload: string) {
+        this.preload = preload;
+    }
+
     public createWindow = async (configuration?: IWindowConfiguration) => {
         const webPreferences: WebPreferences = {
             allowRunningInsecureContent: false,
             contextIsolation: true,
             enableRemoteModule: false,
             nodeIntegration: false,
+            nodeIntegrationInSubFrames: false,
             nodeIntegrationInWorker: false,
+            preload: this.preload,
             sandbox: true,
             textAreasAreResizable: false,
             webSecurity: true,

@@ -1,5 +1,5 @@
-import { ConfigurationKind } from "../../../src/configuration/configurationKind";
-import { ExternalConfigurationGenerator } from "../../../src/configuration/generators/externalConfigurationGenerator";
+import { ConfigurationKind } from "../../../src/main/configuration/configurationKind";
+import { ExternalConfigurationGenerator } from "../../../src/main/configuration/generators/externalConfigurationGenerator";
 
 describe("canGenerate", () => {
 

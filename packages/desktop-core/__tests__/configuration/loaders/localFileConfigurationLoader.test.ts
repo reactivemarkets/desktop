@@ -1,7 +1,7 @@
 import { mock } from "jest-mock-extended";
 
-import { LocalFileConfigurationLoader } from "../../../src/configuration/loaders/localFileConfigurationLoader";
-import { IConfigurationParser } from "../../../src/configuration/parsers/iConfigurationParser";
+import { LocalFileConfigurationLoader } from "../../../src/main/configuration/loaders/localFileConfigurationLoader";
+import { IConfigurationParser } from "../../../src/main/configuration/parsers/iConfigurationParser";
 
 describe("canLoad", () => {
 

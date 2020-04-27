@@ -1,9 +1,9 @@
 import { mock } from "jest-mock-extended";
 
-import { ConfigurationKind } from "../../src/configuration/configurationKind";
-import { IConfiguration } from "../../src/configuration/iConfiguration";
-import { IRegistryService } from "../../src/registry/iRegistryService";
-import { PriorityConfigurationRegistryService } from "../../src/registry/priorityConfigurationRegistryService";
+import { ConfigurationKind } from "../../src/main/configuration/configurationKind";
+import { IConfiguration } from "../../src/main/configuration/iConfiguration";
+import { IRegistryService } from "../../src/main/registry/iRegistryService";
+import { PriorityConfigurationRegistryService } from "../../src/main/registry/priorityConfigurationRegistryService";
 
 describe("getRegistry", () => {
 
