@@ -1,14 +1,14 @@
 import { ConfigurationKind, IApplicationConfiguration, IConfiguration, WellKnownNamespaces } from "../configuration";
 import { ILogger } from "../logging";
-import { IWindowFactory } from "../windowing";
+import { IWindowService } from "../windowing";
 
 import { ILauncherService } from "./iLauncherService";
 
 export class ApplicationLauncherService implements ILauncherService {
     private readonly logger: ILogger;
-    private readonly windowService: IWindowFactory;
+    private readonly windowService: IWindowService;
 
-    public constructor(logger: ILogger, windowService: IWindowFactory) {
+    public constructor(logger: ILogger, windowService: IWindowService) {
         this.logger = logger;
         this.windowService = windowService;
     }

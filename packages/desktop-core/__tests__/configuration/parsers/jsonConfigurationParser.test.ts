@@ -1,4 +1,4 @@
-import { JsonConfigurationParser } from "../../../src/configuration/parsers/jsonConfigurationParser";
+import { JsonConfigurationParser } from "../../../src/main/configuration/parsers/jsonConfigurationParser";
 
 describe("parse", () => {
 

@@ -1,11 +1,11 @@
 import { mock } from "jest-mock-extended";
 
-import { ConfigurationKind } from "../../src/configuration/configurationKind";
-import { IConfiguration } from "../../src/configuration/iConfiguration";
-import { ServiceHost } from "../../src/configuration/serviceHost";
-import { ElectronServiceLauncherService } from "../../src/launcher/electronServiceLauncherService";
-import { ILogger } from "../../src/logging";
-import { IWindowFactory } from "../../src/windowing/iWindowFactory";
+import { ConfigurationKind } from "../../src/main/configuration/configurationKind";
+import { IConfiguration } from "../../src/main/configuration/iConfiguration";
+import { ServiceHost } from "../../src/main/configuration/serviceHost";
+import { ElectronServiceLauncherService } from "../../src/main/launcher/electronServiceLauncherService";
+import { ILogger } from "../../src/main/logging";
+import { IWindowService } from "../../src/main/windowing/iWindowService";
 
 describe("canLaunch", () => {
 
@@ -13,11 +13,11 @@ describe("canLaunch", () => {
 
         test("when kind is service and host is electron", () => {
 
-            const windowFactory = mock<IWindowFactory>();
+            const windowService = mock<IWindowService>();
 
             const logger = mock<ILogger>();
 
-            const launcher = new ElectronServiceLauncherService(logger, windowFactory);
+            const launcher = new ElectronServiceLauncherService(logger, windowService);
 
             const configuration: IConfiguration = {
                 kind: ConfigurationKind.Service,
@@ -38,11 +38,11 @@ describe("canLaunch", () => {
     describe("can't launch", () => {
 
         test("when host is node", () => {
-            const windowFactory = mock<IWindowFactory>();
+            const windowService = mock<IWindowService>();
 
             const logger = mock<ILogger>();
 
-            const launcher = new ElectronServiceLauncherService(logger, windowFactory);
+            const launcher = new ElectronServiceLauncherService(logger, windowService);
 
             const configuration: IConfiguration = {
                 kind: ConfigurationKind.Service,
@@ -60,11 +60,11 @@ describe("canLaunch", () => {
         });
 
         test("when kind is application", () => {
-            const windowFactory = mock<IWindowFactory>();
+            const windowService = mock<IWindowService>();
 
             const logger = mock<ILogger>();
 
-            const launcher = new ElectronServiceLauncherService(logger, windowFactory);
+            const launcher = new ElectronServiceLauncherService(logger, windowService);
 
             const configuration: IConfiguration = {
                 kind: ConfigurationKind.Application,

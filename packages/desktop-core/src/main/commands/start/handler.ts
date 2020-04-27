@@ -1,6 +1,7 @@
 import { app } from "electron";
 import * as path from "path";
 
+import { registerIpcEventHandlers } from "../../api";
 import { registerApplicationEventHandlers } from "../../events";
 import { launcherService } from "../../launcher";
 import { logger } from "../../logging";
@@ -17,6 +18,7 @@ export const handler = (options: IStartOptions) => {
         app.enableSandbox();
         app.allowRendererProcessReuse = true;
         app.setAsDefaultProtocolClient("desktop");
+        registerIpcEventHandlers();
         registerApplicationEventHandlers(app);
 
         const onReady = new Promise<void>((resolve) => app.once("ready", () => {

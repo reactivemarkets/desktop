@@ -1,7 +1,7 @@
 import { mock } from "jest-mock-extended";
 
-import { CompositeConfigurationWriter } from "../../../src/configuration/writers/compositeConfigurationWriter";
-import { IConfigurationWriter } from "../../../src/configuration/writers/iConfigurationWriter";
+import { CompositeConfigurationWriter } from "../../../src/main/configuration/writers/compositeConfigurationWriter";
+import { IConfigurationWriter } from "../../../src/main/configuration/writers/iConfigurationWriter";
 
 describe("canWrite", () => {
 

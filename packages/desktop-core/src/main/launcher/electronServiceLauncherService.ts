@@ -2,16 +2,16 @@ import {
     ConfigurationKind, IConfiguration, IServiceConfiguration, IWindowConfiguration, ServiceHost, WellKnownNamespaces,
 } from "../configuration";
 import { ILogger } from "../logging";
-import { IWindowFactory } from "../windowing";
+import { IWindowService } from "../windowing";
 
 import { ILauncherService } from "./iLauncherService";
 import { normalize } from "./normalize";
 
 export class ElectronServiceLauncherService implements ILauncherService {
     private readonly logger: ILogger;
-    private readonly windowFactory: IWindowFactory;
+    private readonly windowFactory: IWindowService;
 
-    public constructor(logger: ILogger, windowService: IWindowFactory) {
+    public constructor(logger: ILogger, windowService: IWindowService) {
         this.logger = logger;
         this.windowFactory = windowService;
     }

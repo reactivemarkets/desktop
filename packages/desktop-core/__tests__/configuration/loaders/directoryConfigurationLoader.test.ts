@@ -1,7 +1,7 @@
 import { mock } from "jest-mock-extended";
 
-import { DirectoryConfigurationLoader } from "../../../src/configuration/loaders/directoryConfigurationLoader";
-import { IConfigurationLoader } from "../../../src/configuration/loaders/iConfigurationLoader";
+import { DirectoryConfigurationLoader } from "../../../src/main/configuration/loaders/directoryConfigurationLoader";
+import { IConfigurationLoader } from "../../../src/main/configuration/loaders/iConfigurationLoader";
 
 describe("canLoad", () => {
 

@@ -1,5 +1,5 @@
-import { ConfigurationKind } from "../../../src/configuration/configurationKind";
-import { ApplicationConfigurationGenerator } from "../../../src/configuration/generators/applicationConfigurationGenerator";
+import { ConfigurationKind } from "../../../src/main/configuration/configurationKind";
+import { ApplicationConfigurationGenerator } from "../../../src/main/configuration/generators/applicationConfigurationGenerator";
 
 describe("canGenerate", () => {
 

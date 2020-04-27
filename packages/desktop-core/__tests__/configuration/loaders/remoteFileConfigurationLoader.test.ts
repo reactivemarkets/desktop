@@ -1,7 +1,7 @@
 import { mock } from "jest-mock-extended";
 
-import { RemoteFileConfigurationLoader } from "../../../src/configuration/loaders/remoteFileConfigurationLoader";
-import { IConfigurationParser } from "../../../src/configuration/parsers/iConfigurationParser";
+import { RemoteFileConfigurationLoader } from "../../../src/main/configuration/loaders/remoteFileConfigurationLoader";
+import { IConfigurationParser } from "../../../src/main/configuration/parsers/iConfigurationParser";
 
 describe("canLoad", () => {
 
