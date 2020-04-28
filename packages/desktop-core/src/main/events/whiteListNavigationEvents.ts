@@ -12,22 +12,14 @@ import { logger } from "../logging";
  */
 export const whiteListNavigationEvents = (app: App) => {
     app.on("web-contents-created", (_, contents) => {
-        contents.on("will-navigate", (event, navigationUrl) => {
+        contents.on("will-navigate", (__, navigationUrl) => {
             const parsedUrl = new URL(navigationUrl);
 
-            logger.warn(
-                `The application tried to redirect to the following address: '${parsedUrl}'. This attempt was blocked.`,
-            );
-
-            event.preventDefault();
+            logger.warn(`The application has navigated to the following address: ${parsedUrl}`);
         });
 
-        contents.on("will-redirect", (event, navigationUrl) => {
-            logger.warn(
-                `The application tried to redirect to the following address: '${navigationUrl}'. This attempt was blocked.`,
-            );
-
-            event.preventDefault();
+        contents.on("will-redirect", (__, navigationUrl) => {
+            logger.warn(`The application has redirected to the following address: ${navigationUrl}`);
         });
 
         contents.on("will-attach-webview", (__, webPreferences) => {
@@ -37,7 +29,7 @@ export const whiteListNavigationEvents = (app: App) => {
 
         contents.on("new-window", async (event, navigationUrl) => {
             logger.warn(
-                `The application tried to open a new window at the following address: '${navigationUrl}'. This attempt was blocked.`,
+                `The application tried to open a new window at the following address: ${navigationUrl}. This attempt was blocked.`,
             );
 
             event.preventDefault();
