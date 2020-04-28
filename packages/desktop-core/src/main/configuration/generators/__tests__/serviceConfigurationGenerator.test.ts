@@ -1,5 +1,5 @@
-import { ConfigurationKind } from "../../../src/main/configuration/configurationKind";
-import { ServiceConfigurationGenerator } from "../../../src/main/configuration/generators/serviceConfigurationGenerator";
+import { ConfigurationKind } from "../../configurationKind";
+import { ServiceConfigurationGenerator } from "../serviceConfigurationGenerator";
 
 describe("canGenerate", () => {
 

@@ -1,4 +1,4 @@
-import { namespaceComparer } from "../../src/main/registry/namespaceComparer";
+import { namespaceComparer } from "../namespaceComparer";
 
 describe("compare", () => {
 

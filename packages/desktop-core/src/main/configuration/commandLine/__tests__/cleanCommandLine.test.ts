@@ -1,4 +1,4 @@
-import { cleanCommandLine } from "../../../src/main/configuration/commandLine/cleanCommandLine";
+import { cleanCommandLine } from "../cleanCommandLine";
 
 describe("cleanCommandLine", () => {
 

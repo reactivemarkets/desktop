@@ -1,7 +1,7 @@
 import { mock } from "jest-mock-extended";
 
-import { IConfigurationParser } from "../../../src/main/configuration/parsers/iConfigurationParser";
-import { LocalConfigurationWriter } from "../../../src/main/configuration/writers/localConfigurationWriter";
+import { IConfigurationParser } from "../../parsers/iConfigurationParser";
+import { LocalConfigurationWriter } from "../localConfigurationWriter";
 
 describe("canWrite", () => {
 
