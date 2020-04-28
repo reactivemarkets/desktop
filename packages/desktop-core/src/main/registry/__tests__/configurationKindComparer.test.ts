@@ -1,5 +1,5 @@
-import { ConfigurationKind } from "../../src/main/configuration/configurationKind";
-import { configurationKindComparer } from "../../src/main/registry/configurationKindComparer";
+import { ConfigurationKind } from "../../configuration/configurationKind";
+import { configurationKindComparer } from "../configurationKindComparer";
 
 describe("compare", () => {
 

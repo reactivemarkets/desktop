@@ -1,5 +1,5 @@
-import { IConfiguration } from "../../../src/main/configuration/iConfiguration";
-import { YamlConfigurationParser } from "../../../src/main/configuration/parsers/yamlConfigurationParser";
+import { IConfiguration } from "../../iConfiguration";
+import { YamlConfigurationParser } from "../yamlConfigurationParser";
 
 describe("parse", () => {
     test("multiple documents", () => {

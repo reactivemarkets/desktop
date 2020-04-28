@@ -1,11 +1,11 @@
 import { mock } from "jest-mock-extended";
 
-import { ConfigurationKind } from "../../src/main/configuration/configurationKind";
-import { IConfiguration } from "../../src/main/configuration/iConfiguration";
-import { ServiceHost } from "../../src/main/configuration/serviceHost";
-import { ElectronServiceLauncherService } from "../../src/main/launcher/electronServiceLauncherService";
-import { ILogger } from "../../src/main/logging";
-import { IWindowService } from "../../src/main/windowing/iWindowService";
+import { ConfigurationKind } from "../../configuration/configurationKind";
+import { IConfiguration } from "../../configuration/iConfiguration";
+import { ServiceHost } from "../../configuration/serviceHost";
+import { ILogger } from "../../logging";
+import { IWindowService } from "../../windowing/iWindowService";
+import { ElectronServiceLauncherService } from "../electronServiceLauncherService";
 
 describe("canLaunch", () => {
 
