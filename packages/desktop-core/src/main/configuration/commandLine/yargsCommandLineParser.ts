@@ -2,6 +2,8 @@ import * as yargs from "yargs";
 
 import { cacheModule, initModule, startModule } from "../../commands";
 
+const columnWidth = Math.min(yargs.terminalWidth(), 120);
+
 /**
  * Parse the command line.
  * @param commandLine The cleaned command line
@@ -16,6 +18,8 @@ export const parseCommandLine = (commandLine: string[], exitProcess: boolean = t
         .recommendCommands()
         .strict()
         .exitProcess(exitProcess)
-        .epilogue('Use "<command> --help" for more information about a given command.')
+        .epilogue('Run "$0 COMMAND --help" for more information on a command.')
+        .usage("Usage: $0 COMMAND [OPTIONS]\n\nA multi-window desktop runtime")
+        .wrap(columnWidth)
         .parse(commandLine);
 };

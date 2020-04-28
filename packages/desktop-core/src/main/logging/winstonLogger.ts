@@ -21,9 +21,9 @@ const tailable = true;
 app.setAppLogsPath(process.env.DESKTOP_LOGS_PATH);
 const dirname = app.getPath("logs");
 
-let level = process.env.DESKTOP_LOG_LEVEL;
-if (level === undefined) {
-    level = "info";
+let logLevel = process.env.DESKTOP_LOG_LEVEL;
+if (logLevel === undefined) {
+    logLevel = "info";
 }
 
 export const logger: ILogger = winston.createLogger({
@@ -40,14 +40,22 @@ export const logger: ILogger = winston.createLogger({
     exitOnError: false,
     transports: [
         new winston.transports.Console({
-            format: winston.format.simple(),
-            level,
+            format: winston.format.combine(
+                winston.format.printf(({ level, message }) => {
+                    if (level === "info") {
+                        return message;
+                    }
+
+                    return `${level}: ${message}`;
+                }),
+            ),
+            level: logLevel,
         }),
         new winston.transports.File({
             dirname,
             filename,
             format,
-            level,
+            level: logLevel,
             maxFiles,
             maxsize,
             tailable,
