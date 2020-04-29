@@ -2,11 +2,11 @@
 
 Desktop is an open source application for managing multi-window, cross-platform desktop applications; providing deployment, configuration, notifications, logging, monitoring...
 
-Desktop builds on the [Electron Framework](https://github.com/electron/electron) as well as many other open source packages including [socket.io](https://github.com/socketio/socket.io), [winston](https://github.com/winstonjs/winston) and [yargs](https://github.com/yargs/yargs). The aim is to reuse proven design practices from production systems.
+Desktop builds on the [Electron Framework](https://github.com/electron/electron) as well as many other open source packages including [expressjs](https://github.com/expressjs/express/), [winston](https://github.com/winstonjs/winston) and [yargs](https://github.com/yargs/yargs). The aim is to reuse proven design practices from production systems.
 
 ## Aims
 
-* Secure
+* Secure by default
 * Extensible
 * Maximise developer productivity
 * Use battle tested libraries

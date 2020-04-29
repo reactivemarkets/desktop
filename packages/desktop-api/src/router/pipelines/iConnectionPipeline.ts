@@ -1,10 +1,13 @@
-import { Namespace, Socket } from "socket.io";
+import * as WebSocket from "ws";
+import { IRouterMessage } from "./iRouterMessage";
+
+export type Socket = WebSocket & { id: string };
 
 export interface IConnectionPipeline {
-    onConnected(namespace: Namespace, socket: Socket): void;
-    onDisconnected(namespace: Namespace, socket: Socket): void;
-    onError(namespace: Namespace, socket: Socket, error: Error): void;
-    onPublish(namespace: Namespace, socket: Socket, message: IRouterMessage): void;
-    onSubscribe(namespace: Namespace, socket: Socket, topic: string): void;
-    onUnsubscribe(namespace: Namespace, socket: Socket, topic: string): void;
+    onClose(socket: Socket, code: number, reason: string): void;
+    onError(socket: Socket, error: Error): void;
+    onOpen(socket: Socket): void;
+    onPublish(socket: Socket, message: IRouterMessage): void;
+    onSubscribe(socket: Socket, message: IRouterMessage): void;
+    onUnsubscribe(socket: Socket, message: IRouterMessage): void;
 }

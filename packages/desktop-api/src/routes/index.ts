@@ -1,2 +1,3 @@
-export * from "./apiRoute";
-export * from "./defaultRoute";
+export * from "./apiRoutes";
+export * from "./defaultRoutes";
+export * from "./wsRoutes";

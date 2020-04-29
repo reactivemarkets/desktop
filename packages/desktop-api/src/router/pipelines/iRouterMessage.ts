@@ -1,6 +1,9 @@
 // tslint:disable:no-any
-interface IRouterMessage {
-    readonly cache?: boolean;
+
+import { MessageType } from "./messageType";
+
+export interface IRouterMessage {
+    readonly channel: string;
     readonly data: any;
-    readonly topic: string;
+    readonly type: MessageType;
 }

@@ -2,7 +2,7 @@ import { Request, Response, Router } from "express";
 
 const router = Router();
 
-router.get("/", (_: Request, response: Response) => {
+router.get("/api", (_: Request, response: Response) => {
     response
         .json({
             env: process.env,
@@ -12,4 +12,4 @@ router.get("/", (_: Request, response: Response) => {
         });
 });
 
-export const apiRoute: Router = router;
+export const apiRoutes: Router = router;

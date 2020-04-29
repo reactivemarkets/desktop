@@ -5,8 +5,10 @@ const router = Router();
 
 router.get("/", (_: Request, response: Response) => {
     response
+        .status(notFound)
         .json({
-            message: "See https://desktop.reactivemarkets.com for API documentation.",
+            documentation_url: "https://desktop.reactivemarkets.com",
+            message: "see API documentation.",
         });
 });
 
@@ -21,8 +23,9 @@ router.get("*", (request: Request, response: Response) => {
     response
         .status(notFound)
         .json({
+            documentation_url: "https://desktop.reactivemarkets.com",
             message: `${request.path} not found.`,
         });
 });
 
-export const defaultRoute: Router = router;
+export const defaultRoutes: Router = router;
