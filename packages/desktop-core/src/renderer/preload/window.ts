@@ -1,4 +1,4 @@
-import { ipcRenderer } from "electron";
+import { ipcRenderer, Rectangle } from "electron";
 import { ReservedChannels } from "../../common";
 
 export const window = {
@@ -16,6 +16,9 @@ export const window = {
         moveTop: () => ipcRenderer.invoke(ReservedChannels.window_moveTop),
         reload: () => ipcRenderer.invoke(ReservedChannels.window_reload),
         restore: () => ipcRenderer.invoke(ReservedChannels.window_restore),
+        setBounds: (bounds: Partial<Rectangle>, animate?: boolean) => {
+            ipcRenderer.invoke(ReservedChannels.window_setBounds, bounds, animate);
+        },
         setFullScreen: (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setFullScreen, flag),
         show: () => ipcRenderer.invoke(ReservedChannels.window_show),
     },

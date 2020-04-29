@@ -1,8 +1,8 @@
-import { BrowserWindow, ipcMain } from "electron";
+import { BrowserWindow, ipcMain, Rectangle } from "electron";
 import { ReservedChannels } from "../../common";
 
 export const windowIpcEvents = () => {
-    ipcMain.handle(ReservedChannels.window_blur, async (event) => {
+    ipcMain.handle(ReservedChannels.window_blur, (event) => {
         BrowserWindow
             .fromWebContents(event.sender)
             ?.blur();
@@ -69,6 +69,11 @@ export const windowIpcEvents = () => {
         BrowserWindow
             .fromWebContents(event.sender)
             ?.restore();
+    });
+    ipcMain.handle(ReservedChannels.window_setBounds, (event, bounds: Partial<Rectangle>, animate?: boolean) => {
+        BrowserWindow
+            .fromWebContents(event.sender)
+            ?.setBounds(bounds, animate);
     });
     ipcMain.handle(ReservedChannels.window_setFullScreen, (event, flag: boolean) => {
         BrowserWindow
