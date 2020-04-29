@@ -1,30 +1,28 @@
-import { Namespace, Socket } from "socket.io";
-
-import { IConnectionPipeline } from "./iConnectionPipeline";
+import { IConnectionPipeline, Socket } from "./iConnectionPipeline";
+import { IRouterMessage } from "./iRouterMessage";
 
 export class LoggingConnectionPipeline implements IConnectionPipeline {
-
-    public onConnected = (_: Namespace, socket: Socket) => {
-        console.log(`${socket.id} connected.`);
+    public onClose = (socket: Socket, code: number, reason: string) => {
+        console.log(`${socket.id} closed with ${code} ${reason}`);
     }
 
-    public onDisconnected = (_: Namespace, socket: Socket) => {
-        console.log(`${socket.id} disconnected.`);
-    }
-
-    public onError = (_: Namespace, socket: Socket, error: Error) => {
+    public onError = (socket: Socket, error: Error) => {
         console.log(`${socket.id} errored: ${error}`);
     }
 
-    public onPublish = (_: Namespace, socket: Socket, message: IRouterMessage) => {
-        console.log(`${socket.id} published message on ${message.topic}, cached: ${message.cache}`);
+    public onPublish = (socket: Socket, message: IRouterMessage) => {
+        console.log(`${socket.id} published on ${message.channel}`);
     }
 
-    public onSubscribe = (_: Namespace, socket: Socket, topic: string) => {
-        console.log(`${socket.id} subscribed to ${topic}`);
+    public onSubscribe = (socket: Socket, message: IRouterMessage) => {
+        console.log(`${socket.id} subscribed to ${message.channel}`);
     }
 
-    public onUnsubscribe = (_: Namespace, socket: Socket, topic: string) => {
-        console.log(`${socket.id} unsubscribed from ${topic}`);
+    public onUnsubscribe = (socket: Socket, message: IRouterMessage) => {
+        console.log(`${socket.id} unsubscribed from ${message.channel}`);
+    }
+
+    public onOpen = (socket: Socket) => {
+        console.log(`${socket.id} opened.`);
     }
 }

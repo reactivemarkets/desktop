@@ -5,17 +5,36 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Main Process",
+            "name": "Launch API standalone",
             "type": "node",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "preLaunchTask": "npm: build:dev",
+            "preLaunchTask": "npm: build:dev:api",
             "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
             "windows": {
                 "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
             },
             "args": [
-                "./packages/desktop-core/dist/main.js",
+                "${workspaceFolder}/packages/desktop-api/dist/main.js",
+            ],
+            "sourceMaps": true,
+            "outputCapture": "std",
+            "outFiles": [
+                "${workspaceFolder}/apps/desktop-api/dist/**/*.js"
+            ]
+        },
+        {
+            "name": "Launch Desktop",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "npm: build:dev:core",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+            "windows": {
+                "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+            },
+            "args": [
+                "${workspaceFolder}/packages/desktop-core/dist/main.js",
                 "--url",
                 "https://desktop.reactivemarkets.com"
             ],

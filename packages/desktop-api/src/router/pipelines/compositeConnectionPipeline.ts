@@ -1,6 +1,5 @@
-import { Namespace, Socket } from "socket.io";
-
-import { IConnectionPipeline } from "./iConnectionPipeline";
+import { IConnectionPipeline, Socket } from "./iConnectionPipeline";
+import { IRouterMessage } from "./iRouterMessage";
 
 export class CompositeConnectionPipeline implements IConnectionPipeline {
     private readonly pipelines: IConnectionPipeline[];
@@ -9,39 +8,39 @@ export class CompositeConnectionPipeline implements IConnectionPipeline {
         this.pipelines = pipelines;
     }
 
-    public onConnected(namespace: Namespace, socket: Socket) {
+    public onClose(socket: Socket, code: number, reason: string) {
         this.pipelines.forEach((p) => {
-            p.onConnected(namespace, socket);
+            p.onClose(socket, code, reason);
         });
     }
 
-    public onDisconnected(namespace: Namespace, socket: Socket) {
+    public onError(socket: Socket, error: Error) {
         this.pipelines.forEach((p) => {
-            p.onDisconnected(namespace, socket);
+            p.onError(socket, error);
         });
     }
 
-    public onError(namespace: Namespace, socket: Socket, error: Error) {
+    public onOpen(socket: Socket) {
         this.pipelines.forEach((p) => {
-            p.onError(namespace, socket, error);
+            p.onOpen(socket);
         });
     }
 
-    public onPublish(namespace: Namespace, socket: Socket, message: IRouterMessage) {
+    public onPublish(socket: Socket, message: IRouterMessage) {
         this.pipelines.forEach((p) => {
-            p.onPublish(namespace, socket, message);
+            p.onPublish(socket, message);
         });
     }
 
-    public onSubscribe(namespace: Namespace, socket: Socket, topic: string) {
+    public onSubscribe(socket: Socket, message: IRouterMessage) {
         this.pipelines.forEach((p) => {
-            p.onSubscribe(namespace, socket, topic);
+            p.onSubscribe(socket, message);
         });
     }
 
-    public onUnsubscribe(namespace: Namespace, socket: Socket, topic: string) {
+    public onUnsubscribe(socket: Socket, message: IRouterMessage) {
         this.pipelines.forEach((p) => {
-            p.onUnsubscribe(namespace, socket, topic);
+            p.onUnsubscribe(socket, message);
         });
     }
 }
