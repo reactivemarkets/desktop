@@ -43,6 +43,91 @@ export const windowIpcEvents = () => {
             .fromWebContents(event.sender)
             ?.hide();
     });
+    ipcMain.handle(ReservedChannels.window_isAlwaysOnTop, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isAlwaysOnTop();
+    });
+    ipcMain.handle(ReservedChannels.window_isCloseable, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isClosable();
+    });
+    ipcMain.handle(ReservedChannels.window_isEnabled, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isEnabled();
+    });
+    ipcMain.handle(ReservedChannels.window_isFocused, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isFocused();
+    });
+    ipcMain.handle(ReservedChannels.window_isFullscreen, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isFullScreen();
+    });
+    ipcMain.handle(ReservedChannels.window_isFullscreenable, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isFullScreenable();
+    });
+    ipcMain.handle(ReservedChannels.window_isKiosk, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isKiosk();
+    });
+    ipcMain.handle(ReservedChannels.window_isMaximizable, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isMaximizable();
+    });
+    ipcMain.handle(ReservedChannels.window_isMaximized, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isMaximized();
+    });
+    ipcMain.handle(ReservedChannels.window_isMenuBarAutoHide, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isMenuBarAutoHide();
+    });
+    ipcMain.handle(ReservedChannels.window_isMenuBarVisible, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isMenuBarVisible();
+    });
+    ipcMain.handle(ReservedChannels.window_isMinimizable, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isMinimizable();
+    });
+    ipcMain.handle(ReservedChannels.window_isMinimized, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isMinimized();
+    });
+    ipcMain.handle(ReservedChannels.window_isModal, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isModal();
+    });
+    ipcMain.handle(ReservedChannels.window_isMovable, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isMovable();
+    });
+    ipcMain.handle(ReservedChannels.window_isResizable, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isResizable();
+    });
+    ipcMain.handle(ReservedChannels.window_isVisible, (event) => {
+        return BrowserWindow
+            .fromWebContents(event.sender)
+            ?.isVisible();
+    });
     ipcMain.handle(ReservedChannels.window_minimize, (event) => {
         const window = BrowserWindow.fromWebContents(event.sender);
         if (window !== null && window.minimizable) {
@@ -70,6 +155,11 @@ export const windowIpcEvents = () => {
             .fromWebContents(event.sender)
             ?.restore();
     });
+    ipcMain.handle(ReservedChannels.window_setAlwaysOnTop, (event, flag: boolean) => {
+        BrowserWindow
+            .fromWebContents(event.sender)
+            ?.setAlwaysOnTop(flag);
+    });
     ipcMain.handle(ReservedChannels.window_setBounds, (event, bounds: Partial<Rectangle>, animate?: boolean) => {
         BrowserWindow
             .fromWebContents(event.sender)
@@ -79,6 +169,11 @@ export const windowIpcEvents = () => {
         BrowserWindow
             .fromWebContents(event.sender)
             ?.setFullScreen(flag);
+    });
+    ipcMain.handle(ReservedChannels.window_setKiosk, (event, flag: boolean) => {
+        BrowserWindow
+            .fromWebContents(event.sender)
+            ?.setKiosk(flag);
     });
     ipcMain.handle(ReservedChannels.window_show, (event) => {
         BrowserWindow
