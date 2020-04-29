@@ -4,6 +4,10 @@ import { logger } from "./winstonLogger";
 export * from "./iLogger";
 export { logger };
 
+console.debug = (message?: any, ...optionalParams: any[]) => {
+    logger.debug(message, optionalParams);
+};
+
 console.error = (message?: any, ...optionalParams: any[]) => {
     logger.error(message, optionalParams);
 };
