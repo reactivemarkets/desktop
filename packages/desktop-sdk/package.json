@@ -1,0 +1,28 @@
+{
+  "name": "@reactivemarkets/desktop-sdk",
+  "version": "0.4.11",
+  "description": "SDK for desktop.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "build:dev": "npm run build",
+    "clean": "rimraf lib",
+    "compile": "tsc -p tsconfig.json",
+    "lint": "tslint -p tsconfig.json -c tslint.yaml",
+    "tests": "jest",
+    "watch": "tsc -p tsconfig.json --watch --preserveWatchOutput"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:reactivemarkets/desktop.git"
+  },
+  "keywords": [
+    "sdk"
+  ],
+  "author": "Reactive Markets",
+  "license": "Apache"
+}

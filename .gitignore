@@ -60,6 +60,7 @@ typings/
 # build output
 dist/
 installer/
+lib/
 pack/
 
 # ignore mac files

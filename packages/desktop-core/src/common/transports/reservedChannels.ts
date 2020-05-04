@@ -16,6 +16,7 @@ export enum ReservedChannels {
     router_publish = "@desktop:router/publish",
     router_subscribe = "@desktop:router/subscribe",
     router_unsubscribe = "@desktop:router/unsubscribe",
+    router_unsubscribeAll = "@desktop:router/unsubscribeAll",
     window_blur = "@desktop:window/blur",
     window_center = "@desktop:window/center",
     window_close = "@desktop:window/close",

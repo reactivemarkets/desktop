@@ -14,6 +14,7 @@ export const router = {
     unsubscribe: <T>(channel: string, listener: (payload: T) => void) => {
         const subscribeChannel = `${ReservedChannels.router_subscribe}/${channel}`;
         ipcRenderer.removeListener(subscribeChannel, listener);
-        ipcRenderer.invoke(ReservedChannels.router_unsubscribe, channel);
+        ipcRenderer.send(ReservedChannels.router_unsubscribe, channel);
     },
+    unsubscribeAll: () => ipcRenderer.send(ReservedChannels.router_unsubscribeAll),
 };

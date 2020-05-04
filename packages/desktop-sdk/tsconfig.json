@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "incremental": true,
+        "jsx": "react",
+        "declaration": true,
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "outDir": "lib",
+        "removeComments": true,
+        "sourceMap": true,
+        "strict": true,
+        "target": "es2017"
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "lib",
+        "**/__tests__/**",
+        "**/__integration__/**"
+    ]
+}

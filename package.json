@@ -9,6 +9,7 @@
     "build:dev": "lerna run build:dev --stream",
     "build:dev:api": "lerna run build:dev --scope='*/desktop-api' --stream",
     "build:dev:core": "lerna run build:dev --scope='*/desktop-core' --stream",
+    "build:dev:sdk": "lerna run build:dev --scope='*/desktop-sdk' --stream",
     "clean": "run-s clean:packages clean:modules",
     "clean:packages": "lerna run clean",
     "clean:modules": "lerna clean --yes",
@@ -91,6 +92,7 @@
   "dependencies": {
     "@reactivemarkets/desktop": "file:packages/desktop",
     "@reactivemarkets/desktop-api": "file:packages/desktop-api",
-    "@reactivemarkets/desktop-core": "file:packages/desktop-core"
+    "@reactivemarkets/desktop-core": "file:packages/desktop-core",
+    "@reactivemarkets/desktop-sdk": "file:packages/desktop-sdk"
   }
 }
