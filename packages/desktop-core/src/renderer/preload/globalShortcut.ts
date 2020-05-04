@@ -11,7 +11,7 @@ export const globalShortcut = {
     unregister: (accelerator: Accelerator, listener: () => void) => {
         const channel = `${ReservedChannels.globalShortcut_invoked}/${accelerator}`;
         ipcRenderer.removeListener(channel, listener);
-        ipcRenderer.invoke(ReservedChannels.globalShortcut_unregister, accelerator);
+        ipcRenderer.send(ReservedChannels.globalShortcut_unregister, accelerator);
     },
-    unregisterAll: () => ipcRenderer.invoke(ReservedChannels.globalShortcut_unregisterAll),
+    unregisterAll: () => ipcRenderer.send(ReservedChannels.globalShortcut_unregisterAll),
 };

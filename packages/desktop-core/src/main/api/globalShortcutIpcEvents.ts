@@ -10,10 +10,10 @@ export const globalShortcutIpcEvents = () => {
             event.sender.send(`${ReservedChannels.globalShortcut_invoked}/${accelerator}`);
         });
     });
-    ipcMain.handle(ReservedChannels.globalShortcut_unregister, (_, accelerator: Accelerator) => {
+    ipcMain.on(ReservedChannels.globalShortcut_unregister, (_, accelerator: Accelerator) => {
         globalShortcut.unregister(accelerator);
     });
-    ipcMain.handle(ReservedChannels.globalShortcut_unregisterAll, () => {
+    ipcMain.on(ReservedChannels.globalShortcut_unregisterAll, () => {
         globalShortcut.unregisterAll();
     });
 };
