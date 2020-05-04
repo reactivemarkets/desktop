@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/reactivemarkets/desktop/compare/v0.4.11...v0.5.0) (2020-05-04)
+
+
+### Bug Fixes
+
+* **core:** improving console logging ([221de15](https://github.com/reactivemarkets/desktop/commit/221de1505a8e3137da0e7e64540b59df8569d22c))
+
+
+### Features
+
+* **core:** adding global shortcut api ([98b6d9c](https://github.com/reactivemarkets/desktop/commit/98b6d9c4e58e10e46d2fe8d7f41b3e528e554407))
+* **core:** adding logger api ([84fe104](https://github.com/reactivemarkets/desktop/commit/84fe104d2d4d13b55f7ee520d8fb18bd78287ba4))
+* **core:** adding window api ([3d7611a](https://github.com/reactivemarkets/desktop/commit/3d7611a8a41cb92f5212bbef8d74556c93a40e89))
+* **core:** filling out window api ([9ef5622](https://github.com/reactivemarkets/desktop/commit/9ef5622c5c9ca2306e906730102a5204b4948172))
+* **sdk:** adding javascript sdk ([129221c](https://github.com/reactivemarkets/desktop/commit/129221c7acbbbb7b933d8beeeeb2e5587b251e9a))
+
+
+
+
+
 ## [0.4.11](https://github.com/reactivemarkets/desktop/compare/v0.4.10...v0.4.11) (2020-04-22)
 
 

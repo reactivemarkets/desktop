@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/reactivemarkets/desktop/compare/v0.4.11...v0.5.0) (2020-05-04)
+
+
+### Features
+
+* **api:** replacing socket.io with express-ws ([0bc0816](https://github.com/reactivemarkets/desktop/commit/0bc081613143391bef96d2333ca0bc0262072e24))
+
+
+
+
+
 ## [0.4.11](https://github.com/reactivemarkets/desktop/compare/v0.4.10...v0.4.11) (2020-04-22)
 
 
