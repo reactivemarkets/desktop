@@ -74,7 +74,7 @@
     "renamer": "^2.0.0",
     "response-time": "^2.3.2",
     "rimraf": "^3.0.2",
-    "ts-jest": "^25.4.0",
+    "ts-jest": "^25.5.1",
     "ts-loader": "^7.0.2",
     "tslint": "^5.20.1",
     "typescript": "^3.8.3",
