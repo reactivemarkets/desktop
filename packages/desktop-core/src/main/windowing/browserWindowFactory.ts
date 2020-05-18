@@ -17,6 +17,7 @@ export class BrowserWindowFactory implements IWindowFactory {
             allowRunningInsecureContent: false,
             contextIsolation: true,
             enableRemoteModule: false,
+            enableWebSQL: false,
             nodeIntegration: false,
             nodeIntegrationInSubFrames: false,
             nodeIntegrationInWorker: false,
