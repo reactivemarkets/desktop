@@ -6,7 +6,7 @@ import { IConfigurationWriter } from "../iConfigurationWriter";
 describe("canWrite", () => {
     describe("can write", () => {
         test("when 1 writer can", () => {
-            const jsonWriter = mock<IConfigurationWriter<any>>();
+            const jsonWriter = mock<IConfigurationWriter<never>>();
             jsonWriter.canWrite.mockReturnValue(true);
 
             const writer = new CompositeConfigurationWriter(jsonWriter);
@@ -15,10 +15,10 @@ describe("canWrite", () => {
         });
 
         test("when at least 1 writer can", () => {
-            const yamlWriter = mock<IConfigurationWriter<any>>();
+            const yamlWriter = mock<IConfigurationWriter<never>>();
             yamlWriter.canWrite.mockReturnValue(false);
 
-            const jsonWriter = mock<IConfigurationWriter<any>>();
+            const jsonWriter = mock<IConfigurationWriter<never>>();
             jsonWriter.canWrite.mockReturnValue(true);
 
             const writer = new CompositeConfigurationWriter(yamlWriter, jsonWriter);
@@ -29,10 +29,10 @@ describe("canWrite", () => {
 
     describe("can't write", () => {
         test("when all writers can't", () => {
-            const yamlWriter = mock<IConfigurationWriter<any>>();
+            const yamlWriter = mock<IConfigurationWriter<never>>();
             yamlWriter.canWrite.mockReturnValue(false);
 
-            const jsonWriter = mock<IConfigurationWriter<any>>();
+            const jsonWriter = mock<IConfigurationWriter<never>>();
             jsonWriter.canWrite.mockReturnValue(false);
 
             const writer = new CompositeConfigurationWriter(yamlWriter, jsonWriter);
