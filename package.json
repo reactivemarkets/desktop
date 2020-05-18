@@ -40,7 +40,7 @@
     "@types/hpp": "^0.2.1",
     "@types/jest": "^25.2.1",
     "@types/js-yaml": "^3.12.3",
-    "@types/request": "^2.48.4",
+    "@types/request": "^2.48.5",
     "@types/response-time": "^2.3.4",
     "@types/uuid": "^7.0.3",
     "@types/yargs": "^15.0.4",
