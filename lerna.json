@@ -21,6 +21,7 @@
     "ignoreChanges": [
         ".dependabot/",
         ".github/",
+        "docs/",
         "**/__fixtures__/**",
         "**/__tests__/**",
         "**/*.md"
