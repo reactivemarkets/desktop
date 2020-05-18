@@ -6,7 +6,6 @@ import { ILogger } from "../logging";
 import { ISessionService } from "./iSessionService";
 
 export class DefaultSessionService implements ISessionService {
-
     private readonly logger: ILogger;
 
     public constructor(logger: ILogger) {
@@ -14,7 +13,6 @@ export class DefaultSessionService implements ISessionService {
     }
 
     public async configureSession(configuration: ISessionConfiguration) {
-
         const { defaultSession } = session;
         if (defaultSession === undefined) {
             const message = "Default session was undefined";
@@ -27,14 +25,12 @@ export class DefaultSessionService implements ISessionService {
         const { downloadPath, ntlmDomains, userAgent } = configuration;
 
         if (downloadPath !== undefined) {
-
             this.logger.info(`Setting download path to: ${downloadPath}`);
 
             defaultSession.setDownloadPath(downloadPath);
         }
 
         if (ntlmDomains !== undefined) {
-
             const domains = ntlmDomains.join(",");
 
             this.logger.info(`Setting NTLM domains to: ${domains}`);
@@ -43,7 +39,6 @@ export class DefaultSessionService implements ISessionService {
         }
 
         if (userAgent !== undefined) {
-
             this.logger.info(`Setting userAgent to: ${userAgent}`);
 
             defaultSession.setUserAgent(userAgent);
@@ -52,7 +47,6 @@ export class DefaultSessionService implements ISessionService {
         const { pacScript = "", proxyBypassRules = "", proxyRules } = configuration;
 
         if (proxyRules !== undefined) {
-
             const config = {
                 pacScript,
                 proxyBypassRules,

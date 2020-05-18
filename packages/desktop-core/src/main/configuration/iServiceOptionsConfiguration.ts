@@ -1,4 +1,3 @@
-// tslint:disable:no-any
 export interface IServiceOptionsConfiguration {
-    readonly [key: string]: any;
+    readonly [key: string]: unknown;
 }

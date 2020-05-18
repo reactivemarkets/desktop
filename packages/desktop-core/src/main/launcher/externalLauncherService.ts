@@ -15,10 +15,9 @@ export class ExternalLauncherService implements ILauncherService {
 
     public canLaunch = (configuration: IConfiguration) => {
         return configuration.kind === ConfigurationKind.External;
-    }
+    };
 
     public async launch(configuration: IConfiguration) {
-
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
         const externalConfiguration = configuration.spec as IExternalConfiguration;
@@ -27,9 +26,11 @@ export class ExternalLauncherService implements ILauncherService {
 
         this.logger.verbose(`launching ${namespace}/${name} from ${executable}`);
 
-        const child = await this.processExec.exec(executable,
-                                                  externalConfiguration.arguments,
-                                                  externalConfiguration.env);
+        const child = await this.processExec.exec(
+            executable,
+            externalConfiguration.arguments,
+            externalConfiguration.env,
+        );
 
         this.logger.verbose(`process created with pid: (${child.pid})`);
 

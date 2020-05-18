@@ -13,20 +13,15 @@ export class ElectronEventsProcessExec implements IProcessExec {
     }
 
     public async exec(file: string, args?: string[], env?: IEnvironmentVariables) {
-        return this
-            .processExec
-            .exec(file, args, env)
-            .then((child) => {
-
-                app.once("quit", () => {
-                    if (!child.killed) {
-
-                        logger.verbose("application quit, killing any children");
-                        child.kill();
-                    }
-                });
-
-                return child;
+        return this.processExec.exec(file, args, env).then((child) => {
+            app.once("quit", () => {
+                if (!child.killed) {
+                    logger.verbose("application quit, killing any children");
+                    child.kill();
+                }
             });
+
+            return child;
+        });
     }
 }

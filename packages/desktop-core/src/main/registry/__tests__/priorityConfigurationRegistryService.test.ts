@@ -6,17 +6,13 @@ import { IRegistryService } from "../iRegistryService";
 import { PriorityConfigurationRegistryService } from "../priorityConfigurationRegistryService";
 
 describe("getRegistry", () => {
-
     test("should be sorted", () => {
-
         const application: IConfiguration = {
             kind: ConfigurationKind.Application,
             metadata: {
                 name: "application",
             },
-            spec: {
-
-            },
+            spec: {},
         };
 
         const session: IConfiguration = {
@@ -24,20 +20,18 @@ describe("getRegistry", () => {
             metadata: {
                 name: "session",
             },
-            spec: {
-
-            },
+            spec: {},
         };
 
         const unsortedRegistry = mock<IRegistryService>();
-        unsortedRegistry.getRegistry.mockReturnValue(Promise.resolve<IConfiguration[]>([application, session]));
+        unsortedRegistry.getRegistry.mockReturnValue(
+            Promise.resolve<IConfiguration[]>([application, session]),
+        );
 
         const service = new PriorityConfigurationRegistryService(unsortedRegistry);
 
         const registry = service.getRegistry();
 
-        expect(registry)
-            .resolves
-            .toEqual([session, application]);
+        expect(registry).resolves.toEqual([session, application]);
     });
 });

@@ -1,7 +1,6 @@
 import { ConfigurationKind } from "../configuration";
 
 export const configurationKindComparer = (a: ConfigurationKind, b: ConfigurationKind): number => {
-
     if (a === b) {
         return 0;
     }

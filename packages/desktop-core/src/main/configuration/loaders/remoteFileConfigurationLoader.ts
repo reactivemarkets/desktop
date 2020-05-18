@@ -4,7 +4,6 @@ import { IConfigurationParser } from "../parsers/iConfigurationParser";
 import { IConfigurationLoader } from "./iConfigurationLoader";
 
 export class RemoteFileConfigurationLoader<T> implements IConfigurationLoader<T> {
-
     private readonly extensions: string[];
     private readonly parser: IConfigurationParser<T>;
 
@@ -14,12 +13,10 @@ export class RemoteFileConfigurationLoader<T> implements IConfigurationLoader<T>
     }
 
     public canLoad(path: string) {
-        return path.startsWith("http") &&
-            this.extensions.some((ext) => path.endsWith(ext));
+        return path.startsWith("http") && this.extensions.some((ext) => path.endsWith(ext));
     }
 
     public async load(path: string): Promise<T[]> {
-
         return fetch(path)
             .then((response) => {
                 if (response.ok) {

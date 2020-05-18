@@ -8,15 +8,11 @@ export class CompositeConfigurationLoader<T> implements IConfigurationLoader<T> 
     }
 
     public canLoad(path: string) {
-        return this
-            .loaders
-            .some((loader) => loader.canLoad(path));
+        return this.loaders.some((loader) => loader.canLoad(path));
     }
 
     public async load(path: string): Promise<T[]> {
-        const loader = this
-            .loaders
-            .find((l) => l.canLoad(path));
+        const loader = this.loaders.find((l) => l.canLoad(path));
 
         if (loader !== undefined) {
             return loader.load(path);

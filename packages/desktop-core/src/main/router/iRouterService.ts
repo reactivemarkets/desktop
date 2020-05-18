@@ -1,7 +1,6 @@
 import { ITransport } from "../transports";
 
 export interface IRouterService {
-
     /**
      * Adds a transport to the router service and returns the id for it.
      * @param transport The transport to add

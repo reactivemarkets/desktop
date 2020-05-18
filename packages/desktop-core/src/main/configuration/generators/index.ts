@@ -10,6 +10,8 @@ const externalConfigurationGenerator = new ExternalConfigurationGenerator();
 
 const serviceConfigurationGenerator = new ServiceConfigurationGenerator();
 
-export const configurationGenerator: IConfigurationGenerator = new CompositeConfigurationGenerator(applicationConfigurationGenerator,
-                                                                                                   externalConfigurationGenerator,
-                                                                                                   serviceConfigurationGenerator);
+export const configurationGenerator: IConfigurationGenerator = new CompositeConfigurationGenerator(
+    applicationConfigurationGenerator,
+    externalConfigurationGenerator,
+    serviceConfigurationGenerator,
+);

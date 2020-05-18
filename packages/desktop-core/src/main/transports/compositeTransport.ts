@@ -8,19 +8,17 @@ export class CompositeTransport implements ITransport {
     }
 
     public on<T>(channel: string, callback: (data: T) => void) {
-        this.transports
-            .forEach((transport) => {
-                transport.on(channel, callback);
-            });
+        this.transports.forEach((transport) => {
+            transport.on(channel, callback);
+        });
 
         return this;
     }
 
     public once<T>(channel: string, callback: (data: T) => void) {
-        this.transports
-            .forEach((transport) => {
-                transport.once(channel, callback);
-            });
+        this.transports.forEach((transport) => {
+            transport.once(channel, callback);
+        });
 
         return this;
     }
@@ -30,9 +28,8 @@ export class CompositeTransport implements ITransport {
     }
 
     public send<T>(channel: string, data: T) {
-        this.transports
-            .forEach((transport) => {
-                transport.send(channel, data);
-            });
+        this.transports.forEach((transport) => {
+            transport.send(channel, data);
+        });
     }
 }

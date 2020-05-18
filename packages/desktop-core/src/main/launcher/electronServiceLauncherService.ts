@@ -1,5 +1,10 @@
 import {
-    ConfigurationKind, IConfiguration, IServiceConfiguration, IWindowConfiguration, ServiceHost, WellKnownNamespaces,
+    ConfigurationKind,
+    IConfiguration,
+    IServiceConfiguration,
+    IWindowConfiguration,
+    ServiceHost,
+    WellKnownNamespaces,
 } from "../configuration";
 import { ILogger } from "../logging";
 import { IWindowService } from "../windowing";
@@ -24,10 +29,9 @@ export class ElectronServiceLauncherService implements ILauncherService {
         const serviceConfiguration = configuration.spec as IServiceConfiguration;
 
         return serviceConfiguration.host === ServiceHost.Electron;
-    }
+    };
 
     public async launch(configuration: IConfiguration) {
-
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
         const serviceConfiguration = configuration.spec as IServiceConfiguration;
@@ -41,13 +45,10 @@ export class ElectronServiceLauncherService implements ILauncherService {
             show: false,
         };
 
-        return this
-            .windowFactory
-            .createWindow(windowConfiguration)
-            .then(async (window) => {
-                window.loadURL(servicePath);
+        return this.windowFactory.createWindow(windowConfiguration).then(async (window) => {
+            window.loadURL(servicePath);
 
-                return Promise.resolve(configuration);
-            });
+            return Promise.resolve(configuration);
+        });
     }
 }

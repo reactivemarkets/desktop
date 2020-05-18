@@ -1,7 +1,6 @@
 import { IConfiguration } from "../configuration";
 
 export interface IRegistryService {
-
     /**
      * Get the current registry.
      */

@@ -19,5 +19,5 @@
         "dist/app.asar"
     ],
     "author": "ReactiveMarkets",
-    "license": "Apache"
+    "license": "Apache-2.0"
 }

@@ -10,10 +10,7 @@ if (logPrefix === undefined) {
 
 const fatalFilename = `${logPrefix}fatal.json`;
 const filename = `${logPrefix}general.json`;
-const format = winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.json(),
-);
+const format = winston.format.combine(winston.format.timestamp(), winston.format.json());
 const maxsize = 10_000_000;
 const maxFiles = 10;
 const tailable = true;

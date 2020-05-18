@@ -1,7 +1,6 @@
 import { IConfiguration } from "../configuration";
 
 export interface ILauncherService {
-
     /**
      * Returns whether the configuration can be launched.
      * @param configuration A configuration file

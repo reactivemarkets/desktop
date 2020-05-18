@@ -13,20 +13,15 @@ export class ElectronEventsProcessFork implements IProcessFork {
     }
 
     public async fork(args: string[], env: IEnvironmentVariables) {
-        return this
-            .processFork
-            .fork(args, env)
-            .then((child) => {
-
-                app.once("quit", () => {
-                    if (!child.killed) {
-
-                        logger.verbose("application quit, killing any children");
-                        child.kill();
-                    }
-                });
-
-                return child;
+        return this.processFork.fork(args, env).then((child) => {
+            app.once("quit", () => {
+                if (!child.killed) {
+                    logger.verbose("application quit, killing any children");
+                    child.kill();
+                }
             });
+
+            return child;
+        });
     }
 }

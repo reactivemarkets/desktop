@@ -3,7 +3,5 @@ import { IConfiguration } from "../iConfiguration";
 
 export interface IConfigurationGenerator {
     canGenerate(kind: ConfigurationKind): boolean;
-    generate(kind: ConfigurationKind,
-             name: string,
-             url: string): Promise<IConfiguration>;
+    generate(kind: ConfigurationKind, name: string, url: string): Promise<IConfiguration>;
 }

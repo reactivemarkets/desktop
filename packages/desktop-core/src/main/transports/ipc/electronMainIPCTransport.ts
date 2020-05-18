@@ -3,10 +3,8 @@ import { BrowserWindow, ipcMain } from "electron";
 import { ITransport } from "../iTransport";
 
 export class ExectronMainIPCTransport implements ITransport {
-
     public on<T>(channel: string, callback: (data: T) => void) {
-        // tslint:disable-next-line:no-any
-        ipcMain.on(channel, (_: any, args: T) => {
+        ipcMain.on(channel, (_: unknown, args: T) => {
             callback(args);
         });
 
@@ -14,8 +12,7 @@ export class ExectronMainIPCTransport implements ITransport {
     }
 
     public once<T>(channel: string, callback: (data: T) => void) {
-        // tslint:disable-next-line:no-any
-        ipcMain.once(channel, (_: any, args: T) => {
+        ipcMain.once(channel, (_: unknown, args: T) => {
             callback(args);
         });
 
@@ -23,10 +20,8 @@ export class ExectronMainIPCTransport implements ITransport {
     }
 
     public send = <T>(channel: string, data: T): void => {
-        BrowserWindow
-            .getAllWindows()
-            .forEach((window) => {
-                window.webContents.send(channel, data);
-            });
-    }
+        BrowserWindow.getAllWindows().forEach((window) => {
+            window.webContents.send(channel, data);
+        });
+    };
 }

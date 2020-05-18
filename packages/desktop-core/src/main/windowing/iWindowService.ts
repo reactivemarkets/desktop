@@ -3,7 +3,6 @@ import { BrowserWindow } from "electron";
 import { IWindowConfiguration } from "../configuration";
 
 export interface IWindowService {
-
     /**
      * Get all current windows.
      */

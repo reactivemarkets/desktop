@@ -6,10 +6,8 @@ import { IEnvironmentVariables } from "./iEnvironmentVariables";
 import { IProcessFork } from "./iProcessFork";
 
 export class SpawningProcessFork implements IProcessFork {
-
     public fork = async (args: string[], env: IEnvironmentVariables) => {
         return new Promise<cp.ChildProcess>((resolve) => {
-
             const execPath = process.execPath;
             logger.verbose(`spawning ${execPath} with args: ${args}`);
 
@@ -20,5 +18,5 @@ export class SpawningProcessFork implements IProcessFork {
 
             resolve(child);
         });
-    }
+    };
 }

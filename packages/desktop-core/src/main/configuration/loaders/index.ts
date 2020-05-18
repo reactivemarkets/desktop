@@ -9,19 +9,37 @@ import { RemoteFileConfigurationLoader } from "./remoteFileConfigurationLoader";
 
 const localJsonConfigurationLoader = new LocalFileConfigurationLoader<IConfiguration>(jsonConfigurationParser, "json");
 
-const localYamlConfigurationLoader = new LocalFileConfigurationLoader<IConfiguration>(yamlConfigurationParser, "yaml", "yml");
+const localYamlConfigurationLoader = new LocalFileConfigurationLoader<IConfiguration>(
+    yamlConfigurationParser,
+    "yaml",
+    "yml",
+);
 
-const localConfigurationLoader = new CompositeConfigurationLoader(localYamlConfigurationLoader, localJsonConfigurationLoader);
+const localConfigurationLoader = new CompositeConfigurationLoader(
+    localYamlConfigurationLoader,
+    localJsonConfigurationLoader,
+);
 
 const directoryConfigurationLoader = new DirectoryConfigurationLoader(localConfigurationLoader);
 
-const remoteJsonConfigurationLoader = new RemoteFileConfigurationLoader<IConfiguration>(jsonConfigurationParser, "", "json");
+const remoteJsonConfigurationLoader = new RemoteFileConfigurationLoader<IConfiguration>(
+    jsonConfigurationParser,
+    "",
+    "json",
+);
 
-const remoteYamlConfigurationLoader = new RemoteFileConfigurationLoader<IConfiguration>(yamlConfigurationParser, "yaml", "yml");
+const remoteYamlConfigurationLoader = new RemoteFileConfigurationLoader<IConfiguration>(
+    yamlConfigurationParser,
+    "yaml",
+    "yml",
+);
 
-export const configurationLoader: IConfigurationLoader<IConfiguration>
-    = new CompositeConfigurationLoader<IConfiguration>(localYamlConfigurationLoader,
-        remoteYamlConfigurationLoader,
-        directoryConfigurationLoader,
-        localJsonConfigurationLoader,
-        remoteJsonConfigurationLoader);
+export const configurationLoader: IConfigurationLoader<IConfiguration> = new CompositeConfigurationLoader<
+    IConfiguration
+>(
+    localYamlConfigurationLoader,
+    remoteYamlConfigurationLoader,
+    directoryConfigurationLoader,
+    localJsonConfigurationLoader,
+    remoteJsonConfigurationLoader,
+);
