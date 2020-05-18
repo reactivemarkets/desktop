@@ -1,8 +1,7 @@
 import { ITransport } from "../iTransport";
 
 export class ProcessIPCTransport implements ITransport {
-
-    public on<T>(channel: string, callback: ((data: T) => void)) {
+    public on<T>(channel: string, callback: (data: T) => void) {
         process.on("message", (message: IIPCMessage<T>) => {
             if (message.channel === channel) {
                 callback(message.data);
@@ -12,7 +11,7 @@ export class ProcessIPCTransport implements ITransport {
         return this;
     }
 
-    public once<T>(channel: string, callback: ((data: T) => void)) {
+    public once<T>(channel: string, callback: (data: T) => void) {
         process.once("message", (message: IIPCMessage<T>) => {
             if (message.channel === channel) {
                 callback(message.data);
@@ -31,5 +30,5 @@ export class ProcessIPCTransport implements ITransport {
             channel,
             data,
         });
-    }
+    };
 }

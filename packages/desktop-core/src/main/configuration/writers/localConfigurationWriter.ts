@@ -19,7 +19,6 @@ export class LocalConfigurationWriter<T> implements IConfigurationWriter<T> {
     }
 
     public async write(path: string, data: T): Promise<void> {
-
         const dataString = this.parser.stringify(data);
 
         return util.promisify(fs.writeFile)(path, dataString);

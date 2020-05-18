@@ -6,11 +6,9 @@ import { CacheArea } from "./cacheArea";
 import { IClearOptions } from "./iClearOptions";
 
 export const handler = (options: IClearOptions) => {
-
     logger.verbose("clear command ran.");
 
     app.once("ready", () => {
-
         const defaultSession = session.defaultSession;
         if (defaultSession === undefined) {
             return;
@@ -44,6 +42,7 @@ export const handler = (options: IClearOptions) => {
                     .finally(() => {
                         app.exit();
                     });
+                break;
             default:
                 app.exit();
         }

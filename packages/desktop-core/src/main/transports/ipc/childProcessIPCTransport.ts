@@ -9,7 +9,7 @@ export class ChildProcessIPCTransport implements ITransport {
         this.process = process;
     }
 
-    public on<T>(channel: string, callback: ((data: T) => void)) {
+    public on<T>(channel: string, callback: (data: T) => void) {
         this.process.on("message", (message: IIPCMessage<T>) => {
             if (message.channel === channel) {
                 callback(message.data);
@@ -19,7 +19,7 @@ export class ChildProcessIPCTransport implements ITransport {
         return this;
     }
 
-    public once<T>(channel: string, callback: ((data: T) => void)) {
+    public once<T>(channel: string, callback: (data: T) => void) {
         this.process.once("message", (message: IIPCMessage<T>) => {
             if (message.channel === channel) {
                 callback(message.data);

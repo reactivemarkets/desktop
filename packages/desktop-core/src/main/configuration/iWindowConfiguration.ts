@@ -29,7 +29,7 @@ export interface IWindowConfiguration {
     readonly skipTaskbar?: boolean;
     readonly tabbingIdentifier?: string;
     readonly title?: string;
-    readonly titleBarStyle?: ("default" | "hidden" | "hiddenInset" | "customButtonsOnHover");
+    readonly titleBarStyle?: "default" | "hidden" | "hiddenInset" | "customButtonsOnHover";
     readonly transparent?: boolean;
     readonly width?: number;
     readonly x?: number;

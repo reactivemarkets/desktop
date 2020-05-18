@@ -5,11 +5,9 @@ import { CompositeTransport, ITransport } from "../transports";
 import { IRouterService } from "./iRouterService";
 
 export class DefaultRouterService implements IRouterService {
-
     private readonly transport = new CompositeTransport();
 
     public addTransport(transport: ITransport) {
-
         const id = uuid();
 
         this.transport.add(id, transport);

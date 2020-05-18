@@ -1,8 +1,7 @@
 import { flatten } from "flat";
 
 interface IKeyedObject {
-    // tslint:disable-next-line:no-any
-    [key: string]: any;
+    [key: string]: string;
 }
 
 export const flattenObject = <T>(object: T, prefix: string, delimiter = "_") => {
@@ -10,15 +9,11 @@ export const flattenObject = <T>(object: T, prefix: string, delimiter = "_") => 
         delimiter,
     });
 
-    return Object
-        .keys(flattenedObject)
-        .reduce<IKeyedObject>((result, key) => {
-            const newKey = `${prefix}_${key}`
-                .toUpperCase()
-                .replace(" ", delimiter);
+    return Object.keys(flattenedObject).reduce<IKeyedObject>((result, key) => {
+        const newKey = `${prefix}_${key}`.toUpperCase().replace(" ", delimiter);
 
-            result[newKey] = flattenedObject[key];
+        result[newKey] = String(flattenedObject[key]);
 
-            return result;
-        },                    {});
+        return result;
+    }, {});
 };

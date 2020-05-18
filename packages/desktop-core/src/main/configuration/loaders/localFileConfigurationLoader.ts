@@ -15,12 +15,10 @@ export class LocalFileConfigurationLoader<T> implements IConfigurationLoader<T> 
     }
 
     public canLoad(path: string) {
-        return !path.startsWith("http") &&
-            this.extensions.some((ext) => path.endsWith(ext));
+        return !path.startsWith("http") && this.extensions.some((ext) => path.endsWith(ext));
     }
 
     public async load(path: string): Promise<T[]> {
-
         return util
             .promisify(fs.readFile)(path, this.encoding)
             .then((data) => this.parser.parse(data));

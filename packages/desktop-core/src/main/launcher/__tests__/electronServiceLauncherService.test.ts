@@ -8,11 +8,8 @@ import { IWindowService } from "../../windowing/iWindowService";
 import { ElectronServiceLauncherService } from "../electronServiceLauncherService";
 
 describe("canLaunch", () => {
-
     describe("can launch", () => {
-
         test("when kind is service and host is electron", () => {
-
             const windowService = mock<IWindowService>();
 
             const logger = mock<ILogger>();
@@ -30,13 +27,11 @@ describe("canLaunch", () => {
                 },
             };
 
-            expect(launcher.canLaunch(configuration))
-                .toBe(true);
+            expect(launcher.canLaunch(configuration)).toBe(true);
         });
     });
 
     describe("can't launch", () => {
-
         test("when host is node", () => {
             const windowService = mock<IWindowService>();
 
@@ -55,8 +50,7 @@ describe("canLaunch", () => {
                 },
             };
 
-            expect(launcher.canLaunch(configuration))
-                .toBe(false);
+            expect(launcher.canLaunch(configuration)).toBe(false);
         });
 
         test("when kind is application", () => {
@@ -76,8 +70,7 @@ describe("canLaunch", () => {
                 },
             };
 
-            expect(launcher.canLaunch(configuration))
-                .toBe(false);
+            expect(launcher.canLaunch(configuration)).toBe(false);
         });
     });
 });

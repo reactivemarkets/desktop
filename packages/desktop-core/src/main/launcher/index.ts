@@ -21,8 +21,10 @@ const electronServiceLauncherService = new ElectronServiceLauncherService(logger
 
 const sessionConfigurationLauncherService = new SessionConfigurationLauncherService(logger, sessionService);
 
-export const launcherService: ILauncherService = new CompositeLauncherService(applicationLauncherService,
-                                                                              electronServiceLauncherService,
-                                                                              serviceLauncherService,
-                                                                              sessionConfigurationLauncherService,
-                                                                              externalLauncherService);
+export const launcherService: ILauncherService = new CompositeLauncherService(
+    applicationLauncherService,
+    electronServiceLauncherService,
+    serviceLauncherService,
+    sessionConfigurationLauncherService,
+    externalLauncherService,
+);

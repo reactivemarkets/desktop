@@ -9,7 +9,7 @@ const columnWidth = Math.min(yargs.terminalWidth(), 120);
  * @param commandLine The cleaned command line
  * @param exitProcess Exit if the command line is badly formed
  */
-export const parseCommandLine = (commandLine: string[], exitProcess: boolean = true) => {
+export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
     return yargs
         .command(cacheModule)
         .command(initModule)

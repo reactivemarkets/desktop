@@ -16,7 +16,6 @@
     "compile:main:dev": "webpack --progress --config webpack.main.config.dev.js",
     "compile:renderer": "webpack --progress --config webpack.renderer.config.prod.js",
     "compile:renderer:dev": "webpack --progress --config webpack.renderer.config.dev.js",
-    "lint": "tslint -p tsconfig.json -c tslint.yaml -e \"**/__tests__/**\"",
     "asar": "run-s asar:pre asar:pack asar:post",
     "asar:pre": "copyfiles -f desktop.json dist && renamer -f desktop -e name -r package dist/desktop.json",
     "asar:pack": "asar pack ./dist ./dist/app.asar",
@@ -41,5 +40,5 @@
     "dist/app.asar"
   ],
   "author": "Reactive Markets",
-  "license": "Apache"
+  "license": "Apache-2.0"
 }

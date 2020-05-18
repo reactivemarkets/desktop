@@ -8,11 +8,8 @@ import { IWindowService } from "../../windowing/iWindowService";
 import { ApplicationLauncherService } from "../applicationLauncherService";
 
 describe("canLaunch", () => {
-
     describe("can launcher", () => {
-
         test("when kind is application", () => {
-
             const windowService = mock<IWindowService>();
 
             const logger = mock<ILogger>();
@@ -29,13 +26,11 @@ describe("canLaunch", () => {
                 },
             };
 
-            expect(launcher.canLaunch(configuration))
-                .toBe(true);
+            expect(launcher.canLaunch(configuration)).toBe(true);
         });
     });
 
     describe("can't launch", () => {
-
         test("when kind is service", () => {
             const windowFactory = mock<IWindowService>();
 
@@ -54,8 +49,7 @@ describe("canLaunch", () => {
                 },
             };
 
-            expect(launcher.canLaunch(configuration))
-                .toBe(false);
+            expect(launcher.canLaunch(configuration)).toBe(false);
         });
     });
 });

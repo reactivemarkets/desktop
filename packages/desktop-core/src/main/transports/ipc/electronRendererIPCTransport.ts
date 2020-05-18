@@ -3,10 +3,8 @@ import { ipcRenderer } from "electron";
 import { ITransport } from "../iTransport";
 
 export class ExectronRendererIPCTransport implements ITransport {
-
     public on<T>(channel: string, callback: (data: T) => void) {
-        // tslint:disable-next-line:no-any
-        ipcRenderer.on(channel, (_: any, args: T) => {
+        ipcRenderer.on(channel, (_: unknown, args: T) => {
             callback(args);
         });
 
@@ -14,8 +12,7 @@ export class ExectronRendererIPCTransport implements ITransport {
     }
 
     public once<T>(channel: string, callback: (data: T) => void) {
-        // tslint:disable-next-line:no-any
-        ipcRenderer.once(channel, (_: any, args: T) => {
+        ipcRenderer.once(channel, (_: unknown, args: T) => {
             callback(args);
         });
 
@@ -24,5 +21,5 @@ export class ExectronRendererIPCTransport implements ITransport {
 
     public send = <T>(channel: string, data: T): void => {
         ipcRenderer.send(channel, data);
-    }
+    };
 }

@@ -15,7 +15,6 @@
     "build:dev": "npm run build",
     "clean": "rimraf lib",
     "compile": "tsc -p tsconfig.json",
-    "lint": "tslint -p tsconfig.json -c tslint.yaml",
     "tests": "jest",
     "watch": "tsc -p tsconfig.json --watch --preserveWatchOutput"
   },
@@ -27,5 +26,5 @@
     "sdk"
   ],
   "author": "Reactive Markets",
-  "license": "Apache"
+  "license": "Apache-2.0"
 }

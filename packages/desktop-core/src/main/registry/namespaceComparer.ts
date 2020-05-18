@@ -1,7 +1,6 @@
 import { WellKnownNamespaces } from "../configuration";
 
 export const namespaceComparer = (a?: string, b?: string): number => {
-
     if (a === b) {
         return 0;
     }

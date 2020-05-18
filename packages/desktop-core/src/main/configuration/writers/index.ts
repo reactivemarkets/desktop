@@ -9,5 +9,7 @@ const yamlConfigurationWriter = new LocalConfigurationWriter<IConfiguration>(yam
 
 const jsonConfigurationWriter = new LocalConfigurationWriter<IConfiguration>(jsonConfigurationParser, "json");
 
-export const configurationWriter: IConfigurationWriter<IConfiguration> = new CompositeConfigurationWriter(yamlConfigurationWriter,
-                                                                                                          jsonConfigurationWriter);
+export const configurationWriter: IConfigurationWriter<IConfiguration> = new CompositeConfigurationWriter(
+    yamlConfigurationWriter,
+    jsonConfigurationWriter,
+);

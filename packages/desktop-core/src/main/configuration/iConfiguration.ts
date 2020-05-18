@@ -5,11 +5,7 @@ import { IMetadata } from "./iMetadata";
 import { IServiceConfiguration } from "./iServiceConfiguration";
 import { ISessionConfiguration } from "./iSessionConfiguration";
 
-type Spec =
-    IApplicationConfiguration |
-    IExternalConfiguration |
-    IServiceConfiguration |
-    ISessionConfiguration;
+type Spec = IApplicationConfiguration | IExternalConfiguration | IServiceConfiguration | ISessionConfiguration;
 
 export interface IConfiguration {
     readonly kind: ConfigurationKind;

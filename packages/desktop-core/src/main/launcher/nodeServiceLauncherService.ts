@@ -1,4 +1,10 @@
-import { ConfigurationKind, IConfiguration, IServiceConfiguration, ServiceHost, WellKnownNamespaces } from "../configuration";
+import {
+    ConfigurationKind,
+    IConfiguration,
+    IServiceConfiguration,
+    ServiceHost,
+    WellKnownNamespaces,
+} from "../configuration";
 import { ILogger } from "../logging";
 import { IProcessFork } from "../processes";
 
@@ -23,10 +29,9 @@ export class NodeServiceLauncherService implements ILauncherService {
         const serviceConfiguration = configuration.spec as IServiceConfiguration;
 
         return serviceConfiguration.host === ServiceHost.Node;
-    }
+    };
 
     public async launch(configuration: IConfiguration) {
-
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
         const serviceConfiguration = configuration.spec as IServiceConfiguration;
@@ -35,9 +40,7 @@ export class NodeServiceLauncherService implements ILauncherService {
 
         this.logger.verbose(`launching ${namespace}/${name} from ${servicePath}`);
 
-        const args = [
-            servicePath,
-        ];
+        const args = [servicePath];
 
         const env = flattenObject(serviceConfiguration.options, name);
 

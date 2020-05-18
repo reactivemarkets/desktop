@@ -5,7 +5,6 @@ import { ISessionService } from "../session";
 import { ILauncherService } from "./iLauncherService";
 
 export class SessionConfigurationLauncherService implements ILauncherService {
-
     private readonly logger: ILogger;
     private readonly sessionService: ISessionService;
 
@@ -16,10 +15,9 @@ export class SessionConfigurationLauncherService implements ILauncherService {
 
     public canLaunch = (configuration: IConfiguration) => {
         return configuration.kind === ConfigurationKind.Session;
-    }
+    };
 
     public async launch(configuration: IConfiguration): Promise<IConfiguration> {
-
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
         const serviceConfiguration = configuration.spec as ISessionConfiguration;

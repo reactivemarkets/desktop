@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
 import { IDesktop } from "./iDesktop";
 
 export class DesktopClient implements IDesktop {

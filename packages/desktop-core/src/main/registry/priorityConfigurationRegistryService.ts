@@ -8,7 +8,6 @@ import { IRegistryService } from "./iRegistryService";
 import { namespaceComparer } from "./namespaceComparer";
 
 export class PriorityConfigurationRegistryService implements IRegistryService {
-
     private readonly registryService: IRegistryService;
 
     public constructor(registryService: IRegistryService) {
@@ -16,16 +15,13 @@ export class PriorityConfigurationRegistryService implements IRegistryService {
     }
 
     public async getRegistry(): Promise<IConfiguration[]> {
-
         const registry = await this.registryService.getRegistry();
 
-        const sortedRegistry = IterableX
-            .from(registry)
-            .pipe(
-                orderBy((item) => item.metadata.namespace, namespaceComparer),
-                thenBy((item) => item.kind, configurationKindComparer),
-                thenBy((item) => item.metadata.name),
-            );
+        const sortedRegistry = IterableX.from(registry).pipe(
+            orderBy((item) => item.metadata.namespace, namespaceComparer),
+            thenBy((item) => item.kind, configurationKindComparer),
+            thenBy((item) => item.metadata.name),
+        );
 
         return Array.from(sortedRegistry);
     }

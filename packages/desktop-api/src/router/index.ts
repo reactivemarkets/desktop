@@ -16,10 +16,12 @@ export const wsRouter = (socket: Socket) => {
 
     socket.on("message", (message) => {
         if (typeof message !== "string") {
-            socket.send(JSON.stringify({
-                message: "Only string based message are supported.",
-                type: MessageType.error,
-            }));
+            socket.send(
+                JSON.stringify({
+                    message: "Only string based message are supported.",
+                    type: MessageType.error,
+                }),
+            );
             socket.terminate();
 
             return;
@@ -38,16 +40,20 @@ export const wsRouter = (socket: Socket) => {
                     pipeline.onUnsubscribe(socket, routerMessage);
                     break;
                 default:
-                    socket.send(JSON.stringify({
-                        message: `unknown message type: ${routerMessage.type}`,
-                        type: MessageType.error,
-                    }));
+                    socket.send(
+                        JSON.stringify({
+                            message: `unknown message type: ${routerMessage.type}`,
+                            type: MessageType.error,
+                        }),
+                    );
             }
         } catch (error) {
-            socket.send(JSON.stringify({
-                message: "failed to parse message.",
-                type: MessageType.error,
-            }));
+            socket.send(
+                JSON.stringify({
+                    message: "failed to parse message.",
+                    type: MessageType.error,
+                }),
+            );
         }
     });
 

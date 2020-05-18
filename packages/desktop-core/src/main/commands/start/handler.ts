@@ -21,9 +21,11 @@ export const handler = (options: IStartOptions) => {
         registerIpcEventHandlers();
         registerApplicationEventHandlers(app);
 
-        const onReady = new Promise<void>((resolve) => app.once("ready", () => {
-            resolve();
-        }));
+        const onReady = new Promise<void>((resolve) =>
+            app.once("ready", () => {
+                resolve();
+            }),
+        );
 
         const configPromises = new Array<Promise<void>>();
 
@@ -31,11 +33,9 @@ export const handler = (options: IStartOptions) => {
         const urls = options.url;
         if (urls !== undefined) {
             const configFiles = urls.map(async (u) => {
-                return registryService
-                    .registerUrl(u)
-                    .catch((error) => {
-                        logger.warn(`failed to register config: ${error}`);
-                    });
+                return registryService.registerUrl(u).catch((error) => {
+                    logger.warn(`failed to register config: ${error}`);
+                });
             });
 
             configPromises.push(...configFiles);
@@ -45,11 +45,9 @@ export const handler = (options: IStartOptions) => {
         const files = options.file;
         if (files !== undefined) {
             const configFiles = files.map(async (f) => {
-                return registryService
-                    .registerConfig(f)
-                    .catch((error) => {
-                        logger.warn(`failed to register config: ${error}`);
-                    });
+                return registryService.registerConfig(f).catch((error) => {
+                    logger.warn(`failed to register config: ${error}`);
+                });
             });
 
             configPromises.push(...configFiles);
@@ -58,15 +56,11 @@ export const handler = (options: IStartOptions) => {
         logger.verbose("loading any userData configuration files");
         const userDataPath = app.getPath("userData");
         const userConfigPath = path.join(userDataPath, "config");
-        const userDataConfig =
-            registryService
-                .registerConfig(userConfigPath)
-                .catch((error) => {
-                    logger.warn(`failed to read cached config: ${error}`);
-                });
+        const userDataConfig = registryService.registerConfig(userConfigPath).catch((error) => {
+            logger.warn(`failed to read cached config: ${error}`);
+        });
 
-        Promise
-            .all([...configPromises, userDataConfig, onReady])
+        Promise.all([...configPromises, userDataConfig, onReady])
             .then(async () => registryService.getRegistry())
             .then(async (registry) => {
                 const launched = registry.map(async (c) => {

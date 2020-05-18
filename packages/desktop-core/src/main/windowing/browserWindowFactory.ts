@@ -5,7 +5,6 @@ import { IWindowConfiguration } from "../configuration";
 import { IWindowFactory } from "./iWindowFactory";
 
 export class BrowserWindowFactory implements IWindowFactory {
-
     private readonly preload: string;
 
     public constructor(preload: string) {
@@ -77,5 +76,5 @@ export class BrowserWindowFactory implements IWindowFactory {
         const window = new BrowserWindow(options);
 
         return Promise.resolve(window);
-    }
+    };
 }

@@ -8,17 +8,11 @@ export class CompositeConfigurationWriter<T> implements IConfigurationWriter<T> 
     }
 
     public canWrite(path: string) {
-
-        return this
-            .writers
-            .some((writer) => writer.canWrite(path));
+        return this.writers.some((writer) => writer.canWrite(path));
     }
 
     public async write(path: string, data: T) {
-
-        const writer = this
-            .writers
-            .find((w) => w.canWrite(path));
+        const writer = this.writers.find((w) => w.canWrite(path));
 
         if (writer !== undefined) {
             return writer.write(path, data);

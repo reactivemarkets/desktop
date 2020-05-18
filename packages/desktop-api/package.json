@@ -10,7 +10,6 @@
     "build": "webpack --progress --config webpack.config.prod.js",
     "build:dev": "webpack --progress --config webpack.config.dev.js",
     "clean": "rimraf dist",
-    "lint": "tslint -p tsconfig.json -c tslint.yaml",
     "asar": "run-s asar:pre asar:pack asar:post",
     "asar:pre": "copyfiles -f package.json dist",
     "asar:pack": "asar pack ./dist ./dist/api.asar",
@@ -32,5 +31,5 @@
     "dist/api.asar"
   ],
   "author": "Reactive Markets",
-  "license": "Apache"
+  "license": "Apache-2.0"
 }
