@@ -16,13 +16,22 @@ module.exports = {
         "@vuepress/active-header-links",
         "@vuepress/back-to-top",
         "@vuepress/medium-zoom",
-        "@vuepress/nprogress"
+        "@vuepress/nprogress",
+        [
+            '@vuepress/pwa',
+            {
+                serviceWorker: true,
+                updatePopup: true
+            }
+        ]
     ],
     themeConfig: {
         docsDir: "docs",
         editLinks: true,
         lastUpdated: "Last Updated",
+        logo: "/icon-256.png",
         repo: "reactivemarkets/desktop",
+        sidebar: "auto",
         smoothScroll: true,
     },
 }
