@@ -6,7 +6,7 @@ import { RemoteFileConfigurationLoader } from "../remoteFileConfigurationLoader"
 describe("canLoad", () => {
     describe("can load from", () => {
         test("http", () => {
-            const parser = mock<IConfigurationParser<{}>>();
+            const parser = mock<IConfigurationParser<unknown>>();
 
             const loader = new RemoteFileConfigurationLoader(parser, "yaml");
 
@@ -14,7 +14,7 @@ describe("canLoad", () => {
         });
 
         test("https", () => {
-            const parser = mock<IConfigurationParser<{}>>();
+            const parser = mock<IConfigurationParser<unknown>>();
 
             const loader = new RemoteFileConfigurationLoader(parser, "yaml");
 
@@ -24,14 +24,14 @@ describe("canLoad", () => {
 
     describe("can't load from", () => {
         test("a local file", () => {
-            const parser = mock<IConfigurationParser<{}>>();
+            const parser = mock<IConfigurationParser<unknown>>();
 
             const loader = new RemoteFileConfigurationLoader(parser, "yaml");
 
             expect(loader.canLoad("file:///c:/file.yaml")).toBe(false);
         });
         test("a network file", () => {
-            const parser = mock<IConfigurationParser<{}>>();
+            const parser = mock<IConfigurationParser<unknown>>();
 
             const loader = new RemoteFileConfigurationLoader(parser, "yaml");
 

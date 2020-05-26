@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { Request, Response, Router } from "express";
 
 const notFound = 404;

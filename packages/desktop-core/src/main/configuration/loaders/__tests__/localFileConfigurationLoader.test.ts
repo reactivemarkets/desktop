@@ -6,7 +6,7 @@ import { LocalFileConfigurationLoader } from "../localFileConfigurationLoader";
 describe("canLoad", () => {
     describe("can load from", () => {
         test("extension", () => {
-            const parser = mock<IConfigurationParser<{}>>();
+            const parser = mock<IConfigurationParser<unknown>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "yaml");
 
@@ -14,7 +14,7 @@ describe("canLoad", () => {
         });
 
         test("a local file", () => {
-            const parser = mock<IConfigurationParser<{}>>();
+            const parser = mock<IConfigurationParser<unknown>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "yaml");
 
@@ -22,7 +22,7 @@ describe("canLoad", () => {
         });
 
         test("a network file", () => {
-            const parser = mock<IConfigurationParser<{}>>();
+            const parser = mock<IConfigurationParser<unknown>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "yaml");
 
@@ -32,7 +32,7 @@ describe("canLoad", () => {
 
     describe("can't load from", () => {
         test("http", () => {
-            const parser = mock<IConfigurationParser<{}>>();
+            const parser = mock<IConfigurationParser<unknown>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "json");
 
@@ -40,7 +40,7 @@ describe("canLoad", () => {
         });
 
         test("https", () => {
-            const parser = mock<IConfigurationParser<{}>>();
+            const parser = mock<IConfigurationParser<unknown>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "yaml");
 
@@ -48,7 +48,7 @@ describe("canLoad", () => {
         });
 
         test("an unknown extension", () => {
-            const parser = mock<IConfigurationParser<{}>>();
+            const parser = mock<IConfigurationParser<unknown>>();
 
             const loader = new LocalFileConfigurationLoader(parser, "yaml");
 

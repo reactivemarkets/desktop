@@ -6,7 +6,7 @@ import { IConfigurationLoader } from "../iConfigurationLoader";
 describe("canLoad", () => {
     describe("can load from", () => {
         test("directory", () => {
-            const fileLoader = mock<IConfigurationLoader<{}>>();
+            const fileLoader = mock<IConfigurationLoader<unknown>>();
 
             const loader = new DirectoryConfigurationLoader(fileLoader);
 
@@ -16,7 +16,7 @@ describe("canLoad", () => {
 
     describe("can't load from", () => {
         test("http", () => {
-            const fileLoader = mock<IConfigurationLoader<{}>>();
+            const fileLoader = mock<IConfigurationLoader<unknown>>();
 
             const loader = new DirectoryConfigurationLoader(fileLoader);
 
@@ -24,7 +24,7 @@ describe("canLoad", () => {
         });
 
         test("https", () => {
-            const fileLoader = mock<IConfigurationLoader<{}>>();
+            const fileLoader = mock<IConfigurationLoader<unknown>>();
 
             const loader = new DirectoryConfigurationLoader(fileLoader);
 
@@ -32,7 +32,7 @@ describe("canLoad", () => {
         });
 
         test("an extension", () => {
-            const fileLoader = mock<IConfigurationLoader<{}>>();
+            const fileLoader = mock<IConfigurationLoader<unknown>>();
 
             const loader = new DirectoryConfigurationLoader(fileLoader);
 
