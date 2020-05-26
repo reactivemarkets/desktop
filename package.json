@@ -41,7 +41,7 @@
     "@types/flat": "^5.0.1",
     "@types/helmet": "0.0.47",
     "@types/hpp": "^0.2.1",
-    "@types/jest": "^25.2.2",
+    "@types/jest": "^25.2.3",
     "@types/js-yaml": "^3.12.4",
     "@types/response-time": "^2.3.4",
     "@types/uuid": "^8.0.0",
