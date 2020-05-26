@@ -38,7 +38,7 @@
     "@types/express-useragent": "^1.0.0",
     "@types/express-ws": "^3.0.0",
     "@types/extract-zip": "^1.6.2",
-    "@types/flat": "5.0.0",
+    "@types/flat": "^5.0.1",
     "@types/helmet": "0.0.47",
     "@types/hpp": "^0.2.1",
     "@types/jest": "^25.2.2",
