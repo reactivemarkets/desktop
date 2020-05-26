@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 export enum ReservedChannels {
     application_login = "@desktop:application/login",
     application_loginAuth = "@desktop:application/loginAuth",

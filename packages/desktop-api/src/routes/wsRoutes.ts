@@ -5,11 +5,11 @@ import { wsRouter } from "../router";
 const router = Router();
 
 router.ws("/", (ws) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     ws.id = uuid();
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     wsRouter(ws);
 });
