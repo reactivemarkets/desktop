@@ -33,7 +33,7 @@ download(desktopUrl, desktopZipDestination, (err) => {
         console.error("Error: " + err);
 
         return;
-    } 
+    }
 
     console.log("Status: Extracting to " + desktopExtractDestination);
 

@@ -32,6 +32,6 @@ describe("getRegistry", () => {
 
         const registry = service.getRegistry();
 
-        expect(registry).resolves.toEqual([session, application]);
+        return expect(registry).resolves.toEqual([session, application]);
     });
 });
