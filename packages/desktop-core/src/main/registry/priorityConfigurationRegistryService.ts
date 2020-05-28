@@ -1,5 +1,5 @@
-import { IterableX } from "ix/iterable";
-import { orderBy, thenBy } from "ix/iterable/pipe/index";
+import { from } from "ix/iterable";
+import { orderBy, thenBy } from "ix/iterable/operators";
 
 import { IConfiguration } from "../configuration";
 
@@ -17,7 +17,7 @@ export class PriorityConfigurationRegistryService implements IRegistryService {
     public async getRegistry(): Promise<IConfiguration[]> {
         const registry = await this.registryService.getRegistry();
 
-        const sortedRegistry = IterableX.from(registry).pipe(
+        const sortedRegistry = from(registry).pipe(
             orderBy((item) => item.metadata.namespace, namespaceComparer),
             thenBy((item) => item.kind, configurationKindComparer),
             thenBy((item) => item.metadata.name),
