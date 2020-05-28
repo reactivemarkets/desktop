@@ -1,4 +1,4 @@
-import { handler } from "./handler";
+export { handler } from "./handler";
 
 export const command = ["start", "$0", "up", "run"];
 
@@ -16,5 +16,3 @@ export const builder = {
         describe: "A url to run with",
     },
 };
-
-export { handler };
