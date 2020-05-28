@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/markmcdowell/desktop/compare/v0.5.0...v0.5.1) (2020-05-28)
+
+
+### Bug Fixes
+
+* **core:** changing logging for cached config to verbose ([2bf3231](https://github.com/markmcdowell/desktop/commit/2bf3231bdb954fd4a968c512a3ef371b8929177c))
+* **core:** exporting command handlers directly ([f778c9d](https://github.com/markmcdowell/desktop/commit/f778c9d6109c8bdb34f9be77262b4f010a09b493))
+* **sdk:** publish config should be public ([016d76e](https://github.com/markmcdowell/desktop/commit/016d76e7213067199eb57ebf94e3b4fb1af2d8db))
+
+
+
+
+
 # [0.5.0](https://github.com/markmcdowell/desktop/compare/v0.4.11...v0.5.0) (2020-05-04)
 
 
