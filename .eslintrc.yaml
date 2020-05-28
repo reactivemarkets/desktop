@@ -5,6 +5,7 @@ plugins:
     - "@typescript-eslint"
 extends:
     - "eslint:recommended"
+    - "plugin:jest/recommended"
     - "plugin:@typescript-eslint/eslint-recommended"
     - "plugin:@typescript-eslint/recommended"
     - "prettier/@typescript-eslint"
@@ -13,4 +14,6 @@ rules:
     "@typescript-eslint/explicit-module-boundary-types": off
     "@typescript-eslint/interface-name-prefix": off
     "@typescript-eslint/no-non-null-assertion": off
-    
+env:
+  jest: true
+  node: true

@@ -6,7 +6,7 @@ export const globalShortcut = {
         ipcRenderer.invoke(ReservedChannels.globalShortcut_isRegistered, accelerator),
     register: (accelerator: Accelerator, listener: () => void) => {
         const channel = `${ReservedChannels.globalShortcut_invoked}/${accelerator}`;
-        ipcRenderer.on(channel, (_) => listener());
+        ipcRenderer.on(channel, () => listener());
         ipcRenderer.send(ReservedChannels.globalShortcut_register, accelerator);
     },
     unregister: (accelerator: Accelerator, listener: () => void) => {
