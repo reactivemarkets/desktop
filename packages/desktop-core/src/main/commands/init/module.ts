@@ -1,6 +1,6 @@
 import { ConfigurationKind, Output } from "../../configuration";
 
-import { handler } from "./handler";
+export { handler } from "./handler";
 
 export const command = "init";
 
@@ -31,5 +31,3 @@ export const builder = {
         string: true,
     },
 };
-
-export { handler };

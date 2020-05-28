@@ -1,5 +1,6 @@
 import { CacheArea } from "./cacheArea";
-import { handler } from "./handler";
+
+export { handler } from "./handler";
 
 export const command = "clear [area]";
 
@@ -12,5 +13,3 @@ export const builder = {
         describe: "The cache area",
     },
 };
-
-export { handler };
