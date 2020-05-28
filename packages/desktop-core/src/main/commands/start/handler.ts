@@ -57,7 +57,7 @@ export const handler = (options: IStartOptions) => {
         const userDataPath = app.getPath("userData");
         const userConfigPath = path.join(userDataPath, "config");
         const userDataConfig = registryService.registerConfig(userConfigPath).catch((error) => {
-            logger.warn(`failed to read cached config: ${error}`);
+            logger.verbose(`failed to read cached config: ${error}`);
         });
 
         Promise.all([...configPromises, userDataConfig, onReady])
