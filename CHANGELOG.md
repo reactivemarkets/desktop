@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/markmcdowell/desktop/compare/v0.5.1...v0.5.2) (2020-05-29)
+
+
+### Bug Fixes
+
+* **desktop:** following symlinks when zipping ([0502443](https://github.com/markmcdowell/desktop/commit/05024439531d4922ae95b082e726cdd67df35a07))
+
+
+
+
+
 ## [0.5.1](https://github.com/markmcdowell/desktop/compare/v0.5.0...v0.5.1) (2020-05-28)
 
 
