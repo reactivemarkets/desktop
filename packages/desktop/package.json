@@ -32,8 +32,8 @@
     "installer:dmg": "cross-var electron-installer-dmg pack/desktop-darwin-x64/desktop.app desktop-$npm_package_version --overwrite --title Desktop --background src/img/dmg-background.png --icon src/img/desktop.icns --protocol=desktop --protocol-name \"Desktop Protocol\" --darwin-dark-mode-support --out pack",
     "installer:windows": "cross-var electron-installer-windows --src pack/desktop-win32-x64/ --dest pack/desktop-$npm_package_version-win32-x64-exe/ --options.version $npm_package_version --config windows.json",
     "zip": "run-s zip:darwin zip:linux zip:win32 zip:win32:installer",
-    "zip:darwin": "cross-var \"cd pack/desktop-darwin-x64 && bestzip ../desktop-$npm_package_version-darwin-x64.zip * && cd ../..\"",
-    "zip:linux": "cross-var \"cd pack/desktop-linux-x64 && bestzip ../desktop-$npm_package_version-linux-x64.zip * && cd ../..\"",
+    "zip:darwin": "cross-var \"cd pack/desktop-darwin-x64 && zip -r -q --symlinks ../desktop-$npm_package_version-darwin-x64.zip * && cd ../..\"",
+    "zip:linux": "cross-var \"cd pack/desktop-linux-x64 && zip -r -q --symlinks ../desktop-$npm_package_version-linux-x64.zip * && cd ../..\"",
     "zip:win32": "cross-var \"cd pack/desktop-win32-x64 && bestzip ../desktop-$npm_package_version-win32-x64.zip * && cd ../..\"",
     "zip:win32:installer": "cross-var \"cd pack/desktop-$npm_package_version-win32-x64-exe && bestzip ../desktop-$npm_package_version-win32-x64-setup.zip * && cd ../..\""
   },
