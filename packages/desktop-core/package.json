@@ -5,16 +5,15 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/api.js",
   "scripts": {
     "build": "run-s clean compile",
     "build:dev": "run-s clean compile:dev",
     "clean": "rimraf dist coverage",
     "compile": "run-p compile:main compile:renderer",
     "compile:dev": "run-p compile:main:dev compile:renderer:dev",
-    "compile:main": "webpack --progress --config webpack.main.config.prod.js",
+    "compile:main": "webpack --config webpack.main.config.prod.js",
     "compile:main:dev": "webpack --progress --config webpack.main.config.dev.js",
-    "compile:renderer": "webpack --progress --config webpack.renderer.config.prod.js",
+    "compile:renderer": "webpack --config webpack.renderer.config.prod.js",
     "compile:renderer:dev": "webpack --progress --config webpack.renderer.config.dev.js",
     "asar": "run-s asar:pre asar:pack asar:post",
     "asar:pre": "copyfiles -f desktop.json dist && renamer -f desktop -e name -r package dist/desktop.json",
@@ -36,9 +35,11 @@
     "core"
   ],
   "files": [
-    "dist/api.js",
     "dist/app.asar"
   ],
   "author": "Reactive Markets",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@reactivemarkets/desktop-types": "file:../desktop-types"
+  }
 }

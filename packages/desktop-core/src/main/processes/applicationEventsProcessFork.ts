@@ -1,6 +1,5 @@
 import { routerService } from "../router";
-import { ChildProcessIPCTransport } from "../transports/ipc/childProcessIPCTransport";
-
+import { ChildProcessIPCTransport } from "../transports";
 import { IEnvironmentVariables } from "./iEnvironmentVariables";
 import { IProcessFork } from "./iProcessFork";
 

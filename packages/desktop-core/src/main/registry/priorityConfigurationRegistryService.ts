@@ -1,7 +1,6 @@
+import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { from } from "ix/iterable";
 import { orderBy, thenBy } from "ix/iterable/operators";
-
-import { IConfiguration } from "../configuration";
 
 import { configurationKindComparer } from "./configurationKindComparer";
 import { IRegistryService } from "./iRegistryService";
@@ -26,11 +25,11 @@ export class PriorityConfigurationRegistryService implements IRegistryService {
         return Array.from(sortedRegistry);
     }
 
-    public async registerConfig(path: string) {
-        return this.registryService.registerConfig(path);
+    public register(configuration: IConfiguration) {
+        return this.registryService.register(configuration);
     }
 
-    public async registerUrl(url: string) {
-        return this.registryService.registerUrl(url);
+    public unregister(configuration: IConfiguration) {
+        return this.registryService.unregister(configuration);
     }
 }

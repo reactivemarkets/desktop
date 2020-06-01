@@ -6,7 +6,7 @@
         "incremental": true,
         "jsx": "react",
         "declaration": true,
-        "module": "CommonJS",
+        "module": "esnext",
         "moduleResolution": "node",
         "noImplicitAny": true,
         "noImplicitThis": true,

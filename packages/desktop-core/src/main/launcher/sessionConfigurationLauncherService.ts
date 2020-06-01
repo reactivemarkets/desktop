@@ -1,4 +1,9 @@
-import { ConfigurationKind, IConfiguration, ISessionConfiguration, WellKnownNamespaces } from "../configuration";
+import {
+    WellKnownNamespaces,
+    IConfiguration,
+    ConfigurationKind,
+    ISessionConfiguration,
+} from "@reactivemarkets/desktop-types";
 import { ILogger } from "../logging";
 import { ISessionService } from "../session";
 
@@ -13,8 +18,8 @@ export class SessionConfigurationLauncherService implements ILauncherService {
         this.sessionService = sessionService;
     }
 
-    public canLaunch = (configuration: IConfiguration) => {
-        return configuration.kind === ConfigurationKind.Session;
+    public canLaunch = ({ kind }: IConfiguration) => {
+        return kind === ConfigurationKind.Session;
     };
 
     public async launch(configuration: IConfiguration): Promise<IConfiguration> {
@@ -24,7 +29,7 @@ export class SessionConfigurationLauncherService implements ILauncherService {
 
         this.logger.verbose(`Configuring session: ${name} in ${namespace}`);
 
-        await this.sessionService.configureSession(serviceConfiguration);
+        await this.sessionService.configure(serviceConfiguration);
 
         return configuration;
     }

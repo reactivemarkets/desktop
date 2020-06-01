@@ -11,4 +11,12 @@ export class DesktopClient implements IDesktop {
         // @ts-ignore
         return typeof desktop !== "undefined";
     }
+
+    public quit() {
+        return this.api.system.quit();
+    }
+
+    public showAboutPanel() {
+        return this.api.system.showAboutPanel();
+    }
 }

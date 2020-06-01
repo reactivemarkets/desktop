@@ -1,16 +1,15 @@
 import {
-    ConfigurationKind,
     IConfiguration,
+    ConfigurationKind,
     IServiceConfiguration,
     ServiceHost,
     WellKnownNamespaces,
-} from "../configuration";
+} from "@reactivemarkets/desktop-types";
 import { ILogger } from "../logging";
 import { IProcessFork } from "../processes";
-
 import { flattenObject } from "./flatten";
 import { ILauncherService } from "./iLauncherService";
-import { normalize } from "./normalize";
+import { normalizePath } from "./normalize";
 
 export class NodeServiceLauncherService implements ILauncherService {
     private readonly logger: ILogger;
@@ -36,7 +35,7 @@ export class NodeServiceLauncherService implements ILauncherService {
 
         const serviceConfiguration = configuration.spec as IServiceConfiguration;
 
-        const servicePath = normalize(serviceConfiguration.main);
+        const servicePath = normalizePath(serviceConfiguration.main);
 
         this.logger.verbose(`launching ${namespace}/${name} from ${servicePath}`);
 

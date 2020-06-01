@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "incremental": true,
+        "jsx": "react",
+        "lib": [
+            "esnext.array",
+            "esnext.asynciterable",
+            "esnext",
+            "dom"
+        ],
+        "moduleResolution": "node",
+        "module": "esnext",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "outDir": "dist",
+        "sourceMap": true,
+        "strict": true,
+        "target": "es2017"
+    }
+}

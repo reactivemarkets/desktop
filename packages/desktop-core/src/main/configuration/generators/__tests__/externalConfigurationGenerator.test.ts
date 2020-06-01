@@ -1,4 +1,4 @@
-import { ConfigurationKind } from "../../configurationKind";
+import { ConfigurationKind, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
 import { ExternalConfigurationGenerator } from "../externalConfigurationGenerator";
 
 describe("canGenerate", () => {
@@ -22,5 +22,23 @@ describe("canGenerate", () => {
 
             expect(generator.canGenerate(ConfigurationKind.Service)).toBe(false);
         });
+    });
+});
+
+describe("generate", () => {
+    test("should generate external config", async () => {
+        const generator = new ExternalConfigurationGenerator();
+
+        const configuration = await generator.generate(ConfigurationKind.External, "test");
+
+        expect(configuration.kind).toBe(ConfigurationKind.External);
+    });
+
+    test("should set namespace to default", async () => {
+        const generator = new ExternalConfigurationGenerator();
+
+        const configuration = await generator.generate(ConfigurationKind.External, "test");
+
+        expect(configuration.metadata.namespace).toBe(WellKnownNamespaces.default);
     });
 });

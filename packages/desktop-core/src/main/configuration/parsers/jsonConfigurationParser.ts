@@ -1,13 +1,17 @@
 import { IConfigurationParser } from "./iConfigurationParser";
 
-const jsonIndentation = 2;
-
 export class JsonConfigurationParser<T> implements IConfigurationParser<T> {
+    private readonly indentation: number;
+
+    public constructor(indentation = 2) {
+        this.indentation = indentation;
+    }
+
     public parse = (data: string) => {
         return [JSON.parse(data) as T];
     };
 
     public stringify = (data: T) => {
-        return JSON.stringify(data, undefined, jsonIndentation);
+        return JSON.stringify(data, undefined, this.indentation);
     };
 }

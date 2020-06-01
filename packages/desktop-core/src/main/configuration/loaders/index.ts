@@ -1,4 +1,4 @@
-import { IConfiguration } from "../iConfiguration";
+import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { jsonConfigurationParser, yamlConfigurationParser } from "../parsers";
 
 import { CompositeConfigurationLoader } from "./compositeConfigurationLoader";

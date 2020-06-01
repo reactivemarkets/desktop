@@ -1,10 +1,8 @@
+import { IConfiguration, ConfigurationKind, ServiceHost } from "@reactivemarkets/desktop-types";
 import { mock } from "jest-mock-extended";
 
-import { ConfigurationKind } from "../../configuration/configurationKind";
-import { IConfiguration } from "../../configuration/iConfiguration";
-import { ServiceHost } from "../../configuration/serviceHost";
 import { ILogger } from "../../logging";
-import { IWindowService } from "../../windowing/iWindowService";
+import { IWindowService } from "../../windowing";
 import { ElectronServiceLauncherService } from "../electronServiceLauncherService";
 
 describe("canLaunch", () => {

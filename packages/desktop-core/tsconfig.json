@@ -3,12 +3,11 @@
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
         "lib": [
-            "esnext.array",
-            "esnext.asynciterable",
-            "esnext",
+            "es2015",
             "dom"
         ],
-        "module": "commonjs",
+        "module": "es6",
+        "moduleResolution": "node",
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noUnusedLocals": true,

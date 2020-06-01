@@ -1,0 +1,34 @@
+---
+kind: tray
+metadata:
+  name: tray
+  namespace: desktop
+---
+kind: application
+metadata:
+  name: dock
+  description: Creates a dock to launch new windows.
+  namespace: desktop
+spec:
+  url: dock.asar
+  window:
+    backgroundColor: "#303030"
+    center: true
+    frame: false
+    height: 60
+    minHeight: 60
+    minWidth: 400
+    title: Dock
+    useContentSize: true
+    width: 680
+---
+kind: application
+metadata:
+  name: Crossfire registry
+  description: Load the crossfire registry.
+  namespace: crossfire
+spec:
+  url: https://crossfire-dev.reactivemarkets.net/desktop/registry
+  window:
+    center: true
+    frame: false

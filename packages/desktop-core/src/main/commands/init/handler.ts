@@ -1,32 +1,31 @@
 import { app } from "electron";
 import * as path from "path";
 
-import { configurationGenerator } from "../../configuration/generators";
-import { configurationWriter } from "../../configuration/writers";
+import { configurationGenerator, configurationWriter } from "../../configuration";
 import { logger } from "../../logging";
 
 import { IInitOptions } from "./iInitOptions";
 
-export const handler = (options: IInitOptions) => {
-    const workingDirectory = process.cwd();
+export const handler = async (options: IInitOptions) => {
+    try {
+        const workingDirectory = process.cwd();
 
-    logger.verbose(`init command ran from ${workingDirectory}`);
+        logger.verbose(`Init command ran from ${workingDirectory}`);
 
-    const { name = `${options.kind} name` } = options;
+        const { kind, name = `${options.kind} name`, output, url } = options;
 
-    const configurationPath = `${workingDirectory}${path.sep}${options.kind}.${options.output}`;
+        const configurationPath = path.join(workingDirectory, `${kind}.${output}`);
 
-    logger.verbose(`creating config at ${configurationPath}`);
+        logger.verbose(`Creating config at ${configurationPath}`);
 
-    configurationGenerator
-        .generate(options.kind, name, options.url)
-        .then(async (defaultConfig) => configurationWriter.write(configurationPath, defaultConfig))
-        .then(() => {
-            logger.info(`configuration written to ${configurationPath}`);
-            app.exit();
-        })
-        .catch((error) => {
-            logger.error(`failed to write config: ${error}`);
-            app.exit(1);
-        });
+        const defaultConfig = await configurationGenerator.generate(kind, name, url);
+
+        await configurationWriter.write(configurationPath, defaultConfig);
+
+        logger.info(`Configuration written to ${configurationPath}`);
+        app.exit();
+    } catch (error) {
+        logger.error(`Failed to write config: ${error}`);
+        app.exit(1);
+    }
 };

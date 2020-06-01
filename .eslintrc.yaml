@@ -1,10 +1,14 @@
 ---
 root: true
 parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaFeatures:
+    jsx: true
 plugins:
     - "@typescript-eslint"
 extends:
     - "eslint:recommended"
+    - "plugin:react/recommended"
     - "plugin:jest/recommended"
     - "plugin:@typescript-eslint/eslint-recommended"
     - "plugin:@typescript-eslint/recommended"
@@ -14,6 +18,10 @@ rules:
     "@typescript-eslint/explicit-module-boundary-types": off
     "@typescript-eslint/interface-name-prefix": off
     "@typescript-eslint/no-non-null-assertion": off
+    "react/prop-types": off
+settings:
+  react:
+    version: detect
 env:
   jest: true
   node: true

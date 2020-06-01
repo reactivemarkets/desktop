@@ -7,7 +7,8 @@ export const globalShortcutIpcEvents = () => {
     });
     ipcMain.on(ReservedChannels.globalShortcut_register, (event, accelerator: Accelerator) => {
         globalShortcut.register(accelerator, () => {
-            event.sender.send(`${ReservedChannels.globalShortcut_invoked}/${accelerator}`);
+            const key = `${ReservedChannels.globalShortcut_invoked}/${accelerator}`;
+            event.sender.send(key);
         });
     });
     ipcMain.on(ReservedChannels.globalShortcut_unregister, (_, accelerator: Accelerator) => {

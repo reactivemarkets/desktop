@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "chrome",
+            "request": "launch",
+            "sourceMaps": true,
+            "name": "Launch Dock in Chrome",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}/packages/desktop/dock/dist/**/*.js"
+        },
+        {
             "name": "Launch API standalone",
             "type": "node",
             "request": "launch",
@@ -24,7 +32,7 @@
             ]
         },
         {
-            "name": "Launch Desktop",
+            "name": "Launch Url",
             "type": "node",
             "request": "launch",
             "cwd": "${workspaceFolder}",
@@ -37,6 +45,30 @@
                 "${workspaceFolder}/packages/desktop-core/dist/main.js",
                 "--url",
                 "https://desktop.reactivemarkets.com"
+            ],
+            "env": {
+                "DESKTOP_LOG_LEVEL": "debug",
+            },
+            "outputCapture": "std",
+            "outFiles": [
+                "${workspaceFolder}/packages/desktop-core/dist/**/*.js"
+            ],
+            "sourceMaps": true,
+        },
+        {
+            "name": "Launch Dock",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "npm: build:dev:core",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+            "windows": {
+                "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+            },
+            "args": [
+                "${workspaceFolder}/packages/desktop-core/dist/main.js",
+                "--file",
+                "${workspaceFolder}/packages/desktop-dock/example.yaml"
             ],
             "env": {
                 "DESKTOP_LOG_LEVEL": "debug",

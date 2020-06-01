@@ -35,7 +35,7 @@ export const window = {
         restore: () => ipcRenderer.invoke(ReservedChannels.window_restore),
         setAlwaysOnTop: (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setAlwaysOnTop, flag),
         setBounds: (bounds: Partial<Rectangle>, animate?: boolean) => {
-            ipcRenderer.invoke(ReservedChannels.window_setBounds, bounds, animate);
+            return ipcRenderer.invoke(ReservedChannels.window_setBounds, bounds, animate);
         },
         setFullScreen: (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setFullScreen, flag),
         setKiosk: (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setKiosk, flag),

@@ -1,4 +1,4 @@
-import { ConfigurationKind } from "../configuration";
+import { ConfigurationKind } from "@reactivemarkets/desktop-types";
 
 export const configurationKindComparer = (a: ConfigurationKind, b: ConfigurationKind): number => {
     if (a === b) {

@@ -1,5 +1,4 @@
 import { BrowserWindow, ipcMain } from "electron";
-
 import { ITransport } from "../iTransport";
 
 export class ExectronMainIPCTransport implements ITransport {

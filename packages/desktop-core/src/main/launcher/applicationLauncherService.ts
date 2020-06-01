@@ -1,8 +1,15 @@
-import { ConfigurationKind, IApplicationConfiguration, IConfiguration, WellKnownNamespaces } from "../configuration";
+import {
+    WellKnownNamespaces,
+    IConfiguration,
+    ConfigurationKind,
+    IApplicationConfiguration,
+} from "@reactivemarkets/desktop-types";
+
 import { ILogger } from "../logging";
 import { IWindowService } from "../windowing";
 
 import { ILauncherService } from "./iLauncherService";
+import { normalizeUrl } from "./normalize";
 
 export class ApplicationLauncherService implements ILauncherService {
     private readonly logger: ILogger;
@@ -13,21 +20,23 @@ export class ApplicationLauncherService implements ILauncherService {
         this.windowService = windowService;
     }
 
-    public canLaunch = (configuration: IConfiguration) => {
-        return configuration.kind === ConfigurationKind.Application;
+    public canLaunch = ({ kind }: IConfiguration) => {
+        return kind === ConfigurationKind.Application;
     };
 
     public async launch(configuration: IConfiguration) {
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
-        const applicationConfiguration = configuration.spec as IApplicationConfiguration;
+        const { url, window } = configuration.spec as IApplicationConfiguration;
 
-        this.logger.verbose(`launching ${namespace}/${name} from ${applicationConfiguration.url}`);
+        const fileOrUrl = normalizeUrl(url);
 
-        return this.windowService.createWindow(applicationConfiguration.window).then(async (window) => {
-            window.loadURL(applicationConfiguration.url);
+        this.logger.verbose(`launching ${namespace}/${name} from ${fileOrUrl}`);
 
-            return Promise.resolve(configuration);
-        });
+        const browserWindow = await this.windowService.createWindow(window);
+
+        await browserWindow.loadURL(fileOrUrl);
+
+        return configuration;
     }
 }

@@ -1,5 +1,4 @@
 import { ChildProcess } from "child_process";
-
 import { ITransport } from "../iTransport";
 
 export class ChildProcessIPCTransport implements ITransport {

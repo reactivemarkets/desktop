@@ -1,5 +1,4 @@
-import { ConfigurationKind } from "../configurationKind";
-import { IConfiguration } from "../iConfiguration";
+import { ConfigurationKind, IConfiguration } from "@reactivemarkets/desktop-types";
 
 export interface IConfigurationGenerator {
     canGenerate(kind: ConfigurationKind): boolean;

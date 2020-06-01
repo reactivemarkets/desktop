@@ -1,7 +1,5 @@
+import { IWindowConfiguration } from "@reactivemarkets/desktop-types";
 import { BrowserWindow, BrowserWindowConstructorOptions, WebPreferences } from "electron";
-
-import { IWindowConfiguration } from "../configuration";
-
 import { IWindowFactory } from "./iWindowFactory";
 
 export class BrowserWindowFactory implements IWindowFactory {
@@ -16,10 +14,12 @@ export class BrowserWindowFactory implements IWindowFactory {
             allowRunningInsecureContent: false,
             contextIsolation: true,
             enableRemoteModule: false,
+            enableWebSQL: false,
             nodeIntegration: false,
             nodeIntegrationInSubFrames: false,
             nodeIntegrationInWorker: false,
             preload: this.preload,
+            safeDialogs: true,
             sandbox: true,
             textAreasAreResizable: false,
             webSecurity: true,

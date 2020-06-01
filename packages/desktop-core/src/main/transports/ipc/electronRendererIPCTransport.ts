@@ -1,5 +1,4 @@
 import { ipcRenderer } from "electron";
-
 import { ITransport } from "../iTransport";
 
 export class ExectronRendererIPCTransport implements ITransport {

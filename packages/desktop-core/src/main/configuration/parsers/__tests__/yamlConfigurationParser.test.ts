@@ -1,4 +1,4 @@
-import { IConfiguration } from "../../iConfiguration";
+import { IConfiguration, ConfigurationKind } from "../../../../common";
 import { YamlConfigurationParser } from "../yamlConfigurationParser";
 
 describe("parse", () => {
@@ -79,5 +79,32 @@ spec:
                 },
             },
         ]);
+    });
+});
+
+describe("stringify", () => {
+    test("a document", () => {
+        const yaml = `kind: application
+metadata:
+  name: test
+spec:
+  url: 'https://url'
+`;
+
+        const configuration: IConfiguration = {
+            kind: ConfigurationKind.Application,
+            metadata: {
+                name: "test",
+            },
+            spec: {
+                url: "https://url",
+            },
+        };
+
+        const parser = new YamlConfigurationParser<IConfiguration>();
+
+        const string = parser.stringify(configuration);
+
+        expect(string).toEqual(yaml);
     });
 });

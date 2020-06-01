@@ -1,4 +1,5 @@
 import { JsonConfigurationParser } from "../jsonConfigurationParser";
+import { IConfiguration, ConfigurationKind } from "../../../../common";
 
 describe("parse", () => {
     test("a document", () => {
@@ -11,5 +12,27 @@ describe("parse", () => {
                 name: "Application",
             },
         ]);
+    });
+});
+
+describe("stringify", () => {
+    test("a document", () => {
+        const json = `{"kind":"application","metadata":{"name":"test"},"spec":{"url":"https://url"}}`;
+
+        const configuration: IConfiguration = {
+            kind: ConfigurationKind.Application,
+            metadata: {
+                name: "test",
+            },
+            spec: {
+                url: "https://url",
+            },
+        };
+
+        const parser = new JsonConfigurationParser<IConfiguration>(0);
+
+        const string = parser.stringify(configuration);
+
+        expect(string).toEqual(json);
     });
 });

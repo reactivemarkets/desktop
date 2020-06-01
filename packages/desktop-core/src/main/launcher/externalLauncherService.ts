@@ -1,4 +1,9 @@
-import { ConfigurationKind, IConfiguration, IExternalConfiguration, WellKnownNamespaces } from "../configuration";
+import {
+    WellKnownNamespaces,
+    IConfiguration,
+    ConfigurationKind,
+    IExternalConfiguration,
+} from "@reactivemarkets/desktop-types";
 import { ILogger } from "../logging";
 import { IProcessExec } from "../processes";
 
@@ -13,8 +18,8 @@ export class ExternalLauncherService implements ILauncherService {
         this.processExec = processExec;
     }
 
-    public canLaunch = (configuration: IConfiguration) => {
-        return configuration.kind === ConfigurationKind.External;
+    public canLaunch = ({ kind }: IConfiguration) => {
+        return kind === ConfigurationKind.External;
     };
 
     public async launch(configuration: IConfiguration) {
@@ -34,6 +39,6 @@ export class ExternalLauncherService implements ILauncherService {
 
         this.logger.verbose(`process created with pid: (${child.pid})`);
 
-        return Promise.resolve(configuration);
+        return configuration;
     }
 }
