@@ -1,16 +1,8 @@
-import { WellKnownNamespaces } from "../configuration";
+import { WellKnownNamespaces } from "@reactivemarkets/desktop-types";
 
 export const namespaceComparer = (a?: string, b?: string): number => {
     if (a === b) {
         return 0;
-    }
-
-    if (a === undefined) {
-        return 1;
-    }
-
-    if (b === undefined) {
-        return -1;
     }
 
     if (a === WellKnownNamespaces.desktop) {
@@ -18,6 +10,14 @@ export const namespaceComparer = (a?: string, b?: string): number => {
     }
 
     if (b === WellKnownNamespaces.desktop) {
+        return 1;
+    }
+
+    if (a === undefined) {
+        return -1;
+    }
+
+    if (b === undefined) {
         return 1;
     }
 

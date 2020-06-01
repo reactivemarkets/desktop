@@ -1,6 +1,4 @@
-import { ConfigurationKind } from "../configurationKind";
-import { IConfiguration } from "../iConfiguration";
-
+import { ConfigurationKind, IConfiguration } from "@reactivemarkets/desktop-types";
 import { IConfigurationGenerator } from "./iConfigurationGenerator";
 
 export class CompositeConfigurationGenerator implements IConfigurationGenerator {

@@ -1,7 +1,4 @@
-import { ConfigurationKind } from "../configurationKind";
-import { IConfiguration } from "../iConfiguration";
-import { ServiceHost } from "../serviceHost";
-
+import { ConfigurationKind, IConfiguration, ServiceHost, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
 import { IConfigurationGenerator } from "./iConfigurationGenerator";
 
 export class ServiceConfigurationGenerator implements IConfigurationGenerator {
@@ -15,6 +12,7 @@ export class ServiceConfigurationGenerator implements IConfigurationGenerator {
             metadata: {
                 name,
                 description: `description of ${name}`,
+                namespace: WellKnownNamespaces.default,
             },
             spec: {
                 affinity: "service host",

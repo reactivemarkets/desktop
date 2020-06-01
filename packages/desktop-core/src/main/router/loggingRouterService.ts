@@ -1,7 +1,7 @@
 import { ILogger } from "../logging";
-import { ITransport } from "../transports";
 
 import { IRouterService } from "./iRouterService";
+import { ITransport } from "../transports";
 
 export class LoggingRouterService implements IRouterService {
     private readonly logger: ILogger;

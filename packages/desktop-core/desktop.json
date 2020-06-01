@@ -15,7 +15,6 @@
         "core"
     ],
     "files": [
-        "main.js",
         "dist/app.asar"
     ],
     "author": "ReactiveMarkets",

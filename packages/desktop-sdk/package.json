@@ -15,7 +15,6 @@
     "build:dev": "npm run build",
     "clean": "rimraf lib",
     "compile": "tsc -p tsconfig.json",
-    "tests": "jest",
     "watch": "tsc -p tsconfig.json --watch --preserveWatchOutput"
   },
   "repository": {
@@ -23,8 +22,13 @@
     "url": "git@github.com:reactivemarkets/desktop.git"
   },
   "keywords": [
+    "desktop",
     "sdk"
   ],
   "author": "Reactive Markets",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@reactivemarkets/desktop-types": "file:../desktop-types",
+    "tiny-typed-emitter": "^2.0.1"
+  }
 }

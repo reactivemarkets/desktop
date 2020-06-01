@@ -16,11 +16,11 @@ export class GlobalShortcutClient implements IGlobalShortcut {
         this.desktop.api.globalShortcut.register(accelerator, listener);
     }
 
-    public unRegister(accelerator: string, listener: () => void) {
-        this.desktop.api.globalShortcut.unRegister(accelerator, listener);
+    public unregister(accelerator: string, listener: () => void) {
+        this.desktop.api.globalShortcut.unregister(accelerator, listener);
     }
 
-    public unRegisterAll() {
-        this.desktop.api.globalShortcut.unRegisterAll();
+    public unregisterAll() {
+        this.desktop.api.globalShortcut.unregisterAll();
     }
 }

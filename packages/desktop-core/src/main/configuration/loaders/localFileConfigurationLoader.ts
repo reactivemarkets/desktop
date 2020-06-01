@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as util from "util";
 
-import { IConfigurationParser } from "../parsers/iConfigurationParser";
+import { IConfigurationParser } from "../parsers";
 import { IConfigurationLoader } from "./iConfigurationLoader";
 
 export class LocalFileConfigurationLoader<T> implements IConfigurationLoader<T> {
@@ -19,8 +19,8 @@ export class LocalFileConfigurationLoader<T> implements IConfigurationLoader<T> 
     }
 
     public async load(path: string): Promise<T[]> {
-        return util
-            .promisify(fs.readFile)(path, this.encoding)
-            .then((data) => this.parser.parse(data));
+        const data = await util.promisify(fs.readFile)(path, this.encoding);
+
+        return this.parser.parse(data);
     }
 }

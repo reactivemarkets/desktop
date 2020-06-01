@@ -1,6 +1,5 @@
+import { IWindowConfiguration } from "@reactivemarkets/desktop-types";
 import { BrowserWindow } from "electron";
-
-import { IWindowConfiguration } from "../configuration";
 
 export interface IWindowService {
     /**

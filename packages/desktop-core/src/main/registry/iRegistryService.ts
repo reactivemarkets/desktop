@@ -1,4 +1,4 @@
-import { IConfiguration } from "../configuration";
+import { IConfiguration } from "@reactivemarkets/desktop-types";
 
 export interface IRegistryService {
     /**
@@ -7,15 +7,14 @@ export interface IRegistryService {
     getRegistry(): Promise<IConfiguration[]>;
 
     /**
-     * Register a configuration file or directory.
-     * @param path Path to the configuration file or directory.
+     * Register configuration.
+     * @param configuration A configuration object.
      */
-    registerConfig(path: string): Promise<void>;
+    register(configuration: IConfiguration): Promise<void>;
 
     /**
-     * Registers a url to a window. This will generate a basic configuration
-     * based on the url.
-     * @param url The url of a window.
+     * Unregister configuration.
+     * @param configuration A configuration object.
      */
-    registerUrl(url: string): Promise<void>;
+    unregister(configuration: IConfiguration): Promise<void>;
 }

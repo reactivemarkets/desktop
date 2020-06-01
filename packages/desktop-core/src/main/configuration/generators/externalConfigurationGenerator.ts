@@ -1,6 +1,4 @@
-import { ConfigurationKind } from "../configurationKind";
-import { IConfiguration } from "../iConfiguration";
-
+import { ConfigurationKind, IConfiguration, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
 import { IConfigurationGenerator } from "./iConfigurationGenerator";
 
 export class ExternalConfigurationGenerator implements IConfigurationGenerator {
@@ -14,6 +12,7 @@ export class ExternalConfigurationGenerator implements IConfigurationGenerator {
             metadata: {
                 name,
                 description: `description of ${name}`,
+                namespace: WellKnownNamespaces.default,
             },
             spec: {
                 executable: `${name}.exe`,

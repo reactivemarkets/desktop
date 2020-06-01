@@ -4,10 +4,17 @@ import { IExternalConfiguration } from "./iExternalConfiguration";
 import { IMetadata } from "./iMetadata";
 import { IServiceConfiguration } from "./iServiceConfiguration";
 import { ISessionConfiguration } from "./iSessionConfiguration";
+import { ITrayConfiguration } from "./iTrayConfiguration";
 
-type Spec = IApplicationConfiguration | IExternalConfiguration | IServiceConfiguration | ISessionConfiguration;
+type Spec =
+    | IApplicationConfiguration
+    | IExternalConfiguration
+    | IServiceConfiguration
+    | ISessionConfiguration
+    | ITrayConfiguration;
 
 export interface IConfiguration {
+    readonly apiVersion?: string;
     readonly kind: ConfigurationKind;
     readonly metadata: IMetadata;
     readonly spec: Spec;

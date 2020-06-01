@@ -16,13 +16,17 @@ export class DirectoryConfigurationLoader<T> implements IConfigurationLoader<T> 
 
     public async load(directoryPath: string): Promise<T[]> {
         return util
-            .promisify(fs.readdir)(directoryPath)
+            .promisify(fs.readdir)(directoryPath, { withFileTypes: true })
             .then(async (files) => {
-                const configuration = files.map(async (file) => {
-                    const filePath = path.join(directoryPath, file);
+                const configuration = files
+                    .filter((file) => {
+                        return file.isFile();
+                    })
+                    .map(async ({ name }) => {
+                        const filePath = path.join(directoryPath, name);
 
-                    return this.loader.load(filePath);
-                });
+                        return this.loader.load(filePath);
+                    });
 
                 return Promise.all(configuration);
             })

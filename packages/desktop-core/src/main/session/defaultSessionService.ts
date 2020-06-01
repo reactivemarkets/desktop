@@ -1,8 +1,6 @@
+import { ISessionConfiguration } from "@reactivemarkets/desktop-types";
 import { session } from "electron";
-
-import { ISessionConfiguration } from "../configuration";
 import { ILogger } from "../logging";
-
 import { ISessionService } from "./iSessionService";
 
 export class DefaultSessionService implements ISessionService {
@@ -12,7 +10,7 @@ export class DefaultSessionService implements ISessionService {
         this.logger = logger;
     }
 
-    public async configureSession(configuration: ISessionConfiguration) {
+    public async configure(configuration: ISessionConfiguration) {
         const { defaultSession } = session;
         if (defaultSession === undefined) {
             const message = "Default session was undefined";

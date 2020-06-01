@@ -1,0 +1,30 @@
+{
+  "name": "@reactivemarkets/desktop-types",
+  "version": "0.5.1",
+  "description": "Common types for desktop.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "build:dev": "npm run build",
+    "clean": "rimraf lib",
+    "compile": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch --preserveWatchOutput"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:reactivemarkets/desktop.git"
+  },
+  "keywords": [
+    "desktop",
+    "types"
+  ],
+  "author": "Reactive Markets",
+  "license": "Apache-2.0"
+}

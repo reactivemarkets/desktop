@@ -1,7 +1,6 @@
+import { IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
 import { mock } from "jest-mock-extended";
 
-import { ConfigurationKind } from "../../configuration/configurationKind";
-import { IConfiguration } from "../../configuration/iConfiguration";
 import { IRegistryService } from "../iRegistryService";
 import { PriorityConfigurationRegistryService } from "../priorityConfigurationRegistryService";
 
@@ -33,5 +32,35 @@ describe("getRegistry", () => {
         const registry = service.getRegistry();
 
         return expect(registry).resolves.toEqual([session, application]);
+    });
+});
+
+describe("register", () => {
+    test("should delegate to underlying registry", () => {
+        const registry = mock<IRegistryService>();
+        registry.register.mockResolvedValue();
+
+        const service = new PriorityConfigurationRegistryService(registry);
+
+        const configuration = mock<IConfiguration>();
+
+        service.register(configuration);
+
+        expect(registry.register.mock.calls.length).toBe(1);
+    });
+});
+
+describe("unregister", () => {
+    test("should delegate to underlying registry", () => {
+        const registry = mock<IRegistryService>();
+        registry.unregister.mockResolvedValue();
+
+        const service = new PriorityConfigurationRegistryService(registry);
+
+        const configuration = mock<IConfiguration>();
+
+        service.unregister(configuration);
+
+        expect(registry.unregister.mock.calls.length).toBe(1);
     });
 });

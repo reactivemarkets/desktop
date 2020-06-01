@@ -1,5 +1,4 @@
 import { EventEmitter } from "events";
-
 import { ITransport } from "./iTransport";
 
 export class InProcessTransport extends EventEmitter implements ITransport {

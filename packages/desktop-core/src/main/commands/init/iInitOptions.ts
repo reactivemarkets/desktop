@@ -1,4 +1,5 @@
-import { ConfigurationKind, Output } from "../../configuration";
+import { ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { Output } from "../../configuration";
 
 export interface IInitOptions {
     kind: ConfigurationKind;

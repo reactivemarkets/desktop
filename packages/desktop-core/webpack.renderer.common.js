@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 
 const config = {
@@ -13,12 +14,14 @@ const config = {
         extensions: [".ts", ".js"],
     },
     module: {
-        rules: [{
-            test: /\.ts?$/,
-            loader: "ts-loader",
-            exclude: /node_modules/,
-            sideEffects: true,
-        }],
+        rules: [
+            {
+                test: /\.ts?$/,
+                loader: "ts-loader",
+                exclude: /node_modules/,
+                sideEffects: true,
+            },
+        ],
     },
 };
 

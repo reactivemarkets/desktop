@@ -1,4 +1,4 @@
-import { IConfiguration } from "../configuration";
+import { IConfiguration } from "@reactivemarkets/desktop-types";
 
 export interface ILauncherService {
     /**

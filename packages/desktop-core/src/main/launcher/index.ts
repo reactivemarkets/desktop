@@ -10,6 +10,8 @@ import { ExternalLauncherService } from "./externalLauncherService";
 import { ILauncherService } from "./iLauncherService";
 import { NodeServiceLauncherService } from "./nodeServiceLauncherService";
 import { SessionConfigurationLauncherService } from "./sessionConfigurationLauncherService";
+import { TrayConfigurationLauncherService } from "./trayConfigurationLauncherService";
+import { trayService } from "../tray";
 
 const applicationLauncherService = new ApplicationLauncherService(logger, windowService);
 
@@ -21,10 +23,13 @@ const electronServiceLauncherService = new ElectronServiceLauncherService(logger
 
 const sessionConfigurationLauncherService = new SessionConfigurationLauncherService(logger, sessionService);
 
+const trayConfigurationLauncherService = new TrayConfigurationLauncherService(logger, trayService);
+
 export const launcherService: ILauncherService = new CompositeLauncherService(
     applicationLauncherService,
     electronServiceLauncherService,
     serviceLauncherService,
     sessionConfigurationLauncherService,
+    trayConfigurationLauncherService,
     externalLauncherService,
 );

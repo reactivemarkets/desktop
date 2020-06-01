@@ -1,6 +1,6 @@
 import fetch from "electron-fetch";
 
-import { IConfigurationParser } from "../parsers/iConfigurationParser";
+import { IConfigurationParser } from "../parsers";
 import { IConfigurationLoader } from "./iConfigurationLoader";
 
 export class RemoteFileConfigurationLoader<T> implements IConfigurationLoader<T> {
@@ -17,15 +17,14 @@ export class RemoteFileConfigurationLoader<T> implements IConfigurationLoader<T>
     }
 
     public async load(path: string): Promise<T[]> {
-        return fetch(path)
-            .then((response) => {
-                if (response.ok) {
-                    return response;
-                }
+        const response = await fetch(path);
 
-                throw Error(`Request failed with ${response.status}: ${response.statusText}`);
-            })
-            .then(async (response) => response.text())
-            .then((data) => this.parser.parse(data));
+        if (!response.ok) {
+            throw Error(`Request failed with ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.text();
+
+        return this.parser.parse(data);
     }
 }

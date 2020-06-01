@@ -1,12 +1,12 @@
 import { DesktopClient } from "./desktopClient";
 import { DesktopWindowClient } from "./desktopWindowClient";
 import { GlobalShortcutClient } from "./globalShortcutClient";
-import { IDesktopWindowClient } from "./iDesktopWindowClient";
-import { IGlobalShortcut } from "./iGlobalShortcut";
-import { ILogger } from "./iLogger";
-import { IRouter } from "./iRouter";
 import { LoggerClient } from "./loggerClient";
 import { RouterClient } from "./routerClient";
+import { RegistryClient } from "./registryClient";
+import { LauncherClient } from "./launcherClient";
+
+export * from "@reactivemarkets/desktop-types";
 
 export * from "./iDesktop";
 export * from "./iGlobalShortcut";
@@ -15,8 +15,10 @@ export * from "./iRouter";
 export * from "./iDesktopWindow";
 export * from "./Rectangle";
 
-export const desktopClient = new DesktopClient();
-export const globalShortcut: IGlobalShortcut = new GlobalShortcutClient(desktopClient);
-export const logger: ILogger = new LoggerClient(desktopClient);
-export const router: IRouter = new RouterClient(desktopClient);
-export const window: IDesktopWindowClient = new DesktopWindowClient(desktopClient);
+export const desktop = new DesktopClient();
+export const globalShortcut = new GlobalShortcutClient(desktop);
+export const launcher = new LauncherClient(desktop);
+export const logger = new LoggerClient(desktop);
+export const registry = new RegistryClient(desktop);
+export const router = new RouterClient(desktop);
+export const window = new DesktopWindowClient(desktop);

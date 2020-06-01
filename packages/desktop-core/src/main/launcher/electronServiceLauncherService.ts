@@ -1,16 +1,17 @@
 import {
-    ConfigurationKind,
-    IConfiguration,
-    IServiceConfiguration,
-    IWindowConfiguration,
-    ServiceHost,
     WellKnownNamespaces,
-} from "../configuration";
+    IConfiguration,
+    ConfigurationKind,
+    IServiceConfiguration,
+    ServiceHost,
+    IWindowConfiguration,
+} from "@reactivemarkets/desktop-types";
+
 import { ILogger } from "../logging";
 import { IWindowService } from "../windowing";
 
 import { ILauncherService } from "./iLauncherService";
-import { normalize } from "./normalize";
+import { normalizeUrl } from "./normalize";
 
 export class ElectronServiceLauncherService implements ILauncherService {
     private readonly logger: ILogger;
@@ -34,21 +35,21 @@ export class ElectronServiceLauncherService implements ILauncherService {
     public async launch(configuration: IConfiguration) {
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
-        const serviceConfiguration = configuration.spec as IServiceConfiguration;
+        const { affinity, main } = configuration.spec as IServiceConfiguration;
 
-        const servicePath = normalize(serviceConfiguration.main);
+        const servicePath = normalizeUrl(main);
 
         this.logger.verbose(`launching ${namespace}/${name} from ${servicePath}`);
 
         const windowConfiguration: IWindowConfiguration = {
-            affinity: serviceConfiguration.affinity,
+            affinity,
             show: false,
         };
 
-        return this.windowFactory.createWindow(windowConfiguration).then(async (window) => {
-            window.loadURL(servicePath);
+        const window = await this.windowFactory.createWindow(windowConfiguration);
 
-            return Promise.resolve(configuration);
-        });
+        await window.loadURL(servicePath);
+
+        return configuration;
     }
 }

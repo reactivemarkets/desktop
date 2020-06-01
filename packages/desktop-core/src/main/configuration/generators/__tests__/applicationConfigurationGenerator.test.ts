@@ -1,4 +1,4 @@
-import { ConfigurationKind } from "../../configurationKind";
+import { ConfigurationKind, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
 import { ApplicationConfigurationGenerator } from "../applicationConfigurationGenerator";
 
 describe("canGenerate", () => {
@@ -22,5 +22,23 @@ describe("canGenerate", () => {
 
             expect(generator.canGenerate(ConfigurationKind.Service)).toBe(false);
         });
+    });
+});
+
+describe("generate", () => {
+    test("should generate application config", async () => {
+        const generator = new ApplicationConfigurationGenerator();
+
+        const configuration = await generator.generate(ConfigurationKind.Application, "test", "http://url");
+
+        expect(configuration.kind).toBe(ConfigurationKind.Application);
+    });
+
+    test("should set namespace to default", async () => {
+        const generator = new ApplicationConfigurationGenerator();
+
+        const configuration = await generator.generate(ConfigurationKind.Application, "test", "http://url");
+
+        expect(configuration.metadata.namespace).toBe(WellKnownNamespaces.default);
     });
 });
