@@ -87,7 +87,7 @@
     "renamer": "^2.0.0",
     "response-time": "^2.3.2",
     "rimraf": "^3.0.2",
-    "ts-jest": "^26.0.0",
+    "ts-jest": "^26.1.0",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.3",
     "utf-8-validate": "^5.0.2",
