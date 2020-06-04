@@ -1,6 +1,6 @@
 import { app } from "electron";
 import * as path from "path";
-import * as url from "url";
+import { pathToFileURL } from "url";
 
 export const normalizePath = (mainPath: string) => {
     const modulePath = path.normalize(mainPath);
@@ -9,7 +9,9 @@ export const normalizePath = (mainPath: string) => {
     }
 
     const basePath = app.getAppPath();
+
     const resourcesPath = path.dirname(basePath);
+
     return path.join(resourcesPath, modulePath);
 };
 
@@ -22,5 +24,5 @@ export const normalizeUrl = (urlPath: string) => {
 
     const indexPath = path.join(modulePath, "index.html");
 
-    return url.pathToFileURL(indexPath).toString();
+    return pathToFileURL(indexPath).toString();
 };

@@ -1,5 +1,5 @@
+import { IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
 import { JsonConfigurationParser } from "../jsonConfigurationParser";
-import { IConfiguration, ConfigurationKind } from "../../../../common";
 
 describe("parse", () => {
     test("a document", () => {

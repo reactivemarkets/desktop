@@ -6,7 +6,7 @@
         "forceConsistentCasingInFileNames": true,
         "incremental": true,
         "jsx": "react",
-        "module": "esnext",
+        "module": "CommonJS",
         "moduleResolution": "node",
         "noImplicitAny": true,
         "noImplicitThis": true,
