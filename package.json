@@ -103,7 +103,7 @@
     "renamer": "^2.0.0",
     "response-time": "^2.3.2",
     "rimraf": "^3.0.2",
-    "terser-webpack-plugin": "^3.0.2",
+    "terser-webpack-plugin": "^3.0.3",
     "ts-jest": "^26.1.0",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.3",
