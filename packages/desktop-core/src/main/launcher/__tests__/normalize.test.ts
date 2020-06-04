@@ -7,6 +7,27 @@ jest.mock("electron", () => {
         },
     };
 });
+jest.mock("path", () => {
+    return {
+        dirname: jest.fn().mockReturnValue("/user"),
+        isAbsolute: jest.fn().mockImplementation((p: string) => {
+            return p.startsWith("/");
+        }),
+        normalize: jest.fn().mockImplementation((p) => {
+            return p;
+        }),
+        join: jest.fn().mockImplementation((...paths: string[]) => {
+            return paths.join("/");
+        }),
+    };
+});
+jest.mock("url", () => {
+    return {
+        pathToFileURL: jest.fn().mockImplementation((path: string) => {
+            return "file://" + path;
+        }),
+    };
+});
 
 describe("normalize", () => {
     describe("normalizePath", () => {

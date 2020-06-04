@@ -1,4 +1,4 @@
-import { IConfiguration, ConfigurationKind } from "../../../../common";
+import { IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
 import { YamlConfigurationParser } from "../yamlConfigurationParser";
 
 describe("parse", () => {
