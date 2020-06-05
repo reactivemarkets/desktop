@@ -1,14 +1,29 @@
-import { desktop, registry, IConfiguration } from "@reactivemarkets/desktop-sdk";
+import {
+    desktop,
+    registry,
+    IConfiguration,
+    WellKnownNamespaces,
+    ConfigurationKind,
+} from "@reactivemarkets/desktop-sdk";
+import { from } from "ix/iterable";
+import { orderBy, thenBy } from "ix/iterable/operators";
 import { observable, action, computed } from "mobx";
 import { IApplicationsStore } from "./iApplicationsStore";
 import { IApplication } from "./iApplication";
 
 export class ObservableApplicationsStore implements IApplicationsStore {
-    public readonly applicationMap = observable.map<string, IApplication>(undefined, { deep: false });
+    public readonly applicationMap = observable.map<string, IApplication>([], { deep: false });
 
     @computed
     public get applications() {
-        return Array.from(this.applicationMap.values());
+        const values = this.applicationMap.values();
+
+        const sorted = from(values).pipe(
+            orderBy((item) => item.namespace),
+            thenBy((item) => item.name),
+        );
+
+        return Array.from(sorted);
     }
 
     public load() {
@@ -30,12 +45,20 @@ export class ObservableApplicationsStore implements IApplicationsStore {
 
     @action
     private readonly addApplication = (configuration: IConfiguration) => {
-        const { metadata } = configuration;
+        const { kind, metadata } = configuration;
+        if (kind !== ConfigurationKind.Application) {
+            return;
+        }
+        const { namespace, ...rest } = metadata;
+        if (namespace === WellKnownNamespaces.desktop) {
+            return;
+        }
 
         const key = this.getKey(configuration);
 
         this.applicationMap.set(key, {
-            ...metadata,
+            ...rest,
+            namespace: namespace ?? WellKnownNamespaces.default,
             configuration,
             key,
         });

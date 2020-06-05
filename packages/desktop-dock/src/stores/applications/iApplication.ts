@@ -5,5 +5,5 @@ export interface IApplication {
     readonly key: string;
     readonly description?: string;
     readonly name: string;
-    readonly namespace?: string;
+    readonly namespace: string;
 }

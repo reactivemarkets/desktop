@@ -31,6 +31,7 @@ export interface IWindowConfiguration {
     readonly title?: string;
     readonly titleBarStyle?: "default" | "hidden" | "hiddenInset" | "customButtonsOnHover";
     readonly transparent?: boolean;
+    readonly useContentSize?: boolean;
     readonly width?: number;
     readonly x?: number;
     readonly y?: number;

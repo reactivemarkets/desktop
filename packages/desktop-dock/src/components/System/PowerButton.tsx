@@ -1,6 +1,6 @@
 import { desktop } from "@reactivemarkets/desktop-sdk";
-import { Power } from "mdi-material-ui";
 import * as React from "react";
+import { Power } from "mdi-material-ui";
 import ConfirmButton from "./ConfirmButton";
 
 export class PowerButton extends React.PureComponent {

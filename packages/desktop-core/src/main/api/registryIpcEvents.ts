@@ -32,11 +32,11 @@ export const registryIpcEvents = () => {
             })
             .filter((r) => r.kind === ConfigurationKind.Service);
     });
-    ipcMain.handle(ReservedChannels.registry_register, async (_, configuration: IConfiguration) => {
-        return await registryService.register(configuration);
+    ipcMain.handle(ReservedChannels.registry_register, (_, configuration: IConfiguration) => {
+        return registryService.register(configuration);
     });
-    ipcMain.handle(ReservedChannels.registry_unregister, async (_, configuration: IConfiguration) => {
-        return await registryService.unregister(configuration);
+    ipcMain.handle(ReservedChannels.registry_unregister, (_, configuration: IConfiguration) => {
+        return registryService.unregister(configuration);
     });
     ipcMain.on(`${ReservedChannels.registry_events}/off`, (event, registryEvent) => {
         const key = `${event.sender.id}/${registryEvent}`;

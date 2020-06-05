@@ -2,19 +2,19 @@ import { ListItem, ListItemText } from "@material-ui/core";
 import { launcher } from "@reactivemarkets/desktop-sdk";
 import * as React from "react";
 import { ListChildComponentProps } from "react-window";
-import { ISearchResult } from "../../stores";
+import { IApplication } from "../../stores";
 
-export class SearchResultItem extends React.Component<ListChildComponentProps> {
+export class SearchCategoryItem extends React.Component<ListChildComponentProps> {
     public render() {
         const { data, index, style } = this.props;
 
-        const { item } = data[index] as ISearchResult;
+        const { configuration } = data[index] as IApplication;
 
-        const { name, description } = item;
+        const { name } = configuration.metadata;
 
         return (
             <ListItem style={style} button divider dense onClick={this.onClick}>
-                <ListItemText primary={name} secondary={description} />
+                <ListItemText primary={name} />
             </ListItem>
         );
     }
@@ -23,9 +23,9 @@ export class SearchResultItem extends React.Component<ListChildComponentProps> {
         try {
             const { data, index } = this.props;
 
-            const { item } = data[index] as ISearchResult;
+            const { configuration } = data[index] as IApplication;
 
-            await launcher.launch(item.configuration);
+            await launcher.launch(configuration);
         } catch (error) {
             console.error(`Failed to launch application: ${error}`);
         }
