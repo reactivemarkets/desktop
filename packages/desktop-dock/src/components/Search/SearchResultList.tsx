@@ -1,24 +1,27 @@
 import { inject, observer } from "mobx-react";
 import * as React from "react";
-import { IApplicationsStore } from "../../stores";
+import { FixedSizeList } from "react-window";
+import { ISearchStore } from "../../stores";
 import { SearchResultItem } from "./SearchResultItem";
 
 interface ISearchResultListProps {
-    readonly applicationsStore?: IApplicationsStore;
+    readonly height: number;
+    readonly searchStore?: ISearchStore;
+    readonly width: number;
 }
 
-@inject("applicationsStore")
+@inject("searchStore")
 @observer
 export class SearchResultList extends React.Component<ISearchResultListProps> {
-    public componentDidMount() {
-        this.props.applicationsStore?.load();
-    }
-
     public render() {
-        const { applications } = this.props.applicationsStore!;
+        const { height, searchStore, width } = this.props;
 
-        return applications.map((application) => {
-            return <SearchResultItem key={application.key} application={application} />;
-        });
+        const { results } = searchStore!;
+
+        return (
+            <FixedSizeList height={height} itemCount={results.length} itemData={results} itemSize={60} width={width}>
+                {SearchResultItem}
+            </FixedSizeList>
+        );
     }
 }

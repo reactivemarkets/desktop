@@ -6,15 +6,15 @@ import { PowerButton } from "../System";
 export class AppShell extends React.PureComponent {
     public render() {
         return (
-            <>
-                <Box padding={1} display="flex" flex={1}>
-                    <Grid container wrap="nowrap">
+            <Box display="flex" flexDirection="column" flex={1}>
+                <Box padding={1}>
+                    <Grid className="drag" container wrap="nowrap">
                         <Search />
                         <PowerButton />
                     </Grid>
                 </Box>
                 <SearchResults />
-            </>
+            </Box>
         );
     }
 }

@@ -58,6 +58,7 @@ typings/
 .env
 
 # build output
+tsconfig.tsbuildinfo
 dist/
 installer/
 lib/

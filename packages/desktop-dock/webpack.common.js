@@ -80,8 +80,6 @@ const config = {
             inject: false,
             template,
             appMountId: "app",
-            headHtmlSnippet:
-                "<style>body { -webkit-app-region: drag; height: 100vh; overflow: hidden; user-select: none; } </style>",
             bodyHtmlSnippet: "<noscript>You need to enable JavaScript to run this app!</noscript>",
             lang: "en",
             minify: {

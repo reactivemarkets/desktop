@@ -1,5 +1,5 @@
 import { ITrayConfiguration } from "@reactivemarkets/desktop-types";
-import { app, Menu, Tray, shell } from "electron";
+import { app, Menu, Tray, shell, MenuItemConstructorOptions } from "electron";
 import { ILogger } from "../logging";
 import { ITrayService } from "./iTrayService";
 
@@ -19,7 +19,7 @@ export class DefaultTrayService implements ITrayService {
         try {
             const { icon = this.defaultIcon, documentationUrl = this.defaultDocumentationUrl } = configuration;
 
-            const contextMenu = Menu.buildFromTemplate([
+            const defaultMenu: MenuItemConstructorOptions[] = [
                 { label: "About Desktop", type: "normal", role: "about" },
                 { type: "separator" },
                 {
@@ -39,7 +39,9 @@ export class DefaultTrayService implements ITrayService {
                     },
                 },
                 { label: "Quit Desktop", type: "normal", role: "quit", accelerator: "CommandOrControl+Q" },
-            ]);
+            ];
+
+            const contextMenu = Menu.buildFromTemplate(defaultMenu);
 
             this.tray = new Tray(icon);
             this.tray.setIgnoreDoubleClickEvents(true);

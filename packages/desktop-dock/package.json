@@ -33,10 +33,14 @@
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@reactivemarkets/desktop-sdk": "file:../desktop-sdk",
+    "fuse.js": "^6.0.3",
+    "ix": "^3.0.2",
     "mdi-material-ui": "^6.15.0",
     "mobx": "5.15.4",
     "mobx-react": "6.2.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-virtualized-auto-sizer": "1.0.2",
+    "react-window": "1.8.5"
   }
 }
