@@ -27,29 +27,13 @@ export class DefaultTrayService implements ITrayService {
 
     public async configure(configuration: ITrayConfiguration) {
         try {
-            const { icon = this.defaultIcon, documentationUrl = this.defaultDocumentationUrl } = configuration;
+            const { icon = this.defaultIcon } = configuration;
 
-            const defaultMenu: MenuItemConstructorOptions[] = [
-                { label: "About Desktop", type: "normal", role: "about" },
-                { type: "separator" },
-                {
-                    label: "Documentation",
-                    click: this.openDocumentation(documentationUrl),
-                },
-                { type: "separator" },
-                {
-                    label: "Restart",
-                    type: "normal",
-                    accelerator: "CommandOrControl+R",
-                    click: this.restart,
-                },
-                { label: "Quit Desktop", type: "normal", role: "quit", accelerator: "CommandOrControl+Q" },
-            ];
+            const template = this.buildTemplate(configuration);
 
-            const contextMenu = Menu.buildFromTemplate(defaultMenu);
+            const contextMenu = Menu.buildFromTemplate(template);
 
             this.tray = new Tray(icon);
-            this.tray.setIgnoreDoubleClickEvents(true);
             this.tray.setContextMenu(contextMenu);
 
             this.logger.info("Configured tray menu");
@@ -61,6 +45,27 @@ export class DefaultTrayService implements ITrayService {
             return Promise.reject(error);
         }
     }
+
+    private readonly buildTemplate = (configuration: ITrayConfiguration): MenuItemConstructorOptions[] => {
+        const { documentationUrl = this.defaultDocumentationUrl } = configuration;
+
+        return [
+            { label: "About Desktop", type: "normal", role: "about" },
+            { type: "separator" },
+            {
+                label: "Documentation",
+                click: this.openDocumentation(documentationUrl),
+            },
+            { type: "separator" },
+            {
+                label: "Restart",
+                type: "normal",
+                accelerator: "CommandOrControl+R",
+                click: this.restart,
+            },
+            { label: "Quit Desktop", type: "normal", role: "quit", accelerator: "CommandOrControl+Q" },
+        ];
+    };
 
     private readonly openDocumentation = (documentationUrl: string) => async () => {
         try {
