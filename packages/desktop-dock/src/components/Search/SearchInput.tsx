@@ -1,7 +1,7 @@
 import { TextField } from "@material-ui/core";
 import { observer, inject } from "mobx-react";
 import * as React from "react";
-import { IFocusStore, IResizerStore, ISearchStore } from "../../stores";
+import { IFocusStore, IResizerStore, ISearchStore, IApplication } from "../../stores";
 
 interface ISearchInputProps {
     readonly focusStore?: IFocusStore;
@@ -58,6 +58,21 @@ export class SearchInput extends React.Component<ISearchInputProps> {
                 this.props.searchStore?.clear();
                 this.props.resizerStore?.collapse();
                 break;
+            case "Enter": {
+                const { results } = this.props.searchStore!;
+                if (results.length > 0) {
+                    this.launch(results[0].item);
+                }
+                break;
+            }
+        }
+    };
+
+    private readonly launch = async (application: IApplication) => {
+        try {
+            await application.launch();
+        } catch (error) {
+            console.error(`Failed to launch application: ${error}`);
         }
     };
 }
