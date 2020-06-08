@@ -1,5 +1,4 @@
 import { ListItem, ListItemText } from "@material-ui/core";
-import { launcher } from "@reactivemarkets/desktop-sdk";
 import * as React from "react";
 import { ListChildComponentProps } from "react-window";
 import { ISearchResult } from "../../stores";
@@ -25,7 +24,7 @@ export class SearchResultItem extends React.Component<ListChildComponentProps> {
 
             const { item } = data[index] as ISearchResult;
 
-            await launcher.launch(item.configuration);
+            await item.launch();
         } catch (error) {
             console.error(`Failed to launch application: ${error}`);
         }
