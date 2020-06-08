@@ -89,7 +89,7 @@ export const handler = (options: IStartOptions) => {
                             logger.info(`Launched ${config.kind}: ${config.metadata.name}`);
                         })
                         .catch((error) => {
-                            logger.error(`Error launching ${c.metadata.name}: ${error}`);
+                            logger.error(`Failed to launch ${c.metadata.name}: ${error}`);
                         });
                 });
 

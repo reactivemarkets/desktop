@@ -1,4 +1,4 @@
-import { ConfigurationKind, IConfiguration, ServiceHost, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
+import { ConfigurationKind, IConfiguration, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
 import { IConfigurationGenerator } from "./iConfigurationGenerator";
 
 export class ServiceConfigurationGenerator implements IConfigurationGenerator {
@@ -16,7 +16,6 @@ export class ServiceConfigurationGenerator implements IConfigurationGenerator {
             },
             spec: {
                 affinity: "service host",
-                host: ServiceHost.Electron,
                 main: `${name}.asar`,
                 options: {
                     config: "value",
