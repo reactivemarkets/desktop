@@ -37,6 +37,8 @@ export class ObservableApplicationsStore implements IApplicationsStore {
             .listApplications()
             .then((applications) => {
                 applications.forEach(this.addApplication);
+
+                console.log(`Registered ${applications.length} applications`);
             })
             .catch((error) => {
                 console.error(`Failed to get list of applications: ${error}`);

@@ -10,8 +10,9 @@ metadata:
   description: Creates a dock to launch new windows.
   namespace: desktop
 spec:
-  url: dock.asar
+  url: http://localhost:8080
   window:
+    alwaysOnTop: true
     backgroundColor: "#303030"
     center: true
     frame: false
@@ -22,14 +23,3 @@ spec:
     title: Dock
     useContentSize: true
     width: 680
----
-kind: application
-metadata:
-  name: Crossfire registry
-  description: Load the crossfire registry.
-  namespace: crossfire
-spec:
-  url: https://crossfire-dev.reactivemarkets.net/desktop/registry
-  window:
-    center: true
-    frame: false

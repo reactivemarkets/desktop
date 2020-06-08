@@ -16,6 +16,7 @@ metadata:
 spec:
   url: dock.asar
   window:
+    alwaysOnTop: true
     backgroundColor: "#303030"
     center: true
     frame: false
