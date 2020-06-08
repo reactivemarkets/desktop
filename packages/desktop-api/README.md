@@ -14,7 +14,6 @@ metadata:
   description: Exposes a REST api and websocket endpoint for desktop
   namespace: desktop
 spec:
-  host: node
   main: api.asar
   options:
     host: localhost

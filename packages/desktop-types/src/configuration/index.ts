@@ -9,5 +9,4 @@ export * from "./iServiceOptionsConfiguration";
 export * from "./iSessionConfiguration";
 export * from "./iTrayConfiguration";
 export * from "./iWindowConfiguration";
-export * from "./serviceHost";
 export * from "./wellKnownNamespaces";

@@ -1,4 +1,4 @@
-import { IWindowConfiguration } from "@reactivemarkets/desktop-types";
+import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { BrowserWindow } from "electron";
 
 export interface IWindowService {
@@ -18,5 +18,5 @@ export interface IWindowService {
      * Create a BrowserWindow from the given configuration.
      * @param configuration The window configuration
      */
-    createWindow(configuration?: IWindowConfiguration): Promise<BrowserWindow>;
+    createWindow(configuration: IConfiguration): Promise<BrowserWindow>;
 }

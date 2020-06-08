@@ -2,7 +2,6 @@ import {
     IConfiguration,
     ConfigurationKind,
     IServiceConfiguration,
-    ServiceHost,
     WellKnownNamespaces,
 } from "@reactivemarkets/desktop-types";
 import { ILogger } from "../logging";
@@ -20,14 +19,8 @@ export class NodeServiceLauncherService implements ILauncherService {
         this.processFork = processFork;
     }
 
-    public canLaunch = (configuration: IConfiguration) => {
-        if (configuration.kind !== ConfigurationKind.Service) {
-            return false;
-        }
-
-        const serviceConfiguration = configuration.spec as IServiceConfiguration;
-
-        return serviceConfiguration.host === ServiceHost.Node;
+    public canLaunch = ({ kind }: IConfiguration) => {
+        return kind === ConfigurationKind.Service;
     };
 
     public async launch(configuration: IConfiguration) {
