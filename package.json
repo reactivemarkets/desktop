@@ -80,7 +80,7 @@
     "electron-installer-snap": "^5.1.0",
     "electron-installer-windows": "^3.0.0",
     "electron-packager": "^14.2.1",
-    "eslint": "^7.1.0",
+    "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-prettier": "^3.1.3",
