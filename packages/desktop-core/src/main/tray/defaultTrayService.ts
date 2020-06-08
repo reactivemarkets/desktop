@@ -1,16 +1,26 @@
 import { ITrayConfiguration } from "@reactivemarkets/desktop-types";
-import { app, Menu, Tray, shell, MenuItemConstructorOptions } from "electron";
+import { app, dialog, Menu, Tray, MenuItemConstructorOptions } from "electron";
 import { ILogger } from "../logging";
 import { ITrayService } from "./iTrayService";
+import { IShellService } from "../shell";
+
+interface ITrayServiceOptions {
+    readonly logger: ILogger;
+    readonly shellService: IShellService;
+    readonly defaultIcon: string;
+    readonly defaultDocumentationUrl: string;
+}
 
 export class DefaultTrayService implements ITrayService {
     private tray?: Tray;
     private readonly defaultDocumentationUrl: string;
     private readonly defaultIcon: string;
     private readonly logger: ILogger;
+    private readonly shellService: IShellService;
 
-    public constructor(logger: ILogger, defaultIcon: string, defaultDocumentationUrl: string) {
+    public constructor({ logger, shellService, defaultIcon, defaultDocumentationUrl }: ITrayServiceOptions) {
         this.logger = logger;
+        this.shellService = shellService;
         this.defaultIcon = defaultIcon;
         this.defaultDocumentationUrl = defaultDocumentationUrl;
     }
@@ -24,19 +34,14 @@ export class DefaultTrayService implements ITrayService {
                 { type: "separator" },
                 {
                     label: "Documentation",
-                    click: async () => {
-                        await shell.openExternal(documentationUrl);
-                    },
+                    click: this.openDocumentation(documentationUrl),
                 },
                 { type: "separator" },
                 {
                     label: "Restart",
                     type: "normal",
                     accelerator: "CommandOrControl+R",
-                    click: () => {
-                        app.relaunch();
-                        app.exit();
-                    },
+                    click: this.restart,
                 },
                 { label: "Quit Desktop", type: "normal", role: "quit", accelerator: "CommandOrControl+Q" },
             ];
@@ -56,4 +61,20 @@ export class DefaultTrayService implements ITrayService {
             return Promise.reject(error);
         }
     }
+
+    private readonly openDocumentation = (documentationUrl: string) => async () => {
+        try {
+            await this.shellService.openExternal(documentationUrl);
+        } catch (error) {
+            const title = "Can't open external url";
+            const content = `${error}`;
+            this.logger.error(`${title}: ${content}`);
+            dialog.showErrorBox(title, content);
+        }
+    };
+
+    private readonly restart = () => {
+        app.relaunch();
+        app.exit();
+    };
 }
