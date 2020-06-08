@@ -4,6 +4,7 @@ import { IApplicationsStore, IApplication } from "../../applications";
 
 export class ApplicationsSearchProvider implements ISearchProvider {
     private readonly applicationsStore: IApplicationsStore;
+    private readonly provider = "application";
 
     public constructor(applicationsStore: IApplicationsStore) {
         this.applicationsStore = applicationsStore;
@@ -21,24 +22,27 @@ export class ApplicationsSearchProvider implements ISearchProvider {
         }
 
         const fuse = new Fuse(applications, {
-            distance: 1000,
-            includeMatches: true,
+            distance: 10000,
             includeScore: true,
             shouldSort: false,
             useExtendedSearch: true,
-            threshold: 0.6,
             keys: ["name", "description", "namespace"],
         });
 
         const results = fuse.search(searchTerm);
 
-        return Promise.resolve(results);
+        const providerResults = results.map((r) => ({
+            ...r,
+            provider: this.provider,
+        }));
+
+        return Promise.resolve(providerResults);
     }
 
     private readonly toSearchResult = (application: IApplication) => {
         return {
             item: application,
-            refIndex: 0,
+            provider: this.provider,
             score: 0,
         };
     };

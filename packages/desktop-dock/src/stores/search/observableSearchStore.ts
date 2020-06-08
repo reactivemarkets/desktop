@@ -24,19 +24,23 @@ export class ObservableSearchStore implements ISearchStore {
     }
 
     @action
-    public search(searchTerm: string) {
+    public search(searchTerm = "") {
+        console.log(`Searching for: "${searchTerm}"`);
+
         this.searchTerm = searchTerm;
 
         this.searchProvider
             .search(searchTerm)
             .then((results) => {
-                runInAction(() => {
+                runInAction("ObservableSearchStore.Results", () => {
                     this.results.replace(results);
+                    console.log(`Replacing results with: ${results.length}`);
                 });
             })
             .catch((error) => {
                 runInAction("ObservableSearchStore.Error", () => {
                     this.error = `${error}`;
+                    console.error("Error searching for items", error);
                 });
             });
     }

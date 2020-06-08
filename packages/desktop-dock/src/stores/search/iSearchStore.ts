@@ -9,5 +9,5 @@ export interface ISearchStore {
 
     clear(): void;
 
-    search(searchTerm: string): void;
+    search(searchTerm?: string): void;
 }
