@@ -1,4 +1,4 @@
-import { IConfiguration, ConfigurationKind, ServiceHost } from "@reactivemarkets/desktop-types";
+import { IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
 import { mock } from "jest-mock-extended";
 
 import { ILogger } from "../../logging";
@@ -42,7 +42,6 @@ describe("canLaunch", () => {
                     name: "name",
                 },
                 spec: {
-                    host: ServiceHost.Electron,
                     main: "service.asar",
                 },
             };
