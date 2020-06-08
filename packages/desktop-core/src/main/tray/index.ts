@@ -1,6 +1,7 @@
 import { app } from "electron";
 import * as path from "path";
 import { logger } from "../logging";
+import { shellService } from "../shell";
 import { ITrayService } from "./iTrayService";
 import { DefaultTrayService } from "./defaultTrayService";
 
@@ -13,4 +14,9 @@ const trayIcon = path.join(appPath, icon);
 const defaultDocumentationUrl = "https://desktop.reactivemarkets.com";
 
 export * from "./iTrayService";
-export const trayService: ITrayService = new DefaultTrayService(logger, trayIcon, defaultDocumentationUrl);
+export const trayService: ITrayService = new DefaultTrayService({
+    logger,
+    shellService,
+    defaultIcon: trayIcon,
+    defaultDocumentationUrl,
+});
