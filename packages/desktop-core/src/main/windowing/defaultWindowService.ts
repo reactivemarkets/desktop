@@ -1,4 +1,4 @@
-import { IApplicationConfiguration, IConfiguration } from "@reactivemarkets/desktop-types";
+import { IConfiguration, IApplicationConfiguration } from "@reactivemarkets/desktop-types";
 import { BrowserWindow } from "electron";
 import { IWindowFactory } from "./iWindowFactory";
 import { IWindowService } from "./iWindowService";
@@ -20,9 +20,8 @@ export class DefaultWindowService implements IWindowService {
     }
 
     public async createWindow(configuration: IConfiguration) {
-        const { window } = configuration.spec as IApplicationConfiguration;
-
-        return this.windowFactory.createWindow(window).then((window) => {
+        const spec = configuration.spec as IApplicationConfiguration;
+        return this.windowFactory.createWindow(spec).then((window) => {
             const { id } = window;
 
             this.registry.set(id, window);
