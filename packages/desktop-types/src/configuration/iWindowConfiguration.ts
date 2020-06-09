@@ -1,6 +1,5 @@
 export interface IWindowConfiguration {
     readonly acceptFirstMouse?: boolean;
-    readonly affinity?: string;
     readonly alwaysOnTop?: boolean;
     readonly autoHideMenuBar?: boolean;
     readonly backgroundColor?: string;

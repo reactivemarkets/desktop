@@ -13,7 +13,26 @@ const appPath = app.getAppPath();
 
 const preload = path.join(appPath, "preload.js");
 
-const windowFactory = new BrowserWindowFactory(preload);
+const windowFactory = new BrowserWindowFactory({
+    allowRunningInsecureContent: false,
+    contextIsolation: true,
+    devTools: true,
+    enableRemoteModule: false,
+    enableWebSQL: false,
+    experimentalFeatures: false,
+    navigateOnDragDrop: false,
+    nodeIntegration: false,
+    nodeIntegrationInSubFrames: false,
+    nodeIntegrationInWorker: false,
+    plugins: false,
+    preload,
+    safeDialogs: true,
+    sandbox: true,
+    spellcheck: true,
+    textAreasAreResizable: false,
+    webSecurity: true,
+    webviewTag: false,
+});
 
 const defaultService = new DefaultWindowService(windowFactory);
 

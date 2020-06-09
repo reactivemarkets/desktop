@@ -1,41 +1,28 @@
-import { IWindowConfiguration } from "@reactivemarkets/desktop-types";
+import { IApplicationConfiguration } from "@reactivemarkets/desktop-types";
 import { BrowserWindow, BrowserWindowConstructorOptions, WebPreferences } from "electron";
 import { IWindowFactory } from "./iWindowFactory";
 
 export class BrowserWindowFactory implements IWindowFactory {
-    private readonly preload: string;
+    private readonly defaultWebPreferences: WebPreferences;
 
-    public constructor(preload: string) {
-        this.preload = preload;
+    public constructor(defaultWebPreferences: WebPreferences) {
+        this.defaultWebPreferences = defaultWebPreferences;
     }
 
-    public createWindow = async (configuration?: IWindowConfiguration) => {
-        const webPreferences: WebPreferences = {
-            allowRunningInsecureContent: false,
-            contextIsolation: true,
-            enableRemoteModule: false,
-            enableWebSQL: false,
-            nodeIntegration: false,
-            nodeIntegrationInSubFrames: false,
-            nodeIntegrationInWorker: false,
-            preload: this.preload,
-            safeDialogs: true,
-            sandbox: true,
-            textAreasAreResizable: false,
-            webSecurity: true,
-        };
+    public createWindow = async (configuration?: IApplicationConfiguration) => {
         let options: BrowserWindowConstructorOptions = {
-            webPreferences,
+            webPreferences: this.defaultWebPreferences,
         };
 
         if (configuration !== undefined) {
-            const { affinity, ...rest } = configuration;
+            const { affinity, devTools, window } = configuration;
 
             options = {
-                ...rest,
+                ...window,
                 webPreferences: {
-                    ...webPreferences,
+                    ...this.defaultWebPreferences,
                     affinity,
+                    devTools,
                 },
             };
         }

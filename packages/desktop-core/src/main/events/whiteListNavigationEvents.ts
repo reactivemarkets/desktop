@@ -24,7 +24,9 @@ export const whiteListNavigationEvents = (app: App) => {
 
         contents.on("will-attach-webview", (__, webPreferences) => {
             delete webPreferences.preload;
+
             webPreferences.nodeIntegration = false;
+            webPreferences.sandbox = true;
         });
 
         contents.on("new-window", async (event, navigationUrl) => {
