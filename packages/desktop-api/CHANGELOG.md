@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/reactivemarkets/desktop/compare/v0.6.1...v0.7.0) (2020-06-10)
+
+
+### Features
+
+* **core:** adding events for windows ([47acefd](https://github.com/reactivemarkets/desktop/commit/47acefd9d29b7663001df790c0b6513f41854ceb))
+* **core:** adding storage provisioners ([1fcf06e](https://github.com/reactivemarkets/desktop/commit/1fcf06e8460a99d6ad91686d0d544f09046486ac))
+
+
+
+
+
 # [0.6.0](https://github.com/reactivemarkets/desktop/compare/v0.5.2...v0.6.0) (2020-06-04)
 
 

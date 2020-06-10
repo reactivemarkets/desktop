@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/reactivemarkets/desktop/compare/v0.6.1...v0.7.0) (2020-06-10)
+
+
+### Features
+
+* **dock:** adding search to dock ([c6d6d39](https://github.com/reactivemarkets/desktop/commit/c6d6d390a7348e6c4be15ce40dc1ec28d8bb843b))
+
+
+
+
+
 ## [0.6.1](https://github.com/reactivemarkets/desktop/compare/v0.6.0...v0.6.1) (2020-06-04)
 
 
