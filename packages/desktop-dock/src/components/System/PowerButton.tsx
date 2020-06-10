@@ -6,7 +6,7 @@ import ConfirmButton from "./ConfirmButton";
 export class PowerButton extends React.PureComponent {
     public render() {
         return (
-            <ConfirmButton onClick={this.onClick} title="shutdown">
+            <ConfirmButton onClick={this.onClick} title="Shutdown">
                 <Power fontSize="small" />
             </ConfirmButton>
         );

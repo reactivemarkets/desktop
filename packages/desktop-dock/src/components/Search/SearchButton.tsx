@@ -1,4 +1,4 @@
-import { IconButton } from "@material-ui/core";
+import { IconButton, Tooltip } from "@material-ui/core";
 import { Magnify } from "mdi-material-ui";
 import { inject } from "mobx-react";
 import * as React from "react";
@@ -16,9 +16,11 @@ interface ISearchButtonProps {
 export class SearchButton extends React.PureComponent<ISearchButtonProps> {
     public render() {
         return (
-            <IconButton onClick={this.onClick}>
-                <Magnify fontSize="small" />
-            </IconButton>
+            <Tooltip title="Search" placement="right">
+                <IconButton onClick={this.onClick}>
+                    <Magnify fontSize="small" />
+                </IconButton>
+            </Tooltip>
         );
     }
 
