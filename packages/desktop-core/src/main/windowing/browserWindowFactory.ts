@@ -28,6 +28,9 @@ export class BrowserWindowFactory implements IWindowFactory {
         }
 
         const window = new BrowserWindow(options);
+        if (spec?.contentProtection !== undefined) {
+            window.setContentProtection(spec.contentProtection);
+        }
 
         return Promise.resolve(window);
     };
