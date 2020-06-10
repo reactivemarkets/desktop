@@ -15,13 +15,14 @@ export class BrowserWindowFactory implements IWindowFactory {
         };
 
         if (spec !== undefined) {
-            const { window, ...rest } = spec;
+            const { affinity, devTools = true, window } = spec;
 
             options = {
                 ...window,
                 webPreferences: {
-                    ...rest,
                     ...this.defaultWebPreferences,
+                    affinity,
+                    devTools,
                 },
             };
         }
