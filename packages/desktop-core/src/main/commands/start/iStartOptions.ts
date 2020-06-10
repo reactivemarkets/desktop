@@ -1,4 +1,4 @@
 interface IStartOptions {
-    file?: string[];
-    url?: string[];
+    readonly file?: string[];
+    readonly url?: string[];
 }

@@ -8,7 +8,7 @@ import { launcherService } from "../../launcher";
 import { logger } from "../../logging";
 import { registryService } from "../../registry";
 import { configurationGenerator, configurationLoader } from "../../configuration";
-import { buildAppMenu } from "../../menu";
+import { registerApplicationMenu } from "../../menu";
 
 export const handler = (options: IStartOptions) => {
     logger.verbose("Start command ran.");
@@ -23,15 +23,16 @@ export const handler = (options: IStartOptions) => {
         app.setAsDefaultProtocolClient("desktop");
         registerIpcEventHandlers();
         registerApplicationEventHandlers(app);
-        buildAppMenu();
+        registerApplicationMenu();
 
         const onReady = app.whenReady();
 
         const configPromises = new Array<Promise<void>>();
 
-        logger.verbose("Loading any urls");
         const urls = options.url;
         if (urls !== undefined) {
+            logger.verbose("Loading urls specified", urls);
+
             const configFiles = urls.map(async (url) => {
                 const configuration = await configurationGenerator.generate(ConfigurationKind.Application, url, url);
 
@@ -43,15 +44,16 @@ export const handler = (options: IStartOptions) => {
             configPromises.push(...configFiles);
         }
 
-        logger.verbose("Loading any configuration files");
         const files = options.file;
         if (files !== undefined) {
+            logger.verbose("Loading configuration files", files);
+
             const configFiles = files.map(async (f) => {
                 const configurationArray = await configurationLoader.load(f);
 
                 const promises = configurationArray.map((configuration) => {
                     return registryService.register(configuration).catch((error) => {
-                        logger.warn(`failed to register config: ${error}`);
+                        logger.warn(`Failed to register config: ${error}`);
                     });
                 });
 

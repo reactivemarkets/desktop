@@ -1,6 +1,6 @@
 import * as yargs from "yargs";
 
-import { cacheModule, initModule, startModule } from "../../commands";
+import { clearModule, initModule, startModule } from "../../commands";
 
 const columnWidth = Math.min(yargs.terminalWidth(), 120);
 
@@ -11,7 +11,7 @@ const columnWidth = Math.min(yargs.terminalWidth(), 120);
  */
 export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
     return yargs
-        .command(cacheModule)
+        .command(clearModule)
         .command(initModule)
         .command(startModule)
         .demandCommand(1, "Specify at least 1 command.")

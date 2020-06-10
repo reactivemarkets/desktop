@@ -2,7 +2,7 @@ import { Menu, dialog } from "electron";
 import { shellService } from "../shell";
 import { logger } from "../logging";
 
-export const buildAppMenu = () => {
+export const registerApplicationMenu = () => {
     if (process.platform !== "darwin") {
         Menu.setApplicationMenu(null);
 
