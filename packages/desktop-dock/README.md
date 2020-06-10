@@ -16,11 +16,12 @@ metadata:
 spec:
   url: dock.asar
   window:
-    alwaysOnTop: true
     backgroundColor: "#303030"
     center: true
     frame: false
+    fullscreenable: false
     height: 60
+    maximisable: false
     minHeight: 60
     minWidth: 400
     title: Dock

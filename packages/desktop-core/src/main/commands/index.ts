@@ -1,3 +1,3 @@
-export * from "./cache";
+export * from "./clear";
 export * from "./init";
 export * from "./start";
