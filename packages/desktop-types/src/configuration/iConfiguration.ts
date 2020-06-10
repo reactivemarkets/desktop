@@ -1,17 +1,19 @@
 import { ConfigurationKind } from "./configurationKind";
-import { IApplicationConfiguration } from "./iApplicationConfiguration";
-import { IExternalConfiguration } from "./iExternalConfiguration";
+import { IApplicationSpecification } from "./iApplicationSpecification";
+import { IExternalSpecification } from "./iExternalSpecification";
 import { IMetadata } from "./iMetadata";
-import { IServiceConfiguration } from "./iServiceConfiguration";
-import { ISessionConfiguration } from "./iSessionConfiguration";
-import { ITrayConfiguration } from "./iTrayConfiguration";
+import { IServiceSpecification } from "./iServiceSpecification";
+import { ISessionSpecification } from "./iSessionSpecification";
+import { IStorageSpecification } from "./iStorageSpecification";
+import { ITraySpecification } from "./iTraySpecification";
 
 type Spec =
-    | IApplicationConfiguration
-    | IExternalConfiguration
-    | IServiceConfiguration
-    | ISessionConfiguration
-    | ITrayConfiguration;
+    | IApplicationSpecification
+    | IExternalSpecification
+    | IServiceSpecification
+    | ISessionSpecification
+    | IStorageSpecification
+    | ITraySpecification;
 
 export interface IConfiguration {
     readonly apiVersion?: string;

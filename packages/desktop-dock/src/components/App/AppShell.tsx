@@ -7,8 +7,8 @@ export class AppShell extends React.PureComponent {
     public render() {
         return (
             <Box display="flex" flexDirection="column" flex={1}>
-                <Box padding={1}>
-                    <Grid className="drag" container wrap="nowrap">
+                <Box className="drag" padding={1}>
+                    <Grid container wrap="nowrap">
                         <Search />
                         <PowerButton />
                     </Grid>

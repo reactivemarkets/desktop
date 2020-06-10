@@ -1,9 +1,9 @@
-import { ISessionConfiguration } from "@reactivemarkets/desktop-types";
+import { ISessionSpecification } from "@reactivemarkets/desktop-types";
 
 export interface ISessionService {
     /**
-     * Configure the session based on the given configuration.
-     * @param configuration The session configuration
+     * Configure the session based on the given specification.
+     * @param spec The session specification
      */
-    configure(configuration: ISessionConfiguration): Promise<void>;
+    configure(spec: ISessionSpecification): Promise<void>;
 }

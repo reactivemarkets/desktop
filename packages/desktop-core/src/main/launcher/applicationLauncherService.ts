@@ -2,7 +2,7 @@ import {
     WellKnownNamespaces,
     IConfiguration,
     ConfigurationKind,
-    IApplicationConfiguration,
+    IApplicationSpecification,
 } from "@reactivemarkets/desktop-types";
 
 import { ILogger } from "../logging";
@@ -27,7 +27,7 @@ export class ApplicationLauncherService implements ILauncherService {
     public async launch(configuration: IConfiguration) {
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
-        const { url } = configuration.spec as IApplicationConfiguration;
+        const { url } = configuration.spec as IApplicationSpecification;
 
         const fileOrUrl = normalizeUrl(url);
 

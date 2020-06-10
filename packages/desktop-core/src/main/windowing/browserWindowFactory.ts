@@ -1,4 +1,4 @@
-import { IApplicationConfiguration } from "@reactivemarkets/desktop-types";
+import { IApplicationSpecification } from "@reactivemarkets/desktop-types";
 import { BrowserWindow, BrowserWindowConstructorOptions, WebPreferences } from "electron";
 import { IWindowFactory } from "./iWindowFactory";
 
@@ -9,20 +9,19 @@ export class BrowserWindowFactory implements IWindowFactory {
         this.defaultWebPreferences = defaultWebPreferences;
     }
 
-    public createWindow = async (configuration?: IApplicationConfiguration) => {
+    public createWindow = async (spec?: IApplicationSpecification) => {
         let options: BrowserWindowConstructorOptions = {
             webPreferences: this.defaultWebPreferences,
         };
 
-        if (configuration !== undefined) {
-            const { affinity, devTools, window } = configuration;
+        if (spec !== undefined) {
+            const { window, ...rest } = spec;
 
             options = {
                 ...window,
                 webPreferences: {
+                    ...rest,
                     ...this.defaultWebPreferences,
-                    affinity,
-                    devTools,
                 },
             };
         }

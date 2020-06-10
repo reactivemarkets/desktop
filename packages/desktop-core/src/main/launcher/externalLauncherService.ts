@@ -2,7 +2,7 @@ import {
     WellKnownNamespaces,
     IConfiguration,
     ConfigurationKind,
-    IExternalConfiguration,
+    IExternalSpecification,
 } from "@reactivemarkets/desktop-types";
 import { ILogger } from "../logging";
 import { IProcessExec } from "../processes";
@@ -25,7 +25,7 @@ export class ExternalLauncherService implements ILauncherService {
     public async launch(configuration: IConfiguration) {
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
-        const externalConfiguration = configuration.spec as IExternalConfiguration;
+        const externalConfiguration = configuration.spec as IExternalSpecification;
 
         const executable = externalConfiguration.executable;
 

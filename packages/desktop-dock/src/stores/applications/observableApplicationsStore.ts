@@ -64,7 +64,9 @@ export class ObservableApplicationsStore implements IApplicationsStore {
             namespace: namespace ?? WellKnownNamespaces.default,
             configuration,
             key,
-            launch: this.launch(configuration),
+            launch: () => {
+                return launcher.launch(configuration);
+            },
         });
     };
 
@@ -81,9 +83,5 @@ export class ObservableApplicationsStore implements IApplicationsStore {
         const { name, namespace } = metadata;
 
         return `${namespace}/${name}`;
-    };
-
-    private readonly launch = (configuration: IConfiguration) => () => {
-        return launcher.launch(configuration);
     };
 }

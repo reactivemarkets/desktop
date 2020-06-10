@@ -1,4 +1,4 @@
-import { ISessionConfiguration } from "@reactivemarkets/desktop-types";
+import { ISessionSpecification } from "@reactivemarkets/desktop-types";
 import { session } from "electron";
 import { ILogger } from "../logging";
 import { ISessionService } from "./iSessionService";
@@ -10,7 +10,7 @@ export class DefaultSessionService implements ISessionService {
         this.logger = logger;
     }
 
-    public async configure(configuration: ISessionConfiguration) {
+    public async configure(spec: ISessionSpecification) {
         const { defaultSession } = session;
         if (defaultSession === undefined) {
             const message = "Default session was undefined";
@@ -20,8 +20,7 @@ export class DefaultSessionService implements ISessionService {
             return Promise.reject(error);
         }
 
-        const { downloadPath, ntlmDomains, userAgent } = configuration;
-
+        const { downloadPath, ntlmDomains, userAgent } = spec;
         if (downloadPath !== undefined) {
             this.logger.info(`Setting download path to: ${downloadPath}`);
 
@@ -42,8 +41,7 @@ export class DefaultSessionService implements ISessionService {
             defaultSession.setUserAgent(userAgent);
         }
 
-        const { pacScript = "", proxyBypassRules = "", proxyRules } = configuration;
-
+        const { pacScript = "", proxyBypassRules = "", proxyRules } = spec;
         if (proxyRules !== undefined) {
             const config = {
                 pacScript,

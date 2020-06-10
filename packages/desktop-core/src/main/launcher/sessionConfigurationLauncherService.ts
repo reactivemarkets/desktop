@@ -2,7 +2,7 @@ import {
     WellKnownNamespaces,
     IConfiguration,
     ConfigurationKind,
-    ISessionConfiguration,
+    ISessionSpecification,
 } from "@reactivemarkets/desktop-types";
 import { ILogger } from "../logging";
 import { ISessionService } from "../session";
@@ -25,7 +25,7 @@ export class SessionConfigurationLauncherService implements ILauncherService {
     public async launch(configuration: IConfiguration): Promise<IConfiguration> {
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
-        const serviceConfiguration = configuration.spec as ISessionConfiguration;
+        const serviceConfiguration = configuration.spec as ISessionSpecification;
 
         this.logger.verbose(`Configuring session: ${name} in ${namespace}`);
 

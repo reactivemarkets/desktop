@@ -1,4 +1,4 @@
-import { ITrayConfiguration } from "@reactivemarkets/desktop-types";
+import { ITraySpecification } from "@reactivemarkets/desktop-types";
 import { app, dialog, Menu, Tray, MenuItemConstructorOptions } from "electron";
 import { ILogger } from "../logging";
 import { ITrayService } from "./iTrayService";
@@ -25,11 +25,11 @@ export class DefaultTrayService implements ITrayService {
         this.defaultDocumentationUrl = defaultDocumentationUrl;
     }
 
-    public async configure(configuration: ITrayConfiguration) {
+    public async configure(spec: ITraySpecification) {
         try {
-            const { icon = this.defaultIcon } = configuration;
+            const { icon = this.defaultIcon } = spec;
 
-            const template = this.buildTemplate(configuration);
+            const template = this.buildTemplate(spec);
 
             const contextMenu = Menu.buildFromTemplate(template);
 
@@ -46,8 +46,8 @@ export class DefaultTrayService implements ITrayService {
         }
     }
 
-    private readonly buildTemplate = (configuration: ITrayConfiguration): MenuItemConstructorOptions[] => {
-        const { documentationUrl = this.defaultDocumentationUrl } = configuration;
+    private readonly buildTemplate = (spec: ITraySpecification): MenuItemConstructorOptions[] => {
+        const { documentationUrl = this.defaultDocumentationUrl } = spec;
 
         return [
             { label: "About Desktop", type: "normal", role: "about" },
