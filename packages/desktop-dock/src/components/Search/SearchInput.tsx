@@ -1,5 +1,6 @@
 import { TextField } from "@material-ui/core";
-import { observer, inject } from "mobx-react";
+import { reaction } from "mobx";
+import { observer, inject, disposeOnUnmount } from "mobx-react";
 import * as React from "react";
 import { IFocusStore, IResizerStore, ISearchStore, IApplication } from "../../stores";
 
@@ -14,10 +15,24 @@ interface ISearchInputProps {
 @inject("searchStore")
 @observer
 export class SearchInput extends React.Component<ISearchInputProps> {
+    private readonly expandDelay = 500;
     private readonly ref = React.createRef<HTMLInputElement>();
 
     public componentDidMount() {
         this.props.focusStore?.on("focus-input", this.focus);
+
+        disposeOnUnmount(
+            this,
+            reaction(
+                () => this.props.searchStore?.searchTerm,
+                (searchTerm) => {
+                    if (searchTerm !== "") {
+                        this.props.resizerStore?.expand();
+                    }
+                },
+                { delay: this.expandDelay },
+            ),
+        );
     }
 
     public componentWillUnmount() {
