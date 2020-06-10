@@ -19,7 +19,13 @@ export class SearchResultList extends React.Component<ISearchResultListProps> {
         const { results } = searchStore!;
 
         return (
-            <FixedSizeList height={height} itemCount={results.length} itemData={results} itemSize={60} width={width}>
+            <FixedSizeList
+                height={height}
+                itemCount={results.length}
+                itemData={results.slice()}
+                itemSize={60}
+                width={width}
+            >
                 {SearchResultItem}
             </FixedSizeList>
         );

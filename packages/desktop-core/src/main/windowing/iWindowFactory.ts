@@ -1,10 +1,10 @@
-import { IApplicationConfiguration } from "@reactivemarkets/desktop-types";
+import { IApplicationSpecification } from "@reactivemarkets/desktop-types";
 import { BrowserWindow } from "electron";
 
 export interface IWindowFactory {
     /**
-     * Create a BrowserWindow from the given configuration.
-     * @param configuration The application configuration
+     * Create a BrowserWindow from the given specification.
+     * @param spec The application specification
      */
-    createWindow(configuration?: IApplicationConfiguration): Promise<BrowserWindow>;
+    createWindow(spec?: IApplicationSpecification): Promise<BrowserWindow>;
 }

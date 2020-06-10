@@ -1,16 +1,18 @@
-export interface IWindowConfiguration {
+export interface IWindowParameters {
     readonly acceptFirstMouse?: boolean;
     readonly alwaysOnTop?: boolean;
     readonly autoHideMenuBar?: boolean;
     readonly backgroundColor?: string;
-    readonly centered?: boolean;
+    readonly center?: boolean;
     readonly closeable?: boolean;
     readonly darkTheme?: boolean;
     readonly disableAutoHideCursor?: boolean;
+    readonly enableLargerThanScreen?: boolean;
     readonly focusable?: boolean;
     readonly frame?: boolean;
     readonly fullscreen?: boolean;
     readonly fullscreenable?: boolean;
+    readonly fullscreenWindowTitle?: boolean;
     readonly hasShadow?: boolean;
     readonly height?: number;
     readonly icon?: string;
@@ -23,6 +25,7 @@ export interface IWindowConfiguration {
     readonly minWidth?: number;
     readonly movable?: boolean;
     readonly opacity?: number;
+    readonly paintWhenInitiallyHidden?: boolean;
     readonly resizeable?: boolean;
     readonly show?: boolean;
     readonly skipTaskbar?: boolean;

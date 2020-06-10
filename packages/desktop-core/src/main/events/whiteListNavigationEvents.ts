@@ -1,5 +1,6 @@
 import { App } from "electron";
 import { logger } from "../logging";
+import { shellService } from "../shell";
 
 /**
  * Configures the app to block navigation, redirects and new window attempts.
@@ -30,11 +31,13 @@ export const whiteListNavigationEvents = (app: App) => {
         });
 
         contents.on("new-window", async (event, navigationUrl) => {
+            event.preventDefault();
+
             logger.warn(
-                `The application tried to open a new window at the following address: ${navigationUrl}. This attempt was blocked.`,
+                `The application tried to open a new window at the following address: ${navigationUrl}. This attempt was blocked, opening in browser instead.`,
             );
 
-            event.preventDefault();
+            shellService.openExternal(navigationUrl);
         });
     });
 };

@@ -1,4 +1,4 @@
-export interface ISessionConfiguration {
+export interface ISessionSpecification {
     readonly downloadPath?: string;
     readonly ntlmDomains?: string[];
     readonly pacScript?: string;

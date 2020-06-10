@@ -15,7 +15,7 @@ metadata:
   namespace: desktop
 spec:
   main: api.asar
-  options:
+  parameters:
     host: localhost
     port: 8282
 ```

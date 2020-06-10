@@ -1,7 +1,7 @@
 import {
     IConfiguration,
     ConfigurationKind,
-    IServiceConfiguration,
+    IServiceSpecification,
     WellKnownNamespaces,
 } from "@reactivemarkets/desktop-types";
 import { ILogger } from "../logging";
@@ -26,7 +26,7 @@ export class NodeServiceLauncherService implements ILauncherService {
     public async launch(configuration: IConfiguration) {
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
-        const serviceConfiguration = configuration.spec as IServiceConfiguration;
+        const serviceConfiguration = configuration.spec as IServiceSpecification;
 
         const servicePath = normalizePath(serviceConfiguration.main);
 
@@ -34,7 +34,7 @@ export class NodeServiceLauncherService implements ILauncherService {
 
         const args = [servicePath];
 
-        const env = flattenObject(serviceConfiguration.options, name);
+        const env = flattenObject(serviceConfiguration.parameters, name);
 
         const child = await this.processFork.fork(args, env);
 
