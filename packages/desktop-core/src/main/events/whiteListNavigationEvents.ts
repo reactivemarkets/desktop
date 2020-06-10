@@ -11,7 +11,7 @@ import { shellService } from "../shell";
  *
  * @param app The main electron app
  */
-export const whiteListNavigationEvents = (app: App) => {
+export const whiteListNavigationEventsHandler = (app: App) => {
     app.on("web-contents-created", (_, contents) => {
         contents.on("will-navigate", (__, navigationUrl) => {
             const parsedUrl = new URL(navigationUrl);
