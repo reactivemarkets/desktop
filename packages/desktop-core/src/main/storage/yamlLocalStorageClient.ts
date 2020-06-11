@@ -21,10 +21,10 @@ export class YamlLocalStorageClient implements IStorageClient {
         return Promise.resolve();
     }
 
-    public delete(key: string): Promise<void> {
+    public delete(key: string): Promise<boolean> {
         this.store.delete(key);
 
-        return Promise.resolve();
+        return Promise.resolve(true);
     }
 
     public get<T>(key: string, defaultValue: T): Promise<T> {

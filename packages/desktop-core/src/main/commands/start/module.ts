@@ -1,6 +1,8 @@
 export { handler } from "./handler";
 
-export const command = ["start", "$0", "up", "run"];
+export const command = "start";
+
+export const aliases = ["$0", "up", "run"];
 
 export const describe = "Start the application with the specified config";
 

@@ -38,7 +38,6 @@ export const logger: ILogger = winston.createLogger({
     transports: [
         new winston.transports.Console({
             format: winston.format.combine(
-                winston.format.colorize(),
                 winston.format.printf(({ level, message }) => {
                     if (level === "info") {
                         return message;

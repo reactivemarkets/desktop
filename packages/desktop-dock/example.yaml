@@ -1,15 +1,16 @@
 ---
 kind: tray
 metadata:
-  name: tray
+  name: Desktop Tray
   namespace: desktop
 ---
 kind: application
 metadata:
-  name: dock
+  name: Dock
   description: Creates a dock to launch new windows.
   namespace: desktop
 spec:
+  singleInstance: true
   url: dock.asar
   window:
     backgroundColor: "#303030"

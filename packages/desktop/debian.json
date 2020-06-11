@@ -9,7 +9,7 @@
         "changelog-file-missing-in-native-package"
     ],
     "name": "desktop",
-    "bin": "desktop",
+    "bin": "Desktop",
     "productName": "Desktop",
     "description": "Multi-window, cross-platform desktop applications.",
     "homePage": "https://desktop.reactivemarkets.com"

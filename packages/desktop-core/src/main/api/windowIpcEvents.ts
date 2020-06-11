@@ -14,6 +14,9 @@ export const windowIpcEvents = () => {
             window.close();
         }
     });
+    ipcMain.handle(ReservedChannels.window_destory, (event) => {
+        BrowserWindow.fromWebContents(event.sender)?.destroy();
+    });
     ipcMain.handle(ReservedChannels.window_flashFrame, (event, flash: boolean) => {
         BrowserWindow.fromWebContents(event.sender)?.flashFrame(flash);
     });
@@ -94,6 +97,9 @@ export const windowIpcEvents = () => {
     });
     ipcMain.handle(ReservedChannels.window_moveTop, (event) => {
         BrowserWindow.fromWebContents(event.sender)?.moveTop();
+    });
+    ipcMain.handle(ReservedChannels.window_openDevTools, (event) => {
+        event.sender.openDevTools();
     });
     ipcMain.handle(ReservedChannels.window_reload, (event) => {
         BrowserWindow.fromWebContents(event.sender)?.reload();

@@ -4,10 +4,8 @@ import {
     ConfigurationKind,
     IApplicationSpecification,
 } from "@reactivemarkets/desktop-types";
-
 import { ILogger } from "../logging";
 import { IWindowService } from "../windowing";
-
 import { ILauncherService } from "./iLauncherService";
 import { normalizeUrl } from "./normalize";
 
@@ -33,10 +31,14 @@ export class ApplicationLauncherService implements ILauncherService {
 
         this.logger.verbose(`launching ${namespace}/${name} from ${fileOrUrl}`);
 
-        const browserWindow = await this.windowService.create(configuration);
+        const instance = await this.windowService.create({
+            ...configuration,
+            spec: {
+                ...configuration.spec,
+                url: fileOrUrl,
+            },
+        });
 
-        await browserWindow.loadURL(fileOrUrl);
-
-        return configuration;
+        return instance.configuration;
     }
 }

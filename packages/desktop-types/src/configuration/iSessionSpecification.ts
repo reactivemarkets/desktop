@@ -1,8 +1,6 @@
+import { ISessionParameters } from "./iSessionParameters";
+
 export interface ISessionSpecification {
-    readonly downloadPath?: string;
-    readonly ntlmDomains?: string[];
-    readonly pacScript?: string;
-    readonly proxyBypassRules?: string;
-    readonly proxyRules?: string;
-    readonly userAgent?: string;
+    readonly parameters: ISessionParameters;
+    readonly partition?: string;
 }
