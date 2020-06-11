@@ -20,6 +20,7 @@ export const handler = (options: IStartOptions) => {
     } else {
         app.enableSandbox();
         app.allowRendererProcessReuse = true;
+        app.setAppUserModelId("desktop");
         app.setAsDefaultProtocolClient("desktop");
         registerIpcEventHandlers();
         registerApplicationEventHandlers(app);
