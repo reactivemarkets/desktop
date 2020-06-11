@@ -19,8 +19,4 @@ export class RouterClient implements IRouter {
     public unsubscribe<T>(channel: string, listener: (payload: T) => void) {
         this.desktop.api.unsubscribe(channel, listener);
     }
-
-    public unsubscribeAll() {
-        this.desktop.api.unsubscribeAll();
-    }
 }
