@@ -33,7 +33,7 @@ export class ApplicationLauncherService implements ILauncherService {
 
         this.logger.verbose(`launching ${namespace}/${name} from ${fileOrUrl}`);
 
-        const browserWindow = await this.windowService.createWindow(configuration);
+        const browserWindow = await this.windowService.create(configuration);
 
         await browserWindow.loadURL(fileOrUrl);
 

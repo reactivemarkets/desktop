@@ -11,15 +11,15 @@ export class DefaultWindowService implements IWindowService {
         this.windowFactory = windowFactory;
     }
 
-    public allWindows() {
+    public all() {
         return Array.from(this.registry.values());
     }
 
-    public getWindow(id: number) {
+    public get(id: number) {
         return this.registry.get(id);
     }
 
-    public async createWindow(configuration: IConfiguration) {
+    public async create(configuration: IConfiguration) {
         const spec = configuration.spec as IApplicationSpecification;
         return this.windowFactory.createWindow(spec).then((window) => {
             const { id } = window;
