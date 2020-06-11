@@ -1,5 +1,5 @@
 import { IApplicationSpecification } from "@reactivemarkets/desktop-types";
-import { BrowserWindow, BrowserWindowConstructorOptions, WebPreferences } from "electron";
+import { BrowserWindow, WebPreferences } from "electron";
 import { IWindowFactory } from "./iWindowFactory";
 
 export class BrowserWindowFactory implements IWindowFactory {
@@ -10,28 +10,40 @@ export class BrowserWindowFactory implements IWindowFactory {
     }
 
     public createWindow = async (spec?: IApplicationSpecification) => {
-        let options: BrowserWindowConstructorOptions = {
-            webPreferences: this.defaultWebPreferences,
+        if (spec === undefined) {
+            const defaultWindow = new BrowserWindow({
+                webPreferences: this.defaultWebPreferences,
+            });
+
+            return Promise.resolve(defaultWindow);
+        }
+
+        const { contentProtection, webPreferences: windowWebPreferences, window } = spec;
+
+        const webPreferences = this.defaultWebPreferences;
+        if (windowWebPreferences !== undefined) {
+            const { affinity, devTools, partition } = windowWebPreferences;
+            if (affinity !== undefined) {
+                webPreferences.affinity = affinity;
+            }
+            if (devTools !== undefined) {
+                webPreferences.devTools = devTools;
+            }
+            if (partition !== undefined) {
+                webPreferences.partition = partition;
+            }
+        }
+
+        const options = {
+            ...window,
+            webPreferences,
         };
 
-        if (spec !== undefined) {
-            const { affinity, devTools = true, window } = spec;
-
-            options = {
-                ...window,
-                webPreferences: {
-                    ...this.defaultWebPreferences,
-                    affinity,
-                    devTools,
-                },
-            };
+        const browserWindow = new BrowserWindow(options);
+        if (contentProtection !== undefined) {
+            browserWindow.setContentProtection(contentProtection);
         }
 
-        const window = new BrowserWindow(options);
-        if (spec?.contentProtection !== undefined) {
-            window.setContentProtection(spec.contentProtection);
-        }
-
-        return Promise.resolve(window);
+        return Promise.resolve(browserWindow);
     };
 }
