@@ -1,4 +1,7 @@
 export interface IDesktop {
+    /**
+     * The underlying raw api object.
+     */
     readonly api: any;
 
     /**
