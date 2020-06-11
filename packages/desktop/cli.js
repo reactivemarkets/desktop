@@ -8,11 +8,11 @@ const getExecutablePath = () => {
     const platform = os.platform();
     switch (platform) {
         case "darwin":
-            return path.join(__dirname, "desktop", "desktop.app", "Contents", "MacOS", "desktop");
+            return path.join(__dirname, "desktop", "Desktop.app", "Contents", "MacOS", "Desktop");
         case "linux":
-            return path.join(__dirname, "desktop", "desktop");
+            return path.join(__dirname, "desktop", "Desktop");
         case "win32":
-            return path.join(__dirname, "desktop", "desktop.exe");
+            return path.join(__dirname, "desktop", "Desktop.exe");
         default:
             throw new Error(platform + " is not currently supported.");
     }

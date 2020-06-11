@@ -1,43 +1,13 @@
-import { app } from "electron";
-import * as path from "path";
-import { BrowserWindowFactory } from "./browserWindowFactory";
 import { DefaultWindowService } from "./defaultWindowService";
 import { IWindowService } from "./iWindowService";
-import { CrashedWindowService } from "./crashedWindowService";
-import { UnresponsiveWindowService } from "./unresponsiveWindowService";
-import { FailedToLoadWindowService } from "./failedToLoadWindowService";
+import { EventEmittingWindowService } from "./eventEmittingWindowService";
+import { windowFactory } from "./factory";
+import { SingleInstanceWindowService } from "./singleInstanceWindowService";
 
 export * from "./iWindowService";
 
-const appPath = app.getAppPath();
+const defaultWindowService = new DefaultWindowService(windowFactory);
 
-const preload = path.join(appPath, "preload.js");
+const singleInstanceWindowService = new SingleInstanceWindowService(defaultWindowService);
 
-const windowFactory = new BrowserWindowFactory({
-    allowRunningInsecureContent: false,
-    contextIsolation: true,
-    devTools: true,
-    enableRemoteModule: false,
-    enableWebSQL: false,
-    experimentalFeatures: false,
-    navigateOnDragDrop: false,
-    nodeIntegration: false,
-    nodeIntegrationInSubFrames: false,
-    nodeIntegrationInWorker: false,
-    plugins: false,
-    preload,
-    safeDialogs: true,
-    sandbox: true,
-    spellcheck: true,
-    textAreasAreResizable: false,
-    webSecurity: true,
-    webviewTag: false,
-});
-
-const defaultService = new DefaultWindowService(windowFactory);
-
-const crashedService = new CrashedWindowService(defaultService);
-
-const failedToLoadService = new FailedToLoadWindowService(crashedService);
-
-export const windowService: IWindowService = new UnresponsiveWindowService(failedToLoadService);
+export const windowService: IWindowService = new EventEmittingWindowService(singleInstanceWindowService);

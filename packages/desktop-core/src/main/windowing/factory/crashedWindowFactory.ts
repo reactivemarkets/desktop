@@ -1,24 +1,16 @@
-import { dialog } from "electron";
 import { IConfiguration } from "@reactivemarkets/desktop-types";
-import { IWindowService } from "./iWindowService";
+import { dialog } from "electron";
+import { IWindowFactory } from "./iWindowFactory";
 
-export class CrashedWindowService implements IWindowService {
-    private readonly windowService: IWindowService;
+export class CrashedWindowFactory implements IWindowFactory {
+    private readonly windowFactory: IWindowFactory;
 
-    public constructor(windowService: IWindowService) {
-        this.windowService = windowService;
-    }
-
-    public all() {
-        return this.windowService.all();
-    }
-
-    public get(id: number) {
-        return this.windowService.get(id);
+    public constructor(windowFactory: IWindowFactory) {
+        this.windowFactory = windowFactory;
     }
 
     public async create(configuration: IConfiguration) {
-        const window = await this.windowService.create(configuration);
+        const window = await this.windowFactory.create(configuration);
 
         window.webContents.on("crashed", async (_, killed) => {
             const options = {

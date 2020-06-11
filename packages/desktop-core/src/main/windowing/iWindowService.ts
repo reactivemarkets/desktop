@@ -1,22 +1,21 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
-import { BrowserWindow } from "electron";
+import { WindowInstance } from "./windowInstance";
 
 export interface IWindowService {
     /**
      * Get all current windows.
      */
-    all(): BrowserWindow[];
+    all(): WindowInstance[];
 
     /**
-     * Get a specific window.
-     *
-     * @param id the window identifier
+     * The window with the given `identifier`.
+     * @param identifier A uid or application configuration.
      */
-    get(id: number): BrowserWindow | undefined;
+    from(identifier: string | IConfiguration): WindowInstance | undefined;
 
     /**
-     * Create a BrowserWindow from the given configuration.
-     * @param configuration The window configuration
+     * Create a BrowserWindow from the given `configuration`.
+     * @param configuration The application configuration
      */
-    create(configuration: IConfiguration): Promise<BrowserWindow>;
+    create(configuration: IConfiguration): Promise<WindowInstance>;
 }

@@ -17,93 +17,95 @@ export const handler = (options: IStartOptions) => {
     if (!appLock) {
         logger.info("Another instance is already running. exiting...");
         app.exit();
-    } else {
-        app.enableSandbox();
-        app.allowRendererProcessReuse = true;
-        app.setAppUserModelId("desktop");
-        app.setAsDefaultProtocolClient("desktop");
-        registerIpcEventHandlers();
-        registerApplicationEventHandlers(app);
-        registerApplicationMenu();
 
-        const onReady = app.whenReady();
+        return;
+    }
 
-        const configPromises = new Array<Promise<void>>();
+    app.enableSandbox();
+    app.allowRendererProcessReuse = true;
+    app.setAppUserModelId("desktop");
+    app.setAsDefaultProtocolClient("desktop");
+    registerIpcEventHandlers();
+    registerApplicationEventHandlers(app);
+    registerApplicationMenu();
 
-        const urls = options.url;
-        if (urls !== undefined) {
-            logger.verbose("Loading urls specified", urls);
+    const onReady = app.whenReady();
 
-            const configFiles = urls.map(async (url) => {
-                const configuration = await configurationGenerator.generate(ConfigurationKind.Application, url, url);
+    const configPromises = new Array<Promise<void>>();
 
+    const urls = options.url;
+    if (urls !== undefined) {
+        logger.verbose("Loading urls specified", urls);
+
+        const configFiles = urls.map(async (url) => {
+            const configuration = await configurationGenerator.generate(ConfigurationKind.Application, url, url);
+
+            return registryService.register(configuration).catch((error) => {
+                logger.warn(`Failed to register config: ${error}`);
+            });
+        });
+
+        configPromises.push(...configFiles);
+    }
+
+    const files = options.file;
+    if (files !== undefined) {
+        logger.verbose("Loading configuration files", files);
+
+        const configFiles = files.map(async (f) => {
+            const configurationArray = await configurationLoader.load(f);
+
+            const promises = configurationArray.map((configuration) => {
                 return registryService.register(configuration).catch((error) => {
                     logger.warn(`Failed to register config: ${error}`);
                 });
             });
 
-            configPromises.push(...configFiles);
-        }
+            await Promise.all(promises);
+        });
 
-        const files = options.file;
-        if (files !== undefined) {
-            logger.verbose("Loading configuration files", files);
-
-            const configFiles = files.map(async (f) => {
-                const configurationArray = await configurationLoader.load(f);
-
-                const promises = configurationArray.map((configuration) => {
-                    return registryService.register(configuration).catch((error) => {
-                        logger.warn(`Failed to register config: ${error}`);
-                    });
-                });
-
-                await Promise.all(promises);
-            });
-
-            configPromises.push(...configFiles);
-        }
-
-        logger.verbose("Loading any userData configuration files");
-        const userDataPath = app.getPath("userData");
-        const userConfigPath = path.join(userDataPath, "config");
-        const userDataConfig = configurationLoader
-            .load(userConfigPath)
-            .then(async (configurationArray) => {
-                const promises = configurationArray.map((configuration) => {
-                    return registryService.register(configuration).catch((error) => {
-                        logger.verbose(`Failed to read cached config: ${error}`);
-                    });
-                });
-
-                await Promise.all(promises);
-            })
-            .catch((error) => {
-                logger.verbose(`Failed to read userData configuration: ${error}`);
-            });
-
-        Promise.all([...configPromises, userDataConfig, onReady])
-            .then(async () => registryService.getRegistry())
-            .then(async (registry) => {
-                const launched = registry.map(async (c) => {
-                    return launcherService
-                        .launch(c)
-                        .then((config) => {
-                            logger.info(`Launched ${config.kind}: ${config.metadata.name}`);
-                        })
-                        .catch((error) => {
-                            logger.error(`Failed to launch ${c.metadata.name}: ${error}`);
-                        });
-                });
-
-                return Promise.all(launched);
-            })
-            .then(() => {
-                logger.info("Desktop started.");
-            })
-            .catch((error) => {
-                logger.error(`Error starting: ${error}`);
-                app.exit(1);
-            });
+        configPromises.push(...configFiles);
     }
+
+    logger.verbose("Loading any userData configuration files");
+    const userDataPath = app.getPath("userData");
+    const userConfigPath = path.join(userDataPath, "config");
+    const userDataConfig = configurationLoader
+        .load(userConfigPath)
+        .then(async (configurationArray) => {
+            const promises = configurationArray.map((configuration) => {
+                return registryService.register(configuration).catch((error) => {
+                    logger.verbose(`Failed to read cached config: ${error}`);
+                });
+            });
+
+            await Promise.all(promises);
+        })
+        .catch((error) => {
+            logger.verbose(`Failed to read userData configuration: ${error}`);
+        });
+
+    Promise.all([...configPromises, userDataConfig, onReady])
+        .then(async () => registryService.getRegistry())
+        .then(async (registry) => {
+            const launched = registry.map(async (c) => {
+                return launcherService
+                    .launch(c)
+                    .then((config) => {
+                        logger.info(`Launched ${config.kind}: ${config.metadata.name}`);
+                    })
+                    .catch((error) => {
+                        logger.error(`Failed to launch ${c.metadata.name}: ${error}`);
+                    });
+            });
+
+            return Promise.all(launched);
+        })
+        .then(() => {
+            logger.info("Desktop started.");
+        })
+        .catch((error) => {
+            logger.error(`Error starting: ${error}`);
+            app.exit(1);
+        });
 };

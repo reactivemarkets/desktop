@@ -11,20 +11,24 @@ export class DefaultSessionService implements ISessionService {
     }
 
     public async configure(spec: ISessionSpecification) {
-        const { defaultSession } = session;
-        if (defaultSession === undefined) {
-            const message = "Default session was undefined";
+        const { parameters, partition } = spec;
+
+        const currentSession = partition !== undefined ? session.fromPartition(partition) : session.defaultSession;
+        if (currentSession === undefined) {
+            const message = "Session not found";
 
             const error = new Error(message);
 
             return Promise.reject(error);
+
+            return;
         }
 
-        const { downloadPath, ntlmDomains, userAgent } = spec;
+        const { downloadPath, ntlmDomains, userAgent } = parameters;
         if (downloadPath !== undefined) {
             this.logger.info(`Setting download path to: ${downloadPath}`);
 
-            defaultSession.setDownloadPath(downloadPath);
+            currentSession.setDownloadPath(downloadPath);
         }
 
         if (ntlmDomains !== undefined) {
@@ -32,16 +36,16 @@ export class DefaultSessionService implements ISessionService {
 
             this.logger.info(`Setting NTLM domains to: ${domains}`);
 
-            defaultSession.allowNTLMCredentialsForDomains(domains);
+            currentSession.allowNTLMCredentialsForDomains(domains);
         }
 
         if (userAgent !== undefined) {
             this.logger.info(`Setting userAgent to: ${userAgent}`);
 
-            defaultSession.setUserAgent(userAgent);
+            currentSession.setUserAgent(userAgent);
         }
 
-        const { pacScript = "", proxyBypassRules = "", proxyRules } = spec;
+        const { pacScript = "", proxyBypassRules = "", proxyRules } = parameters;
         if (proxyRules !== undefined) {
             const config = {
                 pacScript,
@@ -49,7 +53,7 @@ export class DefaultSessionService implements ISessionService {
                 proxyRules,
             };
 
-            await defaultSession.setProxy(config);
+            await currentSession.setProxy(config);
 
             this.logger.info(`Proxy configured: ${JSON.stringify(config)}`);
         }

@@ -15,7 +15,7 @@ export class CompositeStorageProvisioner implements IStorageProvisioner {
     public provision(configuration: IConfiguration) {
         const provisioner = this.provisioners.find((p) => p.canProvision(configuration));
         if (provisioner === undefined) {
-            const error = new Error(`No storage proviosioner found for ${configuration.metadata.name}`);
+            const error = new Error(`No storage provisioner found for ${configuration.metadata.name}`);
 
             return Promise.reject(error);
         }

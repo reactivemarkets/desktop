@@ -14,6 +14,7 @@ metadata:
   description: Creates a dock to launch new windows.
   namespace: desktop
 spec:
+  singleInstance: true
   url: dock.asar
   window:
     backgroundColor: "#303030"

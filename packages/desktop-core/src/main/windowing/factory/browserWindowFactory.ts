@@ -1,4 +1,4 @@
-import { IApplicationSpecification } from "@reactivemarkets/desktop-types";
+import { IConfiguration, IApplicationSpecification } from "@reactivemarkets/desktop-types";
 import { BrowserWindow, WebPreferences } from "electron";
 import { IWindowFactory } from "./iWindowFactory";
 
@@ -9,7 +9,8 @@ export class BrowserWindowFactory implements IWindowFactory {
         this.defaultWebPreferences = defaultWebPreferences;
     }
 
-    public createWindow = async (spec?: IApplicationSpecification) => {
+    public create = async (configuration: IConfiguration) => {
+        const spec = configuration.spec as IApplicationSpecification;
         if (spec === undefined) {
             const defaultWindow = new BrowserWindow({
                 webPreferences: this.defaultWebPreferences,

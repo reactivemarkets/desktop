@@ -1,36 +1,70 @@
-import { IConfiguration, IApplicationSpecification } from "@reactivemarkets/desktop-types";
-import { BrowserWindow } from "electron";
-import { IWindowFactory } from "./iWindowFactory";
+import { ApplicationState, IConfiguration, IApplicationSpecification } from "@reactivemarkets/desktop-types";
+import { find } from "ix/iterable";
+import { v4 as uuid } from "uuid";
+import { IWindowFactory } from "./factory";
 import { IWindowService } from "./iWindowService";
+import { WindowInstance } from "./windowInstance";
 
 export class DefaultWindowService implements IWindowService {
     private readonly windowFactory: IWindowFactory;
-    private readonly registry = new Map<number, BrowserWindow>();
+    private readonly configRegistry = new Map<string, WindowInstance>();
 
     public constructor(windowFactory: IWindowFactory) {
         this.windowFactory = windowFactory;
     }
 
     public all() {
-        return Array.from(this.registry.values());
+        return Array.from(this.configRegistry.values());
     }
 
-    public get(id: number) {
-        return this.registry.get(id);
+    public from(identifier: string | IConfiguration) {
+        if (typeof identifier === "string") {
+            return this.configRegistry.get(identifier);
+        }
+
+        return find(this.configRegistry.values(), (instance) => {
+            const { metadata } = instance.configuration;
+            return metadata.namespace === identifier.metadata.namespace && metadata.name === identifier.metadata.name;
+        });
     }
 
     public async create(configuration: IConfiguration) {
-        const spec = configuration.spec as IApplicationSpecification;
-        return this.windowFactory.createWindow(spec).then((window) => {
-            const { id } = window;
+        const window = await this.windowFactory.create(configuration);
 
-            this.registry.set(id, window);
+        const { url } = configuration.spec as IApplicationSpecification;
 
-            window.once("closed", () => {
-                this.registry.delete(id);
-            });
+        await window.loadURL(url);
 
-            return window;
+        const { webContents } = window;
+
+        const startTime = new Date();
+        const state = ApplicationState.running;
+        const uid = uuid();
+        const windowId = window.id;
+
+        const runningConfiguration = {
+            ...configuration,
+            metadata: {
+                ...configuration.metadata,
+                uid,
+            },
+            status: {
+                osProcessId: webContents.getOSProcessId(),
+                processId: webContents.getProcessId(),
+                startTime,
+                state,
+                windowId,
+            },
+        };
+
+        const instance = new WindowInstance(runningConfiguration, window);
+
+        this.configRegistry.set(uid, instance);
+
+        window.once("closed", () => {
+            this.configRegistry.delete(uid);
         });
+
+        return instance;
     }
 }
