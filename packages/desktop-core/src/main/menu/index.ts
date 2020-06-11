@@ -1,4 +1,4 @@
-import { Menu, dialog } from "electron";
+import { Menu, MenuItemConstructorOptions, dialog } from "electron";
 import { shellService } from "../shell";
 import { logger } from "../logging";
 
@@ -20,7 +20,7 @@ export const registerApplicationMenu = () => {
         }
     };
 
-    const helpMenu: Electron.MenuItemConstructorOptions = {
+    const helpMenu: MenuItemConstructorOptions = {
         role: "help",
         submenu: [
             {
@@ -30,11 +30,25 @@ export const registerApplicationMenu = () => {
         ],
     };
 
-    const template: Electron.MenuItemConstructorOptions[] = [
+    const viewMenu: MenuItemConstructorOptions = {
+        label: "View",
+        submenu: [
+            { role: "reload" },
+            { role: "forceReload" },
+            { type: "separator" },
+            { role: "resetZoom" },
+            { role: "zoomIn" },
+            { role: "zoomOut" },
+            { type: "separator" },
+            { role: "togglefullscreen" },
+        ],
+    };
+
+    const template: MenuItemConstructorOptions[] = [
         { role: "appMenu" },
         { role: "fileMenu" },
         { role: "editMenu" },
-        { role: "viewMenu" },
+        viewMenu,
         { role: "windowMenu" },
         helpMenu,
     ];
