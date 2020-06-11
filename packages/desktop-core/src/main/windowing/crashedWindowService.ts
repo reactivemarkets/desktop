@@ -9,16 +9,16 @@ export class CrashedWindowService implements IWindowService {
         this.windowService = windowService;
     }
 
-    public allWindows() {
-        return this.windowService.allWindows();
+    public all() {
+        return this.windowService.all();
     }
 
-    public getWindow(id: number) {
-        return this.windowService.getWindow(id);
+    public get(id: number) {
+        return this.windowService.get(id);
     }
 
-    public async createWindow(configuration: IConfiguration) {
-        const window = await this.windowService.createWindow(configuration);
+    public async create(configuration: IConfiguration) {
+        const window = await this.windowService.create(configuration);
 
         window.webContents.on("crashed", async (_, killed) => {
             const options = {
