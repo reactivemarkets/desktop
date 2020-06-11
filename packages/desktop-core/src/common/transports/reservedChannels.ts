@@ -4,7 +4,6 @@ export enum ReservedChannels {
     application_openUrl = "@desktop:application/openUrl",
     application_secondInstance = "@desktop:application/secondInstance",
     globalShortcut_invoked = "@desktop:globalShortcut/invoked",
-    globalShortcut_isRegistered = "@desktop:globalShortcut/isRegistered",
     globalShortcut_register = "@desktop:globalShortcut/register",
     globalShortcut_unregister = "@desktop:globalShortcut/unregister",
     globalShortcut_unregisterAll = "@desktop:globalShortcut/unregisterAll",

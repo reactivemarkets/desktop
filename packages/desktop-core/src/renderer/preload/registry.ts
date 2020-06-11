@@ -1,7 +1,7 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { ipcRenderer } from "electron";
-import { ReservedChannels } from "../../common";
 import { TypedEmitter } from "tiny-typed-emitter";
+import { ReservedChannels } from "../../common";
 
 type RegistryEvents = "registered" | "unregistered";
 

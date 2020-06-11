@@ -1,6 +1,6 @@
 import { WellKnownNamespaces, IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
-import { ReservedChannels } from "../../common";
 import { ipcMain } from "electron";
+import { ReservedChannels } from "../../common";
 import { registryService } from "../registry";
 
 export const registryIpcEvents = () => {
