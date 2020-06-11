@@ -1,7 +1,7 @@
 import { app } from "electron";
 import { cleanCommandLine, parseCommandLine } from "./configuration/commandLine";
 import { logger } from "./logging";
-import { checkForSquirrelEvents } from "./shortcuts";
+import { checkForSquirrelEvents } from "./updates";
 
 if (checkForSquirrelEvents()) {
     app.quit();
