@@ -9,6 +9,8 @@ import {
     psModule,
     devToolsModule,
     killModule,
+    showModule,
+    hideModule,
 } from "../../commands";
 
 const columnWidth = Math.min(yargs.terminalWidth(), 120);
@@ -22,10 +24,12 @@ export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
     return yargs
         .command(clearModule)
         .command(devToolsModule)
+        .command(hideModule)
         .command(initModule)
         .command(killModule)
         .command(psModule)
         .command(restartModule)
+        .command(showModule)
         .command(startModule)
         .command(stopModule)
         .demandCommand(1, "Specify at least 1 command.")
