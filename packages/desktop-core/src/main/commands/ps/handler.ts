@@ -1,5 +1,5 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
-import { printTable } from "console-table-printer";
+import { Table } from "console-table-printer";
 import { app } from "electron";
 import { ReservedChannels } from "../../../common";
 import { logger } from "../../logging";
@@ -27,7 +27,17 @@ export const handler = async (options: IPsOptions) => {
             };
         });
 
-        printTable(details);
+        const table = new Table({
+            columns: [
+                { name: "id", alignment: "left" },
+                { name: "name", alignment: "left" },
+                { name: "namespace", alignment: "left" },
+                { name: "kind", alignment: "left" },
+                { name: "created" },
+            ],
+        });
+        table.addRows(details);
+        table.printTable();
 
         app.exit();
     } catch (error) {
