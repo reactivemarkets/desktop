@@ -103,7 +103,7 @@
     "html-webpack-template": "^6.2.0",
     "ix": "^3.0.2",
     "jest": "^26.0.1",
-    "jest-mock-extended": "^1.0.8",
+    "jest-mock-extended": "^1.0.9",
     "js-yaml": "^3.14.0",
     "lerna": "^3.22.1",
     "node-ipc": "^9.1.1",
