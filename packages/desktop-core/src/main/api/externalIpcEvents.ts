@@ -18,7 +18,13 @@ export const externalIpcEvents = async () => {
     ipcExternalMain.handle(ReservedChannels.instances_stop, ({ uid }) => {
         instanceService.stop(uid);
     });
+    ipcExternalMain.handle(ReservedChannels.window_hide, ({ uid }) => {
+        windowService.from(uid)?.instance.hide();
+    });
     ipcExternalMain.handle(ReservedChannels.window_openDevTools, ({ uid }) => {
         windowService.from(uid)?.instance.webContents.openDevTools();
+    });
+    ipcExternalMain.handle(ReservedChannels.window_show, ({ uid }) => {
+        windowService.from(uid)?.instance.show();
     });
 };
