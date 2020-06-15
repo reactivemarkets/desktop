@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/reactivemarkets/desktop/compare/v0.7.0...v0.8.0) (2020-06-15)
+
+
+### Features
+
+* **core:** adding status to configuration ([2522be8](https://github.com/reactivemarkets/desktop/commit/2522be8b3ff3448b9ffed63d6d0afb8592345fa9))
+* **core:** clear command now supports other sessions ([31159c9](https://github.com/reactivemarkets/desktop/commit/31159c9fd58b1dafd0cec3b030a1f704ac3dd603))
+
+
+
+
+
 # [0.7.0](https://github.com/reactivemarkets/desktop/compare/v0.6.1...v0.7.0) (2020-06-10)
 
 

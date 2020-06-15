@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/reactivemarkets/desktop/compare/v0.7.0...v0.8.0) (2020-06-15)
+
+
+### Features
+
+* **core:** adding partition to application web preferences ([b84bdce](https://github.com/reactivemarkets/desktop/commit/b84bdce794c9bedb2a8e52edf9eb5049a4c8b685))
+* **core:** adding status to configuration ([2522be8](https://github.com/reactivemarkets/desktop/commit/2522be8b3ff3448b9ffed63d6d0afb8592345fa9))
+
+
+
+
+
 # [0.7.0](https://github.com/reactivemarkets/desktop/compare/v0.6.1...v0.7.0) (2020-06-10)
 
 
