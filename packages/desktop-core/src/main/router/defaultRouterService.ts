@@ -1,7 +1,5 @@
 import { v4 as uuid } from "uuid";
-
 import { CompositeTransport, ITransport } from "../transports";
-
 import { IRouterService } from "./iRouterService";
 
 export class DefaultRouterService implements IRouterService {
@@ -13,6 +11,10 @@ export class DefaultRouterService implements IRouterService {
         this.transport.add(id, transport);
 
         return id;
+    }
+
+    public off<T>(channel: string, callback: (data: T) => void): void {
+        this.transport.off(channel, callback);
     }
 
     public on<T>(channel: string, callback: (data: T) => void): void {

@@ -1,7 +1,6 @@
 import { ILogger } from "../logging";
-
-import { IRouterService } from "./iRouterService";
 import { ITransport } from "../transports";
+import { IRouterService } from "./iRouterService";
 
 export class LoggingRouterService implements IRouterService {
     private readonly logger: ILogger;
@@ -16,6 +15,12 @@ export class LoggingRouterService implements IRouterService {
         this.logger.verbose("Adding transport to router");
 
         return this.routerService.addTransport(transport);
+    }
+
+    public off<T>(channel: string, callback: (data: T) => void) {
+        this.logger.verbose(`Removing listener from ${channel}`);
+
+        this.routerService.off(channel, callback);
     }
 
     public on<T>(channel: string, callback: (data: T) => void) {
