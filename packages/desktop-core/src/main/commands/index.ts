@@ -1,5 +1,6 @@
 export * from "./clear";
 export * from "./devTools";
+export * from "./describe";
 export * from "./hide";
 export * from "./init";
 export * from "./kill";

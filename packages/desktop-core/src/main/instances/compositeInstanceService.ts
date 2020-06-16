@@ -1,10 +1,22 @@
 import { IInstanceService } from "./iInstanceService";
+import { IConfiguration } from "@reactivemarkets/desktop-types";
 
 export class CompositeInstanceService implements IInstanceService {
     private readonly instanceServices: IInstanceService[];
 
     public constructor(...instanceServices: IInstanceService[]) {
         this.instanceServices = instanceServices;
+    }
+
+    public get(uid: string) {
+        let configuration: IConfiguration | undefined;
+        for (const instance of this.instanceServices) {
+            configuration = instance.get(uid);
+            if (configuration !== undefined) {
+                break;
+            }
+        }
+        return configuration;
     }
 
     public list() {
