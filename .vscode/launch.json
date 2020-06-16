@@ -25,6 +25,9 @@
             "args": [
                 "${workspaceFolder}/packages/desktop-api/dist/main.js",
             ],
+            "env": {
+                "ELECTRON_RUN_AS_NODE": "1"
+            },
             "sourceMaps": true,
             "outputCapture": "std",
             "outFiles": [
