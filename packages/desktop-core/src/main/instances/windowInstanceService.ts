@@ -3,6 +3,10 @@ import { IInstanceService } from "./iInstanceService";
 import { windowService } from "../windowing";
 
 export class WindowInstanceService implements IInstanceService {
+    public get(uid: string) {
+        return windowService.from(uid)?.configuration;
+    }
+
     public list() {
         return windowService.all().map((instance) => instance.configuration);
     }

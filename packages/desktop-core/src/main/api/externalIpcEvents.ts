@@ -6,6 +6,9 @@ import { windowService } from "../windowing";
 export const externalIpcEvents = async () => {
     await ipcExternalMain.whenReady();
 
+    ipcExternalMain.handle(ReservedChannels.instances_get, ({ uid }) => {
+        return instanceService.get(uid);
+    });
     ipcExternalMain.handle(ReservedChannels.instances_list, () => {
         return instanceService.list();
     });

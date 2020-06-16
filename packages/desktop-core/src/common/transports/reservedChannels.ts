@@ -7,6 +7,7 @@ export enum ReservedChannels {
     globalShortcut_register = "@desktop:globalShortcut/register",
     globalShortcut_unregister = "@desktop:globalShortcut/unregister",
     globalShortcut_unregisterAll = "@desktop:globalShortcut/unregisterAll",
+    instances_get = "@desktop:instances/get",
     instances_list = "@desktop:instances/list",
     instances_restart = "@desktop:instances/restart",
     instances_stop = "@desktop:instances/stop",

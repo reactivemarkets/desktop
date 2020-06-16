@@ -2,6 +2,7 @@ import * as yargs from "yargs";
 
 import {
     clearModule,
+    describeModule,
     initModule,
     startModule,
     stopModule,
@@ -23,6 +24,7 @@ const columnWidth = Math.min(yargs.terminalWidth(), 120);
 export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
     return yargs
         .command(clearModule)
+        .command(describeModule)
         .command(devToolsModule)
         .command(hideModule)
         .command(initModule)
@@ -37,7 +39,7 @@ export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
         .strict()
         .exitProcess(exitProcess)
         .epilogue('Run "$0 COMMAND --help" for more information on a command.')
-        .usage("Usage: $0 COMMAND [OPTIONS]\n\nA multi-window desktop runtime")
+        .usage("Usage: $0 COMMAND [OPTIONS]\n\nA multi-window desktop runtime.")
         .wrap(columnWidth)
         .parse(commandLine);
 };
