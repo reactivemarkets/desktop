@@ -34,7 +34,9 @@ export class NodeServiceLauncherService implements ILauncherService {
 
         const args = [servicePath];
 
-        const env = flattenObject(serviceConfiguration.parameters, name);
+        const prefix = `${namespace}_${name}`;
+
+        const env = flattenObject(serviceConfiguration.parameters, prefix);
 
         const child = await this.processFork.fork(args, env);
 
