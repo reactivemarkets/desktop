@@ -8,6 +8,13 @@ export interface IRouterService {
     addTransport(transport: ITransport): string;
 
     /**
+     * Remove listener from channel
+     * @param channel The channel listening to
+     * @param callback The callback being invoked.
+     */
+    off<T>(channel: string, callback: (data: T) => void): void;
+
+    /**
      * Listens to a channel for messages.
      * @param channel The channel to listen to
      * @param callback The callback to invoke on a message

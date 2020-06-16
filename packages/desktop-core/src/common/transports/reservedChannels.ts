@@ -23,6 +23,7 @@ export enum ReservedChannels {
     registry_listServices = "@desktop:registry/listServices",
     registry_register = "@desktop:registry/register",
     registry_unregister = "@desktop:registry/unregister",
+    router_events = "@desktop:router/events",
     router_publish = "@desktop:router/publish",
     router_subscribe = "@desktop:router/subscribe",
     router_unsubscribe = "@desktop:router/unsubscribe",

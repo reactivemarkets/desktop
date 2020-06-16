@@ -1,22 +1,29 @@
+import { EventEmitter } from "events";
 import { ITransport } from "../iTransport";
 
-export class ProcessIPCTransport implements ITransport {
-    public on<T>(channel: string, callback: (data: T) => void) {
-        process.on("message", (message: IIPCMessage<T>) => {
-            if (message.channel === channel) {
-                callback(message.data);
-            }
+export class ProcessIPCTransport extends EventEmitter implements ITransport {
+    public constructor() {
+        super();
+
+        process.on("message", (message: IIPCMessage<unknown>) => {
+            this.emit(message.channel, message.data);
         });
+    }
+
+    public off<T>(channel: string, callback: (data: T) => void) {
+        this.off(channel, callback);
+
+        return this;
+    }
+
+    public on<T>(channel: string, callback: (data: T) => void) {
+        this.on(channel, callback);
 
         return this;
     }
 
     public once<T>(channel: string, callback: (data: T) => void) {
-        process.once("message", (message: IIPCMessage<T>) => {
-            if (message.channel === channel) {
-                callback(message.data);
-            }
-        });
+        this.once(channel, callback);
 
         return this;
     }

@@ -7,6 +7,14 @@ export class CompositeTransport implements ITransport {
         this.transports.set(id, transport);
     }
 
+    public off<T>(channel: string, callback: (data: T) => void) {
+        this.transports.forEach((transport) => {
+            transport.off(channel, callback);
+        });
+
+        return this;
+    }
+
     public on<T>(channel: string, callback: (data: T) => void) {
         this.transports.forEach((transport) => {
             transport.on(channel, callback);
