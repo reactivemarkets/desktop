@@ -17,27 +17,31 @@ export const handler = async (options: IPsOptions) => {
             options,
         );
 
-        const details = containers.map((c) => {
-            return {
-                id: c.metadata.uid,
-                name: c.metadata.name,
-                namespace: c.metadata.namespace,
-                kind: c.kind,
-                created: c.status?.startTime,
-            };
-        });
+        if (options.quiet) {
+            containers.forEach((c) => logger.info(`${c.metadata.uid}`));
+        } else {
+            const details = containers.map((c) => {
+                return {
+                    id: c.metadata.uid,
+                    name: c.metadata.name,
+                    namespace: c.metadata.namespace,
+                    kind: c.kind,
+                    created: c.status?.startTime,
+                };
+            });
 
-        const table = new Table({
-            columns: [
-                { name: "id", alignment: "left" },
-                { name: "name", alignment: "left" },
-                { name: "namespace", alignment: "left" },
-                { name: "kind", alignment: "left" },
-                { name: "created" },
-            ],
-        });
-        table.addRows(details);
-        table.printTable();
+            const table = new Table({
+                columns: [
+                    { name: "id", alignment: "left" },
+                    { name: "name", alignment: "left" },
+                    { name: "namespace", alignment: "left" },
+                    { name: "kind", alignment: "left" },
+                    { name: "created" },
+                ],
+            });
+            table.addRows(details);
+            table.printTable();
+        }
 
         app.exit();
     } catch (error) {
