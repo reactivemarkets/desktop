@@ -1,6 +1,6 @@
 import { app } from "electron";
 import * as path from "path";
-
+import { uniqueNamesGenerator, adjectives, colors, animals } from "unique-names-generator";
 import { configurationGenerator, configurationWriter } from "../../configuration";
 import { logger } from "../../logging";
 
@@ -12,7 +12,11 @@ export const handler = async (options: IInitOptions) => {
 
         logger.verbose(`Init command ran from ${workingDirectory}`);
 
-        const { kind, name = `${options.kind} name`, output, url } = options;
+        const defaultName = uniqueNamesGenerator({
+            dictionaries: [adjectives, colors, animals],
+        });
+
+        const { kind, name = defaultName, output, url } = options;
 
         const configurationPath = path.join(workingDirectory, `${kind}.${output}`);
 
