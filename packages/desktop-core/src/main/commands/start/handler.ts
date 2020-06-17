@@ -65,19 +65,23 @@ export const handler = async (options: IStartOptions) => {
         logger.verbose("Loading configuration files", files);
 
         files.forEach(async (f) => {
-            const configurationArray = await configurationLoader.load(f);
+            try {
+                const configurationArray = await configurationLoader.load(f);
 
-            const configFiles = configurationArray.map(async (configuration) => {
-                try {
-                    await registryService.register(configuration);
+                const configFiles = configurationArray.map(async (configuration) => {
+                    try {
+                        await registryService.register(configuration);
 
-                    return configuration;
-                } catch (error) {
-                    logger.error(`Failed to register config: ${error}`);
-                }
-            });
+                        return configuration;
+                    } catch (error) {
+                        logger.error(`Failed to register config: ${error}`);
+                    }
+                });
 
-            configPromises.push(...configFiles);
+                configPromises.push(...configFiles);
+            } catch (error) {
+                logger.error(`Failed to load config: ${error}`);
+            }
         });
     }
 
