@@ -3,15 +3,18 @@ import { CompositeConfigurationGenerator } from "./compositeConfigurationGenerat
 import { ExternalConfigurationGenerator } from "./externalConfigurationGenerator";
 import { IConfigurationGenerator } from "./iConfigurationGenerator";
 import { ServiceConfigurationGenerator } from "./serviceConfigurationGenerator";
+import { ProtocolResolvingConfigurationGenerator } from "./protocolResolvingConfigurationGenerator";
 
-const applicationConfigurationGenerator = new ApplicationConfigurationGenerator();
+const applicationGenerator = new ApplicationConfigurationGenerator();
 
-const externalConfigurationGenerator = new ExternalConfigurationGenerator();
+const protocolResolvingGenerator = new ProtocolResolvingConfigurationGenerator(applicationGenerator);
 
-const serviceConfigurationGenerator = new ServiceConfigurationGenerator();
+const externalGenerator = new ExternalConfigurationGenerator();
+
+const serviceGenerator = new ServiceConfigurationGenerator();
 
 export const configurationGenerator: IConfigurationGenerator = new CompositeConfigurationGenerator(
-    applicationConfigurationGenerator,
-    externalConfigurationGenerator,
-    serviceConfigurationGenerator,
+    protocolResolvingGenerator,
+    externalGenerator,
+    serviceGenerator,
 );
