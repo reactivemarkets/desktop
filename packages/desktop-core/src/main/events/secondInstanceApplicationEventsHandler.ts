@@ -1,10 +1,20 @@
 import { App } from "electron";
-import { cleanCommandLine, parseCommandLine } from "../configuration/commandLine";
+import { cleanCommandLine, parseCommandLine, urlToCommandLine } from "../configuration/commandLine";
+import { logger } from "../logging";
 
 export const registerSecondInstanceEventsHandler = (app: App) => {
-    app.on("second-instance", (_, commandLine) => {
-        const cleanedCommandLine = cleanCommandLine(commandLine);
+    app.on("second-instance", (event, commandLine) => {
+        try {
+            event.preventDefault();
 
-        parseCommandLine(cleanedCommandLine, false);
+            let cleanedCommandLine = cleanCommandLine(commandLine);
+            if (cleanedCommandLine.length === 1 && cleanedCommandLine[0].startsWith("desktop://")) {
+                cleanedCommandLine = urlToCommandLine(cleanedCommandLine[0]);
+            }
+
+            parseCommandLine(cleanedCommandLine, false);
+        } catch (error) {
+            logger.error(`Failed to parse sent command line: ${error}`);
+        }
     });
 };
