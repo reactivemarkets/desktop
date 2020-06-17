@@ -28,7 +28,7 @@ describe("generate", () => {
 
         const protocol = new ProtocolResolvingConfigurationGenerator(generator);
 
-        const configuration = await protocol.generate(ConfigurationKind.Application, "name", url);
+        const configuration = await protocol.generate({ kind: ConfigurationKind.Application, name: "name", url });
 
         const application = configuration.spec as IApplicationSpecification;
 

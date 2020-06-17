@@ -47,7 +47,11 @@ export const handler = async (options: IStartOptions) => {
                     dictionaries: [adjectives, colors, animals],
                 });
 
-                const configuration = await configurationGenerator.generate(ConfigurationKind.Application, name, url);
+                const configuration = await configurationGenerator.generate({
+                    kind: ConfigurationKind.Application,
+                    name,
+                    url,
+                });
 
                 await registryService.register(configuration);
 
