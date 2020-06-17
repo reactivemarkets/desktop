@@ -11,7 +11,7 @@ export class ApplicationConfigurationGenerator implements IConfigurationGenerato
             kind: ConfigurationKind.Application,
             metadata: {
                 name,
-                description: `description of ${name}`,
+                description: `Website of ${url}`,
                 namespace: WellKnownNamespaces.default,
             },
             spec: {
