@@ -29,7 +29,7 @@ describe("generate", () => {
     test("should generate external config", async () => {
         const generator = new ExternalConfigurationGenerator();
 
-        const configuration = await generator.generate(ConfigurationKind.External, "test");
+        const configuration = await generator.generate({ kind: ConfigurationKind.External, name: "test" });
 
         expect(configuration.kind).toBe(ConfigurationKind.External);
     });
@@ -37,7 +37,7 @@ describe("generate", () => {
     test("should set namespace to default", async () => {
         const generator = new ExternalConfigurationGenerator();
 
-        const configuration = await generator.generate(ConfigurationKind.External, "test");
+        const configuration = await generator.generate({ kind: ConfigurationKind.External, name: "test" });
 
         expect(configuration.metadata.namespace).toBe(WellKnownNamespaces.default);
     });

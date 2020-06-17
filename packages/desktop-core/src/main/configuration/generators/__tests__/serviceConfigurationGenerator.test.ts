@@ -29,7 +29,7 @@ describe("generate", () => {
     test("should generate service config", async () => {
         const generator = new ServiceConfigurationGenerator();
 
-        const configuration = await generator.generate(ConfigurationKind.Service, "test");
+        const configuration = await generator.generate({ kind: ConfigurationKind.Service, name: "test" });
 
         expect(configuration.kind).toBe(ConfigurationKind.Service);
     });
@@ -37,7 +37,7 @@ describe("generate", () => {
     test("should set namespace to default", async () => {
         const generator = new ServiceConfigurationGenerator();
 
-        const configuration = await generator.generate(ConfigurationKind.Service, "test");
+        const configuration = await generator.generate({ kind: ConfigurationKind.Service, name: "test" });
 
         expect(configuration.metadata.namespace).toBe(WellKnownNamespaces.default);
     });

@@ -29,7 +29,11 @@ describe("generate", () => {
     test("should generate application config", async () => {
         const generator = new ApplicationConfigurationGenerator();
 
-        const configuration = await generator.generate(ConfigurationKind.Application, "test", "http://url");
+        const configuration = await generator.generate({
+            kind: ConfigurationKind.Application,
+            name: "test",
+            url: "http://url",
+        });
 
         expect(configuration.kind).toBe(ConfigurationKind.Application);
     });
@@ -37,7 +41,11 @@ describe("generate", () => {
     test("should set namespace to default", async () => {
         const generator = new ApplicationConfigurationGenerator();
 
-        const configuration = await generator.generate(ConfigurationKind.Application, "test", "http://url");
+        const configuration = await generator.generate({
+            kind: ConfigurationKind.Application,
+            name: "test",
+            url: "http://url",
+        });
 
         expect(configuration.metadata.namespace).toBe(WellKnownNamespaces.default);
     });

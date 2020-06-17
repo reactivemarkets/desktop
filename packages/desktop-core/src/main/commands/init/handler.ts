@@ -22,7 +22,7 @@ export const handler = async (options: IInitOptions) => {
 
         logger.verbose(`Creating config at ${configurationPath}`);
 
-        const defaultConfig = await configurationGenerator.generate(kind, name, url);
+        const defaultConfig = await configurationGenerator.generate({ kind, name, url });
 
         await configurationWriter.write(configurationPath, defaultConfig);
 

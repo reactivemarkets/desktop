@@ -1,12 +1,13 @@
 import { ConfigurationKind, IConfiguration, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
 import { IConfigurationGenerator } from "./iConfigurationGenerator";
+import { IGeneratorOptions } from "./iGeneratorOptions";
 
 export class ServiceConfigurationGenerator implements IConfigurationGenerator {
     public canGenerate = (kind: ConfigurationKind) => {
         return kind === ConfigurationKind.Service;
     };
 
-    public generate = async (_: ConfigurationKind, name: string): Promise<IConfiguration> => {
+    public generate = async ({ name }: IGeneratorOptions): Promise<IConfiguration> => {
         return Promise.resolve({
             kind: ConfigurationKind.Service,
             metadata: {

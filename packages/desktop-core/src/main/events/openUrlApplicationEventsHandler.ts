@@ -7,17 +7,21 @@ import { configurationGenerator } from "../configuration";
 import { launcherService } from "../launcher";
 
 export const registerOpenUrlEventsHandler = (app: App) => {
-    app.on("open-url", async (event, url) => {
+    app.on("open-url", async (event, desktopUrl) => {
         try {
             event.preventDefault();
 
-            const configUrl = url.replace("desktop://", "https://");
+            const url = desktopUrl.replace("desktop://", "https://");
 
             const name = uniqueNamesGenerator({
                 dictionaries: [adjectives, colors, animals],
             });
 
-            const configuration = await configurationGenerator.generate(ConfigurationKind.Application, name, configUrl);
+            const configuration = await configurationGenerator.generate({
+                kind: ConfigurationKind.Application,
+                name,
+                url,
+            });
 
             await registryService.register(configuration);
 
