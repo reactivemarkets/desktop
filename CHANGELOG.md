@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/markmcdowell/desktop/compare/v0.8.0...v0.9.0) (2020-06-17)
+
+
+### Bug Fixes
+
+* **core:** catching any errors loading configuration files ([d444ce3](https://github.com/markmcdowell/desktop/commit/d444ce3e0376bb33ea911b03f948c1c7dc64f9b1))
+
+
+### Features
+
+* **api:** adding support for certificates and origin ([91f1bf7](https://github.com/markmcdowell/desktop/commit/91f1bf72ef08c51e2ad4d9ec53fb1eedeee8e888))
+* **core:** adding describe command ([e0503c3](https://github.com/markmcdowell/desktop/commit/e0503c3e094eff0631bb1a79dc7c6799b745e90d))
+* **core:** adding hide and how to command line ([0c03931](https://github.com/markmcdowell/desktop/commit/0c03931a8ac1c1b4f8f994308bf8ed10535fdce7))
+* **core:** adding quiet option to ps command ([1af8f1c](https://github.com/markmcdowell/desktop/commit/1af8f1cef98ed23b489276c7d3ddbe722d4bbfca))
+* **core:** configuration generator now takes an object ([607878e](https://github.com/markmcdowell/desktop/commit/607878e65742a3a9ae6fdcd4fa099973e2da5d09))
+* **core:** generating unique random names for configuration ([bac7b25](https://github.com/markmcdowell/desktop/commit/bac7b25bae993aad036ff2e2a6690c709e0ab14a))
+* **core:** implementing router service ([cd72f99](https://github.com/markmcdowell/desktop/commit/cd72f993268e224bcf92774922aa6920833c9795))
+* **core:** launching applications that come in through open-url ([1cb4f8a](https://github.com/markmcdowell/desktop/commit/1cb4f8a1e7b6e945718fbfcbef9d3a3cde51ce93))
+* **core:** registering configuration sent from a second instance ([20acc6b](https://github.com/markmcdowell/desktop/commit/20acc6b1d1ab5f578c1c99c1849f2d36ba0a4f88))
+* **core:** updating ipc connect id ([d92c674](https://github.com/markmcdowell/desktop/commit/d92c6740664ca8056f6a6c5bbd117c4a824e6fa2))
+* **core:** using com.reactivemarkets. for the ipc appspace ([044af00](https://github.com/markmcdowell/desktop/commit/044af0031fe946867896bfe0d9a2676a26f1e5ba))
+
+
+
+
+
 # [0.8.0](https://github.com/markmcdowell/desktop/compare/v0.7.0...v0.8.0) (2020-06-15)
 
 
