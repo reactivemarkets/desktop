@@ -4,7 +4,7 @@ import { IIpcExternalResult } from "./iIpcExternalResult";
 
 export class NodeIpcExternalMain implements IIpcExternalMain {
     private readonly appSpace = "com.reactivemarkets.";
-    private readonly connectId = "desktop";
+    private readonly connectId = "desktop_ipc";
 
     public handle(channel: string, listener: (args?: any) => any): void {
         ipc.server.on(channel, (data, socket) => {

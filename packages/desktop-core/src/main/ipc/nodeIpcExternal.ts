@@ -5,12 +5,12 @@ import { IIpcExternalResult } from "./iIpcExternalResult";
 
 export class NodeIpcExternal implements IIpcExternal {
     private readonly appSpace = "com.reactivemarkets.";
-    private readonly connectId = "desktop";
+    private readonly connectId = "desktop_ipc";
 
     public invoke<TData, TResult>(channel: string, data: TData): Promise<TResult> {
         return new Promise<TResult>((resolve, reject) => {
             const responseId = uuid();
-            ipc.of.desktop.on(responseId, ({ error, result }: IIpcExternalResult) => {
+            ipc.of.desktop_ipc.on(responseId, ({ error, result }: IIpcExternalResult) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -23,7 +23,7 @@ export class NodeIpcExternal implements IIpcExternal {
                 responseId,
             };
 
-            ipc.of.desktop.emit(channel, message);
+            ipc.of.desktop_ipc.emit(channel, message);
         });
     }
 
@@ -34,10 +34,10 @@ export class NodeIpcExternal implements IIpcExternal {
             ipc.config.maxRetries = 0;
             ipc.config.silent = true;
             ipc.connectTo(this.connectId, () => {
-                ipc.of.desktop.on("error", (error: Error) => {
+                ipc.of.desktop_ipc.on("error", (error: Error) => {
                     reject(error);
                 });
-                ipc.of.desktop.on("connect", () => {
+                ipc.of.desktop_ipc.on("connect", () => {
                     resolve();
                 });
             });
