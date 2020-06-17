@@ -3,6 +3,7 @@ import { IIpcExternalMain } from "./iIpcExternalMain";
 import { IIpcExternalResult } from "./iIpcExternalResult";
 
 export class NodeIpcExternalMain implements IIpcExternalMain {
+    private readonly appSpace = "com.reactivemarkets.";
     private readonly connectId = "desktop";
 
     public handle(channel: string, listener: (args?: any) => any): void {
@@ -20,6 +21,7 @@ export class NodeIpcExternalMain implements IIpcExternalMain {
 
     public whenReady() {
         return new Promise<void>((resolve) => {
+            ipc.config.appspace = this.appSpace;
             ipc.config.id = this.connectId;
             ipc.config.silent = true;
             ipc.serve(() => {

@@ -4,6 +4,7 @@ import { IIpcExternal } from "./iIpcExternal";
 import { IIpcExternalResult } from "./iIpcExternalResult";
 
 export class NodeIpcExternal implements IIpcExternal {
+    private readonly appSpace = "com.reactivemarkets.";
     private readonly connectId = "desktop";
 
     public invoke<TData, TResult>(channel: string, data: TData): Promise<TResult> {
@@ -28,6 +29,7 @@ export class NodeIpcExternal implements IIpcExternal {
 
     public whenReady() {
         return new Promise<void>((resolve, reject) => {
+            ipc.config.appspace = this.appSpace;
             ipc.config.id = uuid();
             ipc.config.maxRetries = 0;
             ipc.config.silent = true;
