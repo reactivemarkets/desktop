@@ -4,5 +4,9 @@
     "exe": "Desktop.exe",
     "productName": "Desktop",
     "description": "Multi-window, cross-platform desktop applications.",
-    "homePage": "https://desktop.reactivemarkets.com"
+    "homePage": "https://desktop.reactivemarkets.com",
+    "authors": ["Reactive Markets"],
+    "owners": ["Reactive Markets"],
+    "copyright": "Copyright © Reactive Markets",
+    "animation": "src/img/windows-install.gif"
 }
