@@ -1,11 +1,14 @@
 import { app } from "electron";
 import { spawn } from "child_process";
 import * as path from "path";
+import { logger } from "../logging";
 
 const run = (args: string[], done: () => void) => {
+    logger.info(`processing squirrel command: ${JSON.stringify(args)}}`);
+
     const updateExe = path.resolve(path.dirname(process.execPath), "..", "Update.exe");
 
-    console.log(`Spawning ${updateExe} with args ${args}`);
+    logger.info(`Spawning ${updateExe} with args ${args}`);
     spawn(updateExe, args, {
         detached: true,
     }).on("close", done);
@@ -17,9 +20,8 @@ export const checkForSquirrelEvents = () => {
     }
 
     const cmd = process.argv[1];
-    const target = path.basename(process.execPath);
 
-    console.log(`processing squirrel command: ${cmd}, target: ${target}`);
+    const target = path.basename(process.execPath);
 
     switch (cmd) {
         case "--squirrel-firstrun":
