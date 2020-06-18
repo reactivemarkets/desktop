@@ -1,5 +1,5 @@
 ---
-name: Package
+name: Package Windows
 on:
   release:
     types:
@@ -9,19 +9,16 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest]
+        os: [windows-latest]
         node-version: [12.x]
         include:
-          - os: ubuntu-latest
-            platform: linux
-            arch: x64
-            installer-prefix: desktop_
-            installer-postfix: _amd64.deb
-          - os: macOS-latest
-            platform: darwin
+          - os: windows-latest
+            platform: win32
             arch: x64
             installer-prefix: desktop-
-            installer-postfix: .dmg
+            installer-postfix: -setup.exe
+            nupkg-prefix: desktop-
+            nupkg-postfix: -full.nupkg
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -51,13 +48,19 @@ jobs:
         id: version
         shell: bash
       - name: Get zip file
-        run: echo "::set-output name=filename::desktop-${{ steps.version.outputs.version }}-${{ matrix.platform }}-${{ matrix.arch }}.zip"
+        run: |
+          echo "::set-output name=filename::desktop-${{ steps.version.outputs.version }}-${{ matrix.platform }}-${{ matrix.arch }}.zip"
         id: zip
         shell: bash
       - name: Get installer file
         run: | 
           echo "::set-output name=filename::${{ matrix.installer-prefix }}${{ steps.version.outputs.version }}${{ matrix.installer-postfix }}"
         id: installer
+        shell: bash
+      - name: Get nupkg file
+        run: | 
+          echo "::set-output name=filename::${{ matrix.nupkg-prefix }}${{ steps.version.outputs.version }}${{ matrix.nupkg-postfix }}"
+        id: nupkg
         shell: bash
       - name: Upload Package Zip
         uses: actions/upload-release-asset@v1
@@ -76,4 +79,22 @@ jobs:
           upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: packages/desktop/pack/${{ steps.installer.outputs.filename }}
           asset_name: ${{ steps.installer.outputs.filename }}
+          asset_content_type: application/octet-stream
+      - name: Upload Package Nupkg
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: packages/desktop/pack/${{ steps.nupkg.outputs.filename }}
+          asset_name: ${{ steps.nupkg.outputs.filename }}
+          asset_content_type: application/octet-stream
+      - name: Upload Package RELEASES
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: packages/desktop/pack/RELEASES
+          asset_name: RELEASES
           asset_content_type: application/octet-stream
