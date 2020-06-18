@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/reactivemarkets/desktop/compare/v0.11.0...v0.12.0) (2020-06-18)
+
+
+### Features
+
+* **core:** storage service ([aade7d3](https://github.com/reactivemarkets/desktop/commit/aade7d36bbbedfb78f31bc5aace339040e5ac2f3))
+
+
+
+
+
 # [0.11.0](https://github.com/reactivemarkets/desktop/compare/v0.10.0...v0.11.0) (2020-06-18)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-types

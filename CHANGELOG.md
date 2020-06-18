@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/markmcdowell/desktop/compare/v0.11.0...v0.12.0) (2020-06-18)
+
+
+### Bug Fixes
+
+* **core:** no async without await ([4360880](https://github.com/markmcdowell/desktop/commit/4360880b8e063df5982fbc45517c4d283092b918))
+* **core:** only log squirrel command if it matches ([2814a86](https://github.com/markmcdowell/desktop/commit/2814a86e3d90f983f1a4e92601503edcff32713c))
+* **core:** searching for desktop: protocol on second-instance ([1938c86](https://github.com/markmcdowell/desktop/commit/1938c8661ad319825b1a8acd9561d4d14a58e30d))
+
+
+### Features
+
+* **core:** storage service ([aade7d3](https://github.com/markmcdowell/desktop/commit/aade7d36bbbedfb78f31bc5aace339040e5ac2f3))
+* **desktop:** uploading nupkg, RELEASES and exe directly to github ([b39296e](https://github.com/markmcdowell/desktop/commit/b39296e6bc477e97491a420d974602892f96a3e0))
+
+
+
+
+
 # [0.11.0](https://github.com/markmcdowell/desktop/compare/v0.10.0...v0.11.0) (2020-06-18)
 
 

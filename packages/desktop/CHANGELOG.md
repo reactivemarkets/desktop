@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/reactivemarkets/desktop/compare/v0.11.0...v0.12.0) (2020-06-18)
+
+
+### Features
+
+* **desktop:** uploading nupkg, RELEASES and exe directly to github ([b39296e](https://github.com/reactivemarkets/desktop/commit/b39296e6bc477e97491a420d974602892f96a3e0))
+
+
+
+
+
 # [0.11.0](https://github.com/reactivemarkets/desktop/compare/v0.10.0...v0.11.0) (2020-06-18)
 
 
