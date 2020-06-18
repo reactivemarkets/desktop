@@ -8,7 +8,7 @@ import { ITrayService } from "../tray";
 import { ILogger } from "../logging";
 import { ILauncherService } from "./iLauncherService";
 
-export class TrayConfigurationLauncherService implements ILauncherService {
+export class TrayLauncherService implements ILauncherService {
     private readonly logger: ILogger;
     private readonly trayService: ITrayService;
 
