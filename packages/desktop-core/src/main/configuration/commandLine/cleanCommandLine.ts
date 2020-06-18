@@ -1,5 +1,7 @@
 import { parse } from "url";
 
+const argsToIgnore = ["--allow-file-access-from-files"];
+
 /**
  * In production, skip the first argument.
  *
@@ -7,15 +9,18 @@ import { parse } from "url";
  * @param commandLine The command line to clean
  */
 export const cleanCommandLine = (commandLine: string[]) => {
-    const defaultArgsToSkip = 1;
-    const mainIndex = commandLine.findIndex((entry) => entry.endsWith("main.js"));
-    if (mainIndex === -1) {
-        return commandLine.slice(defaultArgsToSkip);
+    const desktopArg = commandLine.find((arg) => arg.startsWith("desktop://"));
+    if (desktopArg !== undefined) {
+        return urlToCommandLine(desktopArg);
     }
 
-    const numberOfArgsToSkip = mainIndex + defaultArgsToSkip;
+    let argsToSkip = 1;
+    const mainIndex = commandLine.findIndex((entry) => entry.endsWith("main.js"));
+    if (mainIndex !== -1) {
+        argsToSkip += mainIndex;
+    }
 
-    return commandLine.slice(numberOfArgsToSkip);
+    return commandLine.slice(argsToSkip).filter((arg) => !argsToIgnore.includes(arg));
 };
 
 /**

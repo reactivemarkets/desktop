@@ -13,6 +13,26 @@ describe("cleanCommandLine", () => {
 
             expect(cleanCommandLine(args)).toEqual(["-c", "application.yaml"]);
         });
+
+        test("allow file access when present", () => {
+            const args = ["electron.exe", "--allow-file-access-from-files", "-c", "application.yaml"];
+
+            expect(cleanCommandLine(args)).toEqual(["-c", "application.yaml"]);
+        });
+    });
+
+    describe("should replace", () => {
+        test("command line with desktop args when present", () => {
+            const args = ["desktop://open?config=application.yaml"];
+
+            expect(cleanCommandLine(args)).toEqual(["open", "--config=application.yaml"]);
+        });
+
+        test("command line with desktop args when 2nd argument", () => {
+            const args = ["electron.exe", "desktop://open?config=application.yaml"];
+
+            expect(cleanCommandLine(args)).toEqual(["open", "--config=application.yaml"]);
+        });
     });
 });
 

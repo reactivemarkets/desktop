@@ -20,7 +20,7 @@ if (checkForSquirrelEvents()) {
 
     const commandLine = cleanCommandLine(process.argv);
 
-    logger.verbose("Parsing command line: ", commandLine);
+    logger.verbose(`Parsing command line: ${commandLine}`);
 
     parseCommandLine(commandLine, true);
 }

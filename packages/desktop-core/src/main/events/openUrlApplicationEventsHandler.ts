@@ -1,5 +1,5 @@
 import { App } from "electron";
-import { cleanCommandLine, parseCommandLine, urlToCommandLine } from "../configuration/commandLine";
+import { cleanCommandLine, parseCommandLine } from "../configuration/commandLine";
 import { logger } from "../logging";
 
 export const registerOpenUrlEventsHandler = (app: App) => {
@@ -9,9 +9,7 @@ export const registerOpenUrlEventsHandler = (app: App) => {
 
             event.preventDefault();
 
-            const commandLine = urlToCommandLine(desktopUrl);
-
-            const cleanedCommandLine = cleanCommandLine(commandLine);
+            const cleanedCommandLine = cleanCommandLine([desktopUrl]);
 
             parseCommandLine(cleanedCommandLine, false);
         } catch (error) {
