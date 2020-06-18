@@ -10,8 +10,9 @@ export const registerSecondInstanceEventsHandler = (app: App) => {
             event.preventDefault();
 
             let cleanedCommandLine = cleanCommandLine(commandLine);
-            if (cleanedCommandLine.length === 1 && cleanedCommandLine[0].startsWith("desktop://")) {
-                cleanedCommandLine = urlToCommandLine(cleanedCommandLine[0]);
+            const desktopArg = cleanedCommandLine.find((arg) => arg.startsWith("desktop://"));
+            if (desktopArg !== undefined) {
+                cleanedCommandLine = urlToCommandLine(desktopArg);
             }
 
             parseCommandLine(cleanedCommandLine, false);
