@@ -6,7 +6,7 @@ import { IEnvironmentVariables } from "./iEnvironmentVariables";
 import { IProcessExec } from "./iProcessExec";
 
 export class ExecFileProcessExec implements IProcessExec {
-    public exec = async (file: string, args?: string[], env?: IEnvironmentVariables) => {
+    public exec = (file: string, args?: string[], env?: IEnvironmentVariables) => {
         return new Promise<cp.ChildProcess>((resolve) => {
             logger.verbose(`execFile ${file}`);
 

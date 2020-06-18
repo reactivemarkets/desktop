@@ -11,7 +11,7 @@ export class CompositeConfigurationWriter<T> implements IConfigurationWriter<T> 
         return this.writers.some((writer) => writer.canWrite(path));
     }
 
-    public async write(path: string, data: T) {
+    public write(path: string, data: T) {
         const writer = this.writers.find((w) => w.canWrite(path));
 
         if (writer !== undefined) {

@@ -7,7 +7,7 @@ export class ServiceConfigurationGenerator implements IConfigurationGenerator {
         return kind === ConfigurationKind.Service;
     };
 
-    public generate = async ({ name }: IGeneratorOptions): Promise<IConfiguration> => {
+    public generate = ({ name }: IGeneratorOptions): Promise<IConfiguration> => {
         return Promise.resolve({
             kind: ConfigurationKind.Service,
             metadata: {

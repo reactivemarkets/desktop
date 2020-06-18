@@ -3,7 +3,7 @@ import { cleanCommandLine, parseCommandLine, urlToCommandLine } from "../configu
 import { logger } from "../logging";
 
 export const registerOpenUrlEventsHandler = (app: App) => {
-    app.on("open-url", async (event, desktopUrl) => {
+    app.on("open-url", (event, desktopUrl) => {
         try {
             logger.verbose(`open-url invoked with url: ${desktopUrl}`);
 

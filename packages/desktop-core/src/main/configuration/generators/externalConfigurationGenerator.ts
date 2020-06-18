@@ -7,7 +7,7 @@ export class ExternalConfigurationGenerator implements IConfigurationGenerator {
         return kind === ConfigurationKind.External;
     };
 
-    public generate = async ({ name }: IGeneratorOptions): Promise<IConfiguration> => {
+    public generate = ({ name }: IGeneratorOptions): Promise<IConfiguration> => {
         return Promise.resolve({
             kind: ConfigurationKind.External,
             metadata: {

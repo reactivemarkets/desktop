@@ -9,7 +9,7 @@ export class BrowserWindowFactory implements IWindowFactory {
         this.defaultWebPreferences = defaultWebPreferences;
     }
 
-    public create = async (configuration: IConfiguration) => {
+    public create = (configuration: IConfiguration) => {
         const spec = configuration.spec as IApplicationSpecification;
         if (spec === undefined) {
             const defaultWindow = new BrowserWindow({
