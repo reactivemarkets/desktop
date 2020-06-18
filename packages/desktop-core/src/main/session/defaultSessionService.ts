@@ -20,8 +20,6 @@ export class DefaultSessionService implements ISessionService {
             const error = new Error(message);
 
             return Promise.reject(error);
-
-            return;
         }
 
         const { downloadPath, ntlmDomains, userAgent } = parameters;

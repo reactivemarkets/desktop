@@ -11,16 +11,16 @@ export class ApplicationEventsProcessFork implements IProcessFork {
     }
 
     public async fork(args: string[], env: IEnvironmentVariables) {
-        return this.processFork.fork(args, env).then((child) => {
-            const ipcTransport = new ChildProcessIPCTransport(child);
+        const child = await this.processFork.fork(args, env);
 
-            const id = routerService.addTransport(ipcTransport);
+        const ipcTransport = new ChildProcessIPCTransport(child);
 
-            child.on("exit", () => {
-                routerService.removeTransport(id);
-            });
+        const id = routerService.addTransport(ipcTransport);
 
-            return child;
+        child.on("exit", () => {
+            routerService.removeTransport(id);
         });
+
+        return child;
     }
 }

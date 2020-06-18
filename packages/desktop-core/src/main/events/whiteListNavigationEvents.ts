@@ -30,7 +30,7 @@ export const whiteListNavigationEventsHandler = (app: App) => {
             webPreferences.sandbox = true;
         });
 
-        contents.on("new-window", async (event, navigationUrl) => {
+        contents.on("new-window", (event, navigationUrl) => {
             event.preventDefault();
 
             logger.warn(

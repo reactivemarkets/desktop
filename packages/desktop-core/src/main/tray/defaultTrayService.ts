@@ -25,7 +25,7 @@ export class DefaultTrayService implements ITrayService {
         this.defaultDocumentationUrl = defaultDocumentationUrl;
     }
 
-    public async configure(spec: ITraySpecification) {
+    public configure(spec: ITraySpecification) {
         try {
             const { icon = this.defaultIcon } = spec;
 

@@ -13,17 +13,17 @@ export class SignalHandlingProcessExec implements IProcessExec {
     }
 
     public async exec(file: string, args?: string[], env?: IEnvironmentVariables) {
-        return this.processExec.exec(file, args, env).then((child) => {
-            this.terminatingSignals.forEach((signal) => {
-                process.once(signal, () => {
-                    if (!child.killed) {
-                        logger.verbose(`received ${signal}, killing any children`);
-                        child.kill(signal);
-                    }
-                });
-            });
+        const child = await this.processExec.exec(file, args, env);
 
-            return child;
+        this.terminatingSignals.forEach((signal) => {
+            process.once(signal, () => {
+                if (!child.killed) {
+                    logger.verbose(`received ${signal}, killing any children`);
+                    child.kill(signal);
+                }
+            });
         });
+
+        return child;
     }
 }

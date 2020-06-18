@@ -7,7 +7,7 @@ export class ApplicationConfigurationGenerator implements IConfigurationGenerato
         return kind === ConfigurationKind.Application;
     };
 
-    public generate = async ({ name, url }: IGeneratorOptions): Promise<IConfiguration> => {
+    public generate = ({ name, url }: IGeneratorOptions): Promise<IConfiguration> => {
         return Promise.resolve({
             kind: ConfigurationKind.Application,
             metadata: {

@@ -11,9 +11,8 @@ export class CompositeConfigurationLoader<T> implements IConfigurationLoader<T> 
         return this.loaders.some((loader) => loader.canLoad(path));
     }
 
-    public async load(path: string): Promise<T[]> {
+    public load(path: string): Promise<T[]> {
         const loader = this.loaders.find((l) => l.canLoad(path));
-
         if (loader !== undefined) {
             return loader.load(path);
         }
