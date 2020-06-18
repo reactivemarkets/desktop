@@ -1,5 +1,6 @@
 {
     "name": "desktop",
+    "productName": "Desktop",
     "version": "1.0.0",
     "description": "A cross platform hosting environment for multi-window applications",
     "main": "main.js",
@@ -17,6 +18,6 @@
     "files": [
         "dist/app.asar"
     ],
-    "author": "ReactiveMarkets",
+    "author": "Reactive Markets",
     "license": "Apache-2.0"
 }
