@@ -1,12 +1,13 @@
 {
+    "animation": "src/img/windows-install.gif",
+    "authors": ["Reactive Markets"],
+    "copyright": "Copyright © Reactive Markets",
+    "description": "Multi-window, cross-platform desktop applications.",
+    "exe": "Desktop.exe",
+    "homePage": "https://desktop.reactivemarkets.com",
     "icon": "src/img/desktop.ico",
     "name": "desktop",
-    "exe": "Desktop.exe",
-    "productName": "Desktop",
-    "description": "Multi-window, cross-platform desktop applications.",
-    "homePage": "https://desktop.reactivemarkets.com",
-    "authors": ["Reactive Markets"],
+    "noMsi": true,
     "owners": ["Reactive Markets"],
-    "copyright": "Copyright © Reactive Markets",
-    "animation": "src/img/windows-install.gif"
+    "productName": "Desktop"
 }
