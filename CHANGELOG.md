@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/markmcdowell/desktop/compare/v0.10.0...v0.11.0) (2020-06-18)
+
+
+### Bug Fixes
+
+* **core:** removing strict from command line ([cc11a21](https://github.com/markmcdowell/desktop/commit/cc11a218a8e16b33370ebd91e86723c86169900b))
+
+
+### Features
+
+* **desktop:** adding windows install details ([322b206](https://github.com/markmcdowell/desktop/commit/322b206a413a46ef3d23e73bcf4a03f1ce899984))
+* **desktop:** loading defaults on start ([286002a](https://github.com/markmcdowell/desktop/commit/286002a05e450210b449d9e1ee94d82733e2f884))
+
+
+
+
+
 # [0.10.0](https://github.com/markmcdowell/desktop/compare/v0.9.0...v0.10.0) (2020-06-17)
 
 
