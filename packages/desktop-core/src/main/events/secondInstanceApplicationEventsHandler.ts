@@ -1,5 +1,5 @@
 import { App } from "electron";
-import { cleanCommandLine, parseCommandLine, urlToCommandLine } from "../configuration/commandLine";
+import { cleanCommandLine, parseCommandLine } from "../configuration/commandLine";
 import { logger } from "../logging";
 
 export const registerSecondInstanceEventsHandler = (app: App) => {
@@ -9,11 +9,7 @@ export const registerSecondInstanceEventsHandler = (app: App) => {
 
             event.preventDefault();
 
-            let cleanedCommandLine = cleanCommandLine(commandLine);
-            const desktopArg = cleanedCommandLine.find((arg) => arg.startsWith("desktop://"));
-            if (desktopArg !== undefined) {
-                cleanedCommandLine = urlToCommandLine(desktopArg);
-            }
+            const cleanedCommandLine = cleanCommandLine(commandLine);
 
             parseCommandLine(cleanedCommandLine, false);
         } catch (error) {
