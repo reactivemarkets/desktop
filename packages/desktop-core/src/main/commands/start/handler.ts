@@ -92,7 +92,7 @@ export const handler = async (options: IStartOptions) => {
     if (files !== undefined) {
         logger.verbose("Loading configuration files", files);
 
-        files.forEach(async (f) => {
+        const configFilePromises = files.map(async (f) => {
             try {
                 const configurationArray = await configurationLoader.load(f);
 
@@ -106,11 +106,20 @@ export const handler = async (options: IStartOptions) => {
                     }
                 });
 
-                configPromises.push(...configFiles);
+                return configFiles;
             } catch (error) {
                 logger.error(`Failed to load config: ${error}`);
             }
         });
+
+        const configOrUndefined = await Promise.all(configFilePromises);
+
+        const configFiles = configOrUndefined
+            .flat()
+            .filter((p) => p !== undefined)
+            .map((p) => p!);
+
+        configPromises.push(...configFiles);
     }
 
     try {
