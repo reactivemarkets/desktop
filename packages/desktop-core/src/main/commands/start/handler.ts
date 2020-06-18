@@ -1,9 +1,10 @@
 import { ConfigurationKind, IConfiguration } from "@reactivemarkets/desktop-types";
 import { app } from "electron";
+import * as path from "path";
 import { uniqueNamesGenerator, adjectives, colors, animals } from "unique-names-generator";
 import { registerIpcEventHandlers } from "../../api";
-import { registerApplicationEventHandlers } from "../../events";
 import { configurationGenerator, configurationLoader } from "../../configuration";
+import { registerApplicationEventHandlers } from "../../events";
 import { launcherService } from "../../launcher";
 import { logger } from "../../logging";
 import { registerApplicationMenu } from "../../menu";
@@ -11,6 +12,8 @@ import { registryService } from "../../registry";
 
 export const handler = async (options: IStartOptions) => {
     logger.verbose("Start command ran.");
+
+    const configPromises = new Array<Promise<IConfiguration | undefined>>();
 
     if (!app.hasSingleInstanceLock()) {
         const appLock = app.requestSingleInstanceLock();
@@ -24,18 +27,39 @@ export const handler = async (options: IStartOptions) => {
         app.enableSandbox();
         app.allowRendererProcessReuse = true;
         if (app.isPackaged) {
-            const appName = app.name.toLowerCase();
-            app.setAppUserModelId(appName);
-            app.setAsDefaultProtocolClient(appName);
+            app.setAppUserModelId(`ReactiveMarkets.${app.name}`);
+            app.setAsDefaultProtocolClient(app.name.toLowerCase());
         }
         registerIpcEventHandlers();
         registerApplicationEventHandlers(app);
         registerApplicationMenu();
+
+        try {
+            const appPath = app.getAppPath();
+
+            const resourcesPath = path.dirname(appPath);
+
+            const defaults = path.join(resourcesPath, "defaults.yaml");
+
+            const configurationArray = await configurationLoader.load(defaults);
+
+            const configFiles = configurationArray.map(async (configuration) => {
+                try {
+                    await registryService.register(configuration);
+
+                    return configuration;
+                } catch (error) {
+                    logger.error(`Failed to register default config: ${error}`);
+                }
+            });
+
+            configPromises.push(...configFiles);
+        } catch (error) {
+            logger.error(`Failed to load default config: ${error}`);
+        }
     }
 
     const onReady = app.whenReady();
-
-    const configPromises = new Array<Promise<IConfiguration | undefined>>();
 
     const urls = options.url;
     if (urls !== undefined) {

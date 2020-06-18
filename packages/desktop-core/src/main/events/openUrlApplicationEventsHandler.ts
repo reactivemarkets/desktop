@@ -5,6 +5,8 @@ import { logger } from "../logging";
 export const registerOpenUrlEventsHandler = (app: App) => {
     app.on("open-url", async (event, desktopUrl) => {
         try {
+            logger.verbose(`open-url invoked with url: ${desktopUrl}`);
+
             event.preventDefault();
 
             const commandLine = urlToCommandLine(desktopUrl);

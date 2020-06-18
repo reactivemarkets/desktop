@@ -5,6 +5,8 @@ import { logger } from "../logging";
 export const registerSecondInstanceEventsHandler = (app: App) => {
     app.on("second-instance", (event, commandLine) => {
         try {
+            logger.verbose(`second-instance invoked with command line: ${JSON.stringify(commandLine)}`);
+
             event.preventDefault();
 
             let cleanedCommandLine = cleanCommandLine(commandLine);
