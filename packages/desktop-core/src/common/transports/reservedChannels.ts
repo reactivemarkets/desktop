@@ -28,6 +28,8 @@ export enum ReservedChannels {
     router_subscribe = "@desktop:router/subscribe",
     router_unsubscribe = "@desktop:router/unsubscribe",
     router_unsubscribeAll = "@desktop:router/unsubscribeAll",
+    system_getAppVersion = "@desktop:system/getAppVersion",
+    system_getVersions = "@desktop:system/getVersions",
     system_quit = "@desktop:system/quit",
     system_showAboutPanel = "@desktop:system/showAboutPanel",
     window_blur = "@desktop:window/blur",

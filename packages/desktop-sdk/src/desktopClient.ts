@@ -12,6 +12,14 @@ export class DesktopClient implements IDesktop {
         return typeof desktop !== "undefined";
     }
 
+    public getAppVersion() {
+        return this.api.system.getAppVersion();
+    }
+
+    public getVersions() {
+        return this.api.system.getVersions();
+    }
+
     public quit() {
         return this.api.system.quit();
     }
