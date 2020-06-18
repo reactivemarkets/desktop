@@ -22,7 +22,8 @@ spec:
     frame: false
     fullscreenable: false
     height: 60
-    maximisable: false
+    minimizable: false
+    maximizable: false
     minHeight: 60
     minWidth: 400
     title: Dock
