@@ -9,6 +9,7 @@ import { ITraySpecification } from "./iTraySpecification";
 import { IApplicationStatus } from "./iApplicationStatus";
 import { IExternalStatus } from "./iExternalStatus";
 import { IServiceStatus } from "./iServiceStatus";
+import { IStorageStatus } from "./iStorageStatus";
 
 type Spec =
     | IApplicationSpecification
@@ -18,7 +19,7 @@ type Spec =
     | IStorageSpecification
     | ITraySpecification;
 
-type Status = IApplicationStatus | IExternalStatus | IServiceStatus;
+type Status = IApplicationStatus | IExternalStatus | IServiceStatus | IStorageStatus;
 
 export interface IConfiguration {
     readonly apiVersion?: string;

@@ -9,7 +9,7 @@ import { ISessionService } from "../session";
 
 import { ILauncherService } from "./iLauncherService";
 
-export class SessionConfigurationLauncherService implements ILauncherService {
+export class SessionLauncherService implements ILauncherService {
     private readonly logger: ILogger;
     private readonly sessionService: ISessionService;
 
