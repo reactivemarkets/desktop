@@ -12,7 +12,7 @@ export class ApplicationConfigurationGenerator implements IConfigurationGenerato
             kind: ConfigurationKind.Application,
             metadata: {
                 name,
-                description: `Website of ${url}`,
+                description: "Open site",
                 namespace: WellKnownNamespaces.default,
             },
             spec: {
