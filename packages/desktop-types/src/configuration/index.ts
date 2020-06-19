@@ -1,5 +1,6 @@
 export * from "./applicationState";
 export * from "./configurationKind";
+export * from "./iAnnotations";
 export * from "./iApplicationSpecification";
 export * from "./iApplicationStatus";
 export * from "./iConfiguration";

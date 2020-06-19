@@ -10,6 +10,7 @@ import { IApplicationStatus } from "./iApplicationStatus";
 import { IExternalStatus } from "./iExternalStatus";
 import { IServiceStatus } from "./iServiceStatus";
 import { IStorageStatus } from "./iStorageStatus";
+import { IAnnotations } from "./iAnnotations";
 
 type Spec =
     | IApplicationSpecification
@@ -22,6 +23,7 @@ type Spec =
 type Status = IApplicationStatus | IExternalStatus | IServiceStatus | IStorageStatus;
 
 export interface IConfiguration {
+    readonly annotations?: IAnnotations;
     readonly apiVersion?: string;
     readonly kind: ConfigurationKind;
     readonly metadata: IMetadata;
