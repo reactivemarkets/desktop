@@ -1,10 +1,13 @@
 import { IConfiguration, IApplicationSpecification } from "@reactivemarkets/desktop-types";
 import { IWindowService } from "./iWindowService";
+import { ILogger } from "../logging";
 
 export class SingleInstanceWindowService implements IWindowService {
+    private readonly logger: ILogger;
     private readonly windowService: IWindowService;
 
-    public constructor(windowService: IWindowService) {
+    public constructor(logger: ILogger, windowService: IWindowService) {
+        this.logger = logger;
         this.windowService = windowService;
     }
 
@@ -24,6 +27,10 @@ export class SingleInstanceWindowService implements IWindowService {
 
         const window = this.from(configuration);
         if (window !== undefined) {
+            this.logger.info(
+                `${configuration.metadata.namespace}/${configuration.metadata.name} already exists and is single instance, moving to top.`,
+            );
+            window.instance.moveTop();
             return window;
         }
 

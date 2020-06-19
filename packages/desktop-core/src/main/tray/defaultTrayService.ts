@@ -1,42 +1,75 @@
-import { ITraySpecification } from "@reactivemarkets/desktop-types";
+import {
+    ITraySpecification,
+    IConfiguration,
+    ConfigurationKind,
+    WellKnownNamespaces,
+} from "@reactivemarkets/desktop-types";
 import { app, dialog, Menu, Tray, MenuItemConstructorOptions } from "electron";
+import { fromEventPattern } from "rxjs";
+import { filter, debounceTime } from "rxjs/operators";
 import { ILogger } from "../logging";
 import { ITrayService } from "./iTrayService";
 import { IShellService } from "../shell";
+import { IWindowService } from "../windowing";
+import { launcherService } from "../launcher";
+import { registryService } from "../registry";
 
 interface ITrayServiceOptions {
-    readonly logger: ILogger;
-    readonly shellService: IShellService;
     readonly defaultIcon: string;
     readonly defaultDocumentationUrl: string;
+    readonly logger: ILogger;
+    readonly shellService: IShellService;
+    readonly windowService: IWindowService;
 }
 
 export class DefaultTrayService implements ITrayService {
     private tray?: Tray;
+    private readonly delay = 500;
     private readonly defaultDocumentationUrl: string;
     private readonly defaultIcon: string;
     private readonly logger: ILogger;
     private readonly shellService: IShellService;
+    private readonly windowService: IWindowService;
 
-    public constructor({ logger, shellService, defaultIcon, defaultDocumentationUrl }: ITrayServiceOptions) {
+    public constructor(options: ITrayServiceOptions) {
+        const { logger, shellService, windowService, defaultIcon, defaultDocumentationUrl } = options;
+
         this.logger = logger;
         this.shellService = shellService;
+        this.windowService = windowService;
         this.defaultIcon = defaultIcon;
         this.defaultDocumentationUrl = defaultDocumentationUrl;
     }
 
-    public configure(spec: ITraySpecification) {
+    public async create(configuration: IConfiguration) {
         try {
+            const { description, name, namespace = WellKnownNamespaces.default } = configuration.metadata;
+
+            const spec = (configuration.spec ?? {}) as ITraySpecification;
+
             const { icon = this.defaultIcon } = spec;
 
-            const template = this.buildTemplate(spec);
-
-            const contextMenu = Menu.buildFromTemplate(template);
-
             this.tray = new Tray(icon);
-            this.tray.setContextMenu(contextMenu);
+            this.tray.setIgnoreDoubleClickEvents(true);
+            if (description !== undefined) {
+                this.tray.setToolTip(description);
+            }
 
-            this.logger.info("Configured tray menu");
+            this.setContextMenu(namespace, spec);
+
+            fromEventPattern<IConfiguration>(
+                (h) => registryService.on("registered", h),
+                (h) => registryService.off("registered", h),
+            )
+                .pipe(
+                    filter(({ metadata }) => metadata.namespace === namespace),
+                    debounceTime(this.delay),
+                )
+                .subscribe({
+                    next: () => this.setContextMenu(namespace, spec),
+                });
+
+            this.logger.info(`Configured ${name} tray menu`);
 
             return Promise.resolve();
         } catch (error) {
@@ -46,15 +79,47 @@ export class DefaultTrayService implements ITrayService {
         }
     }
 
+    private readonly setContextMenu = async (namespace: string, spec: ITraySpecification) => {
+        const dynamicTemplate = await this.buildDynamicTemplate(namespace);
+
+        const staticTemplate = this.buildTemplate(spec);
+
+        const contextMenu = Menu.buildFromTemplate([...dynamicTemplate, ...staticTemplate]);
+
+        this.tray?.setContextMenu(contextMenu);
+    };
+
+    private readonly buildDynamicTemplate = async (namespace: string): Promise<MenuItemConstructorOptions[]> => {
+        const registry = await registryService.getRegistry();
+
+        return registry
+            .filter(({ kind }) => {
+                return kind === ConfigurationKind.Application;
+            })
+            .filter(({ metadata }) => {
+                return metadata.namespace === namespace;
+            })
+            .map((configuration) => {
+                return {
+                    label: configuration.metadata.name,
+                    click: this.launchApplication(configuration),
+                };
+            });
+    };
+
     private readonly buildTemplate = (spec: ITraySpecification): MenuItemConstructorOptions[] => {
         const { documentationUrl = this.defaultDocumentationUrl } = spec;
 
         return [
-            { label: "About Desktop", type: "normal", role: "about" },
             { type: "separator" },
             {
                 label: "Documentation",
                 click: this.openDocumentation(documentationUrl),
+            },
+            { type: "separator" },
+            {
+                label: "Bring All to Front",
+                click: this.bringAllToFront,
             },
             { type: "separator" },
             {
@@ -65,6 +130,20 @@ export class DefaultTrayService implements ITrayService {
             },
             { label: "Quit Desktop", type: "normal", role: "quit", accelerator: "CommandOrControl+Q" },
         ];
+    };
+
+    private readonly bringAllToFront = () => {
+        this.windowService.all().forEach(({ instance }) => {
+            instance.moveTop();
+        });
+    };
+
+    private readonly launchApplication = (configuration: IConfiguration) => async () => {
+        try {
+            await launcherService.launch(configuration);
+        } catch (error) {
+            this.logger.error(`Failed to launch application: ${error}`);
+        }
     };
 
     private readonly openDocumentation = (documentationUrl: string) => async () => {

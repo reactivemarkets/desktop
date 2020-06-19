@@ -1,9 +1,4 @@
-import {
-    IConfiguration,
-    ConfigurationKind,
-    WellKnownNamespaces,
-    ITraySpecification,
-} from "@reactivemarkets/desktop-types";
+import { IConfiguration, ConfigurationKind, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
 import { ITrayService } from "../tray";
 import { ILogger } from "../logging";
 import { ILauncherService } from "./iLauncherService";
@@ -24,11 +19,9 @@ export class TrayLauncherService implements ILauncherService {
     public async launch(configuration: IConfiguration): Promise<IConfiguration> {
         const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
-        const trayConfiguration = (configuration.spec ?? {}) as ITraySpecification;
-
         this.logger.verbose(`Configuring tray: ${name} in ${namespace}`);
 
-        await this.trayService.configure(trayConfiguration);
+        await this.trayService.create(configuration);
 
         return configuration;
     }
