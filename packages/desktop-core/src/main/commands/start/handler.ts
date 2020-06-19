@@ -129,13 +129,25 @@ export const handler = async (options: IStartOptions) => {
 
         const launched = registry
             .filter((c) => c !== undefined)
+            .map((c) => c!)
+            .filter(({ spec }) => {
+                if (spec === undefined) {
+                    return true;
+                }
+
+                if ("launchOnStart" in spec) {
+                    return spec.launchOnStart !== false;
+                }
+
+                return true;
+            })
             .map(async (config) => {
                 try {
-                    const instance = await launcherService.launch(config!);
+                    const instance = await launcherService.launch(config);
 
                     logger.info(`Launched ${instance.kind}: ${instance.metadata.name}`);
                 } catch (error) {
-                    logger.error(`Failed to launch ${config!.metadata.name}: ${error}`);
+                    logger.error(`Failed to launch ${config.metadata.name}: ${error}`);
                 }
             });
 
