@@ -1,4 +1,5 @@
 import { ThemeOptions } from "@material-ui/core";
+import "typeface-manrope";
 
 export const defaultTheme: ThemeOptions = {
     overrides: {

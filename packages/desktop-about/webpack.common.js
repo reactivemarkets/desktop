@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const autoprefixer = require("autoprefixer");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CspHtmlWebpackPlugin = require("csp-html-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const template = require("html-webpack-template");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 const config = {
@@ -36,16 +34,7 @@ const config = {
                 test: /\.(css)$/,
                 use: [
                     {
-                        loader: MiniCssExtractPlugin.loader,
-                    },
-                    {
                         loader: "css-loader",
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            plugins: () => [autoprefixer()],
-                        },
                     },
                 ],
             },
