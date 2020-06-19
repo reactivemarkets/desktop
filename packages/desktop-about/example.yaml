@@ -1,0 +1,22 @@
+---
+kind: application
+metadata:
+  name: About Desktop
+  description: Creates an about window.
+  namespace: desktop
+spec:
+  singleInstance: true
+  url: http://localhost:8080
+  window:
+    alwaysOnTop: true
+    backgroundColor: "#F7F7F7"
+    center: true
+    fullscreenable: false
+    height: 550
+    minimizable: false
+    maximizable: false
+    resizable: false
+    skipTaskbar: true
+    title: About Desktop
+    useContentSize: true
+    width: 750

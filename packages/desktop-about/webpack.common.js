@@ -99,14 +99,14 @@ const config = {
                 minifyURLs: true,
             },
             mobile: false,
-            title: "Dock",
+            title: "About Desktop",
         }),
         new CspHtmlWebpackPlugin(
             {
                 "default-src": "'none'",
                 "base-uri": "'none'",
-                "connect-src": "'self'",
                 "img-src": "'self'",
+                "connect-src": "'self'",
                 "manifest-src": "'self'",
                 "font-src": ["'self'", "data:"],
                 "form-action": "'none'",

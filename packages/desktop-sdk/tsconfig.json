@@ -12,7 +12,7 @@
         "noImplicitThis": true,
         "noUnusedLocals": true,
         "outDir": "lib",
-        "removeComments": true,
+        "removeComments": false,
         "strict": true,
         "target": "es2017"
     },
