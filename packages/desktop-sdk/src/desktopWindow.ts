@@ -1,6 +1,7 @@
 import { IDesktop } from "./iDesktop";
 import { IDesktopWindow } from "./iDesktopWindow";
 import { IRectangle } from "./Rectangle";
+import { WindowEvents } from "./windowEvents";
 
 export class DesktopWindow implements IDesktopWindow {
     private readonly desktop: IDesktop;
@@ -119,6 +120,14 @@ export class DesktopWindow implements IDesktopWindow {
 
     public moveTop(): Promise<boolean> {
         return this.desktop.api.window.current.moveTop();
+    }
+
+    public off(event: WindowEvents, listener: () => void) {
+        this.desktop.api.window.current.off(event, listener);
+    }
+
+    public on(event: WindowEvents, listener: () => void) {
+        this.desktop.api.window.current.on(event, listener);
     }
 
     public reload(): Promise<boolean> {

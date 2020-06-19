@@ -6,7 +6,7 @@ metadata:
   namespace: desktop
 spec:
   singleInstance: true
-  url: dock.asar
+  url: http://localhost:8080
   window:
     backgroundColor: "#303030"
     center: true

@@ -1,4 +1,5 @@
 import { IRectangle } from "./Rectangle";
+import { WindowEvents } from "./windowEvents";
 
 export interface IDesktopWindow {
     blur(): Promise<void>;
@@ -29,6 +30,8 @@ export interface IDesktopWindow {
     maximize(): Promise<boolean>;
     minimize(): Promise<boolean>;
     moveTop(): Promise<boolean>;
+    off(event: WindowEvents, listener: () => void): void;
+    on(event: WindowEvents, listener: () => void): void;
     reload(): Promise<boolean>;
     restore(): Promise<boolean>;
     setAlwaysOnTop(flag: boolean): Promise<void>;

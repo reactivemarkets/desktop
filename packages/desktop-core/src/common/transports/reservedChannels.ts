@@ -63,6 +63,8 @@ export enum ReservedChannels {
     window_maximize = "@desktop:window/maximize",
     window_minimize = "@desktop:window/minimize",
     window_moveTop = "@desktop:window/moveTop",
+    window_off = "@desktop:window/off",
+    window_on = "@desktop:window/on",
     window_openDevTools = "@desktop:window/openDevTools",
     window_reload = "@desktop:window/reload",
     window_restore = "@desktop:window/restore",

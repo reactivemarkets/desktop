@@ -5,15 +5,27 @@ export class DesktopResizerStore implements IResizerStore {
     private readonly collapsedHeight = 60;
     private readonly expandedHeight = 400;
 
-    public collapse() {
+    public subscribe() {
         if (desktop.isHostedInDesktop) {
-            window.current().setBounds({ height: this.collapsedHeight });
+            window.current().on("blur", this.collapse);
         }
     }
 
-    public expand() {
+    public unsubscribe() {
+        if (desktop.isHostedInDesktop) {
+            window.current().off("blur", this.collapse);
+        }
+    }
+
+    public collapse = () => {
+        if (desktop.isHostedInDesktop) {
+            window.current().setBounds({ height: this.collapsedHeight });
+        }
+    };
+
+    public expand = () => {
         if (desktop.isHostedInDesktop) {
             window.current().setBounds({ height: this.expandedHeight });
         }
-    }
+    };
 }
