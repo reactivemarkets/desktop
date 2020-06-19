@@ -1,5 +1,5 @@
-import { ITraySpecification } from "@reactivemarkets/desktop-types";
+import { IConfiguration } from "@reactivemarkets/desktop-types";
 
 export interface ITrayService {
-    configure(spec: ITraySpecification): Promise<void>;
+    create(configuration: IConfiguration): Promise<void>;
 }
