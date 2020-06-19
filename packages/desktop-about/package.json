@@ -1,0 +1,42 @@
+{
+  "name": "@reactivemarkets/desktop-about",
+  "version": "0.12.0",
+  "description": "The about window for desktop.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.prod.js",
+    "build:dev": "webpack --config webpack.config.dev.js",
+    "clean": "rimraf dist",
+    "asar": "run-s asar:pre asar:pack asar:post",
+    "asar:pre": "copyfiles -f package.json dist",
+    "asar:pack": "asar pack ./dist ./dist/about.asar",
+    "asar:post": "rimraf ./dist/package.json",
+    "prepublishOnly": "run-s build asar",
+    "start": "webpack-dev-server --progress --config webpack.config.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:reactivemarkets/desktop.git"
+  },
+  "keywords": [
+    "reactivemarkets",
+    "desktop",
+    "about"
+  ],
+  "files": [
+    "dist/about.asar"
+  ],
+  "author": "Reactive Markets",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@material-ui/core": "^4.10.1",
+    "@reactivemarkets/desktop-sdk": "file:../desktop-sdk",
+    "mdi-material-ui": "^6.15.0",
+    "mobx": "5.15.4",
+    "mobx-react": "6.2.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

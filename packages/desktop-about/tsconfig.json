@@ -1,27 +1,24 @@
 {
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
-        "declaration": true,
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
         "incremental": true,
         "jsx": "react",
-        "module": "CommonJS",
+        "lib": [
+            "esnext.array",
+            "esnext.asynciterable",
+            "esnext",
+            "dom"
+        ],
         "moduleResolution": "node",
+        "module": "esnext",
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noUnusedLocals": true,
-        "outDir": "lib",
-        "removeComments": false,
+        "outDir": "dist",
+        "sourceMap": true,
         "strict": true,
         "target": "es2017"
-    },
-    "include": [
-        "src"
-    ],
-    "exclude": [
-        "lib",
-        "**/__tests__/**",
-        "**/__integration__/**"
-    ]
+    }
 }

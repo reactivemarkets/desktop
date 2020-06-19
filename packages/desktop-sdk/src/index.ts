@@ -5,6 +5,11 @@ import { LoggerClient } from "./loggerClient";
 import { RouterClient } from "./routerClient";
 import { RegistryClient } from "./registryClient";
 import { LauncherClient } from "./launcherClient";
+import { IDesktop } from "./iDesktop";
+import { IGlobalShortcut } from "./iGlobalShortcut";
+import { ILauncher } from "./iLauncher";
+import { ILogger } from "./iLogger";
+import { IRouter } from "./iRouter";
 
 export * from "@reactivemarkets/desktop-types";
 
@@ -15,10 +20,10 @@ export * from "./iRouter";
 export * from "./iDesktopWindow";
 export * from "./Rectangle";
 
-export const desktop = new DesktopClient();
-export const globalShortcut = new GlobalShortcutClient(desktop);
-export const launcher = new LauncherClient(desktop);
-export const logger = new LoggerClient(desktop);
+export const desktop: IDesktop = new DesktopClient();
+export const globalShortcut: IGlobalShortcut = new GlobalShortcutClient(desktop);
+export const launcher: ILauncher = new LauncherClient(desktop);
+export const logger: ILogger = new LoggerClient(desktop);
 export const registry = new RegistryClient(desktop);
-export const router = new RouterClient(desktop);
+export const router: IRouter = new RouterClient(desktop);
 export const window = new DesktopWindowClient(desktop);
