@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/reactivemarkets/desktop/compare/v0.12.0...v0.13.0) (2020-06-19)
+
+
+### Features
+
+* **about:** adding custom about window ([7396ddd](https://github.com/reactivemarkets/desktop/commit/7396ddd4b047c035d4f3c0d1a974bcde619f39c0))
+* **core:** adding versions to api ([b788746](https://github.com/reactivemarkets/desktop/commit/b788746e034f9205ac43cb554fae1fdde8d4fa2b))
+
+
+
+
+
 # [0.12.0](https://github.com/reactivemarkets/desktop/compare/v0.11.0...v0.12.0) (2020-06-18)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-sdk

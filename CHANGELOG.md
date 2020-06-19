@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/markmcdowell/desktop/compare/v0.12.0...v0.13.0) (2020-06-19)
+
+
+### Bug Fixes
+
+* **core:** correcting loading of config ([eb5977b](https://github.com/markmcdowell/desktop/commit/eb5977b223affbbb271185b5a12f3a35d494b163))
+* **core:** correcting typo's in defaults.yaml ([381bbed](https://github.com/markmcdowell/desktop/commit/381bbede2e3ab996156c89daa3f7f7b2b3f01416))
+* **core:** expecting desktop protcol on the command line ([f88f319](https://github.com/markmcdowell/desktop/commit/f88f3199c5e8c004b9ff6a55acae4467521e6e92))
+* **core:** using electron version instead of yargs ([5da91fd](https://github.com/markmcdowell/desktop/commit/5da91fd94fd8b37ff0a9c4a7424140cf3ba97494))
+
+
+### Features
+
+* **about:** adding custom about window ([7396ddd](https://github.com/markmcdowell/desktop/commit/7396ddd4b047c035d4f3c0d1a974bcde619f39c0))
+* **core:** adding versions to api ([b788746](https://github.com/markmcdowell/desktop/commit/b788746e034f9205ac43cb554fae1fdde8d4fa2b))
+* **core:** display desktop applications in tray ([4c4fea2](https://github.com/markmcdowell/desktop/commit/4c4fea27f8303bcac0ec76f9b0f29c504767610d))
+* **core:** migrated to console.table ([3da5696](https://github.com/markmcdowell/desktop/commit/3da569622543d1a3e8708b26933ed619dbccefc8))
+* **dock:** adding drag handle ([bda1833](https://github.com/markmcdowell/desktop/commit/bda1833c74e92c154ffa1145cb057d21fda7e02d))
+* **types:** adding annotations to configuration ([b6bd076](https://github.com/markmcdowell/desktop/commit/b6bd0763e834eaa787811babb5bbeb0b689fd686))
+* **types:** adding launchOnStart to application spec ([dc13814](https://github.com/markmcdowell/desktop/commit/dc138141e367aec19b9b2176dc8c70e8a04cea0a))
+
+
+
+
+
 # [0.12.0](https://github.com/markmcdowell/desktop/compare/v0.11.0...v0.12.0) (2020-06-18)
 
 

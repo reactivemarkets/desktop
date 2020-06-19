@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/reactivemarkets/desktop/compare/v0.12.0...v0.13.0) (2020-06-19)
+
+
+### Bug Fixes
+
+* **core:** correcting typo's in defaults.yaml ([381bbed](https://github.com/reactivemarkets/desktop/commit/381bbede2e3ab996156c89daa3f7f7b2b3f01416))
+
+
+### Features
+
+* **about:** adding custom about window ([7396ddd](https://github.com/reactivemarkets/desktop/commit/7396ddd4b047c035d4f3c0d1a974bcde619f39c0))
+* **dock:** adding drag handle ([bda1833](https://github.com/reactivemarkets/desktop/commit/bda1833c74e92c154ffa1145cb057d21fda7e02d))
+
+
+
+
+
 # [0.12.0](https://github.com/reactivemarkets/desktop/compare/v0.11.0...v0.12.0) (2020-06-18)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-dock
