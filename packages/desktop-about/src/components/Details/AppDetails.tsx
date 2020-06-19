@@ -16,7 +16,7 @@ export class AppDetails extends React.Component<IAppDetailsProps> {
 
         const { details } = detailsStore!;
 
-        const name = details?.name ?? "Desktop";
+        const name = details?.appName ?? "Desktop";
         const version = details?.appVersion ?? "0.0.0";
 
         return (

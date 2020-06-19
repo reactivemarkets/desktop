@@ -14,12 +14,14 @@ export class ObservableDesktopDetailsStore implements IDesktopDetailsStore {
         }
 
         try {
+            const appName = await desktop.getAppName();
+
             const appVersion = await desktop.getAppVersion();
 
             const versions = await desktop.getVersions();
 
             this.details = {
-                name: "Desktop",
+                appName,
                 appVersion,
                 versions,
             };

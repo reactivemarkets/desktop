@@ -2,6 +2,10 @@ import { ipcRenderer } from "electron";
 import { ReservedChannels } from "../../common";
 
 export class System {
+    public getAppName = () => {
+        return ipcRenderer.invoke(ReservedChannels.system_getAppName);
+    };
+
     public getAppVersion = () => {
         return ipcRenderer.invoke(ReservedChannels.system_getAppVersion);
     };

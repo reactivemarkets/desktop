@@ -14,6 +14,11 @@ export interface IDesktop {
     readonly isHostedInDesktop: boolean;
 
     /**
+     * Gets the application name.
+     */
+    getAppName(): Promise<string>;
+
+    /**
      * Gets the application version.
      */
     getAppVersion(): Promise<string>;
