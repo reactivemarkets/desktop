@@ -14,6 +14,7 @@ metadata:
   description: Creates an about window.
   namespace: desktop
 spec:
+  launchOnStart: false
   singleInstance: true
   url: about.asar
   window:
