@@ -1,9 +1,4 @@
 ---
-kind: tray
-metadata:
-  name: Desktop Tray
-  namespace: desktop
----
 kind: application
 metadata:
   name: Dock
