@@ -1,44 +1,76 @@
 import { ipcRenderer, Rectangle } from "electron";
+import { TypedEmitter } from "tiny-typed-emitter";
 import { ReservedChannels } from "../../common";
 
+class CurrentWindow {
+    #emitter = new TypedEmitter();
+
+    public constructor() {
+        ipcRenderer.on(ReservedChannels.window_events, (_, event) => {
+            this.#emitter.emit(event);
+        });
+    }
+
+    public blur = () => ipcRenderer.invoke(ReservedChannels.window_blur);
+    public center = () => ipcRenderer.invoke(ReservedChannels.window_center);
+    public close = () => ipcRenderer.invoke(ReservedChannels.window_close);
+    public flashFrame = (flash: boolean) => ipcRenderer.invoke(ReservedChannels.window_flashFrame, flash);
+    public focus = () => ipcRenderer.invoke(ReservedChannels.window_focus);
+    public getBounds = () => ipcRenderer.invoke(ReservedChannels.window_getBounds);
+    public getMinimumSize = () => ipcRenderer.invoke(ReservedChannels.window_getMinimumSize);
+    public hide = () => ipcRenderer.invoke(ReservedChannels.window_hide);
+    public isAlwaysOnTop = () => ipcRenderer.invoke(ReservedChannels.window_isAlwaysOnTop);
+    public isCloseable = () => ipcRenderer.invoke(ReservedChannels.window_isCloseable);
+    public isEnabled = () => ipcRenderer.invoke(ReservedChannels.window_isEnabled);
+    public isFocused = () => ipcRenderer.invoke(ReservedChannels.window_isFocused);
+    public isFullscreen = () => ipcRenderer.invoke(ReservedChannels.window_isFullscreen);
+    public isFullscreenable = () => ipcRenderer.invoke(ReservedChannels.window_isFullscreenable);
+    public isKiosk = () => ipcRenderer.invoke(ReservedChannels.window_isKiosk);
+    public isMaximizable = () => ipcRenderer.invoke(ReservedChannels.window_isMaximizable);
+    public isMaximized = () => ipcRenderer.invoke(ReservedChannels.window_isMaximized);
+    public isMenuBarAutoHide = () => ipcRenderer.invoke(ReservedChannels.window_isMenuBarAutoHide);
+    public isMenuBarVisible = () => ipcRenderer.invoke(ReservedChannels.window_isMenuBarVisible);
+    public isMinimizable = () => ipcRenderer.invoke(ReservedChannels.window_isMinimizable);
+    public isMinimized = () => ipcRenderer.invoke(ReservedChannels.window_isMinimized);
+    public isModal = () => ipcRenderer.invoke(ReservedChannels.window_isModal);
+    public isMovable = () => ipcRenderer.invoke(ReservedChannels.window_isMovable);
+    public isResizable = () => ipcRenderer.invoke(ReservedChannels.window_isResizable);
+    public isVisible = () => ipcRenderer.invoke(ReservedChannels.window_isVisible);
+    public maximize = () => ipcRenderer.invoke(ReservedChannels.window_maximize);
+    public minimize = () => ipcRenderer.invoke(ReservedChannels.window_minimize);
+    public moveTop = () => ipcRenderer.invoke(ReservedChannels.window_moveTop);
+
+    public off = (event: string, listener: () => void) => {
+        this.#emitter.removeListener(event, listener);
+
+        const listenerCount = this.#emitter.listenerCount(event);
+        if (listenerCount === 0) {
+            ipcRenderer.send(ReservedChannels.window_off, event);
+        }
+    };
+
+    public on = (event: string, listener: () => void) => {
+        const listenerCount = this.#emitter.listenerCount(event);
+        this.#emitter.addListener(event, listener);
+
+        if (listenerCount === 0) {
+            ipcRenderer.send(ReservedChannels.window_on, event);
+        }
+    };
+
+    public reload = () => ipcRenderer.invoke(ReservedChannels.window_reload);
+    public restore = () => ipcRenderer.invoke(ReservedChannels.window_restore);
+    public setAlwaysOnTop = (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setAlwaysOnTop, flag);
+
+    public setBounds = (bounds: Partial<Rectangle>, animate?: boolean) => {
+        return ipcRenderer.invoke(ReservedChannels.window_setBounds, bounds, animate);
+    };
+
+    public setFullScreen = (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setFullScreen, flag);
+    public setKiosk = (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setKiosk, flag);
+    public show = () => ipcRenderer.invoke(ReservedChannels.window_show);
+}
+
 export const window = {
-    current: {
-        blur: () => ipcRenderer.invoke(ReservedChannels.window_blur),
-        center: () => ipcRenderer.invoke(ReservedChannels.window_center),
-        close: () => ipcRenderer.invoke(ReservedChannels.window_close),
-        flashFrame: (flash: boolean) => ipcRenderer.invoke(ReservedChannels.window_flashFrame, flash),
-        focus: () => ipcRenderer.invoke(ReservedChannels.window_focus),
-        getBounds: () => ipcRenderer.invoke(ReservedChannels.window_getBounds),
-        getMinimumSize: () => ipcRenderer.invoke(ReservedChannels.window_getMinimumSize),
-        hide: () => ipcRenderer.invoke(ReservedChannels.window_hide),
-        isAlwaysOnTop: () => ipcRenderer.invoke(ReservedChannels.window_isAlwaysOnTop),
-        isCloseable: () => ipcRenderer.invoke(ReservedChannels.window_isCloseable),
-        isEnabled: () => ipcRenderer.invoke(ReservedChannels.window_isEnabled),
-        isFocused: () => ipcRenderer.invoke(ReservedChannels.window_isFocused),
-        isFullscreen: () => ipcRenderer.invoke(ReservedChannels.window_isFullscreen),
-        isFullscreenable: () => ipcRenderer.invoke(ReservedChannels.window_isFullscreenable),
-        isKiosk: () => ipcRenderer.invoke(ReservedChannels.window_isKiosk),
-        isMaximizable: () => ipcRenderer.invoke(ReservedChannels.window_isMaximizable),
-        isMaximized: () => ipcRenderer.invoke(ReservedChannels.window_isMaximized),
-        isMenuBarAutoHide: () => ipcRenderer.invoke(ReservedChannels.window_isMenuBarAutoHide),
-        isMenuBarVisible: () => ipcRenderer.invoke(ReservedChannels.window_isMenuBarVisible),
-        isMinimizable: () => ipcRenderer.invoke(ReservedChannels.window_isMinimizable),
-        isMinimized: () => ipcRenderer.invoke(ReservedChannels.window_isMinimized),
-        isModal: () => ipcRenderer.invoke(ReservedChannels.window_isModal),
-        isMovable: () => ipcRenderer.invoke(ReservedChannels.window_isMovable),
-        isResizable: () => ipcRenderer.invoke(ReservedChannels.window_isResizable),
-        isVisible: () => ipcRenderer.invoke(ReservedChannels.window_isVisible),
-        maximize: () => ipcRenderer.invoke(ReservedChannels.window_maximize),
-        minimize: () => ipcRenderer.invoke(ReservedChannels.window_minimize),
-        moveTop: () => ipcRenderer.invoke(ReservedChannels.window_moveTop),
-        reload: () => ipcRenderer.invoke(ReservedChannels.window_reload),
-        restore: () => ipcRenderer.invoke(ReservedChannels.window_restore),
-        setAlwaysOnTop: (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setAlwaysOnTop, flag),
-        setBounds: (bounds: Partial<Rectangle>, animate?: boolean) => {
-            return ipcRenderer.invoke(ReservedChannels.window_setBounds, bounds, animate);
-        },
-        setFullScreen: (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setFullScreen, flag),
-        setKiosk: (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setKiosk, flag),
-        show: () => ipcRenderer.invoke(ReservedChannels.window_show),
-    },
+    current: new CurrentWindow(),
 };

@@ -2,6 +2,8 @@ import { BrowserWindow, ipcMain, Rectangle } from "electron";
 import { ReservedChannels } from "../../common";
 
 export const windowIpcEvents = () => {
+    const listenerMap = new Map<string, () => void>();
+
     ipcMain.handle(ReservedChannels.window_blur, (event) => {
         BrowserWindow.fromWebContents(event.sender)?.blur();
     });
@@ -97,6 +99,24 @@ export const windowIpcEvents = () => {
     });
     ipcMain.handle(ReservedChannels.window_moveTop, (event) => {
         BrowserWindow.fromWebContents(event.sender)?.moveTop();
+    });
+    ipcMain.on(ReservedChannels.window_off, (event, windowEvent) => {
+        const key = `${event.sender.id}/${windowEvent}`;
+        const listener = listenerMap.get(key);
+        if (listener !== undefined) {
+            listenerMap.delete(key);
+            BrowserWindow.fromWebContents(event.sender)?.removeListener(windowEvent, listener);
+        }
+    });
+    ipcMain.on(ReservedChannels.window_on, (event, windowEvent) => {
+        const listener = () => {
+            event.sender.send(ReservedChannels.window_events, windowEvent);
+        };
+
+        const key = `${event.sender.id}/${windowEvent}`;
+        listenerMap.set(key, listener);
+
+        BrowserWindow.fromWebContents(event.sender)?.addListener(windowEvent, listener);
     });
     ipcMain.handle(ReservedChannels.window_openDevTools, (event) => {
         event.sender.openDevTools();
