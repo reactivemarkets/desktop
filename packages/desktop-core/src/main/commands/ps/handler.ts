@@ -1,5 +1,4 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
-import { Table } from "console-table-printer";
 import { app } from "electron";
 import { ReservedChannels } from "../../../common";
 import { logger } from "../../logging";
@@ -20,27 +19,20 @@ export const handler = async (options: IPsOptions) => {
         if (options.quiet) {
             containers.forEach((c) => logger.info(`${c.metadata.uid}`));
         } else {
-            const details = containers.map((c) => {
-                return {
-                    id: c.metadata.uid,
+            const details = containers.reduce((prev, c) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                prev[c.metadata.uid] = {
                     name: c.metadata.name,
                     namespace: c.metadata.namespace,
                     kind: c.kind,
                     created: c.status?.startTime,
                 };
-            });
 
-            const table = new Table({
-                columns: [
-                    { name: "id", alignment: "left" },
-                    { name: "name", alignment: "left" },
-                    { name: "namespace", alignment: "left" },
-                    { name: "kind", alignment: "left" },
-                    { name: "created" },
-                ],
-            });
-            table.addRows(details);
-            table.printTable();
+                return prev;
+            }, {});
+
+            console.table(details);
         }
 
         app.exit();
