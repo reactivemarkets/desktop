@@ -1,6 +1,6 @@
 import * as React from "react";
+import AppShell from "./AppShell";
 import { AppTheme } from "./AppTheme";
-import { AppShell } from "./AppShell";
 import { ApplicationsStoreProvider } from "./ApplicationsStoreProvider";
 import { FocusStoreProvider } from "./FocusStoreProvider";
 import { ResizerStoreProvider } from "./ResizerStoreProvider";

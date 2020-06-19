@@ -1,20 +1,32 @@
-import { Box, Grid } from "@material-ui/core";
+import { createStyles, Box, Grid, Theme, withStyles, WithStyles } from "@material-ui/core";
 import * as React from "react";
 import { Search, SearchResults } from "../Search";
-import { PowerButton } from "../System";
+import { DragHandle, PowerButton } from "../System";
 
-export class AppShell extends React.PureComponent {
+const styles = (theme: Theme) =>
+    createStyles({
+        padding: {
+            padding: theme.spacing(1, 1, 1, 0),
+        },
+    });
+
+class AppShell extends React.PureComponent<WithStyles<typeof styles>> {
     public render() {
+        const { classes } = this.props;
+
         return (
             <Box display="flex" flexDirection="column" flex={1}>
-                <Box className="drag" padding={1}>
-                    <Grid container wrap="nowrap">
+                <Grid container wrap="nowrap">
+                    <DragHandle />
+                    <Grid className={classes.padding} container wrap="nowrap">
                         <Search />
                         <PowerButton />
                     </Grid>
-                </Box>
+                </Grid>
                 <SearchResults />
             </Box>
         );
     }
 }
+
+export default withStyles(styles)(AppShell);
