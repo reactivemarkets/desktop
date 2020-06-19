@@ -1,7 +1,6 @@
 import { ConfigurationKind, IConfiguration } from "@reactivemarkets/desktop-types";
 import { app } from "electron";
 import * as path from "path";
-import { uniqueNamesGenerator, adjectives, colors, animals } from "unique-names-generator";
 import { registerIpcEventHandlers } from "../../api";
 import { configurationGenerator, configurationLoader } from "../../configuration";
 import { registerApplicationEventHandlers } from "../../events";
@@ -67,13 +66,9 @@ export const handler = async (options: IStartOptions) => {
 
         const configFiles = urls.map(async (url) => {
             try {
-                const name = uniqueNamesGenerator({
-                    dictionaries: [adjectives, colors, animals],
-                });
-
                 const configuration = await configurationGenerator.generate({
                     kind: ConfigurationKind.Application,
-                    name,
+                    name: url,
                     url,
                 });
 
