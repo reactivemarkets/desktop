@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/reactivemarkets/desktop/compare/v0.13.0...v0.14.0) (2020-06-20)
+
+
+### Bug Fixes
+
+* **about:** adding manrope font ([a531226](https://github.com/reactivemarkets/desktop/commit/a53122689369447a1d75ca30d8b1387a5d591b2c))
+
+
+### Features
+
+* **core:** adding getAppName to api ([c4b01b8](https://github.com/reactivemarkets/desktop/commit/c4b01b8f7df0edd7d6a86dea7630068ae57fde32))
+
+
+
+
+
 # [0.13.0](https://github.com/reactivemarkets/desktop/compare/v0.12.0...v0.13.0) (2020-06-19)
 
 

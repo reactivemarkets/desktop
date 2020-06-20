@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/markmcdowell/desktop/compare/v0.13.0...v0.14.0) (2020-06-20)
+
+
+### Bug Fixes
+
+* **about:** adding manrope font ([a531226](https://github.com/markmcdowell/desktop/commit/a53122689369447a1d75ca30d8b1387a5d591b2c))
+* **core:** updating name of urls to use the url ([9559537](https://github.com/markmcdowell/desktop/commit/95595378acc0ffd5b4a37ca6520e9828e49d1e68))
+
+
+### Features
+
+* **core:** adding getAppName to api ([c4b01b8](https://github.com/markmcdowell/desktop/commit/c4b01b8f7df0edd7d6a86dea7630068ae57fde32))
+* **core:** adding window events to api ([97b5b16](https://github.com/markmcdowell/desktop/commit/97b5b1676d6ff40f7d2a2df6431e3940a1081c16))
+
+
+
+
+
 # [0.13.0](https://github.com/markmcdowell/desktop/compare/v0.12.0...v0.13.0) (2020-06-19)
 
 
