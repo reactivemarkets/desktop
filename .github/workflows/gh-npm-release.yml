@@ -24,6 +24,7 @@ jobs:
       - name: Publish packages to github
         run: |
           echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" > .npmrc
+          echo "registry=https://npm.pkg.github.com/reactivemarkets" >> .npmrc
           npm run publish
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
