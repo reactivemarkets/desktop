@@ -31,9 +31,9 @@
   "author": "Reactive Markets",
   "license": "Apache-2.0",
   "dependencies": {
-    "@material-ui/core": "^4.10.1",
+    "@material-ui/core": "^4.10.2",
     "@reactivemarkets/desktop-sdk": "file:../desktop-sdk",
-    "mdi-material-ui": "^6.15.0",
+    "mdi-material-ui": "^6.16.0",
     "mobx": "5.15.4",
     "mobx-react": "6.2.2",
     "react": "^16.13.1",
