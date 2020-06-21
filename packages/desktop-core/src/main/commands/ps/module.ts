@@ -1,3 +1,5 @@
+import { Output } from "../../configuration";
+
 export { handler } from "./handler";
 
 export const command = "ps";
@@ -15,6 +17,11 @@ export const builder = {
         default: "*",
         describe: "The namespace to filter on",
         string: true,
+    },
+    output: {
+        alias: "o",
+        choices: Object.values(Output),
+        describe: "The output format",
     },
     quiet: {
         alias: "q",
