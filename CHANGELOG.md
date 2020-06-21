@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/markmcdowell/desktop/compare/v0.15.0...v0.16.0) (2020-06-21)
+
+
+### Features
+
+* **core:** adding output option to ps command ([45fe605](https://github.com/markmcdowell/desktop/commit/45fe605054411771e2846a678f0d600cc3bded0a))
+* **core:** using moment to output human readable start time ([d7a53e2](https://github.com/markmcdowell/desktop/commit/d7a53e200aefd08e128ce86344fb19af1172e8f6))
+
+
+
+
+
 # [0.15.0](https://github.com/markmcdowell/desktop/compare/v0.14.0...v0.15.0) (2020-06-21)
 
 
