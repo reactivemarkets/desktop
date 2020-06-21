@@ -22,7 +22,7 @@ export class ApplicationsSearchProvider implements ISearchProvider {
         }
 
         const fuse = new Fuse(applications, {
-            distance: 10000,
+            ignoreLocation: true,
             includeScore: true,
             shouldSort: false,
             useExtendedSearch: true,
