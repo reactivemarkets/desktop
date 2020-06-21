@@ -38,9 +38,12 @@ export const defaultTheme: ThemeOptions = {
                 },
                 body: {
                     display: "flex",
+                    fontSmoothing: "antialiased",
+                    fontVariantNumeric: "tabular-nums",
                     height: "100vh",
                     overflow: "hidden",
                     userSelect: "none",
+                    textRendering: "optimizeLegibility",
                 },
             },
         },
