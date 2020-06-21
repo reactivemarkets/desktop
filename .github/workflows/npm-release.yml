@@ -21,9 +21,15 @@ jobs:
       - name: Install npm dependencies
         run: |
           npm ci
-      - name: Publish packages
+      - name: Publish packages to npm
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
           npm run publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish packages to github
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" > .npmrc
+          npm run publish
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
