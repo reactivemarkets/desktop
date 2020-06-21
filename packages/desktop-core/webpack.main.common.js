@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const path = require("path");
+const webpack = require("webpack");
 
 const config = {
     entry: {
@@ -34,6 +35,7 @@ const config = {
                 },
             ],
         }),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
 };
 
