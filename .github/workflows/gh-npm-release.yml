@@ -1,5 +1,5 @@
 ---
-name: NPM
+name: Github NPM
 on:
   release:
     types:
@@ -21,9 +21,9 @@ jobs:
       - name: Install npm dependencies
         run: |
           npm ci
-      - name: Publish packages to npm
+      - name: Publish packages to github
         run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" > .npmrc
           npm run publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
