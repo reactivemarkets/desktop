@@ -1,5 +1,6 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { app } from "electron";
+import moment from "moment";
 import { ReservedChannels } from "../../../common";
 import { logger } from "../../logging";
 import { IPsOptions } from "./iPsOptions";
@@ -26,7 +27,7 @@ export const handler = async (options: IPsOptions) => {
                     name: c.metadata.name,
                     namespace: c.metadata.namespace,
                     kind: c.kind,
-                    created: c.status?.startTime,
+                    created: moment(c.status?.startTime).fromNow(),
                 };
 
                 return prev;
