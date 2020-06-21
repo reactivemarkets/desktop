@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/reactivemarkets/desktop/compare/v0.14.0...v0.15.0) (2020-06-21)
+
+
+### Bug Fixes
+
+* **about:** using tabular-nums font variant ([9dae4c1](https://github.com/reactivemarkets/desktop/commit/9dae4c15e2dc57660e83468780ecde68b4dcebaf))
+
+
+
+
+
 # [0.14.0](https://github.com/reactivemarkets/desktop/compare/v0.13.0...v0.14.0) (2020-06-20)
 
 

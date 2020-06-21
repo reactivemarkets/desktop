@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/reactivemarkets/desktop/compare/v0.14.0...v0.15.0) (2020-06-21)
+
+
+### Features
+
+* **desktop:** adding 1px border to windows installer image ([b3adf5b](https://github.com/reactivemarkets/desktop/commit/b3adf5b0745602334dccc836cf0e472cac576c1e))
+
+
+
+
+
 # [0.14.0](https://github.com/reactivemarkets/desktop/compare/v0.13.0...v0.14.0) (2020-06-20)
 
 **Note:** Version bump only for package @reactivemarkets/desktop

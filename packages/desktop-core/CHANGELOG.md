@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/reactivemarkets/desktop/compare/v0.14.0...v0.15.0) (2020-06-21)
+
+
+### Bug Fixes
+
+* **core:** correcting version in the copied package.json ([0611790](https://github.com/reactivemarkets/desktop/commit/061179037edf3a1aa6e7cb59cfffe94131004625))
+
+
+### Features
+
+* **core:** adding version command ([a7904c6](https://github.com/reactivemarkets/desktop/commit/a7904c638e8ff62fe871308fcb8b43bf63991324))
+
+
+
+
+
 # [0.14.0](https://github.com/reactivemarkets/desktop/compare/v0.13.0...v0.14.0) (2020-06-20)
 
 
