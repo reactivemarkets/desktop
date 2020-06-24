@@ -5,20 +5,20 @@ parserOptions:
   ecmaFeatures:
     jsx: true
 plugins:
-    - "@typescript-eslint"
+  - "@typescript-eslint"
 extends:
-    - "eslint:recommended"
-    - "plugin:react/recommended"
-    - "plugin:jest/recommended"
-    - "plugin:@typescript-eslint/eslint-recommended"
-    - "plugin:@typescript-eslint/recommended"
-    - "prettier/@typescript-eslint"
-    - "plugin:prettier/recommended"
+  - "eslint:recommended"
+  - "plugin:react/recommended"
+  - "plugin:jest/recommended"
+  - "plugin:@typescript-eslint/eslint-recommended"
+  - "plugin:@typescript-eslint/recommended"
+  - "prettier/@typescript-eslint"
+  - "plugin:prettier/recommended"
 rules:
-    "@typescript-eslint/explicit-module-boundary-types": off
-    "@typescript-eslint/interface-name-prefix": off
-    "@typescript-eslint/no-non-null-assertion": off
-    "react/prop-types": off
+  "@typescript-eslint/explicit-module-boundary-types": off
+  "@typescript-eslint/interface-name-prefix": off
+  "@typescript-eslint/no-non-null-assertion": off
+  "react/prop-types": off
 settings:
   react:
     version: detect

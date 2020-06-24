@@ -11,6 +11,7 @@ import { orderBy, thenBy } from "ix/iterable/operators";
 import { observable, action, computed } from "mobx";
 import { IApplicationsStore } from "./iApplicationsStore";
 import { IApplication } from "./iApplication";
+import { IDockAnnotations } from "./iDockAnnotations";
 
 export class ObservableApplicationsStore implements IApplicationsStore {
     public readonly applicationMap = observable.map<string, IApplication>([], { deep: false });
@@ -20,7 +21,7 @@ export class ObservableApplicationsStore implements IApplicationsStore {
         const values = this.applicationMap.values();
 
         const sorted = from(values).pipe(
-            orderBy((item) => item.namespace),
+            orderBy((item) => item.category),
             thenBy((item) => item.name),
         );
 
@@ -52,18 +53,27 @@ export class ObservableApplicationsStore implements IApplicationsStore {
         if (kind !== ConfigurationKind.Application) {
             return;
         }
-        const { namespace, ...rest } = metadata;
-        if (namespace === WellKnownNamespaces.desktop) {
-            return;
+
+        const { annotations, description, name, namespace } = metadata;
+        let category = namespace ?? WellKnownNamespaces.default;
+        if (annotations !== undefined) {
+            const dockAnnotations = annotations["@desktop/dock"] as IDockAnnotations | undefined;
+            if (dockAnnotations?.excludeFromSearch) {
+                return;
+            }
+            if (dockAnnotations?.category !== undefined) {
+                category = dockAnnotations.category;
+            }
         }
 
         const key = this.getKey(configuration);
 
         this.applicationMap.set(key, {
-            ...rest,
-            namespace: namespace ?? WellKnownNamespaces.default,
+            category,
             configuration,
+            description,
             key,
+            name,
             launch: () => {
                 return launcher.launch(configuration);
             },

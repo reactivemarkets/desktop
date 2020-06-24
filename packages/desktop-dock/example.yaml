@@ -4,6 +4,9 @@ metadata:
   name: Dock
   description: Creates a dock to launch new windows.
   namespace: desktop
+  annotations:
+    "@desktop/dock":
+      excludeFromSearch: true
 spec:
   singleInstance: true
   url: http://localhost:8080

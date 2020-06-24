@@ -13,6 +13,9 @@ metadata:
   name: dock
   description: Creates a dock to launch new windows.
   namespace: desktop
+  annotations:
+    "@desktop/dock":
+      excludeFromSearch: true
 spec:
   singleInstance: true
   url: dock.asar

@@ -26,7 +26,7 @@ export class ApplicationsSearchProvider implements ISearchProvider {
             includeScore: true,
             shouldSort: false,
             useExtendedSearch: true,
-            keys: ["name", "description", "namespace"],
+            keys: ["name", "description", "category"],
         });
 
         const results = fuse.search(searchTerm);
