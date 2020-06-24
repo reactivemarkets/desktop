@@ -13,6 +13,9 @@ metadata:
   name: about
   description: Creates an about window.
   namespace: desktop
+  annotations:
+    "@desktop/dock":
+      excludeFromSearch: true
 spec:
   launchOnStart: false
   singleInstance: true

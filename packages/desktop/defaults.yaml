@@ -18,6 +18,9 @@ metadata:
   name: About Desktop
   description: Creates an about window.
   namespace: desktop
+  annotations:
+    "@desktop/dock":
+      excludeFromSearch: true
 spec:
   launchOnStart: false
   singleInstance: true
@@ -41,6 +44,9 @@ metadata:
   name: Dock
   description: Creates a dock to launch new windows.
   namespace: desktop
+  annotations:
+    "@desktop/dock":
+      excludeFromSearch: true
 spec:
   singleInstance: true
   url: dock.asar
