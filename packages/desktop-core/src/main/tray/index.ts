@@ -8,7 +8,15 @@ import { windowService } from "../windowing";
 
 const appPath = app.getAppPath();
 
-const icon = process.platform === "darwin" ? "MacTemplate.png" : "desktop.ico";
+let icon = "icon.png";
+switch (process.platform) {
+    case "darwin":
+        icon = "MacTemplate.png";
+        break;
+    case "win32":
+        icon = "desktop.ico";
+        break;
+}
 
 const trayIcon = path.join(appPath, icon);
 
