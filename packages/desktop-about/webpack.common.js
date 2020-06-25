@@ -10,8 +10,8 @@ const config = {
     bail: true,
     entry: "./src/index.tsx",
     output: {
-        path: path.resolve(__dirname, "dist"),
         filename: "index.js",
+        path: path.resolve(__dirname, "dist"),
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js"],

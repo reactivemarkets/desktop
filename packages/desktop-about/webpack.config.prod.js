@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
+const SriPlugin = require("webpack-subresource-integrity");
 const config = require("./webpack.common.js");
-const TerserPlugin = require("terser-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = merge(
     {
@@ -36,9 +37,16 @@ module.exports = merge(
                 }),
             ],
         },
+        output: {
+            crossOriginLoading: "anonymous",
+        },
         plugins: [
             new webpack.EnvironmentPlugin({
                 NODE_ENV: "production",
+            }),
+            new SriPlugin({
+                hashFuncNames: ["sha512"],
+                enabled: true,
             }),
         ],
     },
