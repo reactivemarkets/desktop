@@ -1,6 +1,6 @@
 import Store from "electron-store";
 import * as yaml from "js-yaml";
-import { IStorageClient } from "./iStorageClient";
+import { IStorageClient } from "../iStorageClient";
 
 export class YamlLocalStorageClient implements IStorageClient {
     private readonly store: Store;

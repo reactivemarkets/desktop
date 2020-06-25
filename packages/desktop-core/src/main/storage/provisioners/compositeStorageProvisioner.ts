@@ -1,5 +1,5 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
-import { IStorageProvisioner } from "./iStorageProvisioner";
+import { IStorageProvisioner } from "../iStorageProvisioner";
 
 export class CompositeStorageProvisioner implements IStorageProvisioner {
     private readonly provisioners: IStorageProvisioner[];

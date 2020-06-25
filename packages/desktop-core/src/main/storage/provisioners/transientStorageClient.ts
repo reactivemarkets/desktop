@@ -1,4 +1,4 @@
-import { IStorageClient } from "./iStorageClient";
+import { IStorageClient } from "../iStorageClient";
 
 export class TransientStorageClient implements IStorageClient {
     private readonly store = new Map<string, unknown>();

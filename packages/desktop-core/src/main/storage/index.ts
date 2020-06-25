@@ -1,6 +1,6 @@
-import { CompositeStorageProvisioner } from "./compositeStorageProvisioner";
-import { YamlLocalStorageProvisioner } from "./yamlLocalStorageProvisioner";
-import { TransientStorageProvisioner } from "./transientStorageProvisioner";
+import { CompositeStorageProvisioner } from "./provisioners/compositeStorageProvisioner";
+import { YamlLocalStorageProvisioner } from "./provisioners/yamlLocalStorageProvisioner";
+import { TransientStorageProvisioner } from "./provisioners/transientStorageProvisioner";
 import { DefaultStorageService } from "./defaultStorageService";
 
 export * from "./iStorageClient";
