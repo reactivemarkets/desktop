@@ -132,7 +132,7 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2",
     "webpack-subresource-integrity": "^1.4.1",
-    "winston": "^3.3.0",
+    "winston": "^3.3.3",
     "yargs": "^15.3.1"
   },
   "workspaces": [
