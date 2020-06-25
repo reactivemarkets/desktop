@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/reactivemarkets/desktop/compare/v0.17.0...v0.18.0) (2020-06-25)
+
+
+### Features
+
+* adding subresource integrity checks to about and dock ([3c774c3](https://github.com/reactivemarkets/desktop/commit/3c774c3da56ece4bb9f4174da05f9a2137ae9a97))
+* **dock:** adding annotations ([b8ff7da](https://github.com/reactivemarkets/desktop/commit/b8ff7da202f6d5010eb83ac18361a4e1177cb26d))
+
+
+
+
+
 # [0.17.0](https://github.com/reactivemarkets/desktop/compare/v0.16.0...v0.17.0) (2020-06-21)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-about

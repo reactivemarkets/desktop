@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/markmcdowell/desktop/compare/v0.17.0...v0.18.0) (2020-06-25)
+
+
+### Bug Fixes
+
+* **core:** adding logging around protocol handler ([2a48668](https://github.com/markmcdowell/desktop/commit/2a48668da9516f8a3eee8c87d7f96d3c35a6e99d))
+* **core:** correcting tray icon on linux ([1b68e0a](https://github.com/markmcdowell/desktop/commit/1b68e0a110a92553ff0bb738ac8b164c8e83447c))
+* removing wrong links from readme ([4370ca8](https://github.com/markmcdowell/desktop/commit/4370ca818c569e7c0e388306fc687b9358ee60bb))
+
+
+### Features
+
+* **core:** setting linux icons ([06fb119](https://github.com/markmcdowell/desktop/commit/06fb119ef8ecf2d484743dfb51be7db17fd62f15))
+* adding subresource integrity checks to about and dock ([3c774c3](https://github.com/markmcdowell/desktop/commit/3c774c3da56ece4bb9f4174da05f9a2137ae9a97))
+* **dock:** adding annotations ([b8ff7da](https://github.com/markmcdowell/desktop/commit/b8ff7da202f6d5010eb83ac18361a4e1177cb26d))
+
+
+
+
+
 # [0.17.0](https://github.com/markmcdowell/desktop/compare/v0.16.0...v0.17.0) (2020-06-21)
 
 

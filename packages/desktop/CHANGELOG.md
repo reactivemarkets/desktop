@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/reactivemarkets/desktop/compare/v0.17.0...v0.18.0) (2020-06-25)
+
+
+### Bug Fixes
+
+* **core:** adding logging around protocol handler ([2a48668](https://github.com/reactivemarkets/desktop/commit/2a48668da9516f8a3eee8c87d7f96d3c35a6e99d))
+
+
+### Features
+
+* **core:** setting linux icons ([06fb119](https://github.com/reactivemarkets/desktop/commit/06fb119ef8ecf2d484743dfb51be7db17fd62f15))
+* **dock:** adding annotations ([b8ff7da](https://github.com/reactivemarkets/desktop/commit/b8ff7da202f6d5010eb83ac18361a4e1177cb26d))
+
+
+
+
+
 # [0.17.0](https://github.com/reactivemarkets/desktop/compare/v0.16.0...v0.17.0) (2020-06-21)
 
 **Note:** Version bump only for package @reactivemarkets/desktop
