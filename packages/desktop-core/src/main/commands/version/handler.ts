@@ -4,7 +4,7 @@ import { logger } from "../../logging";
 import { IVersionOptions } from "./iVersionOptions";
 import { Output } from "../../configuration";
 
-export const handler = async ({ output }: IVersionOptions) => {
+export const handler = ({ output }: IVersionOptions) => {
     logger.verbose("Version command ran.");
 
     try {
