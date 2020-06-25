@@ -1,6 +1,6 @@
 import { IConfiguration, ConfigurationKind, IStorageSpecification } from "@reactivemarkets/desktop-types";
-import { IStorageProvisioner } from "./iStorageProvisioner";
-import { IStorageClient } from "./iStorageClient";
+import { IStorageProvisioner } from "../iStorageProvisioner";
+import { IStorageClient } from "../iStorageClient";
 import { YamlLocalStorageClient } from "./yamlLocalStorageClient";
 
 export class YamlLocalStorageProvisioner implements IStorageProvisioner {

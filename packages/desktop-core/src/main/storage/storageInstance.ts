@@ -1,5 +1,5 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
-import { IStorageClient } from "./iStorageClient";
+import { IStorageClient } from "./provisioners";
 
 export class StorageInstance {
     #configuration: IConfiguration;

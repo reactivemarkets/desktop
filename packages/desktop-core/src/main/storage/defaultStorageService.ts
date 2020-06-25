@@ -2,7 +2,7 @@ import { IConfiguration, StorageState } from "@reactivemarkets/desktop-types";
 import { find } from "ix/iterable";
 import { v4 as uuid } from "uuid";
 import { IStorageService } from "./iStorageService";
-import { IStorageProvisioner } from "./iStorageProvisioner";
+import { IStorageProvisioner } from "./provisioners";
 import { StorageInstance } from "./storageInstance";
 
 export class DefaultStorageService implements IStorageService {

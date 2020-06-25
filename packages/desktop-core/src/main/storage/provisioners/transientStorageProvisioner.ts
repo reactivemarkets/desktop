@@ -1,7 +1,7 @@
-import { IStorageClient } from "./iStorageClient";
-import { IStorageProvisioner } from "./iStorageProvisioner";
-import { TransientStorageClient } from "./transientStorageClient";
 import { IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { IStorageClient } from "../iStorageClient";
+import { IStorageProvisioner } from "../iStorageProvisioner";
+import { TransientStorageClient } from "./transientStorageClient";
 
 export class TransientStorageProvisioner implements IStorageProvisioner {
     public canProvision({ kind }: IConfiguration): boolean {
