@@ -98,7 +98,3 @@ npm run build
 ## License
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Freactivemarkets%2Fdesktop.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Freactivemarkets%2Fdesktop?ref=badge_large)
-
-
-https://app.fossa.com/projects/git%2Bgithub.com%2Freactivemarkets%2Fdesktop?ref=badge_large
-https://app.fossa.io/projects/git%2Bgithub.com%2Fsentialx%2Fmultrin?ref=badge_large
