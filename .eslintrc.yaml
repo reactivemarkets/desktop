@@ -19,6 +19,8 @@ rules:
   "@typescript-eslint/interface-name-prefix": off
   "@typescript-eslint/no-non-null-assertion": off
   "react/prop-types": off
+  "require-await": "error"
+  "no-return-await": "error"
 settings:
   react:
     version: detect

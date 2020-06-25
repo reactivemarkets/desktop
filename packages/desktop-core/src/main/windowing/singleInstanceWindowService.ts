@@ -22,7 +22,9 @@ export class SingleInstanceWindowService implements IWindowService {
     public async create(configuration: IConfiguration) {
         const spec = configuration.spec as IApplicationSpecification;
         if (spec.singleInstance !== true) {
-            return await this.windowService.create(configuration);
+            const instance = await this.windowService.create(configuration);
+
+            return instance;
         }
 
         const window = this.from(configuration);
@@ -34,6 +36,8 @@ export class SingleInstanceWindowService implements IWindowService {
             return window;
         }
 
-        return await this.windowService.create(configuration);
+        const instance = await this.windowService.create(configuration);
+
+        return instance;
     }
 }
