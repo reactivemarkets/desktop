@@ -10,7 +10,7 @@ export class BrowserWindowFactory implements IWindowFactory {
     }
 
     public create = (configuration: IConfiguration) => {
-        const spec = configuration.spec as IApplicationSpecification;
+        const spec = configuration.spec as IApplicationSpecification | undefined;
         if (spec === undefined) {
             const defaultWindow = new BrowserWindow({
                 webPreferences: this.defaultWebPreferences,
@@ -19,7 +19,7 @@ export class BrowserWindowFactory implements IWindowFactory {
             return Promise.resolve(defaultWindow);
         }
 
-        const { contentProtection, webPreferences: windowWebPreferences, window } = spec;
+        const { webPreferences: windowWebPreferences, window } = spec;
 
         const webPreferences = this.defaultWebPreferences;
         if (windowWebPreferences !== undefined) {
@@ -41,9 +41,6 @@ export class BrowserWindowFactory implements IWindowFactory {
         };
 
         const browserWindow = new BrowserWindow(options);
-        if (contentProtection !== undefined) {
-            browserWindow.setContentProtection(contentProtection);
-        }
 
         return Promise.resolve(browserWindow);
     };
