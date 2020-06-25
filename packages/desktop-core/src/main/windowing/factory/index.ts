@@ -4,6 +4,8 @@ import { BrowserWindowFactory } from "./browserWindowFactory";
 import { CrashedWindowFactory } from "./crashedWindowFactory";
 import { UnresponsiveWindowFactory } from "./unresponsiveWindowFactory";
 import { FailedToLoadWindowFactory } from "./failedToLoadWindowFactory";
+import { LinuxIconWindowFactory } from "./linuxIconWindowFactory";
+import { ContentProtectionWindowFactory } from "./contentProtectionWindowFactory";
 
 const appPath = app.getAppPath();
 
@@ -30,9 +32,16 @@ const browserWindowFactory = new BrowserWindowFactory({
     webviewTag: false,
 });
 
-const crashedFactory = new CrashedWindowFactory(browserWindowFactory);
+const contentProtection = new ContentProtectionWindowFactory(browserWindowFactory);
+
+const linuxIcon = path.join(appPath, "icon.png");
+
+const linuxIconFactory = new LinuxIconWindowFactory(contentProtection, linuxIcon);
+
+const crashedFactory = new CrashedWindowFactory(linuxIconFactory);
 
 const failedToLoadFactory = new FailedToLoadWindowFactory(crashedFactory);
 
 export const windowFactory = new UnresponsiveWindowFactory(failedToLoadFactory);
+
 export * from "./iWindowFactory";
