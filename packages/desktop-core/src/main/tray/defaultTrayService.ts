@@ -1,164 +1,54 @@
-import {
-    ITraySpecification,
-    IConfiguration,
-    ConfigurationKind,
-    WellKnownNamespaces,
-} from "@reactivemarkets/desktop-types";
-import { app, dialog, Menu, Tray, MenuItemConstructorOptions } from "electron";
-import { fromEventPattern } from "rxjs";
-import { filter, debounceTime } from "rxjs/operators";
-import { ILogger } from "../logging";
+import { IConfiguration } from "@reactivemarkets/desktop-types";
+import { find } from "ix/iterable";
+import { v4 as uuid } from "uuid";
 import { ITrayService } from "./iTrayService";
-import { IShellService } from "../shell";
-import { IWindowService } from "../windowing";
-import { launcherService } from "../launcher";
-import { registryService } from "../registry";
-
-interface ITrayServiceOptions {
-    readonly defaultIcon: string;
-    readonly defaultDocumentationUrl: string;
-    readonly logger: ILogger;
-    readonly shellService: IShellService;
-    readonly windowService: IWindowService;
-}
+import { ITrayFactory } from "./factory/iTrayFactory";
+import { TrayInstance } from "./trayInstance";
 
 export class DefaultTrayService implements ITrayService {
-    private tray?: Tray;
-    private readonly delay = 500;
-    private readonly defaultDocumentationUrl: string;
-    private readonly defaultIcon: string;
-    private readonly logger: ILogger;
-    private readonly shellService: IShellService;
-    private readonly windowService: IWindowService;
+    private readonly trayFactory: ITrayFactory;
+    private readonly configRegistry = new Map<string, TrayInstance>();
 
-    public constructor(options: ITrayServiceOptions) {
-        const { logger, shellService, windowService, defaultIcon, defaultDocumentationUrl } = options;
-
-        this.logger = logger;
-        this.shellService = shellService;
-        this.windowService = windowService;
-        this.defaultIcon = defaultIcon;
-        this.defaultDocumentationUrl = defaultDocumentationUrl;
+    public constructor(trayFactory: ITrayFactory) {
+        this.trayFactory = trayFactory;
     }
 
-    public create(configuration: IConfiguration) {
-        try {
-            const { description, name, namespace = WellKnownNamespaces.default } = configuration.metadata;
+    public all() {
+        return Array.from(this.configRegistry.values());
+    }
 
-            const spec = (configuration.spec ?? {}) as ITraySpecification;
-
-            const { icon = this.defaultIcon } = spec;
-
-            this.tray = new Tray(icon);
-            this.tray.setIgnoreDoubleClickEvents(true);
-            if (description !== undefined) {
-                this.tray.setToolTip(description);
-            }
-
-            this.setContextMenu(namespace, spec);
-
-            fromEventPattern<IConfiguration>(
-                (h) => registryService.on("registered", h),
-                (h) => registryService.off("registered", h),
-            )
-                .pipe(
-                    filter(({ metadata }) => metadata.namespace === namespace),
-                    debounceTime(this.delay),
-                )
-                .subscribe({
-                    next: () => this.setContextMenu(namespace, spec),
-                });
-
-            this.logger.info(`Configured ${name} tray menu`);
-
-            return Promise.resolve();
-        } catch (error) {
-            this.logger.error(`Failed to add tray icon ${error}`);
-
-            return Promise.reject(error);
+    public from(identifier: string | IConfiguration) {
+        if (typeof identifier === "string") {
+            return this.configRegistry.get(identifier);
         }
-    }
 
-    private readonly setContextMenu = async (namespace: string, spec: ITraySpecification) => {
-        const dynamicTemplate = await this.buildDynamicTemplate(namespace);
-
-        const staticTemplate = this.buildTemplate(spec);
-
-        const contextMenu = Menu.buildFromTemplate([...dynamicTemplate, ...staticTemplate]);
-
-        this.tray?.setContextMenu(contextMenu);
-    };
-
-    private readonly buildDynamicTemplate = async (namespace: string): Promise<MenuItemConstructorOptions[]> => {
-        const registry = await registryService.getRegistry();
-
-        return registry
-            .filter(({ kind }) => {
-                return kind === ConfigurationKind.Application;
-            })
-            .filter(({ metadata }) => {
-                return metadata.namespace === namespace;
-            })
-            .map((configuration) => {
-                return {
-                    label: configuration.metadata.name,
-                    click: this.launchApplication(configuration),
-                };
-            });
-    };
-
-    private readonly buildTemplate = (spec: ITraySpecification): MenuItemConstructorOptions[] => {
-        const { documentationUrl = this.defaultDocumentationUrl } = spec;
-
-        return [
-            { type: "separator" },
-            {
-                label: "Documentation",
-                click: this.openDocumentation(documentationUrl),
-            },
-            { type: "separator" },
-            {
-                label: "Bring All to Front",
-                click: this.bringAllToFront,
-            },
-            { type: "separator" },
-            {
-                label: "Restart",
-                type: "normal",
-                accelerator: "CommandOrControl+R",
-                click: this.restart,
-            },
-            { label: "Quit Desktop", type: "normal", role: "quit", accelerator: "CommandOrControl+Q" },
-        ];
-    };
-
-    private readonly bringAllToFront = () => {
-        this.windowService.all().forEach(({ instance }) => {
-            instance.moveTop();
+        return find(this.configRegistry.values(), (instance) => {
+            const { metadata } = instance.configuration;
+            return metadata.namespace === identifier.metadata.namespace && metadata.name === identifier.metadata.name;
         });
-    };
+    }
 
-    private readonly launchApplication = (configuration: IConfiguration) => async () => {
-        try {
-            await launcherService.launch(configuration);
-        } catch (error) {
-            this.logger.error(`Failed to launch application: ${error}`);
-        }
-    };
+    public async create(configuration: IConfiguration) {
+        const tray = await this.trayFactory.create(configuration);
 
-    private readonly openDocumentation = (documentationUrl: string) => async () => {
-        try {
-            await this.shellService.openExternal(documentationUrl);
-        } catch (error) {
-            const title = "Can't open external url";
-            const content = `${error}`;
-            this.logger.error(`${title}: ${content}`);
-            dialog.showErrorBox(title, content);
-        }
-    };
+        const startTime = new Date();
+        const uid = uuid();
 
-    private readonly restart = () => {
-        app.relaunch();
-        app.exit();
-    };
+        const runningConfiguration = {
+            ...configuration,
+            metadata: {
+                ...configuration.metadata,
+                uid,
+            },
+            status: {
+                startTime,
+            },
+        };
+
+        const instance = new TrayInstance(runningConfiguration, tray);
+
+        this.configRegistry.set(uid, instance);
+
+        return instance;
+    }
 }
