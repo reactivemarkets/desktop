@@ -27,7 +27,11 @@ export const handler = async (options: IStartOptions) => {
         app.allowRendererProcessReuse = true;
         if (app.isPackaged) {
             app.setAppUserModelId(`ReactiveMarkets.${app.name}`);
-            app.setAsDefaultProtocolClient(app.name.toLowerCase());
+            const lowerCaseName = app.name.toLowerCase();
+            logger.verbose(`Registering app as default protocol for ${lowerCaseName}`);
+            if (!app.setAsDefaultProtocolClient(lowerCaseName)) {
+                logger.warn(`Failed to register default protocol client for ${lowerCaseName}`);
+            }
         }
         registerIpcEventHandlers();
         registerApplicationEventHandlers(app);
