@@ -9,6 +9,7 @@
     "lintianOverrides": [
         "changelog-file-missing-in-native-package"
     ],
+    "mimeType": ["application/desktop", "x-scheme-handler/desktop"],
     "name": "desktop",
     "bin": "Desktop",
     "productName": "Desktop",
