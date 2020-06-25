@@ -41,7 +41,7 @@ export class DefaultTrayService implements ITrayService {
         this.defaultDocumentationUrl = defaultDocumentationUrl;
     }
 
-    public async create(configuration: IConfiguration) {
+    public create(configuration: IConfiguration) {
         try {
             const { description, name, namespace = WellKnownNamespaces.default } = configuration.metadata;
 
