@@ -5,6 +5,7 @@ import { shellService } from "../shell";
 import { ITrayService } from "./iTrayService";
 import { DefaultTrayService } from "./defaultTrayService";
 import { windowService } from "../windowing";
+import { DefaultTrayFactory } from "./factory";
 
 const appPath = app.getAppPath();
 
@@ -22,11 +23,13 @@ const trayIcon = path.join(appPath, icon);
 
 const defaultDocumentationUrl = "https://desktop.reactivemarkets.com";
 
-export * from "./iTrayService";
-export const trayService: ITrayService = new DefaultTrayService({
+const trayFactory = new DefaultTrayFactory({
     defaultIcon: trayIcon,
     defaultDocumentationUrl,
     logger,
     shellService,
     windowService,
 });
+
+export * from "./iTrayService";
+export const trayService: ITrayService = new DefaultTrayService(trayFactory);

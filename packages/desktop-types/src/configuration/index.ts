@@ -15,6 +15,7 @@ export * from "./iSessionSpecification";
 export * from "./iStorageStatus";
 export * from "./iStorageSpecification";
 export * from "./iTraySpecification";
+export * from "./iTrayStatus";
 export * from "./iWindowParameters";
 export * from "./storageState";
 export * from "./wellKnownNamespaces";
