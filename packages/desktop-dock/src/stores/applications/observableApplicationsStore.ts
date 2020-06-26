@@ -47,6 +47,14 @@ export class ObservableApplicationsStore implements IApplicationsStore {
             });
     }
 
+    public async remove({ configuration }: IApplication) {
+        await registry.unregister(configuration);
+
+        const key = this.getKey(configuration);
+
+        this.applicationMap.delete(key);
+    }
+
     @action
     private readonly addApplication = (configuration: IConfiguration) => {
         const { kind, metadata } = configuration;
@@ -66,6 +74,8 @@ export class ObservableApplicationsStore implements IApplicationsStore {
             }
         }
 
+        console.info("Adding application", configuration);
+
         const key = this.getKey(configuration);
 
         this.applicationMap.set(key, {
@@ -75,6 +85,8 @@ export class ObservableApplicationsStore implements IApplicationsStore {
             key,
             name,
             launch: () => {
+                console.info("Launching application", configuration);
+
                 return launcher.launch(configuration);
             },
         });
@@ -82,6 +94,8 @@ export class ObservableApplicationsStore implements IApplicationsStore {
 
     @action
     private readonly removeApplication = (configuration: IConfiguration) => {
+        console.info("Removing application", configuration);
+
         const key = this.getKey(configuration);
 
         this.applicationMap.delete(key);

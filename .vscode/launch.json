@@ -126,7 +126,7 @@
             "args": [
                 "${workspaceFolder}/packages/desktop-core/dist/main.js",
                 "--file",
-                "${workspaceFolder}/packages/desktop-dock/example.yaml"
+                "${workspaceFolder}/packages/desktop-dock/example.yaml",
             ],
             "env": {
                 "DESKTOP_LOG_LEVEL": "debug",

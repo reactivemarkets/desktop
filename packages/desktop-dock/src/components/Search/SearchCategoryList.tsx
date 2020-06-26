@@ -2,7 +2,7 @@ import { inject, observer } from "mobx-react";
 import * as React from "react";
 import { FixedSizeList } from "react-window";
 import { IApplicationsStore } from "../../stores";
-import { SearchResultItem } from "./SearchResultItem";
+import SearchResultItem from "./SearchResultItem";
 
 interface ISearchCategoryListProps {
     readonly applicationsStore?: IApplicationsStore;

@@ -40,7 +40,7 @@
     "start": "lerna run start --scope='*/desktop-core' --stream",
     "start:about": "lerna run start --scope='*/desktop-about' --stream",
     "start:api": "lerna run start --scope='*/desktop-api' --stream",
-    "start:dock": "lerna run start --scope='*/desktop-dock' --stream",
+    "start:dock": "lerna run start --scope='*/desktop-dock' --stream --includeDependencies",
     "test": "lerna run test --stream",
     "watch": "lerna run watch --parallel"
   },

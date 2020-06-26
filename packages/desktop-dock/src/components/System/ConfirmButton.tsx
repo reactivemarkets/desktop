@@ -16,7 +16,9 @@ const styles = (theme: Theme) =>
     });
 
 interface IConfirmButtonProps extends WithStyles<typeof styles> {
+    readonly edge?: false | "end" | "start";
     readonly onClick: (event: React.MouseEvent) => void;
+    readonly size?: "small" | "medium";
     readonly title: string;
 }
 
@@ -26,14 +28,14 @@ class ConfirmButton extends React.Component<IConfirmButtonProps> {
     private confirm = false;
 
     public render() {
-        const { children, classes, title } = this.props;
+        const { children, classes, edge, size, title } = this.props;
 
         const className = this.confirm ? classes.confirm : undefined;
 
         return (
             <ClickAwayListener onClickAway={this.onClickAway}>
                 <Tooltip title={title} placement="left">
-                    <IconButton className={className} onClick={this.onClick}>
+                    <IconButton className={className} edge={edge} size={size} onClick={this.onClick}>
                         {children}
                     </IconButton>
                 </Tooltip>

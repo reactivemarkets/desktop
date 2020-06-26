@@ -2,7 +2,7 @@ import { inject, observer } from "mobx-react";
 import * as React from "react";
 import { FixedSizeList } from "react-window";
 import { ISearchStore } from "../../stores";
-import { SearchResultItem } from "./SearchResultItem";
+import SearchResultItem from "./SearchResultItem";
 
 interface ISearchResultListProps {
     readonly height: number;
