@@ -67,6 +67,29 @@
             "sourceMaps": true,
         },
         {
+            "name": "Launch Incorrect Arg",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "npm: build:dev:core",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+            "windows": {
+                "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+            },
+            "args": [
+                "${workspaceFolder}/packages/desktop-core/dist/main.js",
+                "--wrong"
+            ],
+            "env": {
+                "DESKTOP_LOG_LEVEL": "debug",
+            },
+            "outputCapture": "std",
+            "outFiles": [
+                "${workspaceFolder}/packages/desktop-core/dist/**/*.js"
+            ],
+            "sourceMaps": true,
+        },
+        {
             "name": "Launch About",
             "type": "node",
             "request": "launch",

@@ -8,21 +8,21 @@ import { IPsOptions } from "./iPsOptions";
 import { ipcExternal } from "../../ipc";
 import { Output } from "../../configuration";
 
-export const handler = async (options: IPsOptions) => {
+export const handler = async ({ context, quiet, output, kind, namespace }: IPsOptions) => {
     logger.verbose("Ps command ran.");
 
     try {
-        await ipcExternal.whenReady();
+        await ipcExternal.whenReady(context);
 
-        const containers = await ipcExternal.invoke<IPsOptions, IConfiguration[]>(
-            ReservedChannels.instances_list,
-            options,
-        );
+        const containers = await ipcExternal.invoke<any, IConfiguration[]>(ReservedChannels.instances_list, {
+            kind,
+            namespace,
+        });
 
-        if (options.quiet) {
+        if (quiet) {
             containers.forEach((c) => logger.info(`${c.metadata.uid}`));
         } else {
-            switch (options.output) {
+            switch (output) {
                 case Output.Json: {
                     const details = JSON.stringify(containers);
 

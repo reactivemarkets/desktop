@@ -26,6 +26,12 @@ export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
     const version = app.getVersion();
 
     return yargs
+        .config()
+        .option("c", {
+            alias: "context",
+            describe: "Name of the context to connect to.",
+            string: true,
+        })
         .command(clearModule)
         .command(describeModule)
         .command(devToolsModule)

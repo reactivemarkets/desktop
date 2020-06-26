@@ -7,8 +7,8 @@ import { systemIpcEvents } from "./systemIpcEvents";
 import { launcherIpcEvents } from "./launcherIpcEvents";
 import { externalIpcEvents } from "./externalIpcEvents";
 
-export const registerIpcEventHandlers = () => {
-    externalIpcEvents();
+export const registerIpcEventHandlers = (context?: string) => {
+    externalIpcEvents(context);
     globalShortcutIpcEvents();
     launcherIpcEvents();
     loggerIpcEvents();

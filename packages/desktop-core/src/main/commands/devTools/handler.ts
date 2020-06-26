@@ -4,11 +4,11 @@ import { ipcExternal } from "../../ipc";
 import { logger } from "../../logging";
 import { IDevToolsOptions } from "./iDevToolsOptions";
 
-export const handler = async ({ uid }: IDevToolsOptions) => {
+export const handler = async ({ context, uid }: IDevToolsOptions) => {
     logger.verbose("Open dev tools command ran.");
 
     try {
-        await ipcExternal.whenReady();
+        await ipcExternal.whenReady(context);
 
         await ipcExternal.invoke(ReservedChannels.window_openDevTools, { uid });
 

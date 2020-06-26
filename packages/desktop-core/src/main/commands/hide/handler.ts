@@ -4,13 +4,13 @@ import { ipcExternal } from "../../ipc";
 import { logger } from "../../logging";
 import { IHideOptions } from "./iHideOptions";
 
-export const handler = async (options: IHideOptions) => {
+export const handler = async ({ context, uid }: IHideOptions) => {
     logger.verbose("Hide command ran.");
 
     try {
-        await ipcExternal.whenReady();
+        await ipcExternal.whenReady(context);
 
-        await ipcExternal.invoke(ReservedChannels.window_hide, options);
+        await ipcExternal.invoke(ReservedChannels.window_hide, { uid });
 
         app.exit();
     } catch (error) {
