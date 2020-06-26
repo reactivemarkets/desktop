@@ -6,9 +6,9 @@ export class DesktopResizerStore implements IResizerStore {
     private readonly expandedHeight = 400;
 
     public subscribe() {
-        // if (desktop.isHostedInDesktop) {
-        //     window.current().on("blur", this.collapse);
-        // }
+        if (desktop.isHostedInDesktop) {
+            window.current().on("blur", this.collapse);
+        }
     }
 
     public unsubscribe() {
