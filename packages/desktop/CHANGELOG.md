@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/reactivemarkets/desktop/compare/v0.18.0...v0.19.0) (2020-06-26)
+
+
+### Bug Fixes
+
+* **desktop:** using single icon for debian ([d32130d](https://github.com/reactivemarkets/desktop/commit/d32130dd7f8480a00076bab3991ca4ba7e2892e0))
+
+
+
+
+
 # [0.18.0](https://github.com/reactivemarkets/desktop/compare/v0.17.0...v0.18.0) (2020-06-25)
 
 

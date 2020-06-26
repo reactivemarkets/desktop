@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/reactivemarkets/desktop/compare/v0.18.0...v0.19.0) (2020-06-26)
+
+
+### Bug Fixes
+
+* **core:** allowing reregistering of configuration ([4b0c782](https://github.com/reactivemarkets/desktop/commit/4b0c7825a9e4480f308ebd53ff461a8e2d9abd65))
+* **core:** finding instance to use before invoking command ([5e5753f](https://github.com/reactivemarkets/desktop/commit/5e5753f30022b0c4cb3cde0d8d77a8bfe23e4874))
+* **core:** tray bring all to front now works on mac ([02dadaa](https://github.com/reactivemarkets/desktop/commit/02dadaa68c58e32e803deea2decbaeb306e1b144))
+
+
+### Features
+
+* **core:** adding context to allow multiple instance to run ([04953fc](https://github.com/reactivemarkets/desktop/commit/04953fc8990bba57e481d84fed9838674a11df73))
+* **core:** adding tray to instances list ([1a3c324](https://github.com/reactivemarkets/desktop/commit/1a3c3243489e01b0a3286cba9c207bb575049f97))
+* **core:** strict command line options ([567a380](https://github.com/reactivemarkets/desktop/commit/567a380ee6df617fad029866aba4c96241fed311))
+
+
+
+
+
 # [0.18.0](https://github.com/reactivemarkets/desktop/compare/v0.17.0...v0.18.0) (2020-06-25)
 
 

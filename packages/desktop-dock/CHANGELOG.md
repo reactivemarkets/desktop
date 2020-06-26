@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/reactivemarkets/desktop/compare/v0.18.0...v0.19.0) (2020-06-26)
+
+
+### Bug Fixes
+
+* **dock:** renable collapse on blur ([80ba457](https://github.com/reactivemarkets/desktop/commit/80ba457e7f915d62bc9e6c7107e29c5deb1474e0))
+
+
+### Features
+
+* **dock:** adding remove item to application list ([8a23343](https://github.com/reactivemarkets/desktop/commit/8a233438d0cac6e29179b1808793245d19d62255))
+
+
+
+
+
 # [0.18.0](https://github.com/reactivemarkets/desktop/compare/v0.17.0...v0.18.0) (2020-06-25)
 
 
