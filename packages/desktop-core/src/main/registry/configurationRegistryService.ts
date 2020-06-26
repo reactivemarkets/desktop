@@ -15,14 +15,6 @@ export class ConfigurationRegistryService implements IRegistryService {
 
         const key = `${kind}/${namespace}/${name}`;
 
-        if (this.registry.has(key)) {
-            const message = `A configuration object of kind: ${kind} in namespace: ${namespace} called: ${name} is already registered.`;
-
-            const error = new Error(message);
-
-            return Promise.reject(error);
-        }
-
         this.registry.set(key, configuration);
 
         return Promise.resolve();
