@@ -41,6 +41,7 @@ export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
         .demandCommand(1, "Specify at least 1 command.")
         .recommendCommands()
         .version(version)
+        .strict()
         .exitProcess(exitProcess)
         .epilogue('Run "$0 COMMAND --help" for more information on a command.')
         .usage("Usage: $0 COMMAND [OPTIONS]\n\nA multi-window desktop runtime.")
