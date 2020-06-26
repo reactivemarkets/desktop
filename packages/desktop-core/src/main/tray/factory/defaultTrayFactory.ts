@@ -132,8 +132,14 @@ export class DefaultTrayFactory implements ITrayFactory {
     };
 
     private readonly bringAllToFront = () => {
+        app.focus({
+            steal: true,
+        });
+
         this.windowService.all().forEach(({ instance }) => {
-            instance.moveTop();
+            if (instance.isVisible()) {
+                instance.moveTop();
+            }
         });
     };
 
