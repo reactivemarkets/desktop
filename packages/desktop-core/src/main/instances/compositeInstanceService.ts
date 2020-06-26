@@ -23,21 +23,30 @@ export class CompositeInstanceService implements IInstanceService {
         return this.instanceServices.flatMap((i) => i.list());
     }
 
-    public async kill(uid: string): Promise<void> {
-        const promises = this.instanceServices.map((i) => i.kill(uid));
+    public kill(uid: string): Promise<void> {
+        const service = this.instanceServices.find((i) => i.get(uid));
+        if (service === undefined) {
+            throw new Error(`Couldn't find instance with identifier: ${uid}`);
+        }
 
-        await Promise.all(promises);
+        return service.kill(uid);
     }
 
-    public async restart(uid: string) {
-        const promises = this.instanceServices.map((i) => i.restart(uid));
+    public restart(uid: string) {
+        const service = this.instanceServices.find((i) => i.get(uid));
+        if (service === undefined) {
+            throw new Error(`Couldn't find instance with identifier: ${uid}`);
+        }
 
-        await Promise.all(promises);
+        return service.restart(uid);
     }
 
-    public async stop(uid: string) {
-        const promises = this.instanceServices.map((i) => i.stop(uid));
+    public stop(uid: string) {
+        const service = this.instanceServices.find((i) => i.get(uid));
+        if (service === undefined) {
+            throw new Error(`Couldn't find instance with identifier: ${uid}`);
+        }
 
-        await Promise.all(promises);
+        return service.stop(uid);
     }
 }
