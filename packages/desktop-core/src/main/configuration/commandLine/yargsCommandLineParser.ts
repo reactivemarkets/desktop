@@ -27,8 +27,8 @@ export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
 
     return yargs
         .config()
-        .option("c", {
-            alias: "context",
+        .option("context", {
+            alias: "c",
             describe: "Name of the context to connect to.",
             string: true,
         })
