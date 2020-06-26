@@ -1,19 +1,60 @@
-import { ListItem, ListItemText } from "@material-ui/core";
+import {
+    createStyles,
+    ListItem,
+    ListItemText,
+    ListItemSecondaryAction,
+    withStyles,
+    WithStyles,
+} from "@material-ui/core";
+import { Close } from "mdi-material-ui";
+import { inject } from "mobx-react";
 import * as React from "react";
 import { ListChildComponentProps } from "react-window";
-import { ISearchResult } from "../../stores";
+import { IApplicationsStore, ISearchResult, ISearchStore } from "../../stores";
+import { ConfirmButton } from "../System";
 
-export class SearchResultItem extends React.Component<ListChildComponentProps> {
+const styles = () =>
+    createStyles({
+        root: {
+            "&:hover $clearIndicator": {
+                visibility: "visible",
+            },
+        },
+        clearIndicator: {
+            visibility: "hidden",
+        },
+    });
+
+interface ISearchResultItemProps extends ListChildComponentProps, WithStyles<typeof styles> {
+    readonly applicationsStore?: IApplicationsStore;
+    readonly searchStore?: ISearchStore;
+}
+
+@inject("applicationsStore")
+@inject("searchStore")
+class SearchResultItem extends React.Component<ISearchResultItemProps> {
     public render() {
-        const { data, index, style } = this.props;
+        const { classes, data, index, style } = this.props;
 
         const { item } = data[index] as ISearchResult;
 
         const { name, description } = item;
 
         return (
-            <ListItem style={style} button divider dense onClick={this.onClick}>
+            <ListItem
+                ContainerProps={{ style, className: classes.root }}
+                ContainerComponent="div"
+                button
+                divider
+                dense
+                onClick={this.onClick}
+            >
                 <ListItemText primary={name} secondary={description} />
+                <ListItemSecondaryAction className={classes.clearIndicator}>
+                    <ConfirmButton edge="end" size="small" title="Remove Application" onClick={this.remove}>
+                        <Close fontSize="small" />
+                    </ConfirmButton>
+                </ListItemSecondaryAction>
             </ListItem>
         );
     }
@@ -29,4 +70,20 @@ export class SearchResultItem extends React.Component<ListChildComponentProps> {
             console.error(`Failed to launch application: ${error}`);
         }
     };
+
+    private readonly remove = async () => {
+        try {
+            const { applicationsStore, data, index, searchStore } = this.props;
+
+            const { item } = data[index] as ISearchResult;
+
+            await applicationsStore!.remove(item);
+
+            searchStore!.search(searchStore!.searchTerm);
+        } catch (error) {
+            console.error(`Failed to remove application: ${error}`);
+        }
+    };
 }
+
+export default withStyles(styles)(SearchResultItem);
