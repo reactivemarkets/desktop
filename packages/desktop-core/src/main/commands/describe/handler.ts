@@ -6,15 +6,15 @@ import { IDescribeOptions } from "./iDescribeOptions";
 import { ipcExternal } from "../../ipc";
 import { yamlConfigurationParser } from "../../configuration";
 
-export const handler = async (options: IDescribeOptions) => {
+export const handler = async ({ context, uid }: IDescribeOptions) => {
     logger.verbose("Ps command ran.");
 
     try {
-        await ipcExternal.whenReady();
+        await ipcExternal.whenReady(context);
 
         const container = await ipcExternal.invoke<IDescribeOptions, IConfiguration | undefined>(
             ReservedChannels.instances_get,
-            options,
+            { uid },
         );
 
         if (container !== undefined) {

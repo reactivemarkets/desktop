@@ -1,17 +1,18 @@
+import { app } from "electron";
 import ipc from "node-ipc";
 import { IIpcExternalMain } from "./iIpcExternalMain";
 import { IIpcExternalResult } from "./iIpcExternalResult";
 
 export class NodeIpcExternalMain implements IIpcExternalMain {
-    private readonly appSpace = "com.reactivemarkets.";
-    private readonly connectId = "desktop_ipc";
+    private readonly appSpace = "com.reactivemarkets";
+    private readonly connectId = "external_ipc";
 
-    public handle(channel: string, listener: (args?: any) => any): void {
-        ipc.server.on(channel, (data, socket) => {
+    public handle(channel: string, listener: (args?: any) => Promise<any> | any): void {
+        ipc.server.on(channel, async (data, socket) => {
             const { responseId } = data;
             const result: IIpcExternalResult = {};
             try {
-                result.result = listener(data);
+                result.result = await listener(data);
             } catch (error) {
                 result.error = error.message;
             }
@@ -19,9 +20,11 @@ export class NodeIpcExternalMain implements IIpcExternalMain {
         });
     }
 
-    public whenReady() {
+    public whenReady(context?: string) {
         return new Promise<void>((resolve) => {
-            ipc.config.appspace = this.appSpace;
+            const appName = app.name.toLowerCase();
+            const appSpace = `${this.appSpace}.${appName}.`;
+            ipc.config.appspace = context === undefined ? appSpace : `${appSpace}${context}.`;
             ipc.config.id = this.connectId;
             ipc.config.silent = true;
             ipc.serve(() => {

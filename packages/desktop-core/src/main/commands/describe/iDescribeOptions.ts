@@ -1,5 +1,4 @@
 export interface IDescribeOptions {
-    readonly kind: string;
-    readonly namespace: string;
-    readonly quiet: boolean;
+    readonly context?: string;
+    readonly uid: string;
 }

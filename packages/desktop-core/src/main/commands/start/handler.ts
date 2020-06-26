@@ -10,22 +10,27 @@ import { registerApplicationMenu } from "../../menu";
 import { registryService } from "../../registry";
 
 export const handler = async (options: IStartOptions) => {
-    logger.verbose("Start command ran.");
+    const { context } = options;
+
+    logger.verbose("Start command ran.", context);
 
     const configPromises = new Array<Promise<IConfiguration | undefined>>();
 
     if (!app.hasSingleInstanceLock()) {
-        const appLock = app.requestSingleInstanceLock();
-        if (!appLock) {
-            logger.info("Another instance is already running. exiting...");
-            app.exit();
+        if (context === undefined) {
+            const appLock = app.requestSingleInstanceLock();
+            if (!appLock) {
+                logger.info("Another instance is already running. exiting...");
+                app.exit();
 
-            return;
+                return;
+            }
         }
 
         app.enableSandbox();
         app.allowRendererProcessReuse = true;
-        if (app.isPackaged) {
+
+        if (context === undefined && app.isPackaged) {
             app.setAppUserModelId(`ReactiveMarkets.${app.name}`);
             const lowerCaseName = app.name.toLowerCase();
             logger.verbose(`Registering app as default protocol for ${lowerCaseName}`);
@@ -33,7 +38,8 @@ export const handler = async (options: IStartOptions) => {
                 logger.warn(`Failed to register default protocol client for ${lowerCaseName}`);
             }
         }
-        registerIpcEventHandlers();
+
+        registerIpcEventHandlers(context);
         registerApplicationEventHandlers(app);
         registerApplicationMenu();
 
@@ -61,8 +67,6 @@ export const handler = async (options: IStartOptions) => {
             logger.error(`Failed to load default config: ${error}`);
         }
     }
-
-    const onReady = app.whenReady();
 
     const urls = options.url;
     if (urls !== undefined) {
@@ -124,7 +128,7 @@ export const handler = async (options: IStartOptions) => {
     try {
         const registry = await Promise.all(configPromises);
 
-        await onReady;
+        await app.whenReady();
 
         const launched = registry
             .filter((c) => c !== undefined)

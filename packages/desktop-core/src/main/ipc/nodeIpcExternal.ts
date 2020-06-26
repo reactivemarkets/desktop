@@ -1,16 +1,17 @@
+import { app } from "electron";
 import ipc from "node-ipc";
 import { v4 as uuid } from "uuid";
 import { IIpcExternal } from "./iIpcExternal";
 import { IIpcExternalResult } from "./iIpcExternalResult";
 
 export class NodeIpcExternal implements IIpcExternal {
-    private readonly appSpace = "com.reactivemarkets.";
-    private readonly connectId = "desktop_ipc";
+    private readonly appSpace = "com.reactivemarkets";
+    private readonly connectId = "external_ipc";
 
     public invoke<TData, TResult>(channel: string, data: TData): Promise<TResult> {
         return new Promise<TResult>((resolve, reject) => {
             const responseId = uuid();
-            ipc.of.desktop_ipc.on(responseId, ({ error, result }: IIpcExternalResult) => {
+            ipc.of.external_ipc.on(responseId, ({ error, result }: IIpcExternalResult) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -23,21 +24,23 @@ export class NodeIpcExternal implements IIpcExternal {
                 responseId,
             };
 
-            ipc.of.desktop_ipc.emit(channel, message);
+            ipc.of.external_ipc.emit(channel, message);
         });
     }
 
-    public whenReady() {
+    public whenReady(context?: string) {
         return new Promise<void>((resolve, reject) => {
-            ipc.config.appspace = this.appSpace;
+            const appName = app.name.toLowerCase();
+            const appSpace = `${this.appSpace}.${appName}.`;
+            ipc.config.appspace = context === undefined ? appSpace : `${appSpace}${context}.`;
             ipc.config.id = uuid();
             ipc.config.maxRetries = 0;
             ipc.config.silent = true;
             ipc.connectTo(this.connectId, () => {
-                ipc.of.desktop_ipc.on("error", (error: Error) => {
+                ipc.of.external_ipc.on("error", (error: Error) => {
                     reject(error);
                 });
-                ipc.of.desktop_ipc.on("connect", () => {
+                ipc.of.external_ipc.on("connect", () => {
                     resolve();
                 });
             });

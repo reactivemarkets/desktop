@@ -4,13 +4,13 @@ import { ipcExternal } from "../../ipc";
 import { logger } from "../../logging";
 import { IShowOptions } from "./iShowOptions";
 
-export const handler = async (options: IShowOptions) => {
+export const handler = async ({ context, uid }: IShowOptions) => {
     logger.verbose("Show command ran.");
 
     try {
-        await ipcExternal.whenReady();
+        await ipcExternal.whenReady(context);
 
-        await ipcExternal.invoke(ReservedChannels.window_show, options);
+        await ipcExternal.invoke(ReservedChannels.window_show, { uid });
 
         app.exit();
     } catch (error) {
