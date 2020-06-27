@@ -22,17 +22,18 @@ spec:
   url: about.asar
   window:
     alwaysOnTop: true
-    backgroundColor: "#F7F7F7"
+    backgroundColor: "#4A90E2"
     center: true
     fullscreenable: false
-    height: 550
+    height: 500
     minimizable: false
     maximizable: false
     resizable: false
     skipTaskbar: true
     title: About Desktop
+    titleBarStyle: hidden
     useContentSize: true
-    width: 750
+    width: 700
 ```
 
 ## Building from source
