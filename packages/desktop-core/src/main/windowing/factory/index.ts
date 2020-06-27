@@ -6,6 +6,7 @@ import { UnresponsiveWindowFactory } from "./unresponsiveWindowFactory";
 import { FailedToLoadWindowFactory } from "./failedToLoadWindowFactory";
 import { LinuxIconWindowFactory } from "./linuxIconWindowFactory";
 import { ContentProtectionWindowFactory } from "./contentProtectionWindowFactory";
+import { ContextMenuWindowFactory } from "./contextMenuWindowFactory";
 
 const appPath = app.getAppPath();
 
@@ -42,6 +43,8 @@ const crashedFactory = new CrashedWindowFactory(linuxIconFactory);
 
 const failedToLoadFactory = new FailedToLoadWindowFactory(crashedFactory);
 
-export const windowFactory = new UnresponsiveWindowFactory(failedToLoadFactory);
+const unResponsiveWindowFactory = new UnresponsiveWindowFactory(failedToLoadFactory);
+
+export const windowFactory = new ContextMenuWindowFactory(unResponsiveWindowFactory);
 
 export * from "./iWindowFactory";
