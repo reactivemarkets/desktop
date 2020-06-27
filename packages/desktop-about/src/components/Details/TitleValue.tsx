@@ -1,10 +1,10 @@
 import { createStyles, Grid, Typography, withStyles, WithStyles } from "@material-ui/core";
 import * as React from "react";
+import Title from "./Title";
 
 const styles = createStyles({
-    title: {
-        fontWeight: 800,
-        minWidth: 100,
+    select: {
+        userSelect: "text",
     },
 });
 
@@ -21,12 +21,10 @@ class TitleValue extends React.PureComponent<ITitleValueProps> {
         return (
             <Grid item container xs={6} spacing={2}>
                 <Grid item>
-                    <Typography color={color} className={classes.title} variant="body1">
-                        {title}
-                    </Typography>
+                    <Title color={color}>{title}</Title>
                 </Grid>
-                <Grid item>
-                    <Typography color={color} variant="body1">
+                <Grid item className="no-drag">
+                    <Typography color={color} className={classes.select} variant="body1">
                         {value}
                     </Typography>
                 </Grid>

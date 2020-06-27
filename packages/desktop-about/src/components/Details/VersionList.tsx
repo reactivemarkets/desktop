@@ -29,7 +29,7 @@ export class VersionList extends React.Component<IVersionListProps> {
                 return 0;
             })
             .map(([name, version]) => {
-                return <TitleValue color="textSecondary" key={name} title={name} value={version} />;
+                return <TitleValue key={name} title={name} value={version} />;
             });
     }
 }
