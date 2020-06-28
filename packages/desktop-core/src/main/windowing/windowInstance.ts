@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ApplicationState, IConfiguration } from "@reactivemarkets/desktop-types";
 import { BrowserWindow } from "electron";
 import { fromEventPattern, merge } from "rxjs";
@@ -19,7 +20,6 @@ export class WindowInstance extends TypedEmitter<IWindowInstanceEvents> {
 
         this.#configuration = configuration;
         this.#instance = instance;
-
         this.attachEventHandlers();
     }
 
@@ -32,26 +32,42 @@ export class WindowInstance extends TypedEmitter<IWindowInstanceEvents> {
     }
 
     private readonly attachEventHandlers = () => {
-        const move = fromEventPattern(
-            (h) => this.#instance.addListener("move", h),
-            (h) => this.#instance.removeListener("move", h),
-        );
-        const resize = fromEventPattern(
-            (h) => this.#instance.addListener("resize", h),
-            (h) => this.#instance.removeListener("resize", h),
-        );
-        const boundsChanged = merge(move, resize)
+        const boundsEvents = ["move", "resize"].map((event) => {
+            return fromEventPattern(
+                // @ts-ignore
+                (h) => this.#instance.addListener(event, h),
+                // @ts-ignore
+                (h) => this.#instance.removeListener(event, h),
+            );
+        });
+
+        const boundsChanged = merge(boundsEvents)
             .pipe(debounceTime(this.#delay))
             .subscribe({
                 next: this.onBoundsChange,
             });
 
-        this.#instance.once("closed", () => {
-            this.#configuration = updateStatus(this.#configuration, {
-                state: ApplicationState.closed,
+        const stateEvents = ["maximize", "unmaximize", "minimize", "enter-full-screen", "leave-full-screen"].map(
+            (event) => {
+                return fromEventPattern(
+                    // @ts-ignore
+                    (h) => this.#instance.addListener(event, h),
+                    // @ts-ignore
+                    (h) => this.#instance.removeListener(event, h),
+                );
+            },
+        );
+
+        const stateChanged = merge(stateEvents)
+            .pipe(debounceTime(this.#delay))
+            .subscribe({
+                next: this.onStateChange,
             });
-            this.emit("status-update", this.#configuration);
+
+        this.#instance.once("closed", () => {
+            this.onClosed();
             boundsChanged.unsubscribe();
+            stateChanged.unsubscribe();
         });
     };
 
@@ -60,6 +76,28 @@ export class WindowInstance extends TypedEmitter<IWindowInstanceEvents> {
 
         this.#configuration = updateStatus(this.#configuration, {
             ...bounds,
+        });
+
+        this.emit("status-update", this.#configuration);
+    };
+
+    private readonly onClosed = () => {
+        this.#configuration = updateStatus(this.#configuration, {
+            state: ApplicationState.closed,
+        });
+
+        this.emit("status-update", this.#configuration);
+    };
+
+    private readonly onStateChange = () => {
+        const isFullScreen = this.#instance.isFullScreen();
+        const isMaximized = this.#instance.isMaximized();
+        const isMinimized = this.#instance.isMinimized();
+
+        this.#configuration = updateStatus(this.#configuration, {
+            isFullScreen,
+            isMaximized,
+            isMinimized,
         });
 
         this.emit("status-update", this.#configuration);

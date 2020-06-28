@@ -37,11 +37,14 @@ export class DefaultWindowService implements IWindowService {
 
         const { webContents } = window;
 
+        const bounds = window.getBounds();
+        const isFullScreen = window.isFullScreen();
+        const isMaximized = window.isMaximized();
+        const isMinimized = window.isMinimized();
         const startTime = new Date();
         const state = ApplicationState.running;
         const uid = uuid();
         const windowId = window.id;
-        const bounds = window.getBounds();
 
         const runningConfiguration = {
             ...configuration,
@@ -51,6 +54,9 @@ export class DefaultWindowService implements IWindowService {
             },
             status: {
                 ...bounds,
+                isFullScreen,
+                isMaximized,
+                isMinimized,
                 osProcessId: webContents.getOSProcessId(),
                 processId: webContents.getProcessId(),
                 startTime,
