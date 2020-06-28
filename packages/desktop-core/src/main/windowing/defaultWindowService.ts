@@ -7,22 +7,22 @@ import { WindowInstance } from "./windowInstance";
 
 export class DefaultWindowService implements IWindowService {
     private readonly windowFactory: IWindowFactory;
-    private readonly configRegistry = new Map<string, WindowInstance>();
+    private readonly instanceRegistry = new Map<string, WindowInstance>();
 
     public constructor(windowFactory: IWindowFactory) {
         this.windowFactory = windowFactory;
     }
 
     public all() {
-        return Array.from(this.configRegistry.values());
+        return Array.from(this.instanceRegistry.values());
     }
 
     public from(identifier: string | IConfiguration) {
         if (typeof identifier === "string") {
-            return this.configRegistry.get(identifier);
+            return this.instanceRegistry.get(identifier);
         }
 
-        return find(this.configRegistry.values(), (instance) => {
+        return find(this.instanceRegistry.values(), (instance) => {
             const { metadata } = instance.configuration;
             return metadata.namespace === identifier.metadata.namespace && metadata.name === identifier.metadata.name;
         });
@@ -41,6 +41,7 @@ export class DefaultWindowService implements IWindowService {
         const state = ApplicationState.running;
         const uid = uuid();
         const windowId = window.id;
+        const bounds = window.getBounds();
 
         const runningConfiguration = {
             ...configuration,
@@ -49,6 +50,7 @@ export class DefaultWindowService implements IWindowService {
                 uid,
             },
             status: {
+                ...bounds,
                 osProcessId: webContents.getOSProcessId(),
                 processId: webContents.getProcessId(),
                 startTime,
@@ -59,10 +61,10 @@ export class DefaultWindowService implements IWindowService {
 
         const instance = new WindowInstance(runningConfiguration, window);
 
-        this.configRegistry.set(uid, instance);
+        this.instanceRegistry.set(uid, instance);
 
         window.once("closed", () => {
-            this.configRegistry.delete(uid);
+            this.instanceRegistry.delete(uid);
         });
 
         return instance;
