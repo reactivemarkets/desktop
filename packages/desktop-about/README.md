@@ -14,7 +14,7 @@ metadata:
   description: Creates an about window.
   namespace: desktop
   annotations:
-    "@desktop/dock":
+    "@reactivemarkets/desktop-dock":
       excludeFromSearch: true
 spec:
   launchOnStart: false

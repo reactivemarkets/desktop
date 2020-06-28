@@ -65,7 +65,7 @@ export class ObservableApplicationsStore implements IApplicationsStore {
         const { annotations, description, name, namespace } = metadata;
         let category = namespace ?? WellKnownNamespaces.default;
         if (annotations !== undefined) {
-            const dockAnnotations = annotations["@desktop/dock"] as IDockAnnotations | undefined;
+            const dockAnnotations = annotations["@reactivemarkets/desktop-dock"] as IDockAnnotations | undefined;
             if (dockAnnotations?.excludeFromSearch) {
                 return;
             }

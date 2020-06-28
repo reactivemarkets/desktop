@@ -14,7 +14,7 @@ metadata:
   description: Creates a dock to launch new windows.
   namespace: desktop
   annotations:
-    "@desktop/dock":
+    "@reactivemarkets/desktop-dock":
       excludeFromSearch: true
 spec:
   singleInstance: true
