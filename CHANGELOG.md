@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/markmcdowell/desktop/compare/v0.19.0...v0.20.0) (2020-06-28)
+
+
+### Bug Fixes
+
+* **core:** correcting order of alias in context option ([f645c49](https://github.com/markmcdowell/desktop/commit/f645c49245b9d8629b7ed3d34853e4625679eb5f))
+
+
+### Features
+
+* **about:** simplifying about box ([b44ab13](https://github.com/markmcdowell/desktop/commit/b44ab131bbe0f1fa6f1d4bc7de1f26d65f21d510))
+* **core:** adding basic context menu for text selection ([93d1ff6](https://github.com/markmcdowell/desktop/commit/93d1ff670730ef652b137af040dd04766da42839))
+* **core:** adding window bounds to the application status ([b5a50bf](https://github.com/markmcdowell/desktop/commit/b5a50bf3678dd4563344238ebf2ab453b0c4774f))
+* **core:** adding window state to application status ([a8d15e1](https://github.com/markmcdowell/desktop/commit/a8d15e125bad8c786d0f9beac10957486b9b8428))
+* **core:** tray now uses an annotation to find what to display ([79d2bb5](https://github.com/markmcdowell/desktop/commit/79d2bb5abbf969cecdcc70b2742508320b50d22e))
+* **dock:** using package name for annotations ([adaf608](https://github.com/markmcdowell/desktop/commit/adaf608cab78315f07ed4be85cb2842df32e0539))
+
+
+
+
+
 # [0.19.0](https://github.com/markmcdowell/desktop/compare/v0.18.0...v0.19.0) (2020-06-26)
 
 

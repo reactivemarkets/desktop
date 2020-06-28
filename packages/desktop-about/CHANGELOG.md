@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/reactivemarkets/desktop/compare/v0.19.0...v0.20.0) (2020-06-28)
+
+
+### Features
+
+* **about:** simplifying about box ([b44ab13](https://github.com/reactivemarkets/desktop/commit/b44ab131bbe0f1fa6f1d4bc7de1f26d65f21d510))
+* **core:** tray now uses an annotation to find what to display ([79d2bb5](https://github.com/reactivemarkets/desktop/commit/79d2bb5abbf969cecdcc70b2742508320b50d22e))
+* **dock:** using package name for annotations ([adaf608](https://github.com/reactivemarkets/desktop/commit/adaf608cab78315f07ed4be85cb2842df32e0539))
+
+
+
+
+
 # [0.19.0](https://github.com/reactivemarkets/desktop/compare/v0.18.0...v0.19.0) (2020-06-26)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-about

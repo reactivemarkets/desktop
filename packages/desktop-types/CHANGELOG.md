@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/reactivemarkets/desktop/compare/v0.19.0...v0.20.0) (2020-06-28)
+
+
+### Features
+
+* **core:** adding window bounds to the application status ([b5a50bf](https://github.com/reactivemarkets/desktop/commit/b5a50bf3678dd4563344238ebf2ab453b0c4774f))
+* **core:** adding window state to application status ([a8d15e1](https://github.com/reactivemarkets/desktop/commit/a8d15e125bad8c786d0f9beac10957486b9b8428))
+
+
+
+
+
 # [0.19.0](https://github.com/reactivemarkets/desktop/compare/v0.18.0...v0.19.0) (2020-06-26)
 
 
