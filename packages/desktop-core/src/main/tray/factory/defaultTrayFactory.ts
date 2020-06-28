@@ -1,17 +1,13 @@
-import {
-    ITraySpecification,
-    IConfiguration,
-    ConfigurationKind,
-    WellKnownNamespaces,
-} from "@reactivemarkets/desktop-types";
+import { ITraySpecification, IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
 import { app, dialog, Menu, Tray, MenuItemConstructorOptions } from "electron";
 import { fromEventPattern } from "rxjs";
-import { filter, debounceTime } from "rxjs/operators";
+import { debounceTime } from "rxjs/operators";
 import { ILogger } from "../../logging";
 import { IShellService } from "../../shell";
 import { IWindowService } from "../../windowing";
 import { launcherService } from "../../launcher";
 import { registryService } from "../../registry";
+import { ITrayAnnotations } from "./iTrayAnnotations";
 import { ITrayFactory } from "./iTrayFactory";
 
 interface ITrayFactoryOptions {
@@ -42,7 +38,7 @@ export class DefaultTrayFactory implements ITrayFactory {
 
     public create(configuration: IConfiguration) {
         try {
-            const { description, name, namespace = WellKnownNamespaces.default } = configuration.metadata;
+            const { description, name } = configuration.metadata;
 
             const spec = (configuration.spec ?? {}) as ITraySpecification;
 
@@ -54,18 +50,15 @@ export class DefaultTrayFactory implements ITrayFactory {
                 tray.setToolTip(description);
             }
 
-            this.setContextMenu(tray, namespace, spec);
+            this.setContextMenu(tray, spec);
 
             fromEventPattern<IConfiguration>(
                 (h) => registryService.on("registered", h),
                 (h) => registryService.off("registered", h),
             )
-                .pipe(
-                    filter(({ metadata }) => metadata.namespace === namespace),
-                    debounceTime(this.delay),
-                )
+                .pipe(debounceTime(this.delay))
                 .subscribe({
-                    next: () => this.setContextMenu(tray, namespace, spec),
+                    next: () => this.setContextMenu(tray, spec),
                 });
 
             this.logger.info(`Configured ${name} tray menu`);
@@ -78,8 +71,8 @@ export class DefaultTrayFactory implements ITrayFactory {
         }
     }
 
-    private readonly setContextMenu = async (tray: Tray, namespace: string, spec: ITraySpecification) => {
-        const dynamicTemplate = await this.buildDynamicTemplate(namespace);
+    private readonly setContextMenu = async (tray: Tray, spec: ITraySpecification) => {
+        const dynamicTemplate = await this.buildDynamicTemplate();
 
         const staticTemplate = this.buildTemplate(spec);
 
@@ -88,7 +81,7 @@ export class DefaultTrayFactory implements ITrayFactory {
         tray.setContextMenu(contextMenu);
     };
 
-    private readonly buildDynamicTemplate = async (namespace: string): Promise<MenuItemConstructorOptions[]> => {
+    private readonly buildDynamicTemplate = async (): Promise<MenuItemConstructorOptions[]> => {
         const registry = await registryService.getRegistry();
 
         return registry
@@ -96,7 +89,14 @@ export class DefaultTrayFactory implements ITrayFactory {
                 return kind === ConfigurationKind.Application;
             })
             .filter(({ metadata }) => {
-                return metadata.namespace === namespace;
+                const { annotations } = metadata;
+                if (annotations === undefined) {
+                    return false;
+                }
+
+                const trayAnnotations = annotations["@reactivemarkets/desktop-core"] as ITrayAnnotations;
+
+                return trayAnnotations?.includeInTray === true;
             })
             .map((configuration) => {
                 return {
