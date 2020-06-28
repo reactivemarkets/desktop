@@ -5,6 +5,8 @@ metadata:
   description: Creates an about window.
   namespace: desktop
   annotations:
+    "@reactivemarkets/desktop-core":
+      includeInTray: true
     "@reactivemarkets/desktop-dock":
       excludeFromSearch: true
 spec:
