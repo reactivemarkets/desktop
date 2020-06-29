@@ -30,14 +30,18 @@ export const whiteListNavigationEventsHandler = (app: App) => {
             webPreferences.sandbox = true;
         });
 
-        contents.on("new-window", (event, navigationUrl) => {
-            event.preventDefault();
+        contents.on("new-window", async (event, navigationUrl) => {
+            try {
+                event.preventDefault();
 
-            logger.warn(
-                `The application tried to open a new window at the following address: ${navigationUrl}. This attempt was blocked, opening in browser instead.`,
-            );
+                logger.warn(
+                    `The application tried to open a new window at the following address: ${navigationUrl}. This attempt was blocked, opening in browser instead.`,
+                );
 
-            shellService.openExternal(navigationUrl);
+                await shellService.openExternal(navigationUrl);
+            } catch (error) {
+                logger.error(`Can't open external url`, error);
+            }
         });
     });
 };
