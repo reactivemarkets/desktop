@@ -9,8 +9,17 @@ export const externalIpcEvents = async (context?: string) => {
     ipcExternalMain.handle(ReservedChannels.instances_get, ({ uid }) => {
         return instanceService.get(uid);
     });
-    ipcExternalMain.handle(ReservedChannels.instances_list, () => {
-        return instanceService.list();
+    ipcExternalMain.handle(ReservedChannels.instances_list, ({ kind, namespace }) => {
+        return instanceService.list().filter((configuration) => {
+            if (kind !== undefined && configuration.kind !== kind) {
+                return false;
+            }
+            if (namespace !== undefined && configuration.metadata.namespace !== namespace) {
+                return false;
+            }
+
+            return true;
+        });
     });
     ipcExternalMain.handle(ReservedChannels.instances_kill, ({ uid }) => {
         return instanceService.kill(uid);
