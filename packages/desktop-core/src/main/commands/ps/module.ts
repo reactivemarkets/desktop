@@ -14,7 +14,6 @@ export const builder = {
     },
     namespace: {
         alias: "n",
-        default: "*",
         describe: "The namespace to filter on",
         string: true,
     },
