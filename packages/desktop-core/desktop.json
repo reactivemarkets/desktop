@@ -3,7 +3,7 @@
     "productName": "Desktop",
     "version": "0.0.0",
     "description": "A cross platform hosting environment for multi-window applications",
-    "main": "main.js",
+    "main": "index.js",
     "scripts": {},
     "repository": {
         "type": "git",

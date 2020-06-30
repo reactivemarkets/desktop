@@ -1,15 +1,12 @@
 ---
-name: Package Windows
+name: Package Linux
 on:
   release:
     types:
       - published
 jobs:
   build:
-    runs-on: windows-latest
-    env:
-      CSC_LINK: ${{ secrets.CERTIFICATE_WIN_APPLICATION }}
-      CSC_KEY_PASSWORD: ${{ secrets.CERTIFICATE_WIN_APPLICATION_PASSWORD }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Install npm dependencies
@@ -23,7 +20,7 @@ jobs:
           npm run asar
       - name: Build packages
         run: |
-          npm run package:windows
+          npm run package:linux
       - name: Get upload_url
         run: | 
           echo "::set-output name=upload_url::https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)/assets{?name,label}"  
@@ -34,32 +31,41 @@ jobs:
           echo "::set-output name=version::${GITHUB_REF##*/v}"
         id: version
         shell: bash
-      - name: Upload Package Zip
+      - name: Upload Snap
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-win32-x64.zip
-          asset_name: Desktop-${{ steps.version.outputs.version }}-win-x64.zip
+          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-linux-amd64.snap
+          asset_name: Desktop-${{ steps.version.outputs.version }}-linux-amd64.snap
           asset_content_type: application/zip
-      - name: Upload Package Installer
+      - name: Upload AppImage
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-win.exe
-          asset_name: Desktop-${{ steps.version.outputs.version }}-win.exe
+          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-linux-x86_64.AppImage
+          asset_name: Desktop-${{ steps.version.outputs.version }}-linux-x86_64.AppImage
           asset_content_type: application/octet-stream
-      - name: Upload Package Installer Blockmap
+      - name: Upload Deb
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-win.exe.blockmap
-          asset_name: Desktop-${{ steps.version.outputs.version }}-win.exe.blockmap
+          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-linux-amd64.deb
+          asset_name: Desktop-${{ steps.version.outputs.version }}-linux-amd64.deb
+          asset_content_type: application/octet-stream
+      - name: Upload Zip
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-linux-x64.zip
+          asset_name: Desktop-${{ steps.version.outputs.version }}-linux-x64.zip
           asset_content_type: application/octet-stream
       - name: Upload Latest.yml
         uses: actions/upload-release-asset@v1
@@ -67,6 +73,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/latest.yml
-          asset_name: latest.yml
+          asset_path: packages/desktop/pack/latest-linux.yml
+          asset_name: latest-linux.yml
           asset_content_type: application/octet-stream

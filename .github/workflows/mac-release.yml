@@ -1,15 +1,15 @@
 ---
-name: Package Windows
+name: Package Mac
 on:
   release:
     types:
       - published
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: macos-latest
     env:
-      CSC_LINK: ${{ secrets.CERTIFICATE_WIN_APPLICATION }}
-      CSC_KEY_PASSWORD: ${{ secrets.CERTIFICATE_WIN_APPLICATION_PASSWORD }}
+      CSC_LINK: ${{ secrets.CERTIFICATE_OSX_APPLICATION }}
+      CSC_KEY_PASSWORD: ${{ secrets.CERTIFICATE_OSX_APPLICATION_PASSWORD }}
     steps:
       - uses: actions/checkout@v2
       - name: Install npm dependencies
@@ -23,7 +23,7 @@ jobs:
           npm run asar
       - name: Build packages
         run: |
-          npm run package:windows
+          npm run package:darwin
       - name: Get upload_url
         run: | 
           echo "::set-output name=upload_url::https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)/assets{?name,label}"  
@@ -40,8 +40,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-win32-x64.zip
-          asset_name: Desktop-${{ steps.version.outputs.version }}-win-x64.zip
+          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-darwin-x64.zip
+          asset_name: Desktop-${{ steps.version.outputs.version }}-mac.zip
           asset_content_type: application/zip
       - name: Upload Package Installer
         uses: actions/upload-release-asset@v1
@@ -49,8 +49,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-win.exe
-          asset_name: Desktop-${{ steps.version.outputs.version }}-win.exe
+          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-darwin-x64.dmg
+          asset_name: Desktop-${{ steps.version.outputs.version }}-mac.dmg
           asset_content_type: application/octet-stream
       - name: Upload Package Installer Blockmap
         uses: actions/upload-release-asset@v1
@@ -58,8 +58,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-win.exe.blockmap
-          asset_name: Desktop-${{ steps.version.outputs.version }}-win.exe.blockmap
+          asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-darwin-x64.dmg.blockmap
+          asset_name: Desktop-${{ steps.version.outputs.version }}-mac.dmg.blockmap
           asset_content_type: application/octet-stream
       - name: Upload Latest.yml
         uses: actions/upload-release-asset@v1
@@ -67,6 +67,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: packages/desktop/pack/latest.yml
-          asset_name: latest.yml
+          asset_path: packages/desktop/pack/latest-mac.yml
+          asset_name: latest-mac.yml
           asset_content_type: application/octet-stream

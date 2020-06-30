@@ -31,7 +31,7 @@
                 "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
             },
             "args": [
-                "${workspaceFolder}/packages/desktop-api/dist/main.js",
+                "${workspaceFolder}/packages/desktop-api/dist/index.js",
             ],
             "env": {
                 "ELECTRON_RUN_AS_NODE": "1"
@@ -53,7 +53,7 @@
                 "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
             },
             "args": [
-                "${workspaceFolder}/packages/desktop-core/dist/main.js",
+                "${workspaceFolder}/packages/desktop-core/dist/index.js",
                 "--url",
                 "https://desktop.reactivemarkets.com"
             ],
@@ -77,7 +77,7 @@
                 "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
             },
             "args": [
-                "${workspaceFolder}/packages/desktop-core/dist/main.js",
+                "${workspaceFolder}/packages/desktop-core/dist/index.js",
                 "--wrong"
             ],
             "env": {
@@ -100,7 +100,7 @@
                 "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
             },
             "args": [
-                "${workspaceFolder}/packages/desktop-core/dist/main.js",
+                "${workspaceFolder}/packages/desktop-core/dist/index.js",
                 "--file",
                 "${workspaceFolder}/packages/desktop-about/example.yaml"
             ],
@@ -124,7 +124,7 @@
                 "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
             },
             "args": [
-                "${workspaceFolder}/packages/desktop-core/dist/main.js",
+                "${workspaceFolder}/packages/desktop-core/dist/index.js",
                 "--file",
                 "${workspaceFolder}/packages/desktop-dock/example.yaml",
             ],

@@ -5,7 +5,7 @@ const webpack = require("webpack");
 
 const config = {
     entry: {
-        main: "./src/main/index.ts",
+        index: "./src/main/index.ts",
     },
     target: "electron-main",
     output: {

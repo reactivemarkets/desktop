@@ -39,7 +39,7 @@ export const registerDefaults = async () => {
 
     const resourcesPath = path.dirname(appPath);
 
-    const defaults = path.join(resourcesPath, "defaults.yaml");
+    const defaults = path.join(resourcesPath, "defaults.yml");
 
     const configurationArray = await configurationLoader.load(defaults);
 
@@ -61,7 +61,7 @@ export const registerProtocol = () => {
         return;
     }
 
-    app.setAppUserModelId(`ReactiveMarkets.${app.name}`);
+    app.setAppUserModelId(`com.reactivemarkets.${app.name}`);
     const lowerCaseName = app.name.toLowerCase();
     logger.verbose(`Registering app as default protocol for ${lowerCaseName}`);
     if (!app.setAsDefaultProtocolClient(lowerCaseName)) {

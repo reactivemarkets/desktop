@@ -5,7 +5,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack --progress --config webpack.config.prod.js",
     "build:dev": "webpack --progress --config webpack.config.dev.js",
@@ -15,7 +15,7 @@
     "asar:pack": "asar pack ./dist ./dist/api.asar",
     "asar:post": "rimraf ./dist/package.json",
     "prepublishOnly": "run-s build asar",
-    "serve": "node ./dist/main.js",
+    "serve": "node ./dist/index.js",
     "start": "run-s build:dev serve"
   },
   "repository": {
