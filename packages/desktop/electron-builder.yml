@@ -1,0 +1,61 @@
+appId: com.reactivemarkets.desktop
+productName: Desktop
+directories:
+  output: pack
+electronVersion: 9.0.5
+extraResources: 
+  - from: dist
+    filter: "*.asar"
+  - from: build
+    filter: "defaults.yml"
+extraMetadata:
+  name: desktop
+files:
+  - "../desktop-core/dist/**/*"
+generateUpdatesFilesForAllChannels: true
+npmRebuild: false
+remoteBuild: false
+afterSign: notarize.js
+artifactName: ${productName}-${version}-${platform}-${arch}.${ext}
+protocols:
+  - name: "Desktop Protocol"
+    schemes:
+      - "desktop"
+linux:
+  category: GNOME;GTK;Utility;
+  executableName: Desktop
+  desktop:
+    StartupNotify: true
+  mimeTypes:
+    - application/desktop
+  target:
+    - target: AppImage
+    - target: snap
+    - target: deb
+    - target: zip
+deb:
+  afterInstall: build/after-install.tpl
+  afterRemove: build/after-remove.tpl
+mac:
+  artifactName: ${productName}-${version}-${platform}-x64.${ext}
+  category: public.app-category.utilities
+  darkModeSupport: true
+  target:
+    - target: dmg
+    - target: zip
+dmg:
+  backgroundColor: #F7F7F7
+  contents:
+    - x: 200
+      y: 320
+    - x: 450
+      y: 320
+      type: link
+      path: /Applications
+  internetEnabled: true
+win:
+  target:
+    - target: nsis
+    - target: zip
+nsis:
+  deleteAppDataOnUninstall: true

@@ -5,7 +5,7 @@ const argsToIgnore = ["--allow-file-access-from-files"];
 /**
  * In production, skip the first argument.
  *
- * In development, find the main.js arg and start from there.
+ * In development, find the index.js arg and start from there.
  * @param commandLine The command line to clean
  */
 export const cleanCommandLine = (commandLine: string[]) => {
@@ -15,7 +15,7 @@ export const cleanCommandLine = (commandLine: string[]) => {
     }
 
     let argsToSkip = 1;
-    const mainIndex = commandLine.findIndex((entry) => entry.endsWith("main.js"));
+    const mainIndex = commandLine.findIndex((entry) => entry.endsWith("index.js"));
     if (mainIndex !== -1) {
         argsToSkip += mainIndex;
     }

@@ -19,10 +19,10 @@ if (version === undefined) {
     process.exit(1);
 }
 
-const platform = os.platform();
-const arch = "x64";
 const baseUrl = "https://github.com/reactivemarkets/desktop/releases/download";
-const desktopUrl = `${baseUrl}/v${version}/desktop-${version}-${platform}-${arch}.zip`;
+const arch = "x64";
+const platform = os.platform();
+const desktopUrl = `${baseUrl}/v${version}/Desktop-${version}-${platform}-${arch}.zip`;
 const desktopZipDestination = path.join(__dirname, "desktop.zip");
 const desktopExtractDestination = path.join(__dirname, "desktop");
 

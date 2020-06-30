@@ -6,7 +6,7 @@ const config = {
     target: "node",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "main.js",
+        filename: "index.js",
     },
     resolve: {
         alias: {
@@ -15,15 +15,15 @@ const config = {
         extensions: [".ts", ".js"],
     },
     module: {
-        rules: [{
-            test: /\.tsx?$/,
-            loader: "ts-loader",
-            exclude: /node_modules/,
-        }],
+        rules: [
+            {
+                test: /\.tsx?$/,
+                loader: "ts-loader",
+                exclude: /node_modules/,
+            },
+        ],
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-    ]
+    plugins: [new CleanWebpackPlugin()],
 };
 
 module.exports = config;

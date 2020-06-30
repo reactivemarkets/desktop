@@ -8,8 +8,8 @@ describe("cleanCommandLine", () => {
             expect(cleanCommandLine(args)).toEqual(["-c", "application.yaml"]);
         });
 
-        test("main.js when present", () => {
-            const args = ["electron.exe", "main.js", "-c", "application.yaml"];
+        test("index.js when present", () => {
+            const args = ["electron.exe", "index.js", "-c", "application.yaml"];
 
             expect(cleanCommandLine(args)).toEqual(["-c", "application.yaml"]);
         });
