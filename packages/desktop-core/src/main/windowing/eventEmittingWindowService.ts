@@ -20,7 +20,7 @@ export class EventEmittingWindowService extends TypedEmitter<IWindowServiceEvent
         return this.windowService.all();
     }
 
-    public from(identifier: string | IConfiguration) {
+    public from(identifier: number | string | IConfiguration) {
         return this.windowService.from(identifier);
     }
 

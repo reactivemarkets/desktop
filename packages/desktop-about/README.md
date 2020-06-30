@@ -19,6 +19,7 @@ metadata:
     "@reactivemarkets/desktop-dock":
       excludeFromSearch: true
 spec:
+  excludeFromWorkspace: true
   launchOnStart: false
   singleInstance: true
   url: about.asar

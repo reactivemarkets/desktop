@@ -15,7 +15,7 @@ export class SingleInstanceWindowService implements IWindowService {
         return this.windowService.all();
     }
 
-    public from(identifier: string | IConfiguration) {
+    public from(identifier: number | string | IConfiguration) {
         return this.windowService.from(identifier);
     }
 

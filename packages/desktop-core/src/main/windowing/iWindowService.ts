@@ -9,12 +9,12 @@ export interface IWindowService {
 
     /**
      * The window with the given `identifier`.
-     * @param identifier A uid or application configuration.
+     * @param identifier A uid, window id or application configuration.
      */
-    from(identifier: string | IConfiguration): WindowInstance | undefined;
+    from(identifier: number | string | IConfiguration): WindowInstance | undefined;
 
     /**
-     * Create a BrowserWindow from the given `configuration`.
+     * Create a `WindowInstance` from the given `configuration`.
      * @param configuration The application configuration
      */
     create(configuration: IConfiguration): Promise<WindowInstance>;

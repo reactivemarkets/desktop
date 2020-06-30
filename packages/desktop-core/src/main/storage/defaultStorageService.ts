@@ -22,9 +22,18 @@ export class DefaultStorageService implements IStorageService {
             return this.storageRegistry.get(identifier);
         }
 
-        return find(this.storageRegistry.values(), (instance) => {
-            const { metadata } = instance.configuration;
-            return metadata.namespace === identifier.metadata.namespace && metadata.name === identifier.metadata.name;
+        return find(this.storageRegistry.values(), ({ configuration }) => {
+            const { metadata } = configuration;
+
+            return metadata.namespace === identifier.metadata.namespace;
+        });
+    }
+
+    public fromNamespace(namespace: string) {
+        return find(this.storageRegistry.values(), ({ configuration }) => {
+            const { metadata } = configuration;
+
+            return metadata.namespace === namespace;
         });
     }
 

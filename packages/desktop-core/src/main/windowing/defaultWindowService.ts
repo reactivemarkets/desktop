@@ -17,9 +17,15 @@ export class DefaultWindowService implements IWindowService {
         return Array.from(this.instanceRegistry.values());
     }
 
-    public from(identifier: string | IConfiguration) {
+    public from(identifier: number | string | IConfiguration) {
         if (typeof identifier === "string") {
             return this.instanceRegistry.get(identifier);
+        }
+
+        if (typeof identifier === "number") {
+            return find(this.instanceRegistry.values(), ({ instance }) => {
+                return instance.id === identifier;
+            });
         }
 
         return find(this.instanceRegistry.values(), (instance) => {
