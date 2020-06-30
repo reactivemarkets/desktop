@@ -1,13 +1,11 @@
-import { ConfigurationKind, IConfiguration } from "@reactivemarkets/desktop-types";
+import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { app } from "electron";
-import * as path from "path";
 import { registerIpcEventHandlers } from "../../api";
-import { configurationGenerator, configurationLoader } from "../../configuration";
 import { registerApplicationEventHandlers } from "../../events";
 import { launcherService } from "../../launcher";
 import { logger } from "../../logging";
 import { registerApplicationMenu } from "../../menu";
-import { registryService } from "../../registry";
+import { registerDefaults, registerUrls, registerConfigFiles, registerProtocol } from "./register";
 
 export const handler = async (options: IStartOptions) => {
     const { context } = options;
@@ -20,47 +18,23 @@ export const handler = async (options: IStartOptions) => {
         if (context === undefined) {
             const appLock = app.requestSingleInstanceLock();
             if (!appLock) {
-                logger.info("Another instance is already running. exiting...");
+                logger.info("Another instance is already running. Sending command and exiting...");
                 app.exit();
 
                 return;
             }
+
+            registerProtocol();
         }
 
         app.enableSandbox();
         app.allowRendererProcessReuse = true;
-
-        if (context === undefined && app.isPackaged) {
-            app.setAppUserModelId(`ReactiveMarkets.${app.name}`);
-            const lowerCaseName = app.name.toLowerCase();
-            logger.verbose(`Registering app as default protocol for ${lowerCaseName}`);
-            if (!app.setAsDefaultProtocolClient(lowerCaseName)) {
-                logger.warn(`Failed to register default protocol client for ${lowerCaseName}`);
-            }
-        }
-
         registerIpcEventHandlers(context);
         registerApplicationEventHandlers(app);
         registerApplicationMenu();
 
         try {
-            const appPath = app.getAppPath();
-
-            const resourcesPath = path.dirname(appPath);
-
-            const defaults = path.join(resourcesPath, "defaults.yaml");
-
-            const configurationArray = await configurationLoader.load(defaults);
-
-            const configFiles = configurationArray.map(async (configuration) => {
-                try {
-                    await registryService.register(configuration);
-
-                    return configuration;
-                } catch (error) {
-                    logger.error(`Failed to register default config: ${error}`);
-                }
-            });
+            const configFiles = await registerDefaults();
 
             configPromises.push(...configFiles);
         } catch (error) {
@@ -72,57 +46,22 @@ export const handler = async (options: IStartOptions) => {
     if (urls !== undefined) {
         logger.verbose("Loading urls specified", urls);
 
-        const configFiles = urls.map(async (url) => {
-            try {
-                const configuration = await configurationGenerator.generate({
-                    kind: ConfigurationKind.Application,
-                    name: url,
-                    url,
-                });
-
-                await registryService.register(configuration);
-
-                return configuration;
-            } catch (error) {
-                logger.error(`Failed to register config: ${error}`);
-            }
-        });
+        const configFiles = registerUrls(urls);
 
         configPromises.push(...configFiles);
     }
 
     const files = options.file;
     if (files !== undefined) {
-        logger.verbose("Loading configuration files", files);
+        try {
+            logger.verbose("Loading configuration files", files);
 
-        const configFilePromises = files.map(async (f) => {
-            try {
-                const configurationArray = await configurationLoader.load(f);
+            const configFiles = await registerConfigFiles(files);
 
-                const configFiles = configurationArray.map(async (configuration) => {
-                    try {
-                        await registryService.register(configuration);
-
-                        return configuration;
-                    } catch (error) {
-                        logger.error(`Failed to register config: ${error}`);
-                    }
-                });
-
-                return configFiles;
-            } catch (error) {
-                logger.error(`Failed to load config: ${error}`);
-            }
-        });
-
-        const configOrUndefined = await Promise.all(configFilePromises);
-
-        const configFiles = configOrUndefined
-            .flat()
-            .filter((p) => p !== undefined)
-            .map((p) => p!);
-
-        configPromises.push(...configFiles);
+            configPromises.push(...configFiles);
+        } catch (error) {
+            logger.error(`Failed to load configuration files: ${error}`);
+        }
     }
 
     try {

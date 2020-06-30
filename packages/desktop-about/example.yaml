@@ -10,6 +10,7 @@ metadata:
     "@reactivemarkets/desktop-dock":
       excludeFromSearch: true
 spec:
+  excludeFromWorkspace: true
   launchOnStart: true
   singleInstance: true
   url: http://localhost:8080

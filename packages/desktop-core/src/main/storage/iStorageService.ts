@@ -3,20 +3,25 @@ import { StorageInstance } from "./storageInstance";
 
 export interface IStorageService {
     /**
-     * Get all storage clients.
+     * Get all storage instances.
      */
     all(): StorageInstance[];
 
     /**
-     * Get the storage client for the namespace
-     * @param namespace the application namespace
+     * Get the storage instance for the given identifier
+     * @param identifier The uid or `IConfiguration`
      */
     from(identifier: string | IConfiguration): StorageInstance | undefined;
 
     /**
-     * Register a new storage client.
-     * @param namespace the application namespace
-     * @param storageClient `IStorageClient`
+     * Get the storage instance for the given namespace.
+     * @param namespace The namespace
+     */
+    fromNamespace(namespace: string): StorageInstance | undefined;
+
+    /**
+     * Create a new `StorageInstance` from the given `configuration`.
+     * @param configuration The storage configuration
      */
     create(configuration: IConfiguration): Promise<StorageInstance>;
 }
