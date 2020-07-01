@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/markmcdowell/desktop/compare/v0.21.0...v0.22.0) (2020-07-01)
+
+
+### Bug Fixes
+
+* **desktop:** setting never publish on electron-builder ([c80fcf4](https://github.com/markmcdowell/desktop/commit/c80fcf456b6245f8f93c219a6c26741522ad09b6))
+
+
+### Features
+
+* **core:** adding update service ([50348b8](https://github.com/markmcdowell/desktop/commit/50348b8501f9056bebd937b44ec2afafd729b8b2))
+
+
+
+
+
 # [0.21.0](https://github.com/markmcdowell/desktop/compare/v0.20.0...v0.21.0) (2020-07-01)
 
 
