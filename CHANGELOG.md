@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/markmcdowell/desktop/compare/v0.23.0...v0.23.1) (2020-07-01)
+
+
+### Bug Fixes
+
+* **build:** correcting asset names in github ([ab085fb](https://github.com/markmcdowell/desktop/commit/ab085fb3c419ab181461e9e01a4ec063742b884e))
+* **core:** the update policy may not define a spec ([7d5fa89](https://github.com/markmcdowell/desktop/commit/7d5fa89f1e2500ca7b83fe978c9e9fa6141d676e))
+* **desktop:** attempting to notarize the app ([adf62bd](https://github.com/markmcdowell/desktop/commit/adf62bd380b4e02cd860d0ea2dd4d4f327da1e8f))
+
+
+
+
+
 # [0.23.0](https://github.com/markmcdowell/desktop/compare/v0.22.0...v0.23.0) (2020-07-01)
 
 

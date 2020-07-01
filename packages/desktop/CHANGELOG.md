@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/reactivemarkets/desktop/compare/v0.23.0...v0.23.1) (2020-07-01)
+
+
+### Bug Fixes
+
+* **desktop:** attempting to notarize the app ([adf62bd](https://github.com/reactivemarkets/desktop/commit/adf62bd380b4e02cd860d0ea2dd4d4f327da1e8f))
+
+
+
+
+
 # [0.23.0](https://github.com/reactivemarkets/desktop/compare/v0.22.0...v0.23.0) (2020-07-01)
 
 **Note:** Version bump only for package @reactivemarkets/desktop
