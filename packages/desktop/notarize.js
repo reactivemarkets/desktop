@@ -14,11 +14,11 @@ exports.default = function notarizing(context) {
     const appPath = `${appOutDir}/${context.packager.appInfo.productFilename}.app`;
 
     if (appleId === undefined || appleIdPassword === undefined) {
-        console.log("No AppleId or AppleIdPassword specified.");
+        console.log("notarize: no AppleId or AppleIdPassword specified.");
         return;
     }
 
-    console.log("Notarizing", appPath);
+    console.log(`notarize: ${appPath}`);
 
     return notarize({
         appBundleId,
