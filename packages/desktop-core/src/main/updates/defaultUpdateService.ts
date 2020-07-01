@@ -6,8 +6,8 @@ import { IUpdatePolicySpecification } from "@reactivemarkets/desktop-types/lib/c
 
 export class DefaultUpdateService implements IUpdateService {
     public configure(configuration: IConfiguration): Promise<IConfiguration> {
-        const spec = configuration.spec as IUpdatePolicySpecification;
-        if (spec.disableUpdates) {
+        const spec = configuration.spec as IUpdatePolicySpecification | undefined;
+        if (spec?.disableUpdates) {
             return Promise.resolve(configuration);
         }
 
