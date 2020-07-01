@@ -16,7 +16,7 @@
     "compile:renderer": "webpack --config webpack.renderer.config.prod.js",
     "compile:renderer:dev": "webpack --progress --config webpack.renderer.config.dev.js",
     "asar": "run-s asar:pre asar:pack asar:post",
-    "asar:pre": "copyfiles -f desktop.json dist && replace '0.0.0' $npm_package_version dist/desktop.json && renamer -f desktop -e name -r package dist/desktop.json",
+    "asar:pre": "cross-var \"copyfiles -f desktop.json dist && replace '0.0.0' $npm_package_version dist/desktop.json && renamer -f desktop -e name -r package dist/desktop.json\"",
     "asar:pack": "asar pack ./dist ./dist/app.asar",
     "asar:post": "rimraf ./dist/package.json",
     "prepublishOnly": "run-s build asar",
