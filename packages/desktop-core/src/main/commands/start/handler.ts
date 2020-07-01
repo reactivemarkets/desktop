@@ -6,7 +6,6 @@ import { launcherService } from "../../launcher";
 import { logger } from "../../logging";
 import { registerApplicationMenu } from "../../menu";
 import { registerDefaults, registerUrls, registerConfigFiles, registerProtocol } from "./register";
-import { checkForUpdates } from "../../updates";
 
 export const handler = async (options: IStartOptions) => {
     const { context } = options;
@@ -33,7 +32,6 @@ export const handler = async (options: IStartOptions) => {
         registerIpcEventHandlers(context);
         registerApplicationEventHandlers(app);
         registerApplicationMenu();
-        checkForUpdates();
 
         try {
             const configFiles = await registerDefaults();
