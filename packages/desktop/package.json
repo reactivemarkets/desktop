@@ -17,9 +17,9 @@
     "access": "public"
   },
   "scripts": {
-    "builder:darwin": "electron-builder --mac",
-    "builder:linux": "electron-builder --linux",
-    "builder:windows": "electron-builder --win",
+    "builder:darwin": "electron-builder --mac --publish never",
+    "builder:linux": "electron-builder --linux --publish never",
+    "builder:windows": "electron-builder --win --publish never",
     "clean": "rimraf dist pack",
     "copy": "copyfiles -f \"../../node_modules/@reactivemarkets/desktop-*/**/*.asar\" dist",
     "package:darwin": "run-s clean copy builder:darwin",
