@@ -42,7 +42,7 @@ jobs:
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-darwin-x64.zip
-          asset_name: Desktop-${{ steps.version.outputs.version }}-mac.zip
+          asset_name: Desktop-${{ steps.version.outputs.version }}-darwin-x64.zip
           asset_content_type: application/zip
       - name: Upload Package Installer
         uses: actions/upload-release-asset@v1
@@ -51,7 +51,7 @@ jobs:
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-darwin-x64.dmg
-          asset_name: Desktop-${{ steps.version.outputs.version }}-mac.dmg
+          asset_name: Desktop-${{ steps.version.outputs.version }}-darwin-x64.dmg
           asset_content_type: application/octet-stream
       - name: Upload Package Installer Blockmap
         uses: actions/upload-release-asset@v1
@@ -60,7 +60,7 @@ jobs:
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: packages/desktop/pack/Desktop-${{ steps.version.outputs.version }}-darwin-x64.dmg.blockmap
-          asset_name: Desktop-${{ steps.version.outputs.version }}-mac.dmg.blockmap
+          asset_name: Desktop-${{ steps.version.outputs.version }}-darwin-x64.dmg.blockmap
           asset_content_type: application/octet-stream
       - name: Upload Latest.yml
         uses: actions/upload-release-asset@v1
