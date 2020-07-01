@@ -73,6 +73,7 @@
     "copy-webpack-plugin": "^6.0.3",
     "copyfiles": "^2.3.0",
     "cors": "^2.8.5",
+    "cross-var": "^1.1.0",
     "csp-html-webpack-plugin": "^4.0.0",
     "css-loader": "^3.6.0",
     "electron": "9.0.5",
