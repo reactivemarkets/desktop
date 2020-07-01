@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.2](https://github.com/reactivemarkets/desktop/compare/v0.23.1...v0.23.2) (2020-07-01)
+
+
+### Bug Fixes
+
+* **core:** using cross-var to correctly resolve package version ([3ccccd0](https://github.com/reactivemarkets/desktop/commit/3ccccd08365d658f37ff15e7ce9da148b35ccd9a))
+
+
+
+
+
 ## [0.23.1](https://github.com/reactivemarkets/desktop/compare/v0.23.0...v0.23.1) (2020-07-01)
 
 

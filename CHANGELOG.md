@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.2](https://github.com/markmcdowell/desktop/compare/v0.23.1...v0.23.2) (2020-07-01)
+
+
+### Bug Fixes
+
+* **build:** adding apple id and password to mac build ([6071521](https://github.com/markmcdowell/desktop/commit/6071521c0ea3d9066619f412a5bb1695f4d373a0))
+* **core:** using cross-var to correctly resolve package version ([3ccccd0](https://github.com/markmcdowell/desktop/commit/3ccccd08365d658f37ff15e7ce9da148b35ccd9a))
+* **desktop:** correcting logging in notarize ([b27872a](https://github.com/markmcdowell/desktop/commit/b27872a77f56eb4eb09cac9796f2b7b944511715))
+
+
+
+
+
 ## [0.23.1](https://github.com/markmcdowell/desktop/compare/v0.23.0...v0.23.1) (2020-07-01)
 
 

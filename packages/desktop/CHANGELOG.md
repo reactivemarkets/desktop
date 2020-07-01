@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.2](https://github.com/reactivemarkets/desktop/compare/v0.23.1...v0.23.2) (2020-07-01)
+
+
+### Bug Fixes
+
+* **desktop:** correcting logging in notarize ([b27872a](https://github.com/reactivemarkets/desktop/commit/b27872a77f56eb4eb09cac9796f2b7b944511715))
+
+
+
+
+
 ## [0.23.1](https://github.com/reactivemarkets/desktop/compare/v0.23.0...v0.23.1) (2020-07-01)
 
 
