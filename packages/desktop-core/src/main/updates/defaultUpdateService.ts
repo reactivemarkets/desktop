@@ -23,15 +23,14 @@ export class DefaultUpdateService implements IUpdateService {
             logger.info("Update not available.");
         });
 
-        autoUpdater.on("error", (err) => {
-            logger.info("Error in auto-updater. " + err);
+        autoUpdater.on("error", (error) => {
+            logger.info(`Error in auto-updater. ${error}`);
         });
 
-        autoUpdater.on("download-progress", (progressObj) => {
-            let log_message = "Download speed: " + progressObj.bytesPerSecond;
-            log_message = log_message + " - Downloaded " + progressObj.percent + "%";
-            log_message = log_message + " (" + progressObj.transferred + "/" + progressObj.total + ")";
-            logger.info(log_message);
+        autoUpdater.on("download-progress", (progress) => {
+            const { bytesPerSecond, percent, total, transferred } = progress;
+
+            logger.info(`Download speed: ${bytesPerSecond} Downloaded ${percent} (${transferred}/${total})`);
         });
 
         autoUpdater.on("update-downloaded", () => {
