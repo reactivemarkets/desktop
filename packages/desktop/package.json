@@ -1,7 +1,7 @@
 {
   "name": "@reactivemarkets/desktop",
   "productName": "Desktop",
-  "version": "0.22.0",
+  "version": "0.23.0",
   "description": "Multi-window, cross-platform desktop applications.",
   "homepage": "https://desktop.reactivemarkets.com",
   "bin": {

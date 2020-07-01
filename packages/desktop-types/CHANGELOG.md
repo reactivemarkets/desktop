@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/reactivemarkets/desktop/compare/v0.22.0...v0.23.0) (2020-07-01)
+
+
+### Features
+
+* **types:** adding application security policy spec ([c61b466](https://github.com/reactivemarkets/desktop/commit/c61b4662e677ad3493d44900f1895ea410803ef5))
+
+
+
+
+
 # [0.22.0](https://github.com/reactivemarkets/desktop/compare/v0.21.0...v0.22.0) (2020-07-01)
 
 
