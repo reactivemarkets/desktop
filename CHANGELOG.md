@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/markmcdowell/desktop/compare/v0.20.0...v0.21.0) (2020-07-01)
+
+
+### Bug Fixes
+
+* **core:** catch any errors when opening a window externally ([ecb1d49](https://github.com/markmcdowell/desktop/commit/ecb1d497c102be1ca652c4be4c59901f679a76c6))
+
+
+### Features
+
+* **core:** adding workspace service ([cdc53a6](https://github.com/markmcdowell/desktop/commit/cdc53a66d70a990102905e383051dc4dc37e4f58))
+* **core:** filtering by namespace and kind in ps command ([b6f2138](https://github.com/markmcdowell/desktop/commit/b6f2138e79c708234e9ef02cc5a70e87e6eae66e))
+* **desktop:** migrated builds to electron-builder ([681880e](https://github.com/markmcdowell/desktop/commit/681880ea8cfd8c45509acce355055a686781a716))
+
+
+
+
+
 # [0.20.0](https://github.com/markmcdowell/desktop/compare/v0.19.0...v0.20.0) (2020-06-28)
 
 

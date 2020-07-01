@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/reactivemarkets/desktop/compare/v0.20.0...v0.21.0) (2020-07-01)
+
+
+### Features
+
+* **desktop:** migrated builds to electron-builder ([681880e](https://github.com/reactivemarkets/desktop/commit/681880ea8cfd8c45509acce355055a686781a716))
+
+
+
+
+
 # [0.20.0](https://github.com/reactivemarkets/desktop/compare/v0.19.0...v0.20.0) (2020-06-28)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-api
