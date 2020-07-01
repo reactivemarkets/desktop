@@ -8,6 +8,8 @@ jobs:
   build:
     runs-on: macos-latest
     env:
+      APPLE_ID: ${{ secrets.APPLE_ID }}
+      APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
       CSC_LINK: ${{ secrets.CERTIFICATE_OSX_APPLICATION }}
       CSC_KEY_PASSWORD: ${{ secrets.CERTIFICATE_OSX_APPLICATION_PASSWORD }}
       USE_HARD_LINKS: false
