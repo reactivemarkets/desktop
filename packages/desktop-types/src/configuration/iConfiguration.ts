@@ -12,9 +12,11 @@ import { IStorageStatus } from "./iStorageStatus";
 import { ITraySpecification } from "./iTraySpecification";
 import { ITrayStatus } from "./iTrayStatus";
 import { IUpdatePolicySpecification } from "./iUpdatePolicySpecification";
+import { IApplicationSecurityPolicySpecification } from "./iApplicationSecurityPolicySpecification";
 
 type Spec =
     | IApplicationSpecification
+    | IApplicationSecurityPolicySpecification
     | IExternalSpecification
     | IServiceSpecification
     | ISessionSpecification
