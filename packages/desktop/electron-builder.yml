@@ -40,6 +40,10 @@ mac:
   artifactName: ${productName}-${version}-${platform}-x64.${ext}
   category: public.app-category.utilities
   darkModeSupport: true
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  gatekeeperAssess: false
+  hardenedRuntime: true
   target:
     - target: dmg
     - target: zip
@@ -53,6 +57,7 @@ dmg:
       type: link
       path: /Applications
   internetEnabled: true
+  sign: false
 win:
   target:
     - target: nsis
