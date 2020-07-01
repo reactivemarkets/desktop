@@ -43,7 +43,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "cli-progress": "^3.8.2",
-    "extract-zip": "^2.0.0",
+    "extract-zip": "^2.0.1",
     "https-proxy-agent": "^5.0.0",
     "node-fetch": "^2.6.0",
     "npm-conf": "^1.1.3"
