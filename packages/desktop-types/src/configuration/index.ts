@@ -16,6 +16,8 @@ export * from "./iStorageStatus";
 export * from "./iStorageSpecification";
 export * from "./iTraySpecification";
 export * from "./iTrayStatus";
+export * from "./iUpdatePolicySpecification";
+export * from "./iWebPreferences";
 export * from "./iWindowParameters";
 export * from "./storageState";
 export * from "./wellKnownNamespaces";

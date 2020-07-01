@@ -1,10 +1,15 @@
+import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { autoUpdater } from "electron-updater";
-import { app } from "electron";
 import { logger } from "../logging";
+import { IUpdateService } from "./iUpdateService";
+import { IUpdatePolicySpecification } from "@reactivemarkets/desktop-types/lib/configuration/iUpdatePolicySpecification";
 
-export const checkForUpdates = async () => {
-    try {
-        await app.whenReady();
+export class DefaultUpdateService implements IUpdateService {
+    public configure(configuration: IConfiguration): Promise<IConfiguration> {
+        const spec = configuration.spec as IUpdatePolicySpecification;
+        if (spec.disableUpdates) {
+            return Promise.resolve(configuration);
+        }
 
         autoUpdater.on("checking-for-update", () => {
             logger.info("Checking for update...");
@@ -33,8 +38,8 @@ export const checkForUpdates = async () => {
             logger.info("Update downloaded");
         });
 
-        await autoUpdater.checkForUpdatesAndNotify();
-    } catch (error) {
-        logger.error(`Failed to check for updates: ${error}`);
+        autoUpdater.checkForUpdatesAndNotify();
+
+        return Promise.resolve(configuration);
     }
-};
+}
