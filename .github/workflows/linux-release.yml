@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      USE_HARD_LINKS: false
     steps:
       - uses: actions/checkout@v2
       - name: Install npm dependencies

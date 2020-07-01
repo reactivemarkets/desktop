@@ -10,6 +10,7 @@ jobs:
     env:
       CSC_LINK: ${{ secrets.CERTIFICATE_OSX_APPLICATION }}
       CSC_KEY_PASSWORD: ${{ secrets.CERTIFICATE_OSX_APPLICATION_PASSWORD }}
+      USE_HARD_LINKS: false
     steps:
       - uses: actions/checkout@v2
       - name: Install npm dependencies
