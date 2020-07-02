@@ -29,7 +29,7 @@
     "asar": "lerna run asar",
     "package:linux": "lerna run package:linux --stream",
     "package:darwin": "lerna run package:darwin --stream",
-    "package:windows": "lerna run package:windows --stream",
+    "package:win32": "lerna run package:win32 --stream",
     "publish": "lerna publish from-package --no-git-reset --yes",
     "release": "lerna version --yes",
     "start": "lerna run start --scope='*/desktop-core' --stream",
@@ -137,6 +137,8 @@
     "@reactivemarkets/desktop-core": "file:packages/desktop-core",
     "@reactivemarkets/desktop-dock": "file:packages/desktop-dock",
     "@reactivemarkets/desktop-sdk": "file:packages/desktop-sdk",
-    "@reactivemarkets/desktop-types": "file:packages/desktop-types"
+    "@reactivemarkets/desktop-types": "file:packages/desktop-types",
+    "D": "^1.0.0",
+    "bestzip": "^2.1.5"
   }
 }
