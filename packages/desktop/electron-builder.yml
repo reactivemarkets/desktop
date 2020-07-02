@@ -32,7 +32,6 @@ linux:
     - target: AppImage
     - target: snap
     - target: deb
-    - target: zip
 deb:
   afterInstall: build/after-install.tpl
   afterRemove: build/after-remove.tpl
@@ -46,7 +45,6 @@ mac:
   hardenedRuntime: true
   target:
     - target: dmg
-    - target: zip
 dmg:
   backgroundColor: #F7F7F7
   contents:
@@ -61,6 +59,5 @@ dmg:
 win:
   target:
     - target: nsis
-    - target: zip
 nsis:
   deleteAppDataOnUninstall: true

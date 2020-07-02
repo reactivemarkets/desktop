@@ -19,13 +19,16 @@
   "scripts": {
     "builder:darwin": "electron-builder --mac --publish never",
     "builder:linux": "electron-builder --linux --publish never",
-    "builder:windows": "electron-builder --win --publish never",
+    "builder:win32": "electron-builder --win --publish never",
     "clean": "rimraf dist pack",
     "copy": "copyfiles -f \"../../node_modules/@reactivemarkets/desktop-*/**/*.asar\" dist",
-    "package:darwin": "run-s clean copy builder:darwin",
-    "package:linux": "run-s clean copy builder:linux",
-    "package:windows": "run-s clean copy builder:windows",
-    "postinstall": "node install.js"
+    "package:darwin": "run-s clean copy builder:darwin zip:darwin",
+    "package:linux": "run-s clean copy builder:linux zip:linux",
+    "package:win32": "run-s clean copy builder:win32 zip:win32",
+    "postinstall": "node install.js",
+    "zip:darwin": "cross-var \"cd pack/mac && zip -r -q --symlinks ../Desktop-$npm_package_version-darwin-x64.zip * && cd ../..\"",
+    "zip:linux": "cross-var \"cd pack/linux-unpacked && zip -r -q --symlinks ../Desktop-$npm_package_version-linux-x64.zip * && cd ../..\"",
+    "zip:win32": "cross-var \"cd pack/win-unpacked && bestzip ../Desktop-$npm_package_version-win32-x64.zip * && cd ../..\""
   },
   "repository": {
     "type": "git",

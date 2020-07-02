@@ -23,7 +23,7 @@ jobs:
           npm run asar
       - name: Build packages
         run: |
-          npm run package:windows
+          npm run package:win32
       - name: Get upload_url
         run: | 
           echo "::set-output name=upload_url::https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$(jq --raw-output '.release.id' $GITHUB_EVENT_PATH)/assets{?name,label}"  
