@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/reactivemarkets/desktop/compare/v0.23.2...v0.24.0) (2020-07-02)
+
+**Note:** Version bump only for package @reactivemarkets/desktop-dock
+
+
+
+
+
 # [0.23.0](https://github.com/reactivemarkets/desktop/compare/v0.22.0...v0.23.0) (2020-07-01)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-dock

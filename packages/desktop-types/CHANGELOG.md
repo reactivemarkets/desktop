@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/reactivemarkets/desktop/compare/v0.23.2...v0.24.0) (2020-07-02)
+
+
+### Features
+
+* **core:** adding allowDowngrade, allowPrerelease and channel to update policy ([f6c54dc](https://github.com/reactivemarkets/desktop/commit/f6c54dc594bee783dfb7d205458e3bf1e55d7242))
+* **types:** adding security policies for external and services ([9f49f16](https://github.com/reactivemarkets/desktop/commit/9f49f169605b9960eb1ea0705837cbb6cfd69dbe))
+
+
+
+
+
 # [0.23.0](https://github.com/reactivemarkets/desktop/compare/v0.22.0...v0.23.0) (2020-07-01)
 
 
