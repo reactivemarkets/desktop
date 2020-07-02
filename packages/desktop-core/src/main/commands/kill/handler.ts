@@ -1,11 +1,11 @@
 import { app } from "electron";
 import { ReservedChannels } from "../../../common";
 import { logger } from "../../logging";
-import { IKillOptions } from "./iStopOptions";
+import { IKillOptions } from "./iKillOptions";
 import { ipcExternal } from "../../ipc";
 
 export const handler = async ({ context, uid }: IKillOptions) => {
-    logger.verbose("Stop command ran.");
+    logger.verbose("Kill command ran.");
 
     try {
         await ipcExternal.whenReady(context);
