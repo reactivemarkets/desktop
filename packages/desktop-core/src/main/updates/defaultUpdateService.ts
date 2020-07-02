@@ -1,8 +1,7 @@
-import { IConfiguration } from "@reactivemarkets/desktop-types";
+import { IConfiguration, IUpdatePolicySpecification } from "@reactivemarkets/desktop-types";
 import { autoUpdater } from "electron-updater";
 import { logger } from "../logging";
 import { IUpdateService } from "./iUpdateService";
-import { IUpdatePolicySpecification } from "@reactivemarkets/desktop-types/lib/configuration/iUpdatePolicySpecification";
 
 export class DefaultUpdateService implements IUpdateService {
     public configure(configuration: IConfiguration): Promise<IConfiguration> {
@@ -37,6 +36,11 @@ export class DefaultUpdateService implements IUpdateService {
             logger.info("Update downloaded");
         });
 
+        if (spec?.channel !== undefined) {
+            autoUpdater.channel = spec.channel;
+        }
+        autoUpdater.allowDowngrade = spec?.allowDowngrade ?? true;
+        autoUpdater.allowPrerelease = spec?.allowPrerelease ?? false;
         autoUpdater.checkForUpdatesAndNotify();
 
         return Promise.resolve(configuration);
