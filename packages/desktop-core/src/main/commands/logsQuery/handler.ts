@@ -6,40 +6,50 @@ import { ILogsOptions } from "./iLogsOptions";
 import { ipcExternal } from "../../ipc";
 import { Output } from "../../configuration";
 
-export const handler = async ({ context, limit, output, uid }: ILogsOptions) => {
+const logLine = <T>(output: Output, log: T) => {
+    switch (output) {
+        case Output.Yaml: {
+            const logLine = yaml.safeDump(log, {
+                indent: 2,
+            });
+
+            console.log(logLine);
+            break;
+        }
+        case Output.Json: {
+            const logLine = JSON.stringify(log);
+
+            console.log(logLine);
+            break;
+        }
+    }
+};
+
+export const handler = async ({ context, details, follow, tail, output, uid }: ILogsOptions) => {
     logger.verbose("Logs command ran.");
 
     try {
         await ipcExternal.whenReady(context);
 
-        const logs = await ipcExternal.invoke<Partial<ILogsOptions>, unknown[] | undefined>(
-            ReservedChannels.logger_query,
-            {
-                limit,
+        if (follow) {
+            await ipcExternal.invoke(ReservedChannels.logger_stream);
+
+            ipcExternal.on(ReservedChannels.logger_stream, (log) => {
+                logLine(output, log);
+            });
+        } else {
+            const logs = await ipcExternal.invoke<unknown, unknown[] | undefined>(ReservedChannels.logger_query, {
+                fields: details ? null : ["message"],
+                limit: tail,
                 uid,
-            },
-        );
+            });
 
-        logs?.reverse()?.forEach((log) => {
-            switch (output) {
-                case Output.Yaml: {
-                    const logLine = yaml.safeDump(log, {
-                        indent: 2,
-                    });
+            logs?.reverse()?.forEach((log) => {
+                logLine(output, log);
+            });
 
-                    console.log(logLine);
-                    break;
-                }
-                case Output.Json: {
-                    const logLine = JSON.stringify(log);
-
-                    console.log(logLine);
-                    break;
-                }
-            }
-        });
-
-        app.exit();
+            app.exit();
+        }
     } catch (error) {
         logger.error(`${error}`);
         app.exit(1);

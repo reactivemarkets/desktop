@@ -7,9 +7,18 @@ export const command = "logs";
 export const describe = "Fetch the logs of an instance";
 
 export const builder = {
-    limit: {
-        alias: "l",
-        describe: "Limit the number log entries to return.",
+    details: {
+        boolean: true,
+        describe: "Show extra details provided to logs",
+    },
+    follow: {
+        alias: "f",
+        boolean: true,
+        describe: "Follow log output",
+    },
+    tail: {
+        default: 10,
+        describe: "Number of lines to show from the end of the logs",
         number: true,
     },
     output: {
