@@ -18,6 +18,8 @@ metadata:
   name: Updates
   description: Update policy for desktop.
   namespace: desktop
+spec:
+  checkForUpdates: true
 ---
 kind: application
 metadata:
