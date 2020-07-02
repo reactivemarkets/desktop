@@ -4,6 +4,7 @@ import {
     clearModule,
     describeModule,
     initModule,
+    logsModule,
     startModule,
     stopModule,
     restartModule,
@@ -38,6 +39,7 @@ export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
         .command(hideModule)
         .command(initModule)
         .command(killModule)
+        .command(logsModule)
         .command(psModule)
         .command(restartModule)
         .command(showModule)

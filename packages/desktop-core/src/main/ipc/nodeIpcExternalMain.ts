@@ -7,6 +7,16 @@ export class NodeIpcExternalMain implements IIpcExternalMain {
     private readonly appSpace = "com.reactivemarkets";
     private readonly connectId = "external_ipc";
 
+    public broadcast<T>(channel: string, data: T) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        ipc.server.broadcast(channel, data);
+    }
+
+    public emit<T>(socket: any, channel: string, data: T) {
+        ipc.server.emit(socket, channel, data);
+    }
+
     public handle(channel: string, listener: (args?: any) => Promise<any> | any): void {
         ipc.server.on(channel, async (data, socket) => {
             const { responseId } = data;
@@ -17,6 +27,18 @@ export class NodeIpcExternalMain implements IIpcExternalMain {
                 result.error = error.message;
             }
             ipc.server.emit(socket, responseId, result);
+        });
+    }
+
+    public on<T>(channel: string, listener: (sender: any, data: T) => void) {
+        ipc.server.on(channel, (data, socket) => {
+            const { responseId } = data;
+            const sender = {
+                emit: (response: T) => {
+                    ipc.server.emit(socket, responseId, response);
+                },
+            };
+            listener(sender, data);
         });
     }
 

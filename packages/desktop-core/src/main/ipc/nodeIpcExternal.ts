@@ -28,6 +28,10 @@ export class NodeIpcExternal implements IIpcExternal {
         });
     }
 
+    public on<T>(channel: string, listener: (data: T) => void) {
+        ipc.of.external_ipc.on(channel, listener);
+    }
+
     public whenReady(context?: string) {
         return new Promise<void>((resolve, reject) => {
             const appName = app.name.toLowerCase();
