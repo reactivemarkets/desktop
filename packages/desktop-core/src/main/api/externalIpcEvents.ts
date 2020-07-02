@@ -2,6 +2,7 @@ import { ReservedChannels } from "../../common";
 import { instanceService } from "../instances";
 import { ipcExternalMain } from "../ipc";
 import { windowService } from "../windowing";
+import { logger } from "../logging";
 
 export const externalIpcEvents = async (context?: string) => {
     await ipcExternalMain.whenReady(context);
@@ -29,6 +30,24 @@ export const externalIpcEvents = async (context?: string) => {
     });
     ipcExternalMain.handle(ReservedChannels.instances_stop, ({ uid }) => {
         return instanceService.stop(uid);
+    });
+    ipcExternalMain.handle(ReservedChannels.logger_query, ({ limit = 10 }) => {
+        return new Promise((resolve, reject) => {
+            logger.query(
+                {
+                    limit,
+                    order: "desc",
+                    fields: null,
+                },
+                (err, results) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(results.file);
+                    }
+                },
+            );
+        });
     });
     ipcExternalMain.handle(ReservedChannels.window_hide, ({ uid }) => {
         windowService.from(uid)?.instance.hide();

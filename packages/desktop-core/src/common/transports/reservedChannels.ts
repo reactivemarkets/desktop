@@ -13,6 +13,7 @@ export enum ReservedChannels {
     instances_stop = "@desktop:instances/stop",
     instances_kill = "@desktop:instances/kill",
     launcher_launch = "@desktop:launcher/launch",
+    logger_query = "@desktop:logger/query",
     logger_debug = "@desktop:logger/debug",
     logger_error = "@desktop:logger/error",
     logger_info = "@desktop:logger/info",

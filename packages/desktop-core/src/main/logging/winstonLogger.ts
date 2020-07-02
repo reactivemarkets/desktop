@@ -1,8 +1,6 @@
 import { app } from "electron";
 import * as winston from "winston";
 
-import { ILogger } from "./iLogger";
-
 let logPrefix = process.env.DESKTOP_LOG_PREFIX;
 if (logPrefix === undefined) {
     logPrefix = "";
@@ -23,7 +21,7 @@ if (logLevel === undefined) {
     logLevel = "info";
 }
 
-export const logger: ILogger = winston.createLogger({
+export const logger = winston.createLogger({
     exceptionHandlers: [
         new winston.transports.File({
             dirname,
@@ -36,6 +34,15 @@ export const logger: ILogger = winston.createLogger({
     ],
     exitOnError: false,
     transports: [
+        new winston.transports.File({
+            dirname,
+            filename,
+            format,
+            level: logLevel,
+            maxFiles,
+            maxsize,
+            tailable,
+        }),
         new winston.transports.Console({
             format: winston.format.combine(
                 winston.format.printf(({ level, message }) => {
@@ -47,15 +54,6 @@ export const logger: ILogger = winston.createLogger({
                 }),
             ),
             level: logLevel,
-        }),
-        new winston.transports.File({
-            dirname,
-            filename,
-            format,
-            level: logLevel,
-            maxFiles,
-            maxsize,
-            tailable,
         }),
     ],
 });

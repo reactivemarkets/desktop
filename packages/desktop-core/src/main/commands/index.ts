@@ -4,6 +4,7 @@ export * from "./describe";
 export * from "./hide";
 export * from "./init";
 export * from "./kill";
+export * from "./logsQuery";
 export * from "./ps";
 export * from "./restart";
 export * from "./show";

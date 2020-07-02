@@ -27,14 +27,6 @@ console.info = (message?: any, ...optionalParams: unknown[]) => {
     logger.info(message, optionalParams);
 };
 
-console.log = (message?: any, ...optionalParams: unknown[]) => {
-    if (message === undefined) {
-        return;
-    }
-
-    logger.info(message, optionalParams);
-};
-
 console.trace = (message?: any, ...optionalParams: unknown[]) => {
     if (message === undefined) {
         return;

@@ -14,16 +14,15 @@ export const handler = ({ output }: IVersionOptions) => {
             case Output.Json: {
                 const versionString = JSON.stringify(versions);
 
-                logger.info(versionString);
+                console.log(versionString);
                 break;
             }
-            case Output.Yaml:
-            default: {
+            case Output.Yaml: {
                 const versionString = yaml.safeDump(versions, {
                     indent: 2,
                 });
 
-                logger.info(versionString);
+                console.log(versionString);
             }
         }
 
