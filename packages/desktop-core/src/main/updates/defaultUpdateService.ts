@@ -6,7 +6,7 @@ import { IUpdateService } from "./iUpdateService";
 export class DefaultUpdateService implements IUpdateService {
     public configure(configuration: IConfiguration): Promise<IConfiguration> {
         const spec = configuration.spec as IUpdatePolicySpecification | undefined;
-        if (spec?.disableUpdates) {
+        if (!spec?.checkForUpdates) {
             return Promise.resolve(configuration);
         }
 
