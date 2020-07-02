@@ -34,12 +34,12 @@ export const registerConfigFiles = async (files: string[]) => {
         .map((p) => p!);
 };
 
-export const registerDefaults = async () => {
+export const registerDefaults = async (appDefaultsFile = "app-defaults.yml") => {
     const appPath = app.getAppPath();
 
     const resourcesPath = path.dirname(appPath);
 
-    const defaults = path.join(resourcesPath, "defaults.yml");
+    const defaults = path.join(resourcesPath, appDefaultsFile);
 
     const configurationArray = await configurationLoader.load(defaults);
 

@@ -7,7 +7,7 @@ extraResources:
   - from: dist
     filter: "*.asar"
   - from: build
-    filter: "defaults.yml"
+    filter: "app-defaults.yml"
 extraMetadata:
   name: desktop
 files:
