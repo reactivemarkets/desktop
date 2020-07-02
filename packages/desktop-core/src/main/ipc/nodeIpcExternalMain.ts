@@ -1,5 +1,6 @@
 import { app } from "electron";
 import ipc from "node-ipc";
+import { v4 as uuid } from "uuid";
 import { IIpcExternalMain } from "./iIpcExternalMain";
 import { IIpcExternalResult } from "./iIpcExternalResult";
 
@@ -11,10 +12,6 @@ export class NodeIpcExternalMain implements IIpcExternalMain {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         ipc.server.broadcast(channel, data);
-    }
-
-    public emit<T>(socket: any, channel: string, data: T) {
-        ipc.server.emit(socket, channel, data);
     }
 
     public handle(channel: string, listener: (args?: any) => Promise<any> | any): void {
@@ -30,15 +27,22 @@ export class NodeIpcExternalMain implements IIpcExternalMain {
         });
     }
 
-    public on<T>(channel: string, listener: (sender: any, data: T) => void) {
+    public on<T, TResponse>(channel: string, listener: (sender: any, data: T) => void) {
         ipc.server.on(channel, (data, socket) => {
             const { responseId } = data;
             const sender = {
-                emit: (response: T) => {
+                id: socket.id,
+                emit: (response: TResponse) => {
                     ipc.server.emit(socket, responseId, response);
                 },
             };
             listener(sender, data);
+        });
+    }
+
+    public onSocketDisconnect(listener: (id: string) => void) {
+        ipc.server.on("socket.disconnected", (__, id) => {
+            listener(id);
         });
     }
 
@@ -50,6 +54,10 @@ export class NodeIpcExternalMain implements IIpcExternalMain {
             ipc.config.id = this.connectId;
             ipc.config.silent = true;
             ipc.serve(() => {
+                ipc.server.on("connect", (socket) => {
+                    socket.id = uuid();
+                });
+
                 resolve();
             });
             ipc.server.start();

@@ -8,7 +8,7 @@ export class NodeIpcExternal implements IIpcExternal {
     private readonly appSpace = "com.reactivemarkets";
     private readonly connectId = "external_ipc";
 
-    public invoke<TData, TResult>(channel: string, data: TData): Promise<TResult> {
+    public invoke<TData, TResult>(channel: string, data?: TData): Promise<TResult> {
         return new Promise<TResult>((resolve, reject) => {
             const responseId = uuid();
             ipc.of.external_ipc.on(responseId, ({ error, result }: IIpcExternalResult) => {

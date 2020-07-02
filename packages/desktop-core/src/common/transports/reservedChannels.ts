@@ -17,6 +17,7 @@ export enum ReservedChannels {
     logger_debug = "@desktop:logger/debug",
     logger_error = "@desktop:logger/error",
     logger_info = "@desktop:logger/info",
+    logger_stream = "@desktop:logger/stream",
     logger_verbose = "@desktop:logger/verbose",
     logger_warn = "@desktop:logger/warn",
     registry_events = "@desktop:registry/events",

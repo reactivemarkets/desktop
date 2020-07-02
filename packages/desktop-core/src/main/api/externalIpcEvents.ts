@@ -7,6 +7,23 @@ import { logger } from "../logging";
 export const externalIpcEvents = async (context?: string) => {
     await ipcExternalMain.whenReady(context);
 
+    const logListeners = new Set<string>();
+    let logStream: NodeJS.ReadableStream | undefined;
+
+    const broadcastLog = (log: unknown) => {
+        ipcExternalMain.broadcast(ReservedChannels.logger_stream, log);
+    };
+
+    ipcExternalMain.onSocketDisconnect((id) => {
+        if (logListeners.has(id)) {
+            logListeners.delete(id);
+
+            const listenerCount = logListeners.size;
+            if (listenerCount === 0) {
+                logStream?.removeListener("log", broadcastLog);
+            }
+        }
+    });
     ipcExternalMain.handle(ReservedChannels.instances_get, ({ uid }) => {
         return instanceService.get(uid);
     });
@@ -31,13 +48,24 @@ export const externalIpcEvents = async (context?: string) => {
     ipcExternalMain.handle(ReservedChannels.instances_stop, ({ uid }) => {
         return instanceService.stop(uid);
     });
-    ipcExternalMain.handle(ReservedChannels.logger_query, ({ limit = 10 }) => {
+    ipcExternalMain.on(ReservedChannels.logger_stream, (sender) => {
+        const listenerCount = logListeners.size;
+        logListeners.add(sender.id);
+        if (listenerCount === 0) {
+            logStream = logger.stream({ start: -1 });
+            logStream.addListener("log", broadcastLog);
+        }
+
+        sender.emit();
+    });
+    ipcExternalMain.handle(ReservedChannels.logger_query, ({ limit = 10, fields = null, until }) => {
         return new Promise((resolve, reject) => {
             logger.query(
                 {
                     limit,
                     order: "desc",
-                    fields: null,
+                    fields,
+                    until,
                 },
                 (err, results) => {
                     if (err) {
