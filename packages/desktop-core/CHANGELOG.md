@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/reactivemarkets/desktop/compare/v0.24.0...v0.25.0) (2020-07-02)
+
+
+### Bug Fixes
+
+* **core:** correcting kill command logging ([7da02d1](https://github.com/reactivemarkets/desktop/commit/7da02d110929ae28cb2caef1455e057183d5ce1d))
+
+
+### Features
+
+* **core:** add follow option to logs ([ac61027](https://github.com/reactivemarkets/desktop/commit/ac61027d94e2ea6faa9a1a8e869718dd8c5eec03))
+* **core:** adding logs command ([37142e2](https://github.com/reactivemarkets/desktop/commit/37142e2626e5e1b27766a04a70837a7ea5d27751))
+* **core:** clicking tray icon on Windows will bring windows to front ([ffc645a](https://github.com/reactivemarkets/desktop/commit/ffc645ac8c7c624dce93304932af63f59fa1c317))
+
+
+
+
+
 # [0.24.0](https://github.com/reactivemarkets/desktop/compare/v0.23.2...v0.24.0) (2020-07-02)
 
 

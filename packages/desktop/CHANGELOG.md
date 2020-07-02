@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/reactivemarkets/desktop/compare/v0.24.0...v0.25.0) (2020-07-02)
+
+
+### Bug Fixes
+
+* **desktop:** switching to a manual zip ([ae2cdfb](https://github.com/reactivemarkets/desktop/commit/ae2cdfb47453535b3b503ae6bbb91dfa745cbab6))
+
+
+
+
+
 # [0.24.0](https://github.com/reactivemarkets/desktop/compare/v0.23.2...v0.24.0) (2020-07-02)
 
 **Note:** Version bump only for package @reactivemarkets/desktop
