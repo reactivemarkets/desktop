@@ -1,14 +1,18 @@
 import { app } from "electron";
 import * as yaml from "js-yaml";
 import { logger } from "../../logging";
+import { ipcExternal } from "../../ipc";
 import { IVersionOptions } from "./iVersionOptions";
 import { Output } from "../../configuration";
+import { ReservedChannels } from "../../../common";
 
-export const handler = ({ output }: IVersionOptions) => {
+export const handler = async ({ context, output }: IVersionOptions) => {
     logger.verbose("Version command ran.");
 
     try {
-        const { versions } = process;
+        await ipcExternal.whenReady(context);
+
+        const versions = await ipcExternal.invoke(ReservedChannels.system_getVersions);
 
         switch (output) {
             case Output.Json: {
