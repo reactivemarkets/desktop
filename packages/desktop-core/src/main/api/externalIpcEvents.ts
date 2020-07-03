@@ -77,6 +77,9 @@ export const externalIpcEvents = async (context?: string) => {
             );
         });
     });
+    ipcExternalMain.handle(ReservedChannels.system_getVersions, () => {
+        return process.versions;
+    });
     ipcExternalMain.handle(ReservedChannels.window_hide, ({ uid }) => {
         windowService.from(uid)?.instance.hide();
     });
