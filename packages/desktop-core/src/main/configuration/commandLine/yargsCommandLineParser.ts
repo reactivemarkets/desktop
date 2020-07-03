@@ -3,6 +3,7 @@ import * as yargs from "yargs";
 import {
     clearModule,
     describeModule,
+    infoModule,
     initModule,
     logsModule,
     startModule,
@@ -37,6 +38,7 @@ export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
         .command(describeModule)
         .command(devToolsModule)
         .command(hideModule)
+        .command(infoModule)
         .command(initModule)
         .command(killModule)
         .command(logsModule)

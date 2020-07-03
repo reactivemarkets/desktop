@@ -33,6 +33,7 @@ export enum ReservedChannels {
     system_getAppName = "@desktop:system/getAppName",
     system_getAppVersion = "@desktop:system/getAppVersion",
     system_getVersions = "@desktop:system/getVersions",
+    system_information = "@desktop:system/information",
     system_quit = "@desktop:system/quit",
     system_showAboutPanel = "@desktop:system/showAboutPanel",
     window_blur = "@desktop:window/blur",

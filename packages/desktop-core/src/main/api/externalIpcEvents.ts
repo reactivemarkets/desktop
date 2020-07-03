@@ -1,8 +1,9 @@
 import { ReservedChannels } from "../../common";
 import { instanceService } from "../instances";
 import { ipcExternalMain } from "../ipc";
-import { windowService } from "../windowing";
 import { logger } from "../logging";
+import { windowService } from "../windowing";
+import { app } from "electron";
 
 export const externalIpcEvents = async (context?: string) => {
     await ipcExternalMain.whenReady(context);
@@ -79,6 +80,18 @@ export const externalIpcEvents = async (context?: string) => {
     });
     ipcExternalMain.handle(ReservedChannels.system_getVersions, () => {
         return process.versions;
+    });
+    ipcExternalMain.handle(ReservedChannels.system_information, async () => {
+        const gpu = await app.getGPUInfo("basic");
+
+        return {
+            arch: process.arch,
+            cpu: process.getSystemVersion(),
+            gpu,
+            pid: process.pid,
+            platform: process.platform,
+            sandboxed: process.sandboxed,
+        };
     });
     ipcExternalMain.handle(ReservedChannels.window_hide, ({ uid }) => {
         windowService.from(uid)?.instance.hide();
