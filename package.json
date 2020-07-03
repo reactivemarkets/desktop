@@ -67,6 +67,7 @@
     "@vuepress/plugin-nprogress": "^1.5.2",
     "@vuepress/plugin-pwa": "^1.5.2",
     "asar": "^3.0.3",
+    "bestzip": "^2.1.5",
     "bufferutil": "^4.0.1",
     "clean-webpack-plugin": "^3.0.0",
     "compression": "^1.7.4",
@@ -137,8 +138,6 @@
     "@reactivemarkets/desktop-core": "file:packages/desktop-core",
     "@reactivemarkets/desktop-dock": "file:packages/desktop-dock",
     "@reactivemarkets/desktop-sdk": "file:packages/desktop-sdk",
-    "@reactivemarkets/desktop-types": "file:packages/desktop-types",
-    "D": "^1.0.0",
-    "bestzip": "^2.1.5"
+    "@reactivemarkets/desktop-types": "file:packages/desktop-types"
   }
 }
