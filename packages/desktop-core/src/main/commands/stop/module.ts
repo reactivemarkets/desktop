@@ -2,7 +2,7 @@ export { handler } from "./handler";
 
 export const command = "stop [uid]";
 
-export const aliases = ["close"];
+export const aliases = ["close", "rm"];
 
 export const describe = "Stop a running instance";
 
