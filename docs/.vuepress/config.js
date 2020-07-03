@@ -30,8 +30,25 @@ module.exports = {
         editLinks: true,
         lastUpdated: "Last Updated",
         logo: "/icon-256.png",
+        nav: [
+            {
+                text: "Guide",
+                link: "/guide/",
+            },
+            {
+                text: "CLI",
+                link: "/cli/",
+            },
+            {
+                text: "SDK",
+                link: "/sdk/",
+            },
+            {
+                text: "Support",
+                link: "/support/",
+            }
+        ],
         repo: "reactivemarkets/desktop",
-        sidebar: "auto",
         smoothScroll: true,
     },
 }
