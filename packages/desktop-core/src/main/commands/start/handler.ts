@@ -27,8 +27,6 @@ export const handler = async (options: IStartOptions) => {
             registerProtocol();
         }
 
-        app.enableSandbox();
-        app.allowRendererProcessReuse = true;
         registerIpcEventHandlers(context);
         registerApplicationEventHandlers(app);
         registerApplicationMenu();

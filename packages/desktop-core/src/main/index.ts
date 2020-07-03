@@ -6,6 +6,8 @@ import { checkForSquirrelEvents } from "./updates";
 if (checkForSquirrelEvents()) {
     app.quit();
 } else {
+    app.enableSandbox();
+    app.allowRendererProcessReuse = true;
     const appName = app.name;
     const isPackaged = app.isPackaged;
     const appPath = app.getAppPath();
