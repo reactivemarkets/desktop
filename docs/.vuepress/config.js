@@ -1,6 +1,6 @@
 module.exports = {
     base: "/",
-    title: "Desktop | Reactive Markets",
+    title: "Desktop",
     description: "Desktop by Reactive Markets",
     head: [
         ["link", { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" }],
@@ -49,6 +49,25 @@ module.exports = {
             }
         ],
         repo: "reactivemarkets/desktop",
+        sidebar: {
+            "/sdk/": [
+                {
+                    title: "SDK",
+                    collapsable: false,
+                    children: [
+                        "",
+                    ],
+                },
+                {
+                    title: "Objects",
+                    collapsable: false,
+                    children: [
+                        "desktop/",
+                        "globalshortcut/",
+                    ],
+                }
+            ]
+        },
         smoothScroll: true,
     },
 }

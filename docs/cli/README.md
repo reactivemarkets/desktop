@@ -5,6 +5,8 @@ sidebarDepth: 3
 
 # Command Line Interface
 
+## Introduction
+
 Desktop comes with a full command line interface to create configuration, start applications, and query state.
 
 ## Usage
@@ -61,7 +63,7 @@ Specify the session to clear by the partition identifier.
 
 ---
 
-### describe
+### describe `[get]`
 
 Prints the current details of an instance.
 
@@ -99,15 +101,23 @@ The instance identifier.
 
 Show the system information.
 
+#### &ndash;&ndash;output, -o `[choices: "yaml", "json"]` `[default: "yaml"]`
+
+The output format.
+
 ---
 
 ### init
 
 Create a template configuration file.
 
+#### &ndash;&ndash;output, -o `[choices: "yaml", "json"]` `[default: "yaml"]`
+
+The output format.
+
 ---
 
-### kill
+### kill `[destroy]`
 
 Kill an instance without a clean shutdown.
 
@@ -121,15 +131,39 @@ The instance identifier.
 
 Fetch the logs of an instance.
 
+#### &ndash;&ndash;follow, -f
+
+Follow log output.
+
+#### &ndash;&ndash;output, -o `[choices: "yaml", "json"]` `[default: "json"]`
+
+The output format.
+
 ---
 
 ### ps
 
 List all running instances.
 
+#### &ndash;&ndash;kind, -k
+
+Filter instances by their `kind`.
+
+#### &ndash;&ndash;namespace, -n
+
+Filter instances by their namespace.
+
+#### &ndash;&ndash;output, -o `[choices: "yaml", "json"]` `[default: "yaml"]`
+
+The output format.
+
+#### &ndash;&ndash;quiet, -q
+
+Only output indentifiers.
+
 ---
 
-### restart
+### restart `[reload]`
 
 Restart a running instance.
 
@@ -149,11 +183,21 @@ The instance identifier.
 
 ---
 
-### start
+### start `[up, run, open]`
+
+Start the application with the specified config or url.
+
+#### &ndash;&ndash;file, -f
+
+A configuration file or directory to load configuration from.
+
+#### &ndash;&ndash;url, -u
+
+A url to open.
 
 ---
 
-### stop
+### stop `[close, rm]`
 
 Stop a running instance.
 
@@ -166,5 +210,9 @@ The instance identifier.
 ### version
 
 Print the version information for the current context.
+
+#### &ndash;&ndash;output, -o `[choices: "yaml", "json"]` `[default: "yaml"]`
+
+The output format.
 
 ---
