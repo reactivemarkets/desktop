@@ -14,7 +14,7 @@ export interface IRegistry {
     register(configuration: IConfiguration): Promise<void>;
 
     /**
-     * Unregister a previous configuation object. This will not stop
+     * Unregister a previously registered configuation object. This will not stop
      * anything currently running.
      * @param configuration The configuration
      */

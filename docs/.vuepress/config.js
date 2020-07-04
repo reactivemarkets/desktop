@@ -36,12 +36,12 @@ module.exports = {
                 link: "/guide/",
             },
             {
-                text: "CLI",
-                link: "/cli/",
-            },
-            {
                 text: "SDK",
                 link: "/sdk/",
+            },
+            {
+                text: "CLI",
+                link: "/cli/",
             },
             {
                 text: "Support",
@@ -64,6 +64,11 @@ module.exports = {
                     children: [
                         "desktop/",
                         "globalshortcut/",
+                        "launcher/",
+                        "logger/",
+                        "registry/",
+                        "router/",
+                        "window/",
                     ],
                 }
             ]
