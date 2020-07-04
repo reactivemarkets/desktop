@@ -9,7 +9,7 @@ Log at debug level.
 ```js
 import { logger } from "@reactivemarkets/desktop-sdk";
 
-logger.debug("Log's to a structured logger", {
+logger.debug("Logs to a structured logger", {
     any: "data",
 });
 ```
@@ -23,7 +23,7 @@ Log at error level.
 ```js
 import { logger } from "@reactivemarkets/desktop-sdk";
 
-logger.error("Log's to a structured logger", {
+logger.error("Logs to a structured logger", {
     any: "data",
 });
 ```
@@ -37,7 +37,7 @@ Log at info level.
 ```js
 import { logger } from "@reactivemarkets/desktop-sdk";
 
-logger.info("Log's to a structured logger", {
+logger.info("Logs to a structured logger", {
     any: "data",
 });
 ```
@@ -51,7 +51,7 @@ Log at verbose level.
 ```js
 import { logger } from "@reactivemarkets/desktop-sdk";
 
-logger.verbose("Log's to a structured logger", {
+logger.verbose("Logs to a structured logger", {
     any: "data",
 });
 ```
@@ -65,7 +65,7 @@ Log at warn level.
 ```js
 import { logger } from "@reactivemarkets/desktop-sdk";
 
-logger.warn("Log's to a structured logger", {
+logger.warn("Logs to a structured logger", {
     any: "data",
 });
 ```
