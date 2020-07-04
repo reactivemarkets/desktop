@@ -110,15 +110,15 @@ export class DesktopWindow implements IDesktopWindow {
         return this.desktop.api.window.current.isVisible();
     }
 
-    public maximize(): Promise<boolean> {
+    public maximize(): Promise<void> {
         return this.desktop.api.window.current.maximize();
     }
 
-    public minimize(): Promise<boolean> {
+    public minimize(): Promise<void> {
         return this.desktop.api.window.current.minimize();
     }
 
-    public moveTop(): Promise<boolean> {
+    public moveTop(): Promise<void> {
         return this.desktop.api.window.current.moveTop();
     }
 
@@ -130,11 +130,11 @@ export class DesktopWindow implements IDesktopWindow {
         this.desktop.api.window.current.on(event, listener);
     }
 
-    public reload(): Promise<boolean> {
+    public reload(): Promise<void> {
         return this.desktop.api.window.current.reload();
     }
 
-    public restore(): Promise<boolean> {
+    public restore(): Promise<void> {
         return this.desktop.api.window.current.restore();
     }
 
