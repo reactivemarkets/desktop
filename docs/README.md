@@ -12,7 +12,7 @@ footer: © 2020 Reactive Markets Limited. All rights reserved. Various trademark
     <div class="feature">
         <h2>Break Vendor Lock In</h2>
         <p>
-            Apache 2 licensed full source code. Break vendor lockin and leverage the community to build features.
+            Apache 2 licensed full source code. Break vendor lockin and leverage the community to accelerate development.
         </p>
     </div>
     <div class="feature">
