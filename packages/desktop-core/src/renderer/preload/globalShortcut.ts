@@ -12,7 +12,7 @@ export class GlobalShortcut {
     }
 
     public isRegistered = (accelerator: Accelerator) => {
-        return this.#emitter.listenerCount(accelerator as string) !== 0;
+        return Promise.resolve(this.#emitter.listenerCount(accelerator as string) !== 0);
     };
 
     public register = (accelerator: Accelerator, listener: () => void) => {
@@ -23,6 +23,8 @@ export class GlobalShortcut {
         if (listenerCount === 0) {
             ipcRenderer.send(ReservedChannels.globalShortcut_register, accelerator);
         }
+
+        return Promise.resolve();
     };
 
     public unregister = (accelerator: Accelerator, listener: () => void) => {
@@ -33,12 +35,17 @@ export class GlobalShortcut {
         if (listenerCount === 0) {
             ipcRenderer.send(ReservedChannels.globalShortcut_unregister, accelerator);
         }
+
+        return Promise.resolve();
     };
 
     public unregisterAll = () => {
         this.#emitter.eventNames().forEach((event) => {
             this.#emitter.removeAllListeners(event);
         });
+
         ipcRenderer.send(ReservedChannels.globalShortcut_unregisterAll);
+
+        return Promise.resolve();
     };
 }
