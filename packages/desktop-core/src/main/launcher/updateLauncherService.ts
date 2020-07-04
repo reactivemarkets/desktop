@@ -13,7 +13,7 @@ export class UpdateLauncherService implements ILauncherService {
     }
 
     public canLaunch({ kind }: IConfiguration) {
-        return kind === ConfigurationKind.UpdatePolicy;
+        return kind === ConfigurationKind.Update;
     }
 
     public launch(configuration: IConfiguration) {
