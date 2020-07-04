@@ -8,19 +8,19 @@ export class GlobalShortcutClient implements IGlobalShortcut {
         this.desktop = desktop;
     }
 
-    public isRegistered(accelerator: string): Promise<boolean> {
+    public isRegistered(accelerator: string) {
         return this.desktop.api.globalShortcut.isRegistered(accelerator);
     }
 
     public register(accelerator: string, listener: () => void) {
-        this.desktop.api.globalShortcut.register(accelerator, listener);
+        return this.desktop.api.globalShortcut.register(accelerator, listener);
     }
 
     public unregister(accelerator: string, listener: () => void) {
-        this.desktop.api.globalShortcut.unregister(accelerator, listener);
+        return this.desktop.api.globalShortcut.unregister(accelerator, listener);
     }
 
     public unregisterAll() {
-        this.desktop.api.globalShortcut.unregisterAll();
+        return this.desktop.api.globalShortcut.unregisterAll();
     }
 }
