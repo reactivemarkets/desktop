@@ -14,7 +14,7 @@ import { IStorageSpecification } from "./iStorageSpecification";
 import { IStorageStatus } from "./iStorageStatus";
 import { ITraySpecification } from "./iTraySpecification";
 import { ITrayStatus } from "./iTrayStatus";
-import { IUpdatePolicySpecification } from "./iUpdatePolicySpecification";
+import { IUpdateSpecification } from "./iUpdateSpecification";
 
 type Spec =
     | IApplicationSpecification
@@ -26,7 +26,7 @@ type Spec =
     | ISessionSpecification
     | IStorageSpecification
     | ITraySpecification
-    | IUpdatePolicySpecification;
+    | IUpdateSpecification;
 
 type Status = IApplicationStatus | IExternalStatus | IServiceStatus | IStorageStatus | ITrayStatus;
 
