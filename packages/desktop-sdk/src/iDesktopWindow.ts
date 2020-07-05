@@ -196,4 +196,9 @@ export interface IDesktopWindow {
      * Shows and gives focus to the window.
      */
     show(): Promise<void>;
+
+    /**
+     * Unmaximizes the window.
+     */
+    unmaximize(): Promise<void>;
 }

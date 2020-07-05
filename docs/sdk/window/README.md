@@ -421,3 +421,15 @@ import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().show();
 ```
+
+## unmaximize <Badge text="M" type="warning" vertical="middle" />
+
+### `unmaximize(): Promise<void>`
+
+Unmaximizes the window.
+
+```js
+import { window } from "@reactivemarkets/desktop-sdk";
+
+await window.current().unmaximize();
+```

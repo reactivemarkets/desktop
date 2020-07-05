@@ -69,6 +69,7 @@ class CurrentWindow {
     public setFullScreen = (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setFullScreen, flag);
     public setKiosk = (flag: boolean) => ipcRenderer.invoke(ReservedChannels.window_setKiosk, flag);
     public show = () => ipcRenderer.invoke(ReservedChannels.window_show);
+    public unmaximize = () => ipcRenderer.invoke(ReservedChannels.window_unmaximize);
 }
 
 export const window = {

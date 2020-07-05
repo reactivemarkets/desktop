@@ -157,4 +157,8 @@ export class DesktopWindow implements IDesktopWindow {
     public show(): Promise<void> {
         return this.desktop.api.window.current.show();
     }
+
+    public unmaximize(): Promise<void> {
+        return this.desktop.api.window.current.unmaximize();
+    }
 }
