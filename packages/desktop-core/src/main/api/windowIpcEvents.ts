@@ -142,4 +142,7 @@ export const windowIpcEvents = () => {
     ipcMain.handle(ReservedChannels.window_show, (event) => {
         BrowserWindow.fromWebContents(event.sender)?.show();
     });
+    ipcMain.handle(ReservedChannels.window_unmaximize, (event) => {
+        BrowserWindow.fromWebContents(event.sender)?.unmaximize();
+    });
 };

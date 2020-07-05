@@ -76,4 +76,5 @@ export enum ReservedChannels {
     window_setFullScreen = "@desktop:window/setFullScreen",
     window_setKiosk = "@desktop:window/setKiosk",
     window_show = "@desktop:window/show",
+    window_unmaximize = "@desktop:window/unmaximize",
 }
