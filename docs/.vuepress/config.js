@@ -54,6 +54,32 @@ module.exports = {
         ],
         repo: "reactivemarkets/desktop",
         sidebar: {
+            "/config/": [
+                {
+                    title: "Reference",
+                    collapsable: false,
+                    children: [
+                        "",
+                    ],
+                },
+                {
+                    title: "Definitions",
+                    collapsable: false,
+                    children: [
+                        "metadata/",
+                        "application/",
+                        "applicationSecurityPolicy/",
+                        "external/",
+                        "externalSecurityPolicy/",
+                        "service/",
+                        "serviceSecurityPolicy/",
+                        "session/",
+                        "storage/",
+                        "tray/",
+                        "updatePolicy/",
+                    ],
+                }
+            ],
             "/sdk/": [
                 {
                     title: "SDK",
