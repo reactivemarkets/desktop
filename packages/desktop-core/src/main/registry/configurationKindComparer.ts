@@ -1,33 +1,37 @@
-import { ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 
-export const configurationKindComparer = (a: ConfigurationKind, b: ConfigurationKind): number => {
+export const configurationKindComparer = (a: string, b: string): number => {
     if (a === b) {
         return 0;
     }
 
-    if (a === ConfigurationKind.Session) {
+    if (a === WellKnownConfigurationKind.Session) {
         return -1;
     }
 
-    if (b === ConfigurationKind.Session) {
+    if (b === WellKnownConfigurationKind.Session) {
         return 1;
     }
 
-    if (a === ConfigurationKind.Service) {
+    if (a === WellKnownConfigurationKind.Service) {
         return -1;
     }
 
-    if (b === ConfigurationKind.Service) {
+    if (b === WellKnownConfigurationKind.Service) {
         return 1;
     }
 
-    if (a === ConfigurationKind.Application) {
+    if (a === WellKnownConfigurationKind.Application) {
         return -1;
     }
 
-    if (b === ConfigurationKind.Application) {
+    if (b === WellKnownConfigurationKind.Application) {
         return 1;
     }
 
-    return 0;
+    if (a < b) {
+        return -1;
+    }
+
+    return 1;
 };

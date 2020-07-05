@@ -1,4 +1,4 @@
-import { IConfiguration, ConfigurationKind, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
+import { IConfiguration, WellKnownConfigurationKind, WellKnownNamespace } from "@reactivemarkets/desktop-types";
 import { ILauncherService } from "./iLauncherService";
 import { ILogger } from "../logging";
 import { IStorageService } from "../storage";
@@ -13,11 +13,11 @@ export class StorageLauncherService implements ILauncherService {
     }
 
     public canLaunch({ kind }: IConfiguration) {
-        return kind === ConfigurationKind.Storage;
+        return kind === WellKnownConfigurationKind.Storage;
     }
 
     public async launch(configuration: IConfiguration) {
-        const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
+        const { name, namespace = WellKnownNamespace.default } = configuration.metadata;
 
         this.logger.verbose(`Configuring storage provisioner: ${name} in ${namespace}`);
 

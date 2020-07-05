@@ -3,8 +3,8 @@ import {
     launcher,
     registry,
     IConfiguration,
-    WellKnownNamespaces,
-    ConfigurationKind,
+    WellKnownNamespace,
+    WellKnownConfigurationKind,
 } from "@reactivemarkets/desktop-sdk";
 import { from } from "ix/iterable";
 import { orderBy, thenBy } from "ix/iterable/operators";
@@ -58,12 +58,12 @@ export class ObservableApplicationsStore implements IApplicationsStore {
     @action
     private readonly addApplication = (configuration: IConfiguration) => {
         const { kind, metadata } = configuration;
-        if (kind !== ConfigurationKind.Application) {
+        if (kind !== WellKnownConfigurationKind.Application) {
             return;
         }
 
         const { annotations, description, name, namespace } = metadata;
-        let category = namespace ?? WellKnownNamespaces.default;
+        let category = namespace ?? WellKnownNamespace.default;
         if (annotations !== undefined) {
             const dockAnnotations = annotations["@reactivemarkets/desktop-dock"] as IDockAnnotations | undefined;
             if (dockAnnotations?.excludeFromSearch) {

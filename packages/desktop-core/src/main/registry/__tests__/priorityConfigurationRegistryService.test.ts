@@ -1,4 +1,4 @@
-import { IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { IConfiguration, WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 import { mock } from "jest-mock-extended";
 
 import { IRegistryService } from "../iRegistryService";
@@ -7,7 +7,7 @@ import { PriorityConfigurationRegistryService } from "../priorityConfigurationRe
 describe("getRegistry", () => {
     test("should be sorted", () => {
         const application: IConfiguration = {
-            kind: ConfigurationKind.Application,
+            kind: WellKnownConfigurationKind.Application,
             metadata: {
                 name: "application",
             },
@@ -15,7 +15,7 @@ describe("getRegistry", () => {
         };
 
         const session: IConfiguration = {
-            kind: ConfigurationKind.Session,
+            kind: WellKnownConfigurationKind.Session,
             metadata: {
                 name: "session",
             },

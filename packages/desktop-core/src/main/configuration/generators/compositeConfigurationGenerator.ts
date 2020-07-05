@@ -1,4 +1,4 @@
-import { ConfigurationKind, IConfiguration } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind, IConfiguration } from "@reactivemarkets/desktop-types";
 import { IConfigurationGenerator } from "./iConfigurationGenerator";
 import { IGeneratorOptions } from "./iGeneratorOptions";
 
@@ -9,7 +9,7 @@ export class CompositeConfigurationGenerator implements IConfigurationGenerator 
         this.generators = generators;
     }
 
-    public canGenerate(kind: ConfigurationKind) {
+    public canGenerate(kind: WellKnownConfigurationKind) {
         return this.generators.some((g) => g.canGenerate(kind));
     }
 

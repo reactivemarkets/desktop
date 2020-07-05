@@ -1,4 +1,4 @@
-import { IConfiguration, ConfigurationKind, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
+import { IConfiguration, WellKnownConfigurationKind, WellKnownNamespace } from "@reactivemarkets/desktop-types";
 import { ILogger } from "../logging";
 import { ILauncherService } from "./iLauncherService";
 import { IUpdateService } from "../updates";
@@ -13,11 +13,11 @@ export class UpdatePolicyLauncherService implements ILauncherService {
     }
 
     public canLaunch({ kind }: IConfiguration) {
-        return kind === ConfigurationKind.UpdatePolicy;
+        return kind === WellKnownConfigurationKind.UpdatePolicy;
     }
 
     public launch(configuration: IConfiguration) {
-        const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
+        const { name, namespace = WellKnownNamespace.default } = configuration.metadata;
 
         this.logger.verbose(`Configuring updates: ${name} in ${namespace}`);
 

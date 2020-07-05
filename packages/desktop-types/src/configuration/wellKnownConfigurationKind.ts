@@ -1,4 +1,4 @@
-export enum ConfigurationKind {
+export enum WellKnownConfigurationKind {
     Application = "application",
     ApplicationSecurityPolicy = "applicationSecurityPolicy",
     External = "external",

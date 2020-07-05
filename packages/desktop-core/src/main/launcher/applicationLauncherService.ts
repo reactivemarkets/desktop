@@ -1,7 +1,7 @@
 import {
-    WellKnownNamespaces,
+    WellKnownNamespace,
     IConfiguration,
-    ConfigurationKind,
+    WellKnownConfigurationKind,
     IApplicationSpecification,
 } from "@reactivemarkets/desktop-types";
 import { ILogger } from "../logging";
@@ -19,11 +19,11 @@ export class ApplicationLauncherService implements ILauncherService {
     }
 
     public canLaunch = ({ kind }: IConfiguration) => {
-        return kind === ConfigurationKind.Application;
+        return kind === WellKnownConfigurationKind.Application;
     };
 
     public async launch(configuration: IConfiguration) {
-        const { name, namespace = WellKnownNamespaces.default } = configuration.metadata;
+        const { name, namespace = WellKnownNamespace.default } = configuration.metadata;
 
         const { url } = configuration.spec as IApplicationSpecification;
 

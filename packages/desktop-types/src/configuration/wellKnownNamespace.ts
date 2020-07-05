@@ -1,4 +1,4 @@
-export enum WellKnownNamespaces {
+export enum WellKnownNamespace {
     all = "*",
     default = "default",
     desktop = "desktop",

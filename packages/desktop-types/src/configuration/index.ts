@@ -1,5 +1,4 @@
 export * from "./applicationState";
-export * from "./configurationKind";
 export * from "./iAnnotations";
 export * from "./iApplicationSecurityPolicySpecification";
 export * from "./iApplicationSpecification";
@@ -26,4 +25,5 @@ export * from "./iUpdatePolicySpecification";
 export * from "./iWebPreferences";
 export * from "./iWindowParameters";
 export * from "./storageState";
-export * from "./wellKnownNamespaces";
+export * from "./wellKnownConfigurationKind";
+export * from "./wellKnownNamespace";

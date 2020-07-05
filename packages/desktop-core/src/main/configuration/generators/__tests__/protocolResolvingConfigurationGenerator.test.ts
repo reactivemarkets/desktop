@@ -1,4 +1,4 @@
-import { ConfigurationKind, IApplicationSpecification } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind, IApplicationSpecification } from "@reactivemarkets/desktop-types";
 import { mock } from "jest-mock-extended";
 import { ApplicationConfigurationGenerator } from "../applicationConfigurationGenerator";
 import { ProtocolResolvingConfigurationGenerator } from "../protocolResolvingConfigurationGenerator";
@@ -11,7 +11,7 @@ describe("canGenerate", () => {
 
         const protocol = new ProtocolResolvingConfigurationGenerator(generator);
 
-        expect(protocol.canGenerate(ConfigurationKind.Application)).toBe(true);
+        expect(protocol.canGenerate(WellKnownConfigurationKind.Application)).toBe(true);
         expect(generator.canGenerate.mock.calls.length).toBe(1);
     });
 });
@@ -28,7 +28,11 @@ describe("generate", () => {
 
         const protocol = new ProtocolResolvingConfigurationGenerator(generator);
 
-        const configuration = await protocol.generate({ kind: ConfigurationKind.Application, name: "name", url });
+        const configuration = await protocol.generate({
+            kind: WellKnownConfigurationKind.Application,
+            name: "name",
+            url,
+        });
 
         const application = configuration.spec as IApplicationSpecification;
 

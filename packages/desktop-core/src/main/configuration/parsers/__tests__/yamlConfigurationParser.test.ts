@@ -1,4 +1,4 @@
-import { IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { IConfiguration, WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 import { YamlConfigurationParser } from "../yamlConfigurationParser";
 
 describe("parse", () => {
@@ -92,7 +92,7 @@ spec:
 `;
 
         const configuration: IConfiguration = {
-            kind: ConfigurationKind.Application,
+            kind: WellKnownConfigurationKind.Application,
             metadata: {
                 name: "test",
             },

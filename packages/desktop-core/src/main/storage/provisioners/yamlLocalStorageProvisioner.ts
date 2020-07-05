@@ -1,11 +1,11 @@
-import { IConfiguration, ConfigurationKind, IStorageSpecification } from "@reactivemarkets/desktop-types";
+import { IConfiguration, WellKnownConfigurationKind, IStorageSpecification } from "@reactivemarkets/desktop-types";
 import { IStorageProvisioner } from "../iStorageProvisioner";
 import { IStorageClient } from "../iStorageClient";
 import { YamlLocalStorageClient } from "./yamlLocalStorageClient";
 
 export class YamlLocalStorageProvisioner implements IStorageProvisioner {
     public canProvision({ kind, spec }: IConfiguration) {
-        if (kind !== ConfigurationKind.Storage) {
+        if (kind !== WellKnownConfigurationKind.Storage) {
             return false;
         }
 
