@@ -2,6 +2,8 @@
 
 This is the JavaScript SDK for [Desktop](https://github.com/reactivemarkets/desktop).
 
+See [Desktop SDK](https://desktop.reactivemarkets.com/sdk) for documentation.
+
 ## Building from source
 
 To install all dependencies and build run:

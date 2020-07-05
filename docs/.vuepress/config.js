@@ -36,6 +36,10 @@ module.exports = {
                 link: "/guide/",
             },
             {
+                text: "Config Reference",
+                link: "/config/",
+            },
+            {
                 text: "SDK",
                 link: "/sdk/",
             },
