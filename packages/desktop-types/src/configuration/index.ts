@@ -22,7 +22,7 @@ export * from "./iStorageStatus";
 export * from "./iTraySpecification";
 export * from "./iTrayStatus";
 export * from "./iUpdateParameters";
-export * from "./iUpdateSpecification";
+export * from "./iUpdatePolicySpecification";
 export * from "./iWebPreferences";
 export * from "./iWindowParameters";
 export * from "./storageState";

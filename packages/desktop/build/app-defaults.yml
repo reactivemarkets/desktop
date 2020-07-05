@@ -13,7 +13,7 @@ metadata:
   description: The desktop tray icon.
   namespace: desktop
 ---
-kind: update
+kind: updatePolicy
 metadata:
   name: Updates
   description: Update policy for desktop.

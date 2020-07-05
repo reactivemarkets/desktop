@@ -1,11 +1,11 @@
-import { IConfiguration, IUpdateSpecification } from "@reactivemarkets/desktop-types";
+import { IConfiguration, IUpdatePolicySpecification } from "@reactivemarkets/desktop-types";
 import { autoUpdater } from "electron-updater";
 import { logger } from "../logging";
 import { IUpdateService } from "./iUpdateService";
 
 export class DefaultUpdateService implements IUpdateService {
     public configure(configuration: IConfiguration): Promise<IConfiguration> {
-        const spec = configuration.spec as IUpdateSpecification | undefined;
+        const spec = configuration.spec as IUpdatePolicySpecification | undefined;
         if (!spec?.checkForUpdates) {
             return Promise.resolve(configuration);
         }
