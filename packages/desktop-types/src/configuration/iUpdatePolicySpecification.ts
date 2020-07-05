@@ -1,6 +1,6 @@
 import { IUpdateParameters } from "./iUpdateParameters";
 
-export interface IUpdateSpecification {
+export interface IUpdatePolicySpecification {
     readonly allowDowngrade?: boolean;
     readonly allowPrerelease?: boolean;
     readonly channel?: string;

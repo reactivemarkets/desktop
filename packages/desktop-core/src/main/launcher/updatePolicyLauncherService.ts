@@ -3,7 +3,7 @@ import { ILogger } from "../logging";
 import { ILauncherService } from "./iLauncherService";
 import { IUpdateService } from "../updates";
 
-export class UpdateLauncherService implements ILauncherService {
+export class UpdatePolicyLauncherService implements ILauncherService {
     private readonly logger: ILogger;
     private readonly updateService: IUpdateService;
 
@@ -13,7 +13,7 @@ export class UpdateLauncherService implements ILauncherService {
     }
 
     public canLaunch({ kind }: IConfiguration) {
-        return kind === ConfigurationKind.Update;
+        return kind === ConfigurationKind.UpdatePolicy;
     }
 
     public launch(configuration: IConfiguration) {

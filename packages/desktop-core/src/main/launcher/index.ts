@@ -12,7 +12,7 @@ import { TrayLauncherService } from "./trayLauncherService";
 import { trayService } from "../tray";
 import { StorageLauncherService } from "./storageLauncherService";
 import { storageService } from "../storage";
-import { UpdateLauncherService } from "./updateLauncherService";
+import { UpdatePolicyLauncherService } from "./updatePolicyLauncherService";
 import { updateService } from "../updates";
 
 const applicationLauncherService = new ApplicationLauncherService(logger, windowService);
@@ -27,7 +27,7 @@ const trayLauncherService = new TrayLauncherService(logger, trayService);
 
 const storageLauncherService = new StorageLauncherService(logger, storageService);
 
-const updateLauncherService = new UpdateLauncherService(logger, updateService);
+const updateLauncherService = new UpdatePolicyLauncherService(logger, updateService);
 
 export const launcherService: ILauncherService = new CompositeLauncherService(
     applicationLauncherService,

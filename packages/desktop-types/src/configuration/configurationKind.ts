@@ -8,5 +8,5 @@ export enum ConfigurationKind {
     Session = "session",
     Storage = "storage",
     Tray = "tray",
-    Update = "update",
+    UpdatePolicy = "updatePolicy",
 }
