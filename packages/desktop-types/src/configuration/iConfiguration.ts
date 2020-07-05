@@ -1,4 +1,3 @@
-import { ConfigurationKind } from "./configurationKind";
 import { IApplicationSecurityPolicySpecification } from "./iApplicationSecurityPolicySpecification";
 import { IApplicationSpecification } from "./iApplicationSpecification";
 import { IApplicationStatus } from "./iApplicationStatus";
@@ -32,7 +31,7 @@ type Status = IApplicationStatus | IExternalStatus | IServiceStatus | IStorageSt
 
 export interface IConfiguration {
     readonly apiVersion?: string;
-    readonly kind: ConfigurationKind;
+    readonly kind: string;
     readonly metadata: IMetadata;
     readonly spec: Spec;
     readonly status?: Status;

@@ -1,4 +1,4 @@
-import { ConfigurationKind, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind, WellKnownNamespace } from "@reactivemarkets/desktop-types";
 import { ApplicationConfigurationGenerator } from "../applicationConfigurationGenerator";
 
 describe("canGenerate", () => {
@@ -6,7 +6,7 @@ describe("canGenerate", () => {
         test("application", () => {
             const generator = new ApplicationConfigurationGenerator();
 
-            expect(generator.canGenerate(ConfigurationKind.Application)).toBe(true);
+            expect(generator.canGenerate(WellKnownConfigurationKind.Application)).toBe(true);
         });
     });
 
@@ -14,13 +14,13 @@ describe("canGenerate", () => {
         test("external", () => {
             const generator = new ApplicationConfigurationGenerator();
 
-            expect(generator.canGenerate(ConfigurationKind.External)).toBe(false);
+            expect(generator.canGenerate(WellKnownConfigurationKind.External)).toBe(false);
         });
 
         test("service", () => {
             const generator = new ApplicationConfigurationGenerator();
 
-            expect(generator.canGenerate(ConfigurationKind.Service)).toBe(false);
+            expect(generator.canGenerate(WellKnownConfigurationKind.Service)).toBe(false);
         });
     });
 });
@@ -30,23 +30,23 @@ describe("generate", () => {
         const generator = new ApplicationConfigurationGenerator();
 
         const configuration = await generator.generate({
-            kind: ConfigurationKind.Application,
+            kind: WellKnownConfigurationKind.Application,
             name: "test",
             url: "http://url",
         });
 
-        expect(configuration.kind).toBe(ConfigurationKind.Application);
+        expect(configuration.kind).toBe(WellKnownConfigurationKind.Application);
     });
 
     test("should set namespace to default", async () => {
         const generator = new ApplicationConfigurationGenerator();
 
         const configuration = await generator.generate({
-            kind: ConfigurationKind.Application,
+            kind: WellKnownConfigurationKind.Application,
             name: "test",
             url: "http://url",
         });
 
-        expect(configuration.metadata.namespace).toBe(WellKnownNamespaces.default);
+        expect(configuration.metadata.namespace).toBe(WellKnownNamespace.default);
     });
 });

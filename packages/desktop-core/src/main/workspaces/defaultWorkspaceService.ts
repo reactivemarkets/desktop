@@ -1,4 +1,4 @@
-import { WellKnownNamespaces } from "@reactivemarkets/desktop-types";
+import { WellKnownNamespace } from "@reactivemarkets/desktop-types";
 import { v4 as uuid } from "uuid";
 import { IWorkspaceService } from "./iWorkspaceService";
 import { IWorkspace } from "./iWorkspace";
@@ -36,7 +36,7 @@ export class DefaultWorkspaceService implements IWorkspaceService {
     }
 
     public async restore() {
-        const storage = this.storageService.fromNamespace(WellKnownNamespaces.desktop);
+        const storage = this.storageService.fromNamespace(WellKnownNamespace.desktop);
         if (storage === undefined) {
             throw new Error("No storage found for workspaces");
         }
@@ -61,7 +61,7 @@ export class DefaultWorkspaceService implements IWorkspaceService {
     public switch(uid: string) {
         this.current = this.workspaces.get(uid);
 
-        const storage = this.storageService.fromNamespace(WellKnownNamespaces.desktop);
+        const storage = this.storageService.fromNamespace(WellKnownNamespace.desktop);
         if (storage === undefined) {
             throw new Error("No storage found for workspaces");
         }

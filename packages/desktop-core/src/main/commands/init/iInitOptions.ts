@@ -1,8 +1,8 @@
-import { ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 import { Output } from "../../configuration";
 
 export interface IInitOptions {
-    readonly kind: ConfigurationKind;
+    readonly kind: WellKnownConfigurationKind;
     readonly name?: string;
     readonly output: Output;
     readonly url: string;

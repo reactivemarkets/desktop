@@ -1,4 +1,4 @@
-import { ITraySpecification, IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { ITraySpecification, IConfiguration, WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 import { app, dialog, Menu, Tray, MenuItemConstructorOptions } from "electron";
 import { fromEventPattern } from "rxjs";
 import { debounceTime } from "rxjs/operators";
@@ -86,7 +86,7 @@ export class DefaultTrayFactory implements ITrayFactory {
 
         return registry
             .filter(({ kind }) => {
-                return kind === ConfigurationKind.Application;
+                return kind === WellKnownConfigurationKind.Application;
             })
             .filter(({ metadata }) => {
                 const { annotations } = metadata;

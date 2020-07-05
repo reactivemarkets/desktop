@@ -1,4 +1,4 @@
-import { ConfigurationKind, IConfiguration } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind, IConfiguration } from "@reactivemarkets/desktop-types";
 import { parse } from "url";
 import { IConfigurationGenerator } from "./iConfigurationGenerator";
 import { IGeneratorOptions } from "./iGeneratorOptions";
@@ -12,7 +12,7 @@ export class ProtocolResolvingConfigurationGenerator implements IConfigurationGe
         this.protocol = protocol;
     }
 
-    public canGenerate = (kind: ConfigurationKind) => {
+    public canGenerate = (kind: WellKnownConfigurationKind) => {
         return this.generator.canGenerate(kind);
     };
 

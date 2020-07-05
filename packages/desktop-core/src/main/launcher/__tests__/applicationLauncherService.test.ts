@@ -1,4 +1,4 @@
-import { IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { IConfiguration, WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 import { mock } from "jest-mock-extended";
 
 import { ILogger } from "../../logging";
@@ -15,7 +15,7 @@ describe("canLaunch", () => {
             const launcher = new ApplicationLauncherService(logger, windowService);
 
             const configuration: IConfiguration = {
-                kind: ConfigurationKind.Application,
+                kind: WellKnownConfigurationKind.Application,
                 metadata: {
                     name: "name",
                 },
@@ -37,7 +37,7 @@ describe("canLaunch", () => {
             const launcher = new ApplicationLauncherService(logger, windowFactory);
 
             const configuration: IConfiguration = {
-                kind: ConfigurationKind.Service,
+                kind: WellKnownConfigurationKind.Service,
                 metadata: {
                     name: "name",
                 },

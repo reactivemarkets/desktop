@@ -1,4 +1,4 @@
-import { WellKnownNamespaces, IConfiguration } from "@reactivemarkets/desktop-types";
+import { WellKnownNamespace, IConfiguration } from "@reactivemarkets/desktop-types";
 import { IRegistryService } from "./iRegistryService";
 
 export class ConfigurationRegistryService implements IRegistryService {
@@ -11,7 +11,7 @@ export class ConfigurationRegistryService implements IRegistryService {
     public register(configuration: IConfiguration) {
         const { kind } = configuration;
 
-        const { namespace = WellKnownNamespaces.default, name } = configuration.metadata;
+        const { namespace = WellKnownNamespace.default, name } = configuration.metadata;
 
         const key = `${kind}/${namespace}/${name}`;
 
@@ -23,7 +23,7 @@ export class ConfigurationRegistryService implements IRegistryService {
     public unregister(configuration: IConfiguration) {
         const { kind } = configuration;
 
-        const { namespace = WellKnownNamespaces.default, name } = configuration.metadata;
+        const { namespace = WellKnownNamespace.default, name } = configuration.metadata;
 
         const key = `${kind}/${namespace}/${name}`;
 

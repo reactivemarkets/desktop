@@ -1,4 +1,4 @@
-import { IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { IConfiguration, WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 import { JsonConfigurationParser } from "../jsonConfigurationParser";
 
 describe("parse", () => {
@@ -20,7 +20,7 @@ describe("stringify", () => {
         const json = `{"kind":"application","metadata":{"name":"test"},"spec":{"url":"https://url"}}`;
 
         const configuration: IConfiguration = {
-            kind: ConfigurationKind.Application,
+            kind: WellKnownConfigurationKind.Application,
             metadata: {
                 name: "test",
             },

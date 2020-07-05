@@ -1,7 +1,7 @@
-import { ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 
 export interface IGeneratorOptions {
-    readonly kind: ConfigurationKind;
+    readonly kind: WellKnownConfigurationKind;
     readonly name: string;
     readonly url?: string;
 }

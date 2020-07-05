@@ -1,4 +1,4 @@
-import { WellKnownNamespaces, IConfiguration, ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { WellKnownNamespace, IConfiguration, WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 import { ipcMain } from "electron";
 import { ReservedChannels } from "../../common";
 import { registryService } from "../registry";
@@ -6,31 +6,31 @@ import { registryService } from "../registry";
 export const registryIpcEvents = () => {
     const eventMap = new Map<string, (configuration: IConfiguration) => void>();
 
-    ipcMain.handle(ReservedChannels.registry_listApplications, async (_, namespace = WellKnownNamespaces.all) => {
+    ipcMain.handle(ReservedChannels.registry_listApplications, async (_, namespace = WellKnownNamespace.all) => {
         const registry = await registryService.getRegistry();
 
         return registry
             .filter((c) => {
-                if (namespace === WellKnownNamespaces.all) {
+                if (namespace === WellKnownNamespace.all) {
                     return true;
                 }
 
                 return c.metadata.namespace === namespace;
             })
-            .filter((r) => r.kind === ConfigurationKind.Application);
+            .filter((r) => r.kind === WellKnownConfigurationKind.Application);
     });
-    ipcMain.handle(ReservedChannels.registry_listServices, async (_, namespace = WellKnownNamespaces.all) => {
+    ipcMain.handle(ReservedChannels.registry_listServices, async (_, namespace = WellKnownNamespace.all) => {
         const registry = await registryService.getRegistry();
 
         return registry
             .filter((c) => {
-                if (namespace === WellKnownNamespaces.all) {
+                if (namespace === WellKnownNamespace.all) {
                     return true;
                 }
 
                 return c.metadata.namespace === namespace;
             })
-            .filter((r) => r.kind === ConfigurationKind.Service);
+            .filter((r) => r.kind === WellKnownConfigurationKind.Service);
     });
     ipcMain.handle(ReservedChannels.registry_register, (_, configuration: IConfiguration) => {
         return registryService.register(configuration);

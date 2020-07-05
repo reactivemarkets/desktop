@@ -1,4 +1,4 @@
-import { ConfigurationKind, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind, WellKnownNamespace } from "@reactivemarkets/desktop-types";
 import { ExternalConfigurationGenerator } from "../externalConfigurationGenerator";
 
 describe("canGenerate", () => {
@@ -6,7 +6,7 @@ describe("canGenerate", () => {
         test("external", () => {
             const generator = new ExternalConfigurationGenerator();
 
-            expect(generator.canGenerate(ConfigurationKind.External)).toBe(true);
+            expect(generator.canGenerate(WellKnownConfigurationKind.External)).toBe(true);
         });
     });
 
@@ -14,13 +14,13 @@ describe("canGenerate", () => {
         test("application", () => {
             const generator = new ExternalConfigurationGenerator();
 
-            expect(generator.canGenerate(ConfigurationKind.Application)).toBe(false);
+            expect(generator.canGenerate(WellKnownConfigurationKind.Application)).toBe(false);
         });
 
         test("service", () => {
             const generator = new ExternalConfigurationGenerator();
 
-            expect(generator.canGenerate(ConfigurationKind.Service)).toBe(false);
+            expect(generator.canGenerate(WellKnownConfigurationKind.Service)).toBe(false);
         });
     });
 });
@@ -29,16 +29,16 @@ describe("generate", () => {
     test("should generate external config", async () => {
         const generator = new ExternalConfigurationGenerator();
 
-        const configuration = await generator.generate({ kind: ConfigurationKind.External, name: "test" });
+        const configuration = await generator.generate({ kind: WellKnownConfigurationKind.External, name: "test" });
 
-        expect(configuration.kind).toBe(ConfigurationKind.External);
+        expect(configuration.kind).toBe(WellKnownConfigurationKind.External);
     });
 
     test("should set namespace to default", async () => {
         const generator = new ExternalConfigurationGenerator();
 
-        const configuration = await generator.generate({ kind: ConfigurationKind.External, name: "test" });
+        const configuration = await generator.generate({ kind: WellKnownConfigurationKind.External, name: "test" });
 
-        expect(configuration.metadata.namespace).toBe(WellKnownNamespaces.default);
+        expect(configuration.metadata.namespace).toBe(WellKnownNamespace.default);
     });
 });

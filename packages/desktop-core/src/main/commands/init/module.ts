@@ -1,4 +1,4 @@
-import { ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 import { Output } from "../../configuration";
 
 export { handler } from "./handler";
@@ -10,8 +10,8 @@ export const describe = "Create a configuration file";
 export const builder = {
     kind: {
         alias: "k",
-        choices: Object.values(ConfigurationKind),
-        default: ConfigurationKind.Application,
+        choices: Object.values(WellKnownConfigurationKind),
+        default: WellKnownConfigurationKind.Application,
         describe: "The configuration kind",
     },
     name: {

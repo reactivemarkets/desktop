@@ -1,19 +1,19 @@
-import { ConfigurationKind, IConfiguration, WellKnownNamespaces } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind, IConfiguration, WellKnownNamespace } from "@reactivemarkets/desktop-types";
 import { IConfigurationGenerator } from "./iConfigurationGenerator";
 import { IGeneratorOptions } from "./iGeneratorOptions";
 
 export class ApplicationConfigurationGenerator implements IConfigurationGenerator {
-    public canGenerate = (kind: ConfigurationKind) => {
-        return kind === ConfigurationKind.Application;
+    public canGenerate = (kind: WellKnownConfigurationKind) => {
+        return kind === WellKnownConfigurationKind.Application;
     };
 
     public generate = ({ name, url }: IGeneratorOptions): Promise<IConfiguration> => {
         return Promise.resolve({
-            kind: ConfigurationKind.Application,
+            kind: WellKnownConfigurationKind.Application,
             metadata: {
                 name,
                 description: "Open site",
-                namespace: WellKnownNamespaces.default,
+                namespace: WellKnownNamespace.default,
             },
             spec: {
                 url: url!,

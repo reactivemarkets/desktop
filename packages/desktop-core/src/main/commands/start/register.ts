@@ -1,4 +1,4 @@
-import { ConfigurationKind } from "@reactivemarkets/desktop-types";
+import { WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 import { app } from "electron";
 import * as path from "path";
 import { configurationGenerator, configurationLoader } from "../../configuration";
@@ -73,7 +73,7 @@ export const registerUrls = (urls: string[]) => {
     return urls.map(async (url) => {
         try {
             const configuration = await configurationGenerator.generate({
-                kind: ConfigurationKind.Application,
+                kind: WellKnownConfigurationKind.Application,
                 name: url,
                 url,
             });
