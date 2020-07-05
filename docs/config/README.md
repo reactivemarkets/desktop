@@ -1,4 +1,4 @@
 ---
 sidebar: auto
 ---
-# Introduction
+# Config Reference
