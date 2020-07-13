@@ -113,7 +113,7 @@
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.5",
     "terser-webpack-plugin": "^3.0.6",
-    "ts-jest": "^26.1.1",
+    "ts-jest": "^26.1.2",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5",
     "unique-names-generator": "^4.2.0",
