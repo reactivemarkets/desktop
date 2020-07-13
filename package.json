@@ -126,7 +126,7 @@
     "webpack-merge": "^4.2.2",
     "webpack-subresource-integrity": "^1.4.1",
     "winston": "^3.3.3",
-    "yargs": "^15.4.0"
+    "yargs": "^15.4.1"
   },
   "workspaces": [
     "packages/*"
