@@ -89,7 +89,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
     "express": "^4.17.1",
-    "express-useragent": "^1.0.13",
+    "express-useragent": "^1.0.15",
     "express-ws": "^4.0.0",
     "file-loader": "^6.0.0",
     "flat": "^5.0.0",
