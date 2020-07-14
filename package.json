@@ -32,6 +32,8 @@
     "package:win32": "lerna run package:win32 --stream",
     "publish": "lerna publish from-package --no-git-reset --yes",
     "release": "lerna version --yes",
+    "release:pre": "lerna version --conventional-prerelease --yes",
+    "release:grad": "lerna version --conventional-graduate --yes",
     "start": "lerna run start --scope='*/desktop-core' --stream",
     "start:about": "lerna run start --scope='*/desktop-about' --stream",
     "start:api": "lerna run start --scope='*/desktop-api' --stream",
