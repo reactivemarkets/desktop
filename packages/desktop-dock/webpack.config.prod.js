@@ -2,7 +2,7 @@
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const SriPlugin = require("webpack-subresource-integrity");
 const config = require("./webpack.common.js");
 
