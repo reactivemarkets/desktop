@@ -85,7 +85,7 @@
     "electron-notarize": "^1.0.0",
     "electron-store": "^5.2.0",
     "electron-updater": "^4.3.1",
-    "eslint": "^7.4.0",
+    "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-jest": "^23.18.0",
     "eslint-plugin-prettier": "^3.1.4",
