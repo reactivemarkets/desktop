@@ -116,7 +116,7 @@
     "rxjs": "^6.5.5",
     "terser-webpack-plugin": "^3.0.7",
     "ts-jest": "^26.1.2",
-    "ts-loader": "^8.0.0",
+    "ts-loader": "^8.0.1",
     "typescript": "^3.9.7",
     "unique-names-generator": "^4.2.0",
     "utf-8-validate": "^5.0.2",
