@@ -117,7 +117,7 @@
     "terser-webpack-plugin": "^3.0.6",
     "ts-jest": "^26.1.2",
     "ts-loader": "^8.0.0",
-    "typescript": "^3.9.5",
+    "typescript": "^3.9.7",
     "unique-names-generator": "^4.2.0",
     "utf-8-validate": "^5.0.2",
     "uuid": "^8.2.0",
