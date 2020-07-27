@@ -122,7 +122,7 @@
     "utf-8-validate": "^5.0.2",
     "uuid": "^8.2.0",
     "vuepress": "^1.5.2",
-    "webpack": "^4.43.0",
+    "webpack": "^4.44.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.0.9",
