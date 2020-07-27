@@ -33,7 +33,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@reactivemarkets/desktop-sdk": "file:../desktop-sdk",
-    "fuse.js": "^6.4.0",
+    "fuse.js": "^6.4.1",
     "ix": "^3.0.2",
     "mdi-material-ui": "^6.16.0",
     "mobx": "5.15.4",
