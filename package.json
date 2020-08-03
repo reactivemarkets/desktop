@@ -113,7 +113,7 @@
     "replace": "^1.2.0",
     "response-time": "^2.3.2",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.5.5",
+    "rxjs": "^6.6.2",
     "terser-webpack-plugin": "^3.0.8",
     "ts-jest": "^26.1.4",
     "ts-loader": "^8.0.1",
