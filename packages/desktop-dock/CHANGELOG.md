@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/reactivemarkets/desktop/compare/v0.25.0...v0.26.0) (2020-08-11)
+
+
+### Features
+
+* **core:** configuration kind is now a string ([4470819](https://github.com/reactivemarkets/desktop/commit/44708192f871ea4f5f8071edaf1e72005de3b606))
+
+
+
+
+
 # [0.25.0](https://github.com/reactivemarkets/desktop/compare/v0.24.0...v0.25.0) (2020-07-02)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-dock
