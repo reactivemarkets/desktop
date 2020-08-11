@@ -31,6 +31,7 @@ const browserWindowFactory = new BrowserWindowFactory({
     textAreasAreResizable: false,
     webSecurity: true,
     webviewTag: false,
+    worldSafeExecuteJavaScript: true,
 });
 
 const contentProtection = new ContentProtectionWindowFactory(browserWindowFactory);
