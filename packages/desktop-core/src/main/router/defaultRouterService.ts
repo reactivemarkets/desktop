@@ -1,4 +1,4 @@
-import { v4 as uuid } from "uuid";
+import { nanoid } from "nanoid";
 import { CompositeTransport, ITransport } from "../transports";
 import { IRouterService } from "./iRouterService";
 
@@ -6,7 +6,7 @@ export class DefaultRouterService implements IRouterService {
     private readonly transport = new CompositeTransport();
 
     public addTransport(transport: ITransport) {
-        const id = uuid();
+        const id = nanoid();
 
         this.transport.add(id, transport);
 

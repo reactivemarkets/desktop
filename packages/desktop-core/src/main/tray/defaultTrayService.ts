@@ -1,6 +1,6 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { find } from "ix/iterable";
-import { v4 as uuid } from "uuid";
+import { nanoid } from "nanoid";
 import { ITrayService } from "./iTrayService";
 import { ITrayFactory } from "./factory/iTrayFactory";
 import { TrayInstance } from "./trayInstance";
@@ -32,7 +32,7 @@ export class DefaultTrayService implements ITrayService {
         const tray = await this.trayFactory.create(configuration);
 
         const startTime = new Date();
-        const uid = uuid();
+        const uid = nanoid();
 
         const runningConfiguration = {
             ...configuration,

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { v4 as uuid } from "uuid";
+import { nanoid } from "nanoid";
 import { wsRouter } from "../router";
 
 const router = Router();
@@ -7,7 +7,7 @@ const router = Router();
 router.ws("/", (ws) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    ws.id = uuid();
+    ws.id = nanoid();
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore

@@ -1,6 +1,6 @@
 import { ApplicationState, IConfiguration, IApplicationSpecification } from "@reactivemarkets/desktop-types";
 import { find } from "ix/iterable";
-import { v4 as uuid } from "uuid";
+import { nanoid } from "nanoid";
 import { IWindowFactory } from "./factory";
 import { IWindowService } from "./iWindowService";
 import { WindowInstance } from "./windowInstance";
@@ -49,7 +49,7 @@ export class DefaultWindowService implements IWindowService {
         const isMinimized = window.isMinimized();
         const startTime = new Date();
         const state = ApplicationState.running;
-        const uid = uuid();
+        const uid = nanoid();
         const windowId = window.id;
 
         const runningConfiguration = {
