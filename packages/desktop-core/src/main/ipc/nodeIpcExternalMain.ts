@@ -1,6 +1,6 @@
 import { app } from "electron";
 import ipc from "node-ipc";
-import { v4 as uuid } from "uuid";
+import { nanoid } from "nanoid";
 import { IIpcExternalMain } from "./iIpcExternalMain";
 import { IIpcExternalResult } from "./iIpcExternalResult";
 
@@ -55,7 +55,7 @@ export class NodeIpcExternalMain implements IIpcExternalMain {
             ipc.config.silent = true;
             ipc.serve(() => {
                 ipc.server.on("connect", (socket) => {
-                    socket.id = uuid();
+                    socket.id = nanoid();
                 });
 
                 resolve();

@@ -1,5 +1,5 @@
 import { WellKnownNamespace } from "@reactivemarkets/desktop-types";
-import { v4 as uuid } from "uuid";
+import { nanoid } from "nanoid";
 import { IWorkspaceService } from "./iWorkspaceService";
 import { IWorkspace } from "./iWorkspace";
 
@@ -22,7 +22,7 @@ export class DefaultWorkspaceService implements IWorkspaceService {
     }
 
     public create(name = "Default") {
-        const uid = uuid();
+        const uid = nanoid();
 
         const workspace: IWorkspace = {
             name,

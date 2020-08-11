@@ -1,6 +1,6 @@
 import { app } from "electron";
 import ipc from "node-ipc";
-import { v4 as uuid } from "uuid";
+import { nanoid } from "nanoid";
 import { IIpcExternal } from "./iIpcExternal";
 import { IIpcExternalResult } from "./iIpcExternalResult";
 
@@ -10,7 +10,7 @@ export class NodeIpcExternal implements IIpcExternal {
 
     public invoke<TData, TResult>(channel: string, data?: TData): Promise<TResult> {
         return new Promise<TResult>((resolve, reject) => {
-            const responseId = uuid();
+            const responseId = nanoid();
             ipc.of.external_ipc.on(responseId, ({ error, result }: IIpcExternalResult) => {
                 if (error) {
                     reject(error);

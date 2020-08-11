@@ -1,6 +1,6 @@
 import { IConfiguration, StorageState } from "@reactivemarkets/desktop-types";
 import { find } from "ix/iterable";
-import { v4 as uuid } from "uuid";
+import { nanoid } from "nanoid";
 import { IStorageService } from "./iStorageService";
 import { IStorageProvisioner } from "./provisioners";
 import { StorageInstance } from "./storageInstance";
@@ -42,7 +42,7 @@ export class DefaultStorageService implements IStorageService {
 
         const startTime = new Date();
         const state = StorageState.provisioned;
-        const uid = uuid();
+        const uid = nanoid();
 
         const runningConfiguration = {
             ...configuration,
