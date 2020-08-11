@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/reactivemarkets/desktop/compare/v0.25.0...v0.26.0) (2020-08-11)
+
+
+### Bug Fixes
+
+* **core:** global shortcut methods now returns promises ([b981df5](https://github.com/reactivemarkets/desktop/commit/b981df556d3055a124f1527fc4779ba274913cd4))
+
+
+### Features
+
+* **sdk:** adding unmaximize to window ([819e4dd](https://github.com/reactivemarkets/desktop/commit/819e4ddb614405c07664ab9d8f8afd50904d683e))
+
+
+
+
+
 # [0.25.0](https://github.com/reactivemarkets/desktop/compare/v0.24.0...v0.25.0) (2020-07-02)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-sdk

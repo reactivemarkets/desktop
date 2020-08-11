@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/markmcdowell/desktop/compare/v0.25.0...v0.26.0) (2020-08-11)
+
+
+### Bug Fixes
+
+* **core:** displaying version information of the server ([a52b283](https://github.com/markmcdowell/desktop/commit/a52b283819ad86fd82919b3a630ba40f953b0515))
+* **core:** global shortcut methods now returns promises ([b981df5](https://github.com/markmcdowell/desktop/commit/b981df556d3055a124f1527fc4779ba274913cd4))
+* **core:** missing update to nanoid ([347d407](https://github.com/markmcdowell/desktop/commit/347d4073d636313efc072a4bad24d3f7abc5ead1))
+* **core:** updating configuration kind for update ([410ca08](https://github.com/markmcdowell/desktop/commit/410ca08d9debcdb9f58df1b13cdeb067e64cd8dc))
+
+
+### Features
+
+* replacing uuid with nanoid ([34ef7f6](https://github.com/markmcdowell/desktop/commit/34ef7f69e96295b4c8faebed27f3b8320eebb4de))
+* **core:** adding info command ([42abd9d](https://github.com/markmcdowell/desktop/commit/42abd9d6fa883e5b40837960aece09f9c6703b1b))
+* **core:** adding rm as an alias to stop ([d2594e5](https://github.com/markmcdowell/desktop/commit/d2594e529478954d961fe3b880c43aaf7e452ed5))
+* **core:** allowing access to update settings ([8153c5e](https://github.com/markmcdowell/desktop/commit/8153c5e84d36b855aac8ebcf87cc11a7452d56ac))
+* **core:** configuration kind is now a string ([4470819](https://github.com/markmcdowell/desktop/commit/44708192f871ea4f5f8071edaf1e72005de3b606))
+* **core:** renamed update to updatePolicy ([4bb7d65](https://github.com/markmcdowell/desktop/commit/4bb7d650b580a7f03b30bf464ef4ce37a40e309f))
+* **sdk:** adding unmaximize to window ([819e4dd](https://github.com/markmcdowell/desktop/commit/819e4ddb614405c07664ab9d8f8afd50904d683e))
+
+
+
+
+
 # [0.25.0](https://github.com/markmcdowell/desktop/compare/v0.24.0...v0.25.0) (2020-07-02)
 
 

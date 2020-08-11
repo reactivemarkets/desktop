@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/reactivemarkets/desktop/compare/v0.25.0...v0.26.0) (2020-08-11)
+
+
+### Bug Fixes
+
+* **core:** updating configuration kind for update ([410ca08](https://github.com/reactivemarkets/desktop/commit/410ca08d9debcdb9f58df1b13cdeb067e64cd8dc))
+
+
+### Features
+
+* **core:** renamed update to updatePolicy ([4bb7d65](https://github.com/reactivemarkets/desktop/commit/4bb7d650b580a7f03b30bf464ef4ce37a40e309f))
+
+
+
+
+
 # [0.25.0](https://github.com/reactivemarkets/desktop/compare/v0.24.0...v0.25.0) (2020-07-02)
 
 
