@@ -37,7 +37,7 @@ export class NodeIpcExternal implements IIpcExternal {
             const appName = app.name.toLowerCase();
             const appSpace = `${this.appSpace}.${appName}.`;
             ipc.config.appspace = context === undefined ? appSpace : `${appSpace}${context}.`;
-            ipc.config.id = uuid();
+            ipc.config.id = nanoid();
             ipc.config.maxRetries = 0;
             ipc.config.silent = true;
             ipc.connectTo(this.connectId, () => {
