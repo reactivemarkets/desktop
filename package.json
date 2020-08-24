@@ -120,7 +120,7 @@
     "typescript": "^3.9.7",
     "unique-names-generator": "^4.2.0",
     "utf-8-validate": "^5.0.2",
-    "vuepress": "^1.5.3",
+    "vuepress": "^1.5.4",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
