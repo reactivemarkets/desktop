@@ -118,7 +118,7 @@
     "ts-jest": "^26.2.0",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
-    "unique-names-generator": "^4.2.0",
+    "unique-names-generator": "^4.3.1",
     "utf-8-validate": "^5.0.2",
     "vuepress": "^1.5.4",
     "webpack": "^4.44.1",
