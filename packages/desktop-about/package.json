@@ -33,7 +33,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@reactivemarkets/desktop-sdk": "file:../desktop-sdk",
-    "mdi-material-ui": "^6.17.0",
+    "mdi-material-ui": "^6.18.0",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.5",
     "react": "^16.13.1",
