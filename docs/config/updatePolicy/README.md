@@ -7,14 +7,20 @@ Defines the update policy.
 | apiVersion | `string`                                          | Optional api version for this object. |
 | kind       | `string`                                          | Identifer for this configuration object. |
 | metadata   | [`Metadata`](../metadata)                         | Object metadata, see [metadata](../metadata). |
-| spec       | [`UpdatePolicySpecification`](./#UpdatePolicyspecification) | See [UpdatePolicySpecification](./#UpdatePolicyspecification).|
-| status     | [`UpdatePolicyStatus`](./#UpdatePolicystatus)               | See [UpdatePolicyStatus](./#UpdatePolicystatus).|
+| spec       | [`UpdatePolicySpecification`](./#update-policy-specification) | See [Update Policy Specification](./#update-policy-specification).|
 
 ## Update Policy Specification
 
-## Update Policy Status <Badge text="READONLY" vertical="middle" type="error" />
+The specification for an update policy.
 
-Populated by Desktop.
+| Field           | Type               | Notes                                                                  |
+| --------------- | ------------------ | ---------------------------------------------------------------------- |
+| allowDowngrade  | `boolean`          | Whether to allow version downgrade.                                    |
+| allowPrerelease | `boolean`          | Whether to allow update to pre-release versions.                       |
+| channel         | `string`           | Sets the channel to recieve updates from.                              |
+| checkForUpdates | `boolean`          | Whether to check for updates.                                          |
+| parameters      | `UpdateParameters` | Key value map to override parameters in the specified update provider. |
+| provider        | `string`           | The update source.                                                     |
 
 ## Example
 
