@@ -2,13 +2,13 @@
 
 Defines a service.
 
-| Field      | Type                                              | Notes                                               |
-| ---------- | ------------------------------------------------- | --------------------------------------------------- |
-| apiVersion | `string`                                          | Optional api version for this object.               |
-| kind       | `string`                                          | Identifer for this configuration object.            |
-| metadata   | [`Metadata`](../metadata)                         | Object metadata, see [metadata](../metadata).       |
-| spec       | [`ServiceSpecification`](./#servicespecification) | See [ServiceSpecification](./#servicespecification).|
-| status     | [`ServiceStatus`](./#servicestatus)               | See [ServiceStatus](./#servicestatus).              |
+| Field      | Type                                               | Notes                                                 |
+| ---------- | -------------------------------------------------- | ----------------------------------------------------- |
+| apiVersion | `string`                                           | Optional api version for this object.                 |
+| kind       | `string`                                           | Identifer for this configuration object.              |
+| metadata   | [`Metadata`](../metadata)                          | Object metadata, see [metadata](../metadata).         |
+| spec       | [`ServiceSpecification`](./#service-specification) | See [Service Specification](./#service-specification).|
+| status     | [`ServiceStatus`](./#service-status)               | See [Service Status](./#service-status).              |
 
 ## Service Specification
 

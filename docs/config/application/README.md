@@ -2,15 +2,15 @@
 
 Defines an application.
 
-| Field      | Type                                                      | Notes                                                        |
-| ---------- | --------------------------------------------------------- | ------------------------------------------------------------ |
-| apiVersion | `string`                                                  | Optional api version for this object.                        |
-| kind       | `string`                                                  | Identifer for this configuration object.                     |
-| metadata   | [`Metadata`](../metadata)                                 | Object metadata, see [metadata](../metadata).                |
-| spec       | [`ApplicationSpecification`](./#applicationspecification) | See [ApplicationSpecification](./#applicationspecification). |
-| status     | [`ApplicationStatus`](./#applicationstatus)               | See [ApplicationStatus](./#applicationstatus).               |
+| Field      | Type                                                       | Notes                                                          |
+| ---------- | ---------------------------------------------------------- | -------------------------------------------------------------- |
+| apiVersion | `string`                                                   | Optional api version for this object.                          |
+| kind       | `string`                                                   | Identifer for this configuration object.                       |
+| metadata   | [`Metadata`](../metadata)                                  | Object metadata, see [metadata](../metadata).                  |
+| spec       | [`ApplicationSpecification`](./#application-specification) | See [Application Specification](./#application-specification). |
+| status     | [`ApplicationStatus`](./#application-status)               | See [Application Status](./#application-status).               |
 
-## ApplicationSpecification
+## Application Specification
 
 The specification for an application.
 
@@ -21,37 +21,37 @@ The specification for an application.
 | launchOnStart        | `boolean`          | Disable launching the application on Desktop start.             |
 | singleInstance       | `boolean`          | Only allow one instance of this application.                    |
 | url                  | `string`           | The `file://`, `http://`, `https://` or `asar` to load.         |
-| webPreferences       | `WebPreferences`   | See [WebPreferences](./#webpreferences).                        |
-| window               | `WindowParameters` | See [WindowParameters](./#windowparameters).                    |
+| webPreferences       | `WebPreferences`   | See [Web Preferences](./#web-preferences).                      |
+| window               | `WindowParameters` | See [Window Parameters](./#window-parameters).                  |
 
-## ApplicationStatus <Badge text="READONLY" vertical="middle" type="error" />
+## Application Status <Badge text="READONLY" vertical="middle" type="error" />
 
 Populated by Desktop.
 
-| Field        | Type                                      | Notes                                                   |
-| ------------ | ----------------------------------------- | ------------------------------------------------------- |
-| height       | `number`                                  | Current height of the window.                           |
-| isFullScreen | `boolean`                                 | If the window is full screen.                           |
-| isMaximized  | `boolean`                                 | If the window is maximized.                             |
-| isMinimized  | `boolean`                                 | If the window is minimized.                             |
-| message      | `string`                                  | A human readable message.                               |
-| osProcessId  | `number`                                  | The operating system `pid` of the associated renderer.  |
-| processId    | `number`                                  | The Chromium internal `pid` of the associated renderer. |
-| startTime    | `Date`                                    | The start time of the current window.                   |
-| state        | [`ApplicationState`](./#applicationstate) | See [ApplicationState](./#applicationstate).            |
-| width        | `number`                                  | Current width of the window.                            |
-| windowId     | `number`                                  | The windowId.                                           |
-| x            | `number`                                  | Current x position of the window.                       |
-| y            | `number`                                  | Current y position of the window.                       |
+| Field        | Type                                       | Notes                                                   |
+| ------------ | ------------------------------------------ | ------------------------------------------------------- |
+| height       | `number`                                   | Current height of the window.                           |
+| isFullScreen | `boolean`                                  | If the window is full screen.                           |
+| isMaximized  | `boolean`                                  | If the window is maximized.                             |
+| isMinimized  | `boolean`                                  | If the window is minimized.                             |
+| message      | `string`                                   | A human readable message.                               |
+| osProcessId  | `number`                                   | The operating system `pid` of the associated renderer.  |
+| processId    | `number`                                   | The Chromium internal `pid` of the associated renderer. |
+| startTime    | `Date`                                     | The start time of the current window.                   |
+| state        | [`ApplicationState`](./#application-state) | See [Application State](./#application-state).          |
+| width        | `number`                                   | Current width of the window.                            |
+| windowId     | `number`                                   | The windowId.                                           |
+| x            | `number`                                   | Current x position of the window.                       |
+| y            | `number`                                   | Current y position of the window.                       |
 
-## ApplicationState
+## Application State
 
 | Value    | Notes                                 |
 | -------- | ------------------------------------- |
 | Runnning | The application is currently running. |
 | Closed   | The application has been closed.      |
 
-## WebPreferences
+## Web Preferences
 
 | Field     | Type      | Notes                                                                                   |
 | --------- | --------- | --------------------------------------------------------------------------------------- |
@@ -59,7 +59,7 @@ Populated by Desktop.
 | devTools  | `boolean` | Enable opening of devTools via the [cli](/cli).                                         |
 | partition | `string`  | The session partition.                                                                  |
 
-## WindowParameters
+## Window Parameters
 
 | Field            | Type      | Notes                                                                                            |
 | ---------------- | --------- | ------------------------------------------------------------------------------------------------ |
@@ -79,7 +79,7 @@ metadata:
       includeInTray: true
     '@reactivemarkets/desktop-dock':
       excludeFromSearch: true
-  uid: 8b18502f-60ad-47d4-945b-5dd9555960fc
+  uid: cu8Ff-fgxUOtLtOH2xdrh
 spec:
   singleInstance: true
   url: dock.asar
