@@ -43,8 +43,13 @@ export class DefaultSessionService implements ISessionService {
             currentSession.setUserAgent(userAgent);
         }
 
-        const { pacScript = "", proxyBypassRules = "", proxyRules } = parameters;
-        if (proxyRules !== undefined) {
+        const { pacScript = "", proxyBypassRules: byPass, proxyRules } = parameters;
+        if (proxyRules !== undefined || pacScript !== undefined) {
+            let proxyBypassRules = undefined;
+            if (byPass !== undefined) {
+                proxyBypassRules = byPass.join(",");
+            }
+
             const config = {
                 pacScript,
                 proxyBypassRules,
