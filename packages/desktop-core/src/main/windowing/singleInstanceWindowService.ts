@@ -32,7 +32,9 @@ export class SingleInstanceWindowService implements IWindowService {
             this.logger.info(
                 `${configuration.metadata.namespace}/${configuration.metadata.name} already exists and is single instance, moving to top.`,
             );
+            window.instance.focus();
             window.instance.moveTop();
+
             return window;
         }
 
