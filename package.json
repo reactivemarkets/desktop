@@ -92,7 +92,7 @@
     "express": "^4.17.1",
     "express-useragent": "^1.0.15",
     "express-ws": "^4.0.0",
-    "file-loader": "^6.0.0",
+    "file-loader": "^6.1.0",
     "flat": "^5.0.2",
     "helmet": "^4.1.0",
     "hpp": "^0.2.3",
