@@ -98,7 +98,7 @@
     "hpp": "^0.2.3",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
-    "ix": "^3.0.2",
+    "ix": "^4.0.0",
     "jest": "^26.4.2",
     "jest-mock-extended": "^1.0.10",
     "js-yaml": "^3.14.0",
