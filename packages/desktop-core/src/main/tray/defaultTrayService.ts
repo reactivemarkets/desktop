@@ -22,9 +22,13 @@ export class DefaultTrayService implements ITrayService {
             return this.configRegistry.get(identifier);
         }
 
-        return find(this.configRegistry.values(), (instance) => {
-            const { metadata } = instance.configuration;
-            return metadata.namespace === identifier.metadata.namespace && metadata.name === identifier.metadata.name;
+        return find(this.configRegistry.values(), {
+            predicate: (instance) => {
+                const { metadata } = instance.configuration;
+                return (
+                    metadata.namespace === identifier.metadata.namespace && metadata.name === identifier.metadata.name
+                );
+            },
         });
     }
 

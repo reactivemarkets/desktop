@@ -23,14 +23,20 @@ export class DefaultWindowService implements IWindowService {
         }
 
         if (typeof identifier === "number") {
-            return find(this.instanceRegistry.values(), ({ instance }) => {
-                return instance.id === identifier;
+            return find(this.instanceRegistry.values(), {
+                predicate: ({ instance }) => {
+                    return instance.id === identifier;
+                },
             });
         }
 
-        return find(this.instanceRegistry.values(), (instance) => {
-            const { metadata } = instance.configuration;
-            return metadata.namespace === identifier.metadata.namespace && metadata.name === identifier.metadata.name;
+        return find(this.instanceRegistry.values(), {
+            predicate: (instance) => {
+                const { metadata } = instance.configuration;
+                return (
+                    metadata.namespace === identifier.metadata.namespace && metadata.name === identifier.metadata.name
+                );
+            },
         });
     }
 
