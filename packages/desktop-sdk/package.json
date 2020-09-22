@@ -30,6 +30,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@reactivemarkets/desktop-types": "file:../desktop-types",
-    "tiny-typed-emitter": "^2.0.2"
+    "tiny-typed-emitter": "^2.0.3"
   }
 }
