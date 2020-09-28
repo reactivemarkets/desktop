@@ -7,31 +7,15 @@ import { FailedToLoadWindowFactory } from "./failedToLoadWindowFactory";
 import { LinuxIconWindowFactory } from "./linuxIconWindowFactory";
 import { ContentProtectionWindowFactory } from "./contentProtectionWindowFactory";
 import { ContextMenuWindowFactory } from "./contextMenuWindowFactory";
+import { defaultWebPreferences } from "./defaultWebPreferences";
 
 const appPath = app.getAppPath();
 
 const preload = path.join(appPath, "preload.js");
 
 const browserWindowFactory = new BrowserWindowFactory({
-    allowRunningInsecureContent: false,
-    contextIsolation: true,
-    devTools: true,
-    enableRemoteModule: false,
-    enableWebSQL: false,
-    experimentalFeatures: false,
-    navigateOnDragDrop: false,
-    nodeIntegration: false,
-    nodeIntegrationInSubFrames: false,
-    nodeIntegrationInWorker: false,
-    plugins: false,
+    ...defaultWebPreferences,
     preload,
-    safeDialogs: true,
-    sandbox: true,
-    spellcheck: true,
-    textAreasAreResizable: false,
-    webSecurity: true,
-    webviewTag: false,
-    worldSafeExecuteJavaScript: true,
 });
 
 const contentProtection = new ContentProtectionWindowFactory(browserWindowFactory);
