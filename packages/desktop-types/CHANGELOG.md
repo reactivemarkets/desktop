@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/reactivemarkets/desktop/compare/v0.26.0...v0.27.0) (2020-09-28)
+
+
+### Features
+
+* **core:** proxyBypassRules are now a string[] ([8a1d107](https://github.com/reactivemarkets/desktop/commit/8a1d107db090c37cb33061e61a48b9eac008b200))
+
+
+
+
+
 # [0.26.0](https://github.com/reactivemarkets/desktop/compare/v0.25.0...v0.26.0) (2020-08-11)
 
 

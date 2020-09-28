@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/reactivemarkets/desktop/compare/v0.26.0...v0.27.0) (2020-09-28)
+
+
+### Bug Fixes
+
+* **core:** focusing single instance windows ([57bb103](https://github.com/reactivemarkets/desktop/commit/57bb103213522991bfa5f1f210540d15861911a2))
+* **core:** pulling out default web preferences into separate file ([6264436](https://github.com/reactivemarkets/desktop/commit/6264436293704c5deb4c990c5edfaff57e633363))
+
+
+### Features
+
+* **core:** proxyBypassRules are now a string[] ([8a1d107](https://github.com/reactivemarkets/desktop/commit/8a1d107db090c37cb33061e61a48b9eac008b200))
+
+
+
+
+
 # [0.26.0](https://github.com/reactivemarkets/desktop/compare/v0.25.0...v0.26.0) (2020-08-11)
 
 
