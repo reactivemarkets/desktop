@@ -8,7 +8,7 @@ export const handler = async (options: IClearOptions) => {
 
     await app.whenReady();
 
-    const { area = CacheArea.Http, authType, partition } = options;
+    const { area = CacheArea.Http, partition } = options;
 
     const currentSession = partition !== undefined ? session.fromPartition(partition) : session.defaultSession;
     if (currentSession === undefined) {
@@ -18,7 +18,7 @@ export const handler = async (options: IClearOptions) => {
     switch (area) {
         case CacheArea.Auth:
             try {
-                await currentSession.clearAuthCache({ type: authType });
+                await currentSession.clearAuthCache();
                 logger.info("Auth password cache cleared");
                 app.exit();
             } catch (error) {
