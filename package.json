@@ -64,7 +64,7 @@
     "@typescript-eslint/parser": "^4.2.0",
     "@vuepress/plugin-active-header-links": "^1.5.4",
     "@vuepress/plugin-back-to-top": "^1.5.4",
-    "@vuepress/plugin-medium-zoom": "^1.5.4",
+    "@vuepress/plugin-medium-zoom": "^1.6.0",
     "@vuepress/plugin-nprogress": "^1.5.4",
     "@vuepress/plugin-pwa": "^1.5.4",
     "asar": "^3.0.3",
