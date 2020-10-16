@@ -35,7 +35,7 @@
     "@reactivemarkets/desktop-sdk": "file:../desktop-sdk",
     "mdi-material-ui": "^6.19.0",
     "mobx": "^5.15.7",
-    "mobx-react": "^6.3.0",
+    "mobx-react": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "typeface-manrope": "^1.0.0"
