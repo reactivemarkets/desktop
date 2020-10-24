@@ -4,7 +4,7 @@
 
 [![CircleCI](https://circleci.com/gh/reactivemarkets/desktop/tree/master.svg?style=shield)](https://circleci.com/gh/reactivemarkets/desktop/tree/master)
 [![codecov](https://codecov.io/gh/reactivemarkets/desktop/branch/master/graph/badge.svg)](https://codecov.io/gh/reactivemarkets/desktop)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=reactivemarkets/desktop)](https://dependabot.com) [![GitHub license](https://img.shields.io/badge/license-Apache-brightgreen.svg)](https://github.com/reactivemarkets/desktop/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/@reactivemarkets/desktop.svg?style=flat)](https://www.npmjs.com/package/@reactivemarkets/desktop)
+[![GitHub license](https://img.shields.io/badge/license-Apache-brightgreen.svg)](https://github.com/reactivemarkets/desktop/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/@reactivemarkets/desktop.svg?style=flat)](https://www.npmjs.com/package/@reactivemarkets/desktop)
 
 Desktop is an open source application for managing multi-window, cross-platform desktop applications; providing deployment, configuration, notifications, logging, monitoring...
 
