@@ -32,13 +32,13 @@ export class ObservableSearchStore implements ISearchStore {
         this.searchProvider
             .search(searchTerm)
             .then((results) => {
-                runInAction("ObservableSearchStore.Results", () => {
+                runInAction(() => {
                     this.results.replace(results);
                     console.log(`Replacing results with: ${results.length}`);
                 });
             })
             .catch((error) => {
-                runInAction("ObservableSearchStore.Error", () => {
+                runInAction(() => {
                     this.error = `${error}`;
                     console.error("Error searching for items", error);
                 });
