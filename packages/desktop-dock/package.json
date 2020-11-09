@@ -37,7 +37,7 @@
     "ix": "^4.0.0",
     "mdi-material-ui": "^6.20.0",
     "mobx": "^5.15.7",
-    "mobx-react": "^6.3.0",
+    "mobx-react": "^7.0.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-virtualized-auto-sizer": "^1.0.2",
