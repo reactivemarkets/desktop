@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/reactivemarkets/desktop/compare/v0.27.0...v0.28.0) (2020-11-19)
+
+
+### Bug Fixes
+
+* **desktop:** mac auto-updates require a zip file to be in the latest-mac ([9a6d269](https://github.com/reactivemarkets/desktop/commit/9a6d2696c94c53ad34f1ee8dce3c2ad5b4efa467))
+
+
+### Features
+
+* **deps:** bump electron from 10.1.5 to 11.0.1 ([ccbed03](https://github.com/reactivemarkets/desktop/commit/ccbed0370b5494013a475f15d0fcb546e1b1c08e))
+
+
+
+
+
 # [0.27.0](https://github.com/reactivemarkets/desktop/compare/v0.26.0...v0.27.0) (2020-09-28)
 
 **Note:** Version bump only for package @reactivemarkets/desktop
