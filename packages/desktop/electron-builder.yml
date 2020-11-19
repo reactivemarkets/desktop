@@ -45,6 +45,7 @@ mac:
   hardenedRuntime: true
   target:
     - target: dmg
+    - target: zip
 dmg:
   backgroundColor: #F7F7F7
   contents:
