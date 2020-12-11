@@ -32,6 +32,7 @@ linux:
     - target: AppImage
     - target: snap
     - target: deb
+    - target: zip
 deb:
   afterInstall: build/after-install.tpl
   afterRemove: build/after-remove.tpl
@@ -60,5 +61,6 @@ dmg:
 win:
   target:
     - target: nsis
+    - target: zip
 nsis:
   deleteAppDataOnUninstall: true
