@@ -23,13 +23,11 @@
     "clean": "rimraf dist pack",
     "copy": "copyfiles -f \"../../node_modules/@reactivemarkets/desktop-*/**/*.asar\" dist",
     "package:darwin": "run-s clean copy builder:darwin zip:darwin",
-    "package:linux": "run-s clean copy builder:linux zip:linux",
-    "package:win32": "run-s clean copy builder:win32 zip:win32",
+    "package:linux": "run-s clean copy builder:linux",
+    "package:win32": "run-s clean copy builder:win32",
     "postinstall": "node install.js",
     "postzip:darwin": "node blockmap.js",
-    "zip:darwin": "cross-var \"cd pack/mac && zip -r -q --symlinks ../Desktop-$npm_package_version-darwin-x64.zip * && cd ../..\"",
-    "zip:linux": "cross-var \"cd pack/linux-unpacked && zip -r -q --symlinks ../Desktop-$npm_package_version-linux-x64.zip * && cd ../..\"",
-    "zip:win32": "cross-var \"cd pack/win-unpacked && bestzip ../Desktop-$npm_package_version-win32-x64.zip * && cd ../..\""
+    "zip:darwin": "cross-var \"cd pack/mac && zip -r -q --symlinks ../Desktop-$npm_package_version-darwin-x64.zip * && cd ../..\""
   },
   "repository": {
     "type": "git",
