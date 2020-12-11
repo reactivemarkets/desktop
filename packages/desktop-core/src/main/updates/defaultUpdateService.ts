@@ -1,5 +1,6 @@
 import { IConfiguration, IUpdatePolicySpecification } from "@reactivemarkets/desktop-types";
 import { autoUpdater } from "electron-updater";
+import numeral from "numeral";
 import { logger } from "../logging";
 import { IUpdateService } from "./iUpdateService";
 
@@ -27,7 +28,15 @@ export class DefaultUpdateService implements IUpdateService {
             .on("download-progress", (progress) => {
                 const { bytesPerSecond, percent, total, transferred } = progress;
 
-                logger.info(`Download speed: ${bytesPerSecond} Downloaded ${percent} (${transferred}/${total})`);
+                const downloadSpeed = numeral(bytesPerSecond).format("0.0b");
+
+                const percentComplete = numeral(percent).format("0.0");
+
+                const transferredBytes = numeral(transferred).format("0.0b");
+
+                const totalBytes = numeral(total).format("0.0b");
+
+                logger.info(`${percentComplete}% => (${transferredBytes}/${totalBytes}) ${downloadSpeed}/s`);
             })
             .on("update-downloaded", () => {
                 logger.info("Update downloaded.");
