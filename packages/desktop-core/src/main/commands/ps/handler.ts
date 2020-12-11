@@ -1,12 +1,15 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { app } from "electron";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import * as yaml from "js-yaml";
-import moment from "moment";
 import { ReservedChannels } from "../../../common";
 import { logger } from "../../logging";
 import { IPsOptions } from "./iPsOptions";
 import { ipcExternal } from "../../ipc";
 import { Output } from "../../configuration";
+
+dayjs.extend(relativeTime);
 
 export const handler = async ({ context, quiet, output, kind, namespace }: IPsOptions) => {
     logger.verbose("Ps command ran.");
@@ -45,7 +48,7 @@ export const handler = async ({ context, quiet, output, kind, namespace }: IPsOp
                             name: c.metadata.name,
                             namespace: c.metadata.namespace,
                             kind: c.kind,
-                            created: moment(c.status?.startTime).fromNow(),
+                            created: dayjs(c.status?.startTime).fromNow(),
                         };
 
                         return prev;
