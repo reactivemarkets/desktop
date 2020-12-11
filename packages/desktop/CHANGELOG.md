@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.1](https://github.com/reactivemarkets/desktop/compare/v0.29.0...v0.29.1) (2020-12-11)
+
+
+### Bug Fixes
+
+* **desktop:** missing zip targets for windows and linux ([91bc049](https://github.com/reactivemarkets/desktop/commit/91bc0490528a47b00a77d87e3a82950fec944892))
+
+
+
+
+
 # [0.29.0](https://github.com/reactivemarkets/desktop/compare/v0.28.0...v0.29.0) (2020-12-11)
 
 
