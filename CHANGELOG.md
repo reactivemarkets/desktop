@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.29.0](https://github.com/markmcdowell/desktop/compare/v0.28.0...v0.29.0) (2020-12-11)
+
+
+### Bug Fixes
+
+* **core:** fixing linting issue ([16103fe](https://github.com/markmcdowell/desktop/commit/16103fe0c60a93be3ec2c5671e7979a96178c320))
+* **deps:** bump electron from 11.0.1 to 11.0.4 ([55f84c8](https://github.com/markmcdowell/desktop/commit/55f84c8a032b616b2a53a89d60873d7bc1276843))
+* **desktop:** correcting generated latest-mac file ([a24ed28](https://github.com/markmcdowell/desktop/commit/a24ed2856eb21e6e2eb890e05dcfde6b23e6426e))
+* **desktop:** linux and windows zips are generated correctly ([1860960](https://github.com/markmcdowell/desktop/commit/186096070eaecf16feaf2912485fd9699d2a9d7d))
+
+
+### Features
+
+* **core:** formatting update progress ([221a135](https://github.com/markmcdowell/desktop/commit/221a1355fa7815f40e50a06f7d488a763e86c247))
+* **core:** replacing moment with dayjs ([e10c7e4](https://github.com/markmcdowell/desktop/commit/e10c7e4b4e071d73bf83566d3882c38a10f7f645))
+
+
+
+
+
 # [0.28.0](https://github.com/markmcdowell/desktop/compare/v0.27.0...v0.28.0) (2020-11-19)
 
 
