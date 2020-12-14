@@ -79,7 +79,7 @@
     "csp-html-webpack-plugin": "^4.0.0",
     "css-loader": "^5.0.1",
     "dayjs": "^1.9.7",
-    "electron": "^11.0.4",
+    "electron": "^11.1.0",
     "electron-builder": "^22.9.1",
     "electron-fetch": "^1.7.2",
     "electron-notarize": "^1.0.0",
