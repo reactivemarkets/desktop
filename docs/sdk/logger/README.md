@@ -6,7 +6,7 @@
 
 Log at debug level.
 
-```js
+```ts
 import { logger } from "@reactivemarkets/desktop-sdk";
 
 logger.debug("Logs to a structured logger", {
@@ -20,7 +20,7 @@ logger.debug("Logs to a structured logger", {
 
 Log at error level.
 
-```js
+```ts
 import { logger } from "@reactivemarkets/desktop-sdk";
 
 logger.error("Logs to a structured logger", {
@@ -34,7 +34,7 @@ logger.error("Logs to a structured logger", {
 
 Log at info level.
 
-```js
+```ts
 import { logger } from "@reactivemarkets/desktop-sdk";
 
 logger.info("Logs to a structured logger", {
@@ -48,7 +48,7 @@ logger.info("Logs to a structured logger", {
 
 Log at verbose level.
 
-```js
+```ts
 import { logger } from "@reactivemarkets/desktop-sdk";
 
 logger.verbose("Logs to a structured logger", {
@@ -62,7 +62,7 @@ logger.verbose("Logs to a structured logger", {
 
 Log at warn level.
 
-```js
+```ts
 import { logger } from "@reactivemarkets/desktop-sdk";
 
 logger.warn("Logs to a structured logger", {

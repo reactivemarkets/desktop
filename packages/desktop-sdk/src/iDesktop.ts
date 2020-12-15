@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IDesktopVersions } from "./iDesktopVersions";
+import { SystemEvents } from "./systemEvents";
 
 export interface IDesktop {
     /**
@@ -27,6 +28,20 @@ export interface IDesktop {
      * Versions of chrome, node, v8 etc...
      */
     getVersions(): Promise<IDesktopVersions>;
+
+    /**
+     * Remove listener from the @see SystemEvents
+     * @param event `SystemEvents`
+     * @param listener
+     */
+    off(event: SystemEvents, listener: () => void): void;
+
+    /**
+     * Listen to @see SystemEvents
+     * @param event `SystemEvents`
+     * @param listener
+     */
+    on(event: SystemEvents, listener: () => void): void;
 
     /**
      * Quits the application giving all windows time to close.

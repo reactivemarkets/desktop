@@ -6,7 +6,7 @@
 
 List all registered applications in the given namespace.
 
-```js
+```ts
 import { registry } from "@reactivemarkets/desktop-sdk";
 
 const applications = await registry.listApplications();
@@ -18,7 +18,7 @@ const applications = await registry.listApplications();
 
 Register a new `configuration` object.
 
-```js
+```ts
 import { registry } from "@reactivemarkets/desktop-sdk";
 
 await registry.register({
@@ -39,7 +39,7 @@ await registry.register({
 
 Unregister a previously registered configuation object. This will not stop anything currently running.
 
-```js
+```ts
 import { registry } from "@reactivemarkets/desktop-sdk";
 
 const applications = await registry.listApplications();

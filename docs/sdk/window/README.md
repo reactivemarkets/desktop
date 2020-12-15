@@ -6,7 +6,7 @@
 
 Removes focus from the window.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().blur();
@@ -18,7 +18,7 @@ await window.current().blur();
 
 Moves window to the center of the screen.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().center();
@@ -30,7 +30,7 @@ await window.current().center();
 
 Try to close the window. This has the same effect as a user manually clicking the close button of the window. The web page may cancel the close though.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().close();
@@ -42,7 +42,7 @@ await window.current().close();
 
 Starts or stops flashing the window to attract user's attention.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().flashFrame(true);
@@ -54,7 +54,7 @@ await window.current().flashFrame(true);
 
 Focuses on the window.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().focus();
@@ -66,7 +66,7 @@ await window.current().focus();
 
 Retrieves the bounds of the window.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const { x, y, width, height } = await window.current().getBounds();
@@ -78,7 +78,7 @@ const { x, y, width, height } = await window.current().getBounds();
 
 Retrieves the bounds of the window.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const [width, height] = await window.current().getMinimumSize();
@@ -90,7 +90,7 @@ const [width, height] = await window.current().getMinimumSize();
 
 Hides the window.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().hide();
@@ -102,7 +102,7 @@ await window.current().hide();
 
 Whether the window is always on top of other windows.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const onTop = await window.current().isAlwaysOnTop();
@@ -114,7 +114,7 @@ const onTop = await window.current().isAlwaysOnTop();
 
 Whether the window can be manually closed by user.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const closeable = await window.current().isCloseable();
@@ -126,7 +126,7 @@ const closeable = await window.current().isCloseable();
 
 Whether the window is enabled.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const enabled = await window.current().isEnabled();
@@ -138,7 +138,7 @@ const enabled = await window.current().isEnabled();
 
 Whether the window is focused.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const focused = await window.current().isFocused();
@@ -150,7 +150,7 @@ const focused = await window.current().isFocused();
 
 Whether the window is in fullscreen mode.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const fullscreen = await window.current().isFullscreen();
@@ -162,7 +162,7 @@ const fullscreen = await window.current().isFullscreen();
 
 Whether the maximize/zoom window button toggles fullscreen mode or maximizes the window.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const fullscreenable = await window.current().isFullscreenable();
@@ -174,7 +174,7 @@ const fullscreenable = await window.current().isFullscreenable();
 
 Whether the window is in kiosk mode.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const kiosk = await window.current().isKiosk();
@@ -186,7 +186,7 @@ const kiosk = await window.current().isKiosk();
 
 Whether the window can be manually maximized by user.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const maximizable = await window.current().isMaximizable();
@@ -198,7 +198,7 @@ const maximizable = await window.current().isMaximizable();
 
 Whether the window is maximized.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const maximized = await window.current().isMaximized();
@@ -210,7 +210,7 @@ const maximized = await window.current().isMaximized();
 
 Whether menu bar automatically hides itself.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const autoHide = await window.current().isMenuBarAutoHide();
@@ -222,7 +222,7 @@ const autoHide = await window.current().isMenuBarAutoHide();
 
 Whether the menu bar is visible.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const visible = await window.current().isMenuBarVisible();
@@ -234,7 +234,7 @@ const visible = await window.current().isMenuBarVisible();
 
 Whether the window can be manually minimized by the user.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const minimizable = await window.current().isMinimizable();
@@ -246,7 +246,7 @@ const minimizable = await window.current().isMinimizable();
 
 Whether the window is minimized.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const minimized = await window.current().isMinimized();
@@ -258,7 +258,7 @@ const minimized = await window.current().isMinimized();
 
 Whether current window is a modal window.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const modal = await window.current().isModal();
@@ -270,7 +270,7 @@ const modal = await window.current().isModal();
 
 Whether the window can be moved by user.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const movable = await window.current().isMovable();
@@ -282,7 +282,7 @@ const movable = await window.current().isMovable();
 
 Whether the window can be manually resized by the user.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const resizable = await window.current().isResizable();
@@ -294,7 +294,7 @@ const resizable = await window.current().isResizable();
 
 Whether the window is visible to the user.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 const resizable = await window.current().isVisible();
@@ -306,7 +306,7 @@ const resizable = await window.current().isVisible();
 
 Maximizes the window. This will also show (but not focus) the window if it isn't being displayed already.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().maximize();
@@ -318,7 +318,7 @@ await window.current().maximize();
 
 Minimizes the window.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().minimize();
@@ -330,10 +330,42 @@ await window.current().minimize();
 
 Moves window to top(z-order) regardless of focus.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().moveTop();
+```
+
+## off <Badge text="M" type="warning" vertical="middle" />
+
+### `off(event: WindowEvents, listener: () => void): void`
+
+Removes a listener to [Window Events](./#window-events) from the window.
+
+```ts
+import { window } from "@reactivemarkets/desktop-sdk";
+
+const listener = () => {
+    // trigger an action
+};
+
+window.current().off("blur", listener);
+```
+
+## on <Badge text="M" type="warning" vertical="middle" />
+
+### `on(event: WindowEvents, listener: () => void): void`
+
+Adds a listener to [Window Events](./#window-events) from the window.
+
+```ts
+import { window } from "@reactivemarkets/desktop-sdk";
+
+const listener = () => {
+    // trigger an action
+};
+
+window.current().on("blur", listener);
 ```
 
 ## reload <Badge text="M" type="warning" vertical="middle" />
@@ -342,7 +374,7 @@ await window.current().moveTop();
 
 Reloads the current web page.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().reload();
@@ -354,7 +386,7 @@ await window.current().reload();
 
 Restores the window from minimized state to its previous state.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().restore();
@@ -366,7 +398,7 @@ await window.current().restore();
 
 Sets whether the window should show always on top of other windows. After setting this, the window is still a normal window, not a toolbox window which can not be focused on.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().setAlwaysOnTop(true);
@@ -378,7 +410,7 @@ await window.current().setAlwaysOnTop(true);
 
 Resizes and moves the window to the supplied bounds. Any properties that are not supplied will default to their current values.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().setBounds({
@@ -392,7 +424,7 @@ await window.current().setBounds({
 
 Sets whether the window should be in fullscreen mode.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().setFullScreen(true);
@@ -404,7 +436,7 @@ await window.current().setFullScreen(true);
 
 Enters or leaves kiosk mode.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().setKiosk(true);
@@ -416,7 +448,7 @@ await window.current().setKiosk(true);
 
 Shows and gives focus to the window.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().show();
@@ -428,8 +460,33 @@ await window.current().show();
 
 Unmaximizes the window.
 
-```js
+```ts
 import { window } from "@reactivemarkets/desktop-sdk";
 
 await window.current().unmaximize();
 ```
+
+## Window Events
+
+| Event                  | Description                                                                     |
+| ---------------------- | ------------------------------------------------------------------------------- |
+| always-on-top-changed  | Emitted when the window is set or unset to show always on top of other windows. |
+| blur                   | Emitted when the window loses focus. |
+| close                  | Emitted when the window is going to be closed. |
+| enter-full-screen      | Emitted when the window enters a full-screen state. |
+| enter-html-full-screen | Emitted when the window enters a full-screen state triggered by HTML API. |
+| focus                  | Emitted when the window gains focus. |
+| hide                   | Emitted when the window is hidden. |
+| leave-full-screen      | Emitted when the window leaves a full-screen state. |
+| leave-html-full-screen | Emitted when the window leaves a full-screen state triggered by HTML API. |
+| maximize               | Emitted when window is maximized. |
+| minimize               | Emitted when the window is minimized. |
+| move                   | Emitted when the window is being moved to a new position. |
+| moved                  | Emitted once when the window is moved to a new position. |
+| page-title-updated     | Emitted when the document changed its title. |
+| resize                 | Emitted after the window has been resized. |
+| restore                | Emitted when the window is restored from a minimized state. |
+| show                   | Emitted when the window is shown. |
+| unmaximize             | Emitted when the window exits from a maximized state. |
+| will-move              | Emitted before the window is moved. |
+| will-resize            | Emitted before the window is resized. |
