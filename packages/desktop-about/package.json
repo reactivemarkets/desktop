@@ -1,6 +1,6 @@
 {
   "name": "@reactivemarkets/desktop-about",
-  "version": "0.29.1",
+  "version": "0.30.0",
   "description": "The about window for desktop.",
   "publishConfig": {
     "access": "public"
