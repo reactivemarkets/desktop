@@ -29,6 +29,7 @@ metadata:
 spec:
   allowedDomains:
     - ^https:\/\/.+$
+    - ^(?!https?:\/\/).*\.asar$
   blockedDomains:
     - ^.+\.(tk|gq|ml|ga|cf)$
     - ^.+\.(xxx|top|xyz|zip|pro|men|mom|cam|kim|ren|vip|bin|win|gdn|xin)$
