@@ -1,10 +1,10 @@
-# Introduction
+# Configuration
 
 The configuration takes large design elements from [kubernetes](https://kubernetes.io/docs/reference/). If you're familar with kubernetes you'll recognise some similarities with the structure.
 
 Everything is defined via configuration files, it is recommended to define your application in YAML. This is easier to read, maintain and allows you to group objects into a single file.
 
-## Getting Started
+## CLI
 
 The [command line interface](/cli) allows you to create a basic configuration file in the current working directory:
 

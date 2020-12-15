@@ -1,6 +1,6 @@
 # Desktop
 
-> **NOTE** pre v1 this is considered alpha/beta quality
+> **NOTE** pre v1 this is considered beta quality
 
 [![CircleCI](https://circleci.com/gh/reactivemarkets/desktop/tree/master.svg?style=shield)](https://circleci.com/gh/reactivemarkets/desktop/tree/master)
 [![codecov](https://codecov.io/gh/reactivemarkets/desktop/branch/master/graph/badge.svg)](https://codecov.io/gh/reactivemarkets/desktop)
