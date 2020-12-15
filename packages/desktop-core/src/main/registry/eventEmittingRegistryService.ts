@@ -16,6 +16,10 @@ export class EventEmittingRegistryService extends TypedEmitter<IRegistryServiceE
         this.registryService = registryService;
     }
 
+    public includes(configuration: IConfiguration) {
+        return this.registryService.includes(configuration);
+    }
+
     public getRegistry() {
         return this.registryService.getRegistry();
     }

@@ -1,19 +1,28 @@
-import { WellKnownNamespace, IConfiguration } from "@reactivemarkets/desktop-types";
+import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { IRegistryService } from "./iRegistryService";
 
 export class ConfigurationRegistryService implements IRegistryService {
+    private readonly keyFunc: (configuration: IConfiguration) => string;
     private readonly registry = new Map<string, IConfiguration>();
 
+    public constructor(keyFunc: (configuration: IConfiguration) => string) {
+        this.keyFunc = keyFunc;
+    }
+
+    public includes(configuration: IConfiguration) {
+        const key = this.keyFunc(configuration);
+
+        return this.registry.has(key);
+    }
+
     public getRegistry() {
-        return Promise.resolve(Array.from(this.registry.values()));
+        const registry = Array.from(this.registry.values());
+
+        return Promise.resolve(registry);
     }
 
     public register(configuration: IConfiguration) {
-        const { kind } = configuration;
-
-        const { namespace = WellKnownNamespace.default, name } = configuration.metadata;
-
-        const key = `${kind}/${namespace}/${name}`;
+        const key = this.keyFunc(configuration);
 
         this.registry.set(key, configuration);
 
@@ -21,11 +30,7 @@ export class ConfigurationRegistryService implements IRegistryService {
     }
 
     public unregister(configuration: IConfiguration) {
-        const { kind } = configuration;
-
-        const { namespace = WellKnownNamespace.default, name } = configuration.metadata;
-
-        const key = `${kind}/${namespace}/${name}`;
+        const key = this.keyFunc(configuration);
 
         if (this.registry.has(key)) {
             this.registry.delete(key);
@@ -33,7 +38,9 @@ export class ConfigurationRegistryService implements IRegistryService {
             return Promise.resolve();
         }
 
-        const message = `A configuration object of kind: ${kind} in namespace: ${namespace} called: ${name} was not found.`;
+        const { name, namespace } = configuration.metadata;
+
+        const message = `A configuration object of kind: ${configuration.kind} ${namespace}/${name} was not found.`;
 
         const error = new Error(message);
 
