@@ -6,7 +6,7 @@
 
 Launch the given `configuration`.
 
-```js
+```ts
 import { launcher } from "@reactivemarkets/desktop-sdk";
 
 const configuration = await launcher.launch({

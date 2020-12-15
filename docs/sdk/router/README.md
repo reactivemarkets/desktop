@@ -6,7 +6,7 @@
 
 Publish a message on a channel.
 
-```js
+```ts
 import { router } from "@reactivemarkets/desktop-sdk";
 
 router.publish("my_channel", {
@@ -20,7 +20,7 @@ router.publish("my_channel", {
 
 Subscribe to a channel.
 
-```js
+```ts
 import { router } from "@reactivemarkets/desktop-sdk";
 
 router.subscribe("my_channel", (payload) => {
@@ -34,7 +34,7 @@ router.subscribe("my_channel", (payload) => {
 
 Unsubscribe from a channel.
 
-```js
+```ts
 import { router } from "@reactivemarkets/desktop-sdk";
 
 const listener = (data: string) => {

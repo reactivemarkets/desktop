@@ -6,7 +6,7 @@
 
 Whether this application has registered the `accelerator`.
 
-```js
+```ts
 import { globalShortcut } from "@reactivemarkets/desktop-sdk";
 
 const isRegistered = await globalShortcut.isRegistered("CommandOrControl+X");
@@ -20,7 +20,7 @@ Registers a global shortcut of `accelerator`.
 
 If the accelerator is already registered by another application outside of the desktop, the listener will sliently fail. This is the behavior of operating systems.
 
-```js
+```ts
 import { globalShortcut } from "@reactivemarkets/desktop-sdk";
 
 await globalShortcut.register("CommandOrControl+X", () => {
@@ -34,7 +34,7 @@ await globalShortcut.register("CommandOrControl+X", () => {
 
 Unregisters the global shortcut of `accelerator`.
 
-```js
+```ts
 import { globalShortcut } from "@reactivemarkets/desktop-sdk";
 
 const listener = () => console.info("CommandOrControl+X invoked");
@@ -49,7 +49,7 @@ await globalShortcut.unregister("CommandOrControl+X", listener);
 
 Unregisters all global shortcuts for this application.
 
-```js
+```ts
 import { globalShortcut } from "@reactivemarkets/desktop-sdk";
 
 await globalShortcut.unregisterAll();
