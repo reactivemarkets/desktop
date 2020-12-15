@@ -2,7 +2,7 @@ import { Output } from "../../configuration";
 
 export { handler } from "./handler";
 
-export const command = "logs";
+export const command = "logs [uid]";
 
 export const describe = "Fetch the logs of an instance";
 

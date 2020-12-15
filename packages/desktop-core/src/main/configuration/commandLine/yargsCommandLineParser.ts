@@ -31,7 +31,7 @@ export const parseCommandLine = (commandLine: string[], exitProcess = true) => {
         .config()
         .option("context", {
             alias: "c",
-            describe: "Name of the context to connect to.",
+            describe: "Name of the context to connect to",
             string: true,
         })
         .command(clearModule)
