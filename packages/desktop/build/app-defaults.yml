@@ -21,6 +21,42 @@ metadata:
 spec:
   checkForUpdates: true
 ---
+kind: applicationSecurityPolicy
+metadata:
+  name: Application Security Policy
+  description: Security Policy for desktop.
+  namespace: desktop
+spec:
+  allowedDomains:
+    - ^https:\/\/.+$
+  blockedDomains:
+    - ^.+\.(tk|gq|ml|ga|cf)$
+    - ^.+\.(xxx|top|xyz|zip|pro|men|mom|cam|kim|ren|vip|bin|win|gdn|xin)$
+    - ^.+\.(club|tech|link|rest|fail|work|surf|date|wang|loan)$
+    - ^.+\.(click|jetzt|party|trade)$
+    - ^.+\.(online|viajes|racing|stream|review)$
+    - ^.+\.(country|science)$
+    - ^.+\.(download)$
+    - ^.+\.(accountant|accountants)$
+---
+kind: externalSecurityPolicy
+metadata:
+  name: External Security Policy
+  description: Security Policy for desktop.
+  namespace: desktop
+spec:
+  blockedExecutables:
+    - ^.+$
+---
+kind: serviceSecurityPolicy
+metadata:
+  name: Service Security Policy
+  description: Security Policy for desktop.
+  namespace: desktop
+spec:
+  allowedPaths:
+    - ^.+$
+---
 kind: application
 metadata:
   name: About Desktop
