@@ -13,7 +13,11 @@ export class PriorityConfigurationRegistryService implements IRegistryService {
         this.registryService = registryService;
     }
 
-    public async getRegistry(): Promise<IConfiguration[]> {
+    public includes(configuration: IConfiguration) {
+        return this.registryService.includes(configuration);
+    }
+
+    public async getRegistry() {
         const registry = await this.registryService.getRegistry();
 
         const sortedRegistry = from(registry).pipe(

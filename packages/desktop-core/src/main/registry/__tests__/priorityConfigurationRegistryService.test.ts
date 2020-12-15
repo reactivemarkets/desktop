@@ -1,6 +1,5 @@
 import { IConfiguration, WellKnownConfigurationKind } from "@reactivemarkets/desktop-types";
 import { mock } from "jest-mock-extended";
-
 import { IRegistryService } from "../iRegistryService";
 import { PriorityConfigurationRegistryService } from "../priorityConfigurationRegistryService";
 
@@ -32,6 +31,21 @@ describe("getRegistry", () => {
         const registry = service.getRegistry();
 
         return expect(registry).resolves.toEqual([session, application]);
+    });
+});
+
+describe("includes", () => {
+    test("should delegate to underlying registry", () => {
+        const registry = mock<IRegistryService>();
+        registry.includes.mockReturnValueOnce(false);
+
+        const service = new PriorityConfigurationRegistryService(registry);
+
+        const configuration = mock<IConfiguration>();
+
+        service.includes(configuration);
+
+        expect(registry.includes.mock.calls.length).toBe(1);
     });
 });
 
