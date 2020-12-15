@@ -6,6 +6,7 @@ import { launcherService } from "../../launcher";
 import { logger } from "../../logging";
 import { registerApplicationMenu } from "../../menu";
 import { registerDefaults, registerUrls, registerConfigFiles, registerProtocol } from "./register";
+import { IStartOptions } from "./iStartOptions";
 
 export const handler = async (options: IStartOptions) => {
     const { context } = options;

@@ -10,7 +10,7 @@ import { flattenObject } from "./flatten";
 import { ILauncherService } from "./iLauncherService";
 import { normalizePath } from "./normalize";
 
-export class NodeServiceLauncherService implements ILauncherService {
+export class ServiceLauncherService implements ILauncherService {
     private readonly logger: ILogger;
     private readonly processFork: IProcessFork;
 
