@@ -1,9 +1,8 @@
 import { WellKnownNamespace } from "@reactivemarkets/desktop-types";
 import { nanoid } from "nanoid";
+import { IStorageService } from "../storage";
 import { IWorkspaceService } from "./iWorkspaceService";
 import { IWorkspace } from "./iWorkspace";
-
-import { IStorageService } from "../storage";
 
 export class DefaultWorkspaceService implements IWorkspaceService {
     private readonly workspaces = new Map<string, IWorkspace>();
