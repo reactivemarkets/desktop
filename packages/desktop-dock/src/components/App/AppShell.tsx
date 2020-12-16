@@ -1,6 +1,6 @@
 import { createStyles, Box, Grid, Theme, withStyles, WithStyles } from "@material-ui/core";
 import * as React from "react";
-import { Search, SearchResults } from "../Search";
+import { Search, SearchHelp, SearchResults } from "../Search";
 import { DragHandle, PowerButton } from "../System";
 
 const styles = (theme: Theme) =>
@@ -24,6 +24,7 @@ class AppShell extends React.PureComponent<WithStyles<typeof styles>> {
                     </Grid>
                 </Grid>
                 <SearchResults />
+                <SearchHelp />
             </Box>
         );
     }
