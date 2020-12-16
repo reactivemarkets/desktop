@@ -15,7 +15,7 @@ const styles = (theme: Theme) =>
         root: {
             borderTop: `1px solid ${theme.palette.divider}`,
             margin: 0,
-            padding: theme.spacing(0, 1),
+            padding: 0,
         },
         text: {
             marginLeft: 4,
