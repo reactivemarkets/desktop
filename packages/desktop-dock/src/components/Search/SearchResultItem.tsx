@@ -1,6 +1,7 @@
 import {
     createStyles,
     ListItem,
+    ListItemIcon,
     ListItemText,
     ListItemSecondaryAction,
     withStyles,
@@ -12,6 +13,7 @@ import * as React from "react";
 import { ListChildComponentProps } from "react-window";
 import { IApplicationsStore, ISearchResult, ISearchStore } from "../../stores";
 import { ConfirmButton } from "../System";
+import SearchResultIcon from "./SearchResultIcon";
 
 const styles = () =>
     createStyles({
@@ -38,7 +40,7 @@ class SearchResultItem extends React.Component<ISearchResultItemProps> {
 
         const { item } = data[index] as ISearchResult;
 
-        const { name, description } = item;
+        const { name, icon, description } = item;
 
         return (
             <ListItem
@@ -49,7 +51,12 @@ class SearchResultItem extends React.Component<ISearchResultItemProps> {
                 dense
                 onClick={this.onClick}
             >
-                <ListItemText primary={name} secondary={description} />
+                {icon && (
+                    <ListItemIcon>
+                        <SearchResultIcon src={icon} />
+                    </ListItemIcon>
+                )}
+                <ListItemText inset={icon === undefined} primary={name} secondary={description} />
                 <ListItemSecondaryAction className={classes.clearIndicator}>
                     <ConfirmButton edge="end" size="small" title="Remove Application" onClick={this.remove}>
                         <Close fontSize="small" />
