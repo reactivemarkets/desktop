@@ -5,6 +5,14 @@ export const configurationKindComparer = (a: string, b: string): number => {
         return 0;
     }
 
+    if (a === WellKnownConfigurationKind.Storage) {
+        return -1;
+    }
+
+    if (b === WellKnownConfigurationKind.Storage) {
+        return 1;
+    }
+
     if (a === WellKnownConfigurationKind.ApplicationSecurityPolicy) {
         return -1;
     }
