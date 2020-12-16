@@ -64,6 +64,7 @@ export class ObservableApplicationsStore implements IApplicationsStore {
 
         const { annotations, description, name, namespace } = metadata;
         let category = namespace ?? WellKnownNamespace.default;
+        let icon = undefined;
         if (annotations !== undefined) {
             const dockAnnotations = annotations["@reactivemarkets/desktop-dock"] as IDockAnnotations | undefined;
             if (dockAnnotations?.excludeFromSearch) {
@@ -71,6 +72,9 @@ export class ObservableApplicationsStore implements IApplicationsStore {
             }
             if (dockAnnotations?.category !== undefined) {
                 category = dockAnnotations.category;
+            }
+            if (dockAnnotations?.icon !== undefined) {
+                icon = dockAnnotations?.icon;
             }
         }
 
@@ -82,6 +86,7 @@ export class ObservableApplicationsStore implements IApplicationsStore {
             category,
             configuration,
             description,
+            icon,
             key,
             name,
             launch: () => {
