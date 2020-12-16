@@ -12,12 +12,12 @@ export class CrashedWindowFactory implements IWindowFactory {
     public async create(configuration: IConfiguration) {
         const window = await this.windowFactory.create(configuration);
 
-        window.webContents.on("crashed", async (_, killed) => {
+        window.webContents.on("render-process-gone", async (_, details) => {
             const options = {
                 type: "info",
                 title: "Window Crashed",
                 message: `${configuration.metadata.name} has crashed.`,
-                detail: killed ? "The process was killed." : undefined,
+                detail: details.reason,
                 buttons: ["Reload", "Close"],
             };
 
