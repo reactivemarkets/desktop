@@ -4,6 +4,12 @@ import { configurationKindComparer } from "../configurationKindComparer";
 describe("compare", () => {
     test.each`
         a                                                       | b                                                       | expected
+        ${WellKnownConfigurationKind.Storage}                   | ${WellKnownConfigurationKind.Application}               | ${-1}
+        ${WellKnownConfigurationKind.Storage}                   | ${WellKnownConfigurationKind.Service}                   | ${-1}
+        ${WellKnownConfigurationKind.Storage}                   | ${WellKnownConfigurationKind.Session}                   | ${-1}
+        ${WellKnownConfigurationKind.Application}               | ${WellKnownConfigurationKind.Storage}                   | ${1}
+        ${WellKnownConfigurationKind.Service}                   | ${WellKnownConfigurationKind.Storage}                   | ${1}
+        ${WellKnownConfigurationKind.Session}                   | ${WellKnownConfigurationKind.Storage}                   | ${1}
         ${WellKnownConfigurationKind.ApplicationSecurityPolicy} | ${WellKnownConfigurationKind.Application}               | ${-1}
         ${WellKnownConfigurationKind.Application}               | ${WellKnownConfigurationKind.ApplicationSecurityPolicy} | ${1}
         ${WellKnownConfigurationKind.ServiceSecurityPolicy}     | ${WellKnownConfigurationKind.Service}                   | ${-1}
