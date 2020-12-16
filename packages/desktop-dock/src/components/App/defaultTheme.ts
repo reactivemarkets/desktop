@@ -31,6 +31,10 @@ export const defaultTheme: ThemeOptions = {
                 "::-webkit-scrollbar-track": {
                     boxShadow: "inset 1px 1px 2px rgba(0, 0, 0, 0.1)",
                 },
+                "::selection": {
+                    background: "#FEBF00",
+                    color: "#000000",
+                },
                 "#app": {
                     display: "flex",
                     flex: 1,
@@ -40,6 +44,9 @@ export const defaultTheme: ThemeOptions = {
                     height: "100vh",
                     overflow: "hidden",
                     userSelect: "none",
+                },
+                input: {
+                    caretColor: "#FEBF00",
                 },
             },
         },
