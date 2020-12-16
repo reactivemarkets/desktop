@@ -28,23 +28,23 @@ export class ObservableApplicationsStore implements IApplicationsStore {
         return Array.from(sorted);
     }
 
-    public load() {
-        if (!desktop.isHostedInDesktop) {
-            return;
+    public async load() {
+        try {
+            if (!desktop.isHostedInDesktop) {
+                return;
+            }
+
+            registry.on("registered", this.addApplication);
+            registry.on("unregistered", this.removeApplication);
+
+            const applications = await registry.listApplications();
+
+            applications.forEach(this.addApplication);
+
+            console.log(`Registered ${applications.length} applications`);
+        } catch (error) {
+            console.error(`Failed to get list of applications: ${error}`);
         }
-
-        registry.on("registered", this.addApplication);
-        registry.on("unregistered", this.removeApplication);
-        registry
-            .listApplications()
-            .then((applications) => {
-                applications.forEach(this.addApplication);
-
-                console.log(`Registered ${applications.length} applications`);
-            })
-            .catch((error) => {
-                console.error(`Failed to get list of applications: ${error}`);
-            });
     }
 
     public async remove({ configuration }: IApplication) {
