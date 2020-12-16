@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/reactivemarkets/desktop/compare/v0.30.0...v0.31.0) (2020-12-16)
+
+
+### Features
+
+* **core:** adding security policies to launcher ([0a1d125](https://github.com/reactivemarkets/desktop/commit/0a1d125dc81e93e03124656b82b0af5a51fd1d5b))
+* **desktop:** adding security polices to app defaults ([1c29d23](https://github.com/reactivemarkets/desktop/commit/1c29d23e16f791c7273004dbb6ac826aa527d024))
+
+
+
+
+
 # [0.30.0](https://github.com/reactivemarkets/desktop/compare/v0.29.1...v0.30.0) (2020-12-15)
 
 

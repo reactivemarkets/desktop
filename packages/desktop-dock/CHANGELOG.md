@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/reactivemarkets/desktop/compare/v0.30.0...v0.31.0) (2020-12-16)
+
+
+### Features
+
+* **dock:** adding search help bar to dock ([cf97252](https://github.com/reactivemarkets/desktop/commit/cf97252a967201b9763653c589a87905dc2526c8))
+* **dock:** adding support for icons ([acf93a7](https://github.com/reactivemarkets/desktop/commit/acf93a7a4b2408561ea64a236c063be6485250c6))
+* **dock:** changing selection color of search ([ad1a319](https://github.com/reactivemarkets/desktop/commit/ad1a319c67b0d12747a11baa16b605dd0d13a94d))
+
+
+
+
+
 # [0.30.0](https://github.com/reactivemarkets/desktop/compare/v0.29.1...v0.30.0) (2020-12-15)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-dock

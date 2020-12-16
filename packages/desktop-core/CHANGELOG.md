@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/reactivemarkets/desktop/compare/v0.30.0...v0.31.0) (2020-12-16)
+
+
+### Bug Fixes
+
+* **core:** correcting logs args ([8b158dc](https://github.com/reactivemarkets/desktop/commit/8b158dc4f3c1bbec645feda8b201a6c08f1bb66e))
+* **core:** crashed event has been replaced with render-process-gone ([fc4fe14](https://github.com/reactivemarkets/desktop/commit/fc4fe1457b444e428a7a232ee794f1a8c615505c))
+* **core:** fixing updating window status ([ead4373](https://github.com/reactivemarkets/desktop/commit/ead4373565dabccc54a36c35b7cadff6fce619e8))
+* **core:** storage is sorted first in registry ([5d86470](https://github.com/reactivemarkets/desktop/commit/5d86470905b16c026d62347ef19903bdb7bad84f))
+
+
+### Features
+
+* **core:** adding security policies to launcher ([0a1d125](https://github.com/reactivemarkets/desktop/commit/0a1d125dc81e93e03124656b82b0af5a51fd1d5b))
+* **core:** security policies can only be set once ([1e5d3ac](https://github.com/reactivemarkets/desktop/commit/1e5d3aca6289735da4916404589d4d09e7749d76))
+
+
+
+
+
 # [0.30.0](https://github.com/reactivemarkets/desktop/compare/v0.29.1...v0.30.0) (2020-12-15)
 
 
