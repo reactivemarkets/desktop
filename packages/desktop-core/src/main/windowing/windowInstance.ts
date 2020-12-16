@@ -41,7 +41,7 @@ export class WindowInstance extends TypedEmitter<IWindowInstanceEvents> {
             );
         });
 
-        const boundsChanged = merge(boundsEvents)
+        const boundsChanged = merge(...boundsEvents)
             .pipe(debounceTime(this.#delay))
             .subscribe({
                 next: this.onBoundsChange,
@@ -58,7 +58,7 @@ export class WindowInstance extends TypedEmitter<IWindowInstanceEvents> {
             },
         );
 
-        const stateChanged = merge(stateEvents)
+        const stateChanged = merge(...stateEvents)
             .pipe(debounceTime(this.#delay))
             .subscribe({
                 next: this.onStateChange,
