@@ -1,15 +1,13 @@
-import { Grid } from "@material-ui/core";
 import * as React from "react";
-import { SearchButton } from "./SearchButton";
-import { SearchInput } from "./SearchInput";
+import { SearchAutocompleteContainer } from "./SearchAutocompleteContainer";
 
-export class Search extends React.PureComponent {
+interface ISearchProps {
+    readonly endAdornment?: React.ReactNode;
+    readonly startAdornment?: React.ReactNode;
+}
+
+export class Search extends React.PureComponent<ISearchProps> {
     public render() {
-        return (
-            <Grid container wrap="nowrap" alignItems="center">
-                <SearchButton />
-                <SearchInput />
-            </Grid>
-        );
+        return <SearchAutocompleteContainer {...this.props} />;
     }
 }

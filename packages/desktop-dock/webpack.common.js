@@ -106,7 +106,7 @@ const config = {
                 "default-src": "'none'",
                 "base-uri": "'none'",
                 "connect-src": "'self'",
-                "img-src": "'self'",
+                "img-src": ["'self'", "https://*"],
                 "manifest-src": "'self'",
                 "font-src": ["'self'", "data:"],
                 "form-action": "'none'",

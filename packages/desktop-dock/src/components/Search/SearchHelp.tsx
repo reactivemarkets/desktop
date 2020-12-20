@@ -1,5 +1,5 @@
 import { createStyles, Grid, Theme, Typography, withStyles, WithStyles } from "@material-ui/core";
-import { ArrowUp, ArrowDown, KeyboardEsc, KeyboardReturn } from "mdi-material-ui";
+import { ArrowUp, ArrowDown, ArrowLeft, ArrowRight, KeyboardEsc, KeyboardReturn } from "mdi-material-ui";
 import * as React from "react";
 import Key from "./Key";
 
@@ -15,7 +15,7 @@ const styles = (theme: Theme) =>
         root: {
             borderTop: `1px solid ${theme.palette.divider}`,
             margin: 0,
-            padding: 0,
+            padding: "0 0 0 8px",
         },
         text: {
             marginLeft: 4,
@@ -27,7 +27,7 @@ class SearchHelp extends React.PureComponent<WithStyles<typeof styles>> {
         const { classes } = this.props;
 
         return (
-            <Grid className={classes.root} container wrap="nowrap" spacing={2}>
+            <Grid className={classes.root} container spacing={2}>
                 <Grid item className={classes.item}>
                     <Key>
                         <ArrowUp className={classes.icon} />
@@ -35,8 +35,19 @@ class SearchHelp extends React.PureComponent<WithStyles<typeof styles>> {
                     <Key>
                         <ArrowDown className={classes.icon} />
                     </Key>
-                    <Typography className={classes.text} variant="caption" color="textSecondary">
+                    <Typography className={classes.text} variant="caption" color="textSecondary" noWrap>
                         Select results
+                    </Typography>
+                </Grid>
+                <Grid item className={classes.item}>
+                    <Key>
+                        <ArrowLeft className={classes.icon} />
+                    </Key>
+                    <Key>
+                        <ArrowRight className={classes.icon} />
+                    </Key>
+                    <Typography className={classes.text} variant="caption" color="textSecondary" noWrap>
+                        Switch category
                     </Typography>
                 </Grid>
                 <Grid item className={classes.item}>

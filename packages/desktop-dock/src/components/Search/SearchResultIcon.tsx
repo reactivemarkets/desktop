@@ -16,8 +16,8 @@ const styles = () =>
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            width: 16,
-            height: 16,
+            width: 24,
+            height: 24,
         },
     });
 
@@ -35,7 +35,7 @@ class SearchResultIcon extends React.PureComponent<SearchResultIconProps> {
 
         return (
             <div className={classes.root}>
-                <img src={src} />
+                <img className={classes.img} loading="lazy" src={src} alt="icon" />
             </div>
         );
     }

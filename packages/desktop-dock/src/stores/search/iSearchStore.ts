@@ -1,13 +1,6 @@
-import { ISearchResult } from "./iSearchResult";
-
 export interface ISearchStore {
-    readonly error?: string;
-
-    readonly results: readonly ISearchResult[];
-
-    readonly searchTerm: string;
+    readonly term?: string;
 
     clear(): void;
-
-    search(searchTerm?: string): void;
+    update(term: string): void;
 }
