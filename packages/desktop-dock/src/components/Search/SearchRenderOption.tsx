@@ -10,8 +10,7 @@ import {
 import { Close } from "mdi-material-ui";
 import { inject } from "mobx-react";
 import * as React from "react";
-import { ListChildComponentProps } from "react-window";
-import { IApplicationsStore, ISearchResult, ISearchStore } from "../../stores";
+import { IApplicationsStore, IApplication } from "../../stores";
 import { ConfirmButton } from "../System";
 import SearchResultIcon from "./SearchResultIcon";
 
@@ -21,34 +20,35 @@ const styles = () =>
             "&:hover $clearIndicator": {
                 visibility: "visible",
             },
+            width: "100%",
         },
         clearIndicator: {
             visibility: "hidden",
         },
     });
 
-interface ISearchResultItemProps extends ListChildComponentProps, WithStyles<typeof styles> {
+interface ISearchRenderOptionProps extends WithStyles<typeof styles> {
     readonly applicationsStore?: IApplicationsStore;
-    readonly searchStore?: ISearchStore;
+    readonly result: IApplication;
+    readonly selected?: boolean;
 }
 
 @inject("applicationsStore")
-@inject("searchStore")
-class SearchResultItem extends React.Component<ISearchResultItemProps> {
+class SearchRenderOption extends React.PureComponent<ISearchRenderOptionProps> {
     public render() {
-        const { classes, data, index, style } = this.props;
+        const { classes, result, selected } = this.props;
 
-        const { item } = data[index] as ISearchResult;
+        const { display, name, icon, description } = result;
 
-        const { name, icon, description } = item;
+        const primary = display ?? name;
 
         return (
             <ListItem
-                ContainerProps={{ style, className: classes.root }}
+                ContainerProps={{ className: classes.root }}
                 ContainerComponent="div"
                 button
-                divider
                 dense
+                selected={selected}
                 onClick={this.onClick}
             >
                 {icon && (
@@ -56,7 +56,14 @@ class SearchResultItem extends React.Component<ISearchResultItemProps> {
                         <SearchResultIcon src={icon} />
                     </ListItemIcon>
                 )}
-                <ListItemText inset={icon === undefined} primary={name} secondary={description} />
+                <ListItemText
+                    inset={icon === undefined}
+                    primary={primary}
+                    secondary={description}
+                    secondaryTypographyProps={{
+                        variant: "caption",
+                    }}
+                />
                 <ListItemSecondaryAction className={classes.clearIndicator}>
                     <ConfirmButton edge="end" size="small" title="Remove Application" onClick={this.remove}>
                         <Close fontSize="small" />
@@ -68,11 +75,9 @@ class SearchResultItem extends React.Component<ISearchResultItemProps> {
 
     private readonly onClick = async () => {
         try {
-            const { data, index } = this.props;
+            const { applicationsStore, result } = this.props;
 
-            const { item } = data[index] as ISearchResult;
-
-            await item.launch();
+            await applicationsStore?.launch(result);
         } catch (error) {
             console.error(`Failed to launch application: ${error}`);
         }
@@ -80,17 +85,13 @@ class SearchResultItem extends React.Component<ISearchResultItemProps> {
 
     private readonly remove = async () => {
         try {
-            const { applicationsStore, data, index, searchStore } = this.props;
+            const { applicationsStore, result } = this.props;
 
-            const { item } = data[index] as ISearchResult;
-
-            await applicationsStore!.remove(item);
-
-            searchStore!.search(searchStore!.searchTerm);
+            await applicationsStore?.remove(result);
         } catch (error) {
             console.error(`Failed to remove application: ${error}`);
         }
     };
 }
 
-export default withStyles(styles)(SearchResultItem);
+export default withStyles(styles)(SearchRenderOption);

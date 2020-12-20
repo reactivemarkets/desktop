@@ -1,6 +1,6 @@
 import { ThemeOptions } from "@material-ui/core";
 
-export const defaultTheme: ThemeOptions = {
+export const darkTheme: ThemeOptions = {
     overrides: {
         MuiCssBaseline: {
             "@global": {
@@ -84,7 +84,9 @@ export const defaultTheme: ThemeOptions = {
         MuiTabs: {
             root: {
                 minHeight: 40,
-                paddingLeft: 16,
+            },
+            scrollButtons: {
+                width: 16,
             },
         },
     },

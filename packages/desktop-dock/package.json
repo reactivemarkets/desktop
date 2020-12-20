@@ -32,9 +32,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@reactivemarkets/desktop-sdk": "file:../desktop-sdk",
-    "fuse.js": "^6.4.3",
     "ix": "^4.0.0",
+    "match-sorter": "^6.0.2",
     "mdi-material-ui": "^6.20.0",
     "mobx": "^5.15.7",
     "mobx-react": "^6.3.0",
