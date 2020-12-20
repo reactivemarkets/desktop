@@ -1,5 +1,5 @@
 import { IConfiguration, IApplicationSpecification } from "@reactivemarkets/desktop-types";
-import { BrowserWindow, WebPreferences } from "electron";
+import { BrowserWindow, BrowserWindowConstructorOptions, WebPreferences } from "electron";
 import { IWindowFactory } from "./iWindowFactory";
 
 export class BrowserWindowFactory implements IWindowFactory {
@@ -35,7 +35,8 @@ export class BrowserWindowFactory implements IWindowFactory {
             }
         }
 
-        const options = {
+        const options: BrowserWindowConstructorOptions = {
+            backgroundColor: "#ffffff",
             ...window,
             webPreferences,
         };
