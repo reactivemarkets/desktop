@@ -7,12 +7,12 @@ export class ApplicationConfigurationGenerator implements IConfigurationGenerato
         return kind === WellKnownConfigurationKind.Application;
     };
 
-    public generate = ({ name, url }: IGeneratorOptions): Promise<IConfiguration> => {
+    public generate = ({ description = "Webpage", name, url }: IGeneratorOptions): Promise<IConfiguration> => {
         return Promise.resolve({
             kind: WellKnownConfigurationKind.Application,
             metadata: {
                 name,
-                description: "Open site",
+                description,
                 namespace: WellKnownNamespace.default,
             },
             spec: {
