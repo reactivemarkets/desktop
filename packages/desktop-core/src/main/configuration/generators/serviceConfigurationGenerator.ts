@@ -7,12 +7,12 @@ export class ServiceConfigurationGenerator implements IConfigurationGenerator {
         return kind === WellKnownConfigurationKind.Service;
     };
 
-    public generate = ({ name }: IGeneratorOptions): Promise<IConfiguration> => {
+    public generate = ({ description = "Service", name }: IGeneratorOptions): Promise<IConfiguration> => {
         return Promise.resolve({
             kind: WellKnownConfigurationKind.Service,
             metadata: {
                 name,
-                description: `description of ${name}`,
+                description,
                 namespace: WellKnownNamespace.default,
             },
             spec: {

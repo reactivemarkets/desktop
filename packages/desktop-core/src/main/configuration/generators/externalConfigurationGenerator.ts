@@ -7,12 +7,12 @@ export class ExternalConfigurationGenerator implements IConfigurationGenerator {
         return kind === WellKnownConfigurationKind.External;
     };
 
-    public generate = ({ name }: IGeneratorOptions): Promise<IConfiguration> => {
+    public generate = ({ description = "Executable", name }: IGeneratorOptions): Promise<IConfiguration> => {
         return Promise.resolve({
             kind: WellKnownConfigurationKind.External,
             metadata: {
                 name,
-                description: `description of ${name}`,
+                description,
                 namespace: WellKnownNamespace.default,
             },
             spec: {
