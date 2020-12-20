@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.32.0](https://github.com/markmcdowell/desktop/compare/v0.31.0...v0.32.0) (2020-12-20)
+
+
+### Features
+
+* **dock:** moving to use autocomplete ([0fd9389](https://github.com/markmcdowell/desktop/commit/0fd9389946f7df1886a975f56435cc37c74a836a))
+
+
+
+
+
 # [0.31.0](https://github.com/markmcdowell/desktop/compare/v0.30.0...v0.31.0) (2020-12-16)
 
 
