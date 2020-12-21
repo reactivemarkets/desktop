@@ -43,7 +43,7 @@ export class SearchAutocompleteContainer extends React.Component<ISearchAutocomp
             reaction(
                 () => this.props.searchStore?.term,
                 (term) => {
-                    if (term !== "") {
+                    if (term !== undefined && term !== "") {
                         this.props.resizerStore?.expand();
                     }
                 },
