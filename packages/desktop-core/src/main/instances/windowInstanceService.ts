@@ -1,5 +1,4 @@
 import { IInstanceService } from "./iInstanceService";
-
 import { windowService } from "../windowing";
 
 export class WindowInstanceService implements IInstanceService {
@@ -11,10 +10,14 @@ export class WindowInstanceService implements IInstanceService {
         return windowService.all().map((instance) => instance.configuration);
     }
 
-    public kill(uid: string) {
-        windowService.from(uid)?.instance.destroy();
+    public kill(uid: string[]) {
+        const killed = uid.map((id) => {
+            windowService.from(id)?.instance.destroy();
 
-        return Promise.resolve();
+            return id;
+        });
+
+        return Promise.resolve(killed);
     }
 
     public restart(uid: string) {
@@ -23,9 +26,13 @@ export class WindowInstanceService implements IInstanceService {
         return Promise.resolve();
     }
 
-    public stop(uid: string) {
-        windowService.from(uid)?.instance.close();
+    public stop(uid: string[]) {
+        const stopped = uid.map((id) => {
+            windowService.from(id)?.instance.close();
 
-        return Promise.resolve();
+            return id;
+        });
+
+        return Promise.resolve(stopped);
     }
 }

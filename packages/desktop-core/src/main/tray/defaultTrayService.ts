@@ -49,7 +49,9 @@ export class DefaultTrayService implements ITrayService {
             },
         };
 
-        const instance = new TrayInstance(runningConfiguration, tray);
+        const instance = new TrayInstance(runningConfiguration, tray, () => {
+            this.configRegistry.delete(uid);
+        });
 
         this.configRegistry.set(uid, instance);
 

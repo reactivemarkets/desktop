@@ -10,7 +10,11 @@ export const handler = async ({ context, uid }: IStopOptions) => {
     try {
         await ipcExternal.whenReady(context);
 
-        await ipcExternal.invoke(ReservedChannels.instances_stop, { uid });
+        const stopped = await ipcExternal.invoke<unknown, string[]>(ReservedChannels.instances_stop, { uid });
+
+        stopped.forEach((id) => {
+            console.log(id);
+        });
 
         app.exit();
     } catch (error) {
