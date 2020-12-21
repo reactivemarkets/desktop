@@ -10,19 +10,21 @@ export class TrayInstanceService implements IInstanceService {
         return trayService.all().map((instance) => instance.configuration);
     }
 
-    public kill(uid: string) {
-        trayService.from(uid)?.instance.destroy();
+    public kill(uid: string[]) {
+        const killed = uid.map((id) => {
+            trayService.from(id)?.destroy();
 
-        return Promise.resolve();
+            return id;
+        });
+
+        return Promise.resolve(killed);
     }
 
     public restart() {
         return Promise.resolve();
     }
 
-    public stop(uid: string) {
-        trayService.from(uid)?.instance.destroy();
-
-        return Promise.resolve();
+    public stop(uid: string[]) {
+        return this.kill(uid);
     }
 }

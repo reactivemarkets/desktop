@@ -10,7 +10,11 @@ export const handler = async ({ context, uid }: IKillOptions) => {
     try {
         await ipcExternal.whenReady(context);
 
-        await ipcExternal.invoke(ReservedChannels.instances_kill, { uid });
+        const killed = await ipcExternal.invoke<unknown, string[]>(ReservedChannels.instances_kill, { uid });
+
+        killed.forEach((id) => {
+            console.log(id);
+        });
 
         app.exit();
     } catch (error) {

@@ -16,6 +16,7 @@ export class CompositeInstanceService implements IInstanceService {
                 break;
             }
         }
+
         return configuration;
     }
 
@@ -23,13 +24,19 @@ export class CompositeInstanceService implements IInstanceService {
         return this.instanceServices.flatMap((i) => i.list());
     }
 
-    public kill(uid: string): Promise<void> {
-        const service = this.instanceServices.find((i) => i.get(uid));
-        if (service === undefined) {
-            throw new Error(`Couldn't find instance with identifier: ${uid}`);
-        }
+    public async kill(uid: string[]) {
+        const services = uid
+            .map((id) => {
+                const service = this.instanceServices.find((i) => i.get(id));
 
-        return service.kill(uid);
+                return service?.kill([id]);
+            })
+            .filter((func) => func !== undefined)
+            .map((func) => func!);
+
+        const killed = await Promise.all(services);
+
+        return killed.flat();
     }
 
     public restart(uid: string) {
@@ -41,12 +48,18 @@ export class CompositeInstanceService implements IInstanceService {
         return service.restart(uid);
     }
 
-    public stop(uid: string) {
-        const service = this.instanceServices.find((i) => i.get(uid));
-        if (service === undefined) {
-            throw new Error(`Couldn't find instance with identifier: ${uid}`);
-        }
+    public async stop(uid: string[]) {
+        const services = uid
+            .map((id) => {
+                const service = this.instanceServices.find((i) => i.get(id));
 
-        return service.stop(uid);
+                return service?.stop([id]);
+            })
+            .filter((func) => func !== undefined)
+            .map((func) => func!);
+
+        const stopped = await Promise.all(services);
+
+        return stopped.flat();
     }
 }
