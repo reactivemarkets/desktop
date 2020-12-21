@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.33.0](https://github.com/reactivemarkets/desktop/compare/v0.32.0...v0.33.0) (2020-12-21)
+
+
+### Bug Fixes
+
+* **dock:** dock shouldn't expand after clearing the search term ([84646ee](https://github.com/reactivemarkets/desktop/commit/84646ee3020fb7fc2a44e6438b8198846b2fe1cd))
+
+
+
+
+
 # [0.32.0](https://github.com/reactivemarkets/desktop/compare/v0.31.0...v0.32.0) (2020-12-20)
 
 

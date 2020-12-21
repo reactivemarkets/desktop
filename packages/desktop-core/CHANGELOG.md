@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.33.0](https://github.com/reactivemarkets/desktop/compare/v0.32.0...v0.33.0) (2020-12-21)
+
+
+### Bug Fixes
+
+* **core:** defaulting window background color to white ([84eeeb6](https://github.com/reactivemarkets/desktop/commit/84eeeb6a6e40b1c4d4b66b1a920a3cf0918d8e2d))
+
+
+### Features
+
+* **core:** stop and kill commands can take multiple uid's ([0406ee0](https://github.com/reactivemarkets/desktop/commit/0406ee0bb1e3244b9ad069c67134b27d564cc582))
+* **core:** updating descriptions in generated configuration ([a8a5a1e](https://github.com/reactivemarkets/desktop/commit/a8a5a1eeed1a26bdb92fa176cb55efb2f7a0b025))
+
+
+
+
+
 # [0.32.0](https://github.com/reactivemarkets/desktop/compare/v0.31.0...v0.32.0) (2020-12-20)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-core

@@ -1,6 +1,6 @@
 {
   "name": "@reactivemarkets/desktop-api",
-  "version": "0.32.0",
+  "version": "0.33.0",
   "description": "Exposes a REST api and websocket endpoint for Desktop",
   "publishConfig": {
     "access": "public"
