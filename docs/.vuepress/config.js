@@ -101,6 +101,36 @@ module.exports = {
                         "window/",
                     ],
                 }
+            ],
+            "/cli/": [{
+                    title: "CLI",
+                    collapsable: false,
+                    children: [
+                        "",
+                        {
+                            title: "Commands",
+                            collapsable: false,
+                            sidebarDepth: 0,
+                            children: [
+                                "/cli/clear/",
+                                "/cli/describe/",
+                                "/cli/devtools/",
+                                "/cli/hide/",
+                                "/cli/info/",
+                                "/cli/init/",
+                                "/cli/kill/",
+                                "/cli/logs/",
+                                "/cli/ps/",
+                                "/cli/restart/",
+                                "/cli/show/",
+                                "/cli/shutdown/",
+                                "/cli/start/",
+                                "/cli/stop/",
+                                "/cli/version/",
+                            ]
+                        }
+                    ]
+                }
             ]
         },
         smoothScroll: true,
