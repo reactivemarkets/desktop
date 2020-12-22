@@ -66,3 +66,4 @@ pack/
 
 # ignore mac files
 .DS_Store
+!/docs/cli/logs
