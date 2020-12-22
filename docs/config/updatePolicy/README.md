@@ -21,6 +21,7 @@ The specification for an update policy.
 | checkForUpdates | `boolean`          | Whether to check for updates.                                          |
 | parameters      | `UpdateParameters` | Key value map to override parameters in the specified update provider. |
 | provider        | `string`           | The update source.                                                     |
+| schedule        | `string`           | Sets an update schedule using a cron format.                           |
 
 ## Example
 
@@ -33,4 +34,5 @@ metadata:
   namespace: desktop
 spec:
   checkForUpdates: true
+  schedule: 0 * * * *
 ```

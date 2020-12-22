@@ -21,8 +21,8 @@ export class TrayLauncherService implements ILauncherService {
 
         this.logger.verbose(`Configuring tray: ${name} in ${namespace}`);
 
-        await this.trayService.create(configuration);
+        const instance = await this.trayService.create(configuration);
 
-        return configuration;
+        return instance.configuration;
     }
 }

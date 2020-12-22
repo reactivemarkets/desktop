@@ -30,4 +30,16 @@ export interface IUpdatePolicySpecification {
      * The update source.
      */
     readonly provider?: "generic" | "github" | "s3";
+
+    /**
+     * Cron based update schedule.
+     *
+     * ### Examples
+     *
+     * Hourly check:
+     * ```
+     * 0 * * * *
+     * ```
+     */
+    readonly schedule?: string;
 }

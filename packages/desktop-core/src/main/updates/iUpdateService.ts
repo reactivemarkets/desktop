@@ -2,8 +2,8 @@ import { IConfiguration } from "@reactivemarkets/desktop-types";
 
 export interface IUpdateService {
     /**
-     * Configure updates based on the given configuration.
+     * Configure updates based on the given `configuration`.
      * @param configuration The update configuration.
      */
-    configure(configuration: IConfiguration): Promise<IConfiguration>;
+    create(configuration: IConfiguration): Promise<IConfiguration>;
 }
