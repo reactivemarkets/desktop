@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.34.0](https://github.com/markmcdowell/desktop/compare/v0.33.0...v0.34.0) (2020-12-22)
+
+
+### Bug Fixes
+
+* **dock:** fixing double launch of applications ([da4203f](https://github.com/markmcdowell/desktop/commit/da4203f149a50ad2ccd7cb86fc580dd94c9dcc47))
+
+
+### Features
+
+* **dock:** search autocomplete now handles home and end keys ([367bcf4](https://github.com/markmcdowell/desktop/commit/367bcf48c7034050806564f3498f65ed20cd7024))
+
+
+
+
+
 # [0.33.0](https://github.com/markmcdowell/desktop/compare/v0.32.0...v0.33.0) (2020-12-21)
 
 
