@@ -1,16 +1,18 @@
 import { ApplicationState, IConfiguration, IApplicationSpecification } from "@reactivemarkets/desktop-types";
 import { find } from "ix/iterable";
-import { nanoid } from "nanoid";
+import { IUidGenerator } from "../ids";
 import { IWindowFactory } from "./factory";
 import { IWindowService } from "./iWindowService";
 import { WindowInstance } from "./windowInstance";
 
 export class DefaultWindowService implements IWindowService {
+    private readonly uidGenerator: IUidGenerator;
     private readonly windowFactory: IWindowFactory;
     private readonly instanceRegistry = new Map<string, WindowInstance>();
 
-    public constructor(windowFactory: IWindowFactory) {
+    public constructor(windowFactory: IWindowFactory, uidGenerator: IUidGenerator) {
         this.windowFactory = windowFactory;
+        this.uidGenerator = uidGenerator;
     }
 
     public all() {
@@ -55,7 +57,7 @@ export class DefaultWindowService implements IWindowService {
         const isMinimized = window.isMinimized();
         const startTime = new Date();
         const state = ApplicationState.running;
-        const uid = nanoid();
+        const uid = this.uidGenerator.generate();
         const windowId = window.id;
 
         const runningConfiguration = {

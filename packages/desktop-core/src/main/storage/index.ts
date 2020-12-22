@@ -2,6 +2,7 @@ import { CompositeStorageProvisioner } from "./provisioners/compositeStorageProv
 import { YamlLocalStorageProvisioner } from "./provisioners/yamlLocalStorageProvisioner";
 import { TransientStorageProvisioner } from "./provisioners/transientStorageProvisioner";
 import { DefaultStorageService } from "./defaultStorageService";
+import { uidGenerator } from "../ids";
 
 export * from "./iStorageClient";
 export * from "./iStorageProvisioner";
@@ -13,4 +14,4 @@ const transient = new TransientStorageProvisioner();
 
 export const storageProvisioner = new CompositeStorageProvisioner(local, transient);
 
-export const storageService = new DefaultStorageService(storageProvisioner);
+export const storageService = new DefaultStorageService(storageProvisioner, uidGenerator);

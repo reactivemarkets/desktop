@@ -1,19 +1,21 @@
 import { WellKnownNamespace } from "@reactivemarkets/desktop-types";
-import { nanoid } from "nanoid";
 import { IStorageService } from "../storage";
 import { IWorkspaceService } from "./iWorkspaceService";
 import { IWorkspace } from "./iWorkspace";
+import { IUidGenerator } from "../ids";
 
 export class DefaultWorkspaceService implements IWorkspaceService {
-    private readonly workspaces = new Map<string, IWorkspace>();
     private readonly currentWorkspaceStorageKey = "currentWorkspaceUid";
-    private readonly workspacesStorageKey = "workspaces";
     private readonly storageService: IStorageService;
+    private readonly uidGenerator: IUidGenerator;
+    private readonly workspacesStorageKey = "workspaces";
+    private readonly workspaces = new Map<string, IWorkspace>();
 
     public current?: IWorkspace;
 
-    public constructor(storageService: IStorageService) {
+    public constructor(storageService: IStorageService, uidGenerator: IUidGenerator) {
         this.storageService = storageService;
+        this.uidGenerator = uidGenerator;
     }
 
     public all() {
@@ -21,7 +23,7 @@ export class DefaultWorkspaceService implements IWorkspaceService {
     }
 
     public create(name = "Default") {
-        const uid = nanoid();
+        const uid = this.uidGenerator.generate();
 
         const workspace: IWorkspace = {
             name,

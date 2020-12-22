@@ -1,16 +1,18 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
 import { find } from "ix/iterable";
-import { nanoid } from "nanoid";
 import { ITrayService } from "./iTrayService";
 import { ITrayFactory } from "./factory/iTrayFactory";
 import { TrayInstance } from "./trayInstance";
+import { IUidGenerator } from "../ids";
 
 export class DefaultTrayService implements ITrayService {
+    private readonly uidGenerator: IUidGenerator;
     private readonly trayFactory: ITrayFactory;
     private readonly configRegistry = new Map<string, TrayInstance>();
 
-    public constructor(trayFactory: ITrayFactory) {
+    public constructor(trayFactory: ITrayFactory, uidGenerator: IUidGenerator) {
         this.trayFactory = trayFactory;
+        this.uidGenerator = uidGenerator;
     }
 
     public all() {
@@ -36,7 +38,7 @@ export class DefaultTrayService implements ITrayService {
         const tray = await this.trayFactory.create(configuration);
 
         const startTime = new Date();
-        const uid = nanoid();
+        const uid = this.uidGenerator.generate();
 
         const runningConfiguration = {
             ...configuration,
