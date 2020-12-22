@@ -45,6 +45,8 @@ class ConfirmButton extends React.Component<IConfirmButtonProps> {
 
     @action
     private readonly onClick = (event: React.MouseEvent) => {
+        event.stopPropagation();
+
         if (!this.confirm) {
             this.confirm = true;
 

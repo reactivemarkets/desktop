@@ -43,14 +43,7 @@ class SearchRenderOption extends React.PureComponent<ISearchRenderOptionProps> {
         const primary = display ?? name;
 
         return (
-            <ListItem
-                ContainerProps={{ className: classes.root }}
-                ContainerComponent="div"
-                button
-                dense
-                selected={selected}
-                onClick={this.onClick}
-            >
+            <ListItem ContainerProps={{ className: classes.root }} ContainerComponent="div" dense selected={selected}>
                 {icon && (
                     <ListItemIcon>
                         <SearchResultIcon src={icon} />
@@ -72,16 +65,6 @@ class SearchRenderOption extends React.PureComponent<ISearchRenderOptionProps> {
             </ListItem>
         );
     }
-
-    private readonly onClick = async () => {
-        try {
-            const { applicationsStore, result } = this.props;
-
-            await applicationsStore?.launch(result);
-        } catch (error) {
-            console.error(`Failed to launch application: ${error}`);
-        }
-    };
 
     private readonly remove = async () => {
         try {
