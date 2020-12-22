@@ -1,6 +1,6 @@
 # devTools
 
-Open a dev tools window for the given identifier.
+Open a Developer Tools window for the given identifier.
 
 ## Parameters
 
@@ -11,7 +11,7 @@ The instance identifier.
 ## Examples
 
 <code-group>
-<code-block title="Base configuration">
+<code-block title="Open Developer Tools">
 
 ```bash
 desktop devTools cu8Ff_fgxUOtLtOH2xdrh
