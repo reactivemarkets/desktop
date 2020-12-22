@@ -19,7 +19,7 @@ Specify the session to clear by the partition identifier.
 ## Examples
 
 <code-group>
-<code-block title="Base configuration">
+<code-block title="Clear auth cache">
 
 ```bash
 desktop clear auth

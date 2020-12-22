@@ -15,7 +15,7 @@ The output format.
 ## Examples
 
 <code-group>
-<code-block title="Base configuration">
+<code-block title="Get instance details">
 
 ```bash
 desktop get cu8Ff_fgxUOtLtOH2xdrh
