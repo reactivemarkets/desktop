@@ -10,6 +10,6 @@ export const builder = {
     uid: {
         array: true,
         demandOption: true,
-        describe: "The application uid",
+        describe: "The instance uid",
     },
 };

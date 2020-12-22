@@ -9,7 +9,7 @@ export const describe = "Stop one or more running instances";
 export const builder = {
     uid: {
         demandOption: true,
-        describe: "The application uid",
+        describe: "The instance uid",
         array: true,
     },
 };
