@@ -93,6 +93,9 @@ export const externalIpcEvents = async (context?: string) => {
             sandboxed: process.sandboxed,
         };
     });
+    ipcExternalMain.handle(ReservedChannels.system_quit, () => {
+        app.quit();
+    });
     ipcExternalMain.handle(ReservedChannels.window_hide, ({ uid }) => {
         windowService.from(uid)?.instance.hide();
     });
