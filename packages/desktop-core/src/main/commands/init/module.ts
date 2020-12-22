@@ -28,7 +28,7 @@ export const builder = {
     url: {
         alias: "u",
         default: "http://localhost",
-        describe: "The url to use for application or service",
+        describe: "The url to use for application",
         string: true,
     },
 };
