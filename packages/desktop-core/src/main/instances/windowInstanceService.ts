@@ -20,10 +20,14 @@ export class WindowInstanceService implements IInstanceService {
         return Promise.resolve(killed);
     }
 
-    public restart(uid: string) {
-        windowService.from(uid)?.instance.reload();
+    public restart(uid: string[]) {
+        const restarted = uid.map((id) => {
+            windowService.from(id)?.instance.reload();
 
-        return Promise.resolve();
+            return id;
+        });
+
+        return Promise.resolve(restarted);
     }
 
     public stop(uid: string[]) {

@@ -21,7 +21,9 @@ export class TrayInstanceService implements IInstanceService {
     }
 
     public restart() {
-        return Promise.resolve();
+        const error = new Error("You can't restart the tray");
+
+        return Promise.reject(error);
     }
 
     public stop(uid: string[]) {
