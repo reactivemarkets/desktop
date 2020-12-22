@@ -110,6 +110,7 @@ class SearchAutocomplete extends React.PureComponent<SearchAutocompleteProps> {
                 disablePortal
                 filterOptions={filterOptions}
                 fullWidth
+                handleHomeEndKeys
                 inputValue={inputValue}
                 ListboxComponent={VirtualizedListbox as React.ComponentType<React.HTMLAttributes<HTMLElement>>}
                 noOptionsText="No results."
