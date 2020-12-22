@@ -1,16 +1,18 @@
 import { IConfiguration, StorageState } from "@reactivemarkets/desktop-types";
 import { find } from "ix/iterable";
-import { nanoid } from "nanoid";
+import { IUidGenerator } from "../ids";
 import { IStorageService } from "./iStorageService";
 import { IStorageProvisioner } from "./provisioners";
 import { StorageInstance } from "./storageInstance";
 
 export class DefaultStorageService implements IStorageService {
+    private readonly uidGenerator: IUidGenerator;
     private readonly storageProvisioner: IStorageProvisioner;
     private readonly storageRegistry = new Map<string, StorageInstance>();
 
-    public constructor(storageProvisioner: IStorageProvisioner) {
+    public constructor(storageProvisioner: IStorageProvisioner, uidGenerator: IUidGenerator) {
         this.storageProvisioner = storageProvisioner;
+        this.uidGenerator = uidGenerator;
     }
 
     public all() {
@@ -46,7 +48,7 @@ export class DefaultStorageService implements IStorageService {
 
         const startTime = new Date();
         const state = StorageState.provisioned;
-        const uid = nanoid();
+        const uid = this.uidGenerator.generate();
 
         const runningConfiguration = {
             ...configuration,
