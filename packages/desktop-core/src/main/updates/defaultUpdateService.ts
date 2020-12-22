@@ -1,11 +1,15 @@
 import { IConfiguration, IUpdatePolicySpecification } from "@reactivemarkets/desktop-types";
-import { autoUpdater } from "electron-updater";
+import { app, Notification } from "electron";
+import { autoUpdater, UpdateDownloadedEvent } from "electron-updater";
+import { CronJob, job } from "cron";
 import numeral from "numeral";
 import { logger } from "../logging";
 import { IUpdateService } from "./iUpdateService";
 
 export class DefaultUpdateService implements IUpdateService {
-    public configure(configuration: IConfiguration): Promise<IConfiguration> {
+    private cronJob?: CronJob;
+
+    public create(configuration: IConfiguration): Promise<IConfiguration> {
         const spec = configuration.spec as IUpdatePolicySpecification | undefined;
         if (!spec?.checkForUpdates) {
             return Promise.resolve(configuration);
@@ -18,12 +22,14 @@ export class DefaultUpdateService implements IUpdateService {
             })
             .on("update-available", () => {
                 logger.info("Update available.");
+
+                this.cronJob?.stop();
             })
             .on("update-not-available", () => {
                 logger.info("Update not available.");
             })
             .on("error", (error) => {
-                logger.info(`Error in auto-updater. ${error}`);
+                logger.info(`Error in auto-updater. ${error?.message}`);
             })
             .on("download-progress", (progress) => {
                 const { bytesPerSecond, percent, total, transferred } = progress;
@@ -38,24 +44,41 @@ export class DefaultUpdateService implements IUpdateService {
 
                 logger.info(`${percentComplete}% => (${transferredBytes}/${totalBytes}) ${downloadSpeed}/s`);
             })
-            .on("update-downloaded", () => {
-                logger.info("Update downloaded.");
+            .once("update-downloaded", (update: UpdateDownloadedEvent) => {
+                const { version } = update;
+                logger.info(`${version} downloaded.`);
+
+                const notification = new Notification({
+                    title: "A new update is ready to install",
+                    body: `${app.name} version ${version} has been downloaded, click to restart now.`,
+                });
+                notification.once("click", () => {
+                    autoUpdater.quitAndInstall(true, true);
+                });
+                notification.show();
             });
 
-        if (spec?.channel !== undefined) {
+        if (spec.channel !== undefined) {
             autoUpdater.channel = spec.channel;
         }
 
-        if (spec?.provider !== undefined) {
+        if (spec.provider !== undefined) {
             autoUpdater.setFeedURL({
                 ...spec?.parameters,
                 provider: spec.provider,
             });
         }
 
+        if (spec.schedule !== undefined) {
+            this.cronJob = job(spec.schedule, () => {
+                autoUpdater.checkForUpdates();
+            });
+            this.cronJob.start();
+        }
+
         autoUpdater.allowDowngrade = spec?.allowDowngrade ?? true;
         autoUpdater.allowPrerelease = spec?.allowPrerelease ?? false;
-        autoUpdater.checkForUpdatesAndNotify();
+        autoUpdater.checkForUpdates();
 
         return Promise.resolve(configuration);
     }

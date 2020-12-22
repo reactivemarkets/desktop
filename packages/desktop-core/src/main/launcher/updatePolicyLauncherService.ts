@@ -21,6 +21,6 @@ export class UpdatePolicyLauncherService implements ILauncherService {
 
         this.logger.verbose(`Configuring updates: ${name} in ${namespace}`);
 
-        return this.updateService.configure(configuration);
+        return this.updateService.create(configuration);
     }
 }
