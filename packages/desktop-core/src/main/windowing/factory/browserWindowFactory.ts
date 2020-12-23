@@ -23,10 +23,7 @@ export class BrowserWindowFactory implements IWindowFactory {
 
         const webPreferences = this.defaultWebPreferences;
         if (windowWebPreferences !== undefined) {
-            const { affinity, devTools, partition } = windowWebPreferences;
-            if (affinity !== undefined) {
-                webPreferences.affinity = affinity;
-            }
+            const { devTools, partition } = windowWebPreferences;
             if (devTools !== undefined) {
                 webPreferences.devTools = devTools;
             }

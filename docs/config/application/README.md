@@ -55,7 +55,6 @@ Populated by Desktop.
 
 | Field     | Type      | Notes                                                                                   |
 | --------- | --------- | --------------------------------------------------------------------------------------- |
-| affinity  | `string`  | When specified, web pages with the same affinity will run in the same renderer process. |
 | devTools  | `boolean` | Enable opening of devTools via the [cli](/cli).                                         |
 | partition | `string`  | The session partition.                                                                  |
 
