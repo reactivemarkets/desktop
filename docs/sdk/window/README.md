@@ -14,9 +14,9 @@ await window.current().blur();
 
 ## center <Badge text="M" type="warning" vertical="middle" />
 
-### `center(): Promise<void>`
+### `center(display?: IDisplay): Promise<void>`
 
-Moves window to the center of the screen.
+Moves window to the center of the screen it's currently on. If a display is specified it will center on that display.
 
 ```ts
 import { window } from "@reactivemarkets/desktop-sdk";

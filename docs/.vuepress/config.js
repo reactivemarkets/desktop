@@ -98,6 +98,7 @@ module.exports = {
                         "logger/",
                         "registry/",
                         "router/",
+                        "screen/",
                         "window/",
                     ],
                 }

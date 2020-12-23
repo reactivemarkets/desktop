@@ -8,6 +8,7 @@ import { FilterStoreProvider } from "./FilterStoreProvider";
 import { SearchStoreProvider } from "./SearchStoreProvider";
 import { ThemeStoreProvider } from "./ThemeStoreProvider";
 import { TabStoreProvider } from "./TabStoreProvider";
+import { AppGlobalShortcut } from "./AppGlobalShortcut";
 
 export class App extends React.PureComponent {
     public render() {
@@ -20,6 +21,7 @@ export class App extends React.PureComponent {
                                 <TabStoreProvider>
                                     <ThemeStoreProvider>
                                         <AppTheme>
+                                            <AppGlobalShortcut />
                                             <AppShell />
                                         </AppTheme>
                                     </ThemeStoreProvider>

@@ -18,6 +18,18 @@ import { desktop } from "@reactivemarkets/desktop-sdk";
 const hosted = desktop.isHostedInDesktop;
 ```
 
+## focus <Badge text="M" type="warning" vertical="middle" />
+
+### `focus(): Promise<void>`
+
+Focuses the application.
+
+```ts
+import { desktop } from "@reactivemarkets/desktop-sdk";
+
+await desktop.focus();
+```
+
 ## getAppName <Badge text="M" type="warning" vertical="middle" />
 
 ### `getAppName(): Promise<string>`

@@ -2,8 +2,13 @@ import { ipcMain, app, powerMonitor } from "electron";
 import { ReservedChannels } from "../../common";
 
 export const systemIpcEvents = () => {
-    const listenerMap = new Map<string, () => void>();
+    const listenerMap = new Map<string, (...args: unknown[]) => void>();
 
+    ipcMain.handle(ReservedChannels.system_focus, () => {
+        app.focus({
+            steal: true,
+        });
+    });
     ipcMain.handle(ReservedChannels.system_getAppName, () => {
         return app.getName();
     });
@@ -30,7 +35,7 @@ export const systemIpcEvents = () => {
         const listener = listenerMap.get(key);
         if (listener !== undefined) {
             listenerMap.delete(key);
-            powerMonitor.removeListener(systemEvent, listener);
+            powerMonitor.off(systemEvent, listener);
         }
     });
     ipcMain.on(ReservedChannels.system_on, (event, systemEvent) => {
@@ -41,7 +46,7 @@ export const systemIpcEvents = () => {
         const key = `${event.sender.id}/${systemEvent}`;
         listenerMap.set(key, listener);
 
-        powerMonitor.addListener(systemEvent, listener);
+        powerMonitor.on(systemEvent, listener);
     });
     ipcMain.handle(ReservedChannels.system_quit, () => {
         app.quit();

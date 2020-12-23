@@ -23,8 +23,6 @@ export class GlobalShortcut {
         if (listenerCount === 0) {
             ipcRenderer.send(ReservedChannels.globalShortcut_register, accelerator);
         }
-
-        return Promise.resolve();
     };
 
     public unregister = (accelerator: Accelerator, listener: () => void) => {
@@ -35,8 +33,6 @@ export class GlobalShortcut {
         if (listenerCount === 0) {
             ipcRenderer.send(ReservedChannels.globalShortcut_unregister, accelerator);
         }
-
-        return Promise.resolve();
     };
 
     public unregisterAll = () => {
@@ -45,7 +41,5 @@ export class GlobalShortcut {
         });
 
         ipcRenderer.send(ReservedChannels.globalShortcut_unregisterAll);
-
-        return Promise.resolve();
     };
 }

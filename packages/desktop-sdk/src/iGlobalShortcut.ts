@@ -13,17 +13,17 @@ export interface IGlobalShortcut {
      * @param accelerator Accelerator
      * @param listener Called when the `accelerator` is pressed by the user.
      */
-    register(accelerator: string, listener: () => void): Promise<void>;
+    register(accelerator: string, listener: () => void): void;
 
     /**
      * Unregisters the global shortcut of `accelerator`.
      * @param accelerator Accelerator
      * @param listener The listener to remove.
      */
-    unregister(accelerator: string, listener: () => void): Promise<void>;
+    unregister(accelerator: string, listener: () => void): void;
 
     /**
      * Unregisters all global shortcuts for this application.
      */
-    unregisterAll(): Promise<void>;
+    unregisterAll(): void;
 }

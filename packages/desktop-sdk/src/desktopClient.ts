@@ -13,6 +13,10 @@ export class DesktopClient implements IDesktop {
         return typeof desktop !== "undefined";
     }
 
+    public focus() {
+        return this.api.system.focus();
+    }
+
     public getAppName() {
         return this.api.system.getAppName();
     }

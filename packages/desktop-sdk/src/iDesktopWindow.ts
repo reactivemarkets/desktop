@@ -1,4 +1,5 @@
-import { IRectangle } from "./Rectangle";
+import { IDisplay } from "./iDisplay";
+import { IRectangle } from "./iRectangle";
 import { WindowEvents } from "./windowEvents";
 
 export interface IDesktopWindow {
@@ -9,8 +10,9 @@ export interface IDesktopWindow {
 
     /**
      * Moves window to the center of the screen.
+     * @param display Display to center on.
      */
-    center(): Promise<void>;
+    center(display?: IDisplay): Promise<void>;
 
     /**
      * Try to close the window. This has the same effect as a user manually clicking the close button of the window. The web page may cancel the close though.
