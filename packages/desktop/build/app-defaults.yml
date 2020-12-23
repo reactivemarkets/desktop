@@ -112,7 +112,7 @@ spec:
     maximizable: false
     minHeight: 60
     minWidth: 400
-    skipTaskbar: true
+    skipTaskbar: false
     title: Dock
     useContentSize: true
     width: 680
