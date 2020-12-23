@@ -77,6 +77,7 @@ export class SearchAutocompleteContainer extends React.Component<ISearchAutocomp
                 onChange={this.onChange}
                 onKeyDown={this.onKeyDown}
                 onInputChange={this.onInputChange}
+                value={null}
             />
         );
     }

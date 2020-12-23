@@ -82,7 +82,7 @@ interface SearchAutocompleteProps extends WithStyles<typeof styles> {
     readonly onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
     readonly options: IApplication[];
     readonly startAdornment?: React.ReactNode;
-    readonly value?: IApplication;
+    readonly value?: IApplication | null;
     onChange(selected: IApplication): void;
 }
 
@@ -102,7 +102,7 @@ class SearchAutocomplete extends React.PureComponent<SearchAutocompleteProps> {
                     root: classes.root,
                 }}
                 autoHighlight
-                clearOnBlur={false}
+                clearOnBlur
                 clearOnEscape
                 disableCloseOnSelect
                 disablePortal
