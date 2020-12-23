@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.36.0](https://github.com/reactivemarkets/desktop/compare/v0.35.0...v0.36.0) (2020-12-23)
+
+
+### Features
+
+* **core:** adding screen api ([4be0cc0](https://github.com/reactivemarkets/desktop/commit/4be0cc030c5a7b52609a1c632a79cdbe2d5a1981))
+
+
+
+
+
 # [0.35.0](https://github.com/reactivemarkets/desktop/compare/v0.34.0...v0.35.0) (2020-12-23)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-sdk

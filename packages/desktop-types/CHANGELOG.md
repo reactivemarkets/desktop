@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.36.0](https://github.com/reactivemarkets/desktop/compare/v0.35.0...v0.36.0) (2020-12-23)
+
+
+### Bug Fixes
+
+* **core:** removing affinity on applications ([1676d24](https://github.com/reactivemarkets/desktop/commit/1676d248c4ebd2e2404478faeb27b430324f11d9))
+
+
+
+
+
 # [0.35.0](https://github.com/reactivemarkets/desktop/compare/v0.34.0...v0.35.0) (2020-12-23)
 
 

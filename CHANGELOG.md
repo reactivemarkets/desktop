@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.36.0](https://github.com/markmcdowell/desktop/compare/v0.35.0...v0.36.0) (2020-12-23)
+
+
+### Bug Fixes
+
+* **core:** disabling background throttling ([4345b9d](https://github.com/markmcdowell/desktop/commit/4345b9de256ed6fd0ac26c6246c1b4cefdf85edb))
+* **core:** dock shows in windows task bar ([f19e7ec](https://github.com/markmcdowell/desktop/commit/f19e7ec8a604632722c7cc977a00e480200b0142))
+* **core:** opening window on screen with cursor ([371cf4b](https://github.com/markmcdowell/desktop/commit/371cf4b77552cdf3ff966bfddab70de9dafb152f))
+* **core:** registering shutdown command ([19fcda0](https://github.com/markmcdowell/desktop/commit/19fcda01d465d752169d3c497e197f08d8a6968e))
+* **core:** removing affinity on applications ([1676d24](https://github.com/markmcdowell/desktop/commit/1676d248c4ebd2e2404478faeb27b430324f11d9))
+* **dock:** allow the same application to be clicked multiple times ([06510e4](https://github.com/markmcdowell/desktop/commit/06510e42c8ced2ea7fa75759a4f205b2944cbd1e))
+
+
+### Features
+
+* **core:** adding screen api ([4be0cc0](https://github.com/markmcdowell/desktop/commit/4be0cc030c5a7b52609a1c632a79cdbe2d5a1981))
+
+
+
+
+
 # [0.35.0](https://github.com/markmcdowell/desktop/compare/v0.34.0...v0.35.0) (2020-12-23)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.36.0](https://github.com/reactivemarkets/desktop/compare/v0.35.0...v0.36.0) (2020-12-23)
+
+
+### Bug Fixes
+
+* **core:** dock shows in windows task bar ([f19e7ec](https://github.com/reactivemarkets/desktop/commit/f19e7ec8a604632722c7cc977a00e480200b0142))
+
+
+
+
+
 # [0.35.0](https://github.com/reactivemarkets/desktop/compare/v0.34.0...v0.35.0) (2020-12-23)
 
 
