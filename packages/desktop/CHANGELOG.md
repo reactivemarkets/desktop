@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.37.0](https://github.com/reactivemarkets/desktop/compare/v0.36.0...v0.37.0) (2020-12-23)
+
+
+### Features
+
+* **deps:** bump electron from 11.1.0 to 11.1.1 ([352ab47](https://github.com/reactivemarkets/desktop/commit/352ab4773f75bf87164b218b21e5d4f9a6fd40ac))
+
+
+
+
+
 # [0.36.0](https://github.com/reactivemarkets/desktop/compare/v0.35.0...v0.36.0) (2020-12-23)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.37.0](https://github.com/reactivemarkets/desktop/compare/v0.36.0...v0.37.0) (2020-12-23)
+
+
+### Bug Fixes
+
+* **core:** removing listeners to window-all-closed on update ([0840bc7](https://github.com/reactivemarkets/desktop/commit/0840bc7ea089dc586622a1b91ccaf05292bf525f))
+* **core:** using easy-table for ps command ([b079091](https://github.com/reactivemarkets/desktop/commit/b079091463a3f6b1385004a56e24cdfebb04a27c))
+
+
+
+
+
 # [0.36.0](https://github.com/reactivemarkets/desktop/compare/v0.35.0...v0.36.0) (2020-12-23)
 
 

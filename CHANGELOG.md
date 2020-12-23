@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.37.0](https://github.com/markmcdowell/desktop/compare/v0.36.0...v0.37.0) (2020-12-23)
+
+
+### Bug Fixes
+
+* **core:** removing listeners to window-all-closed on update ([0840bc7](https://github.com/markmcdowell/desktop/commit/0840bc7ea089dc586622a1b91ccaf05292bf525f))
+* **core:** using easy-table for ps command ([b079091](https://github.com/markmcdowell/desktop/commit/b079091463a3f6b1385004a56e24cdfebb04a27c))
+
+
+### Features
+
+* **deps:** bump electron from 11.1.0 to 11.1.1 ([352ab47](https://github.com/markmcdowell/desktop/commit/352ab4773f75bf87164b218b21e5d4f9a6fd40ac))
+
+
+
+
+
 # [0.36.0](https://github.com/markmcdowell/desktop/compare/v0.35.0...v0.36.0) (2020-12-23)
 
 
