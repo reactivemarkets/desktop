@@ -22,6 +22,10 @@ Desktop builds on the [Electron Framework](https://github.com/electron/electron)
 * Notifications
 * Cross application messaging
 
+## Documentation
+
+See [Documentation](https://desktop.reactivemarkets.com).
+
 ## Quick Start
 
 To install a prebuilt desktop run:
