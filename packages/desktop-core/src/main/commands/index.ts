@@ -9,6 +9,7 @@ export * from "./logsQuery";
 export * from "./ps";
 export * from "./restart";
 export * from "./show";
+export * from "./shutdown";
 export * from "./start";
 export * from "./stop";
 export * from "./version";
