@@ -8,6 +8,8 @@ import { LinuxIconWindowFactory } from "./linuxIconWindowFactory";
 import { ContentProtectionWindowFactory } from "./contentProtectionWindowFactory";
 import { ContextMenuWindowFactory } from "./contextMenuWindowFactory";
 import { defaultWebPreferences } from "./defaultWebPreferences";
+import { CurrentScreenWindowFactory } from "./currentScreenWindowFactory";
+import { logger } from "../../logging";
 
 const appPath = app.getAppPath();
 
@@ -18,7 +20,9 @@ const browserWindowFactory = new BrowserWindowFactory({
     preload,
 });
 
-const contentProtection = new ContentProtectionWindowFactory(browserWindowFactory);
+const currentScreen = new CurrentScreenWindowFactory(browserWindowFactory, logger);
+
+const contentProtection = new ContentProtectionWindowFactory(currentScreen);
 
 const linuxIcon = path.join(appPath, "icon.png");
 

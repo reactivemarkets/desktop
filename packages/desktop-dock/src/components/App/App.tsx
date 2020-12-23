@@ -9,6 +9,7 @@ import { SearchStoreProvider } from "./SearchStoreProvider";
 import { ThemeStoreProvider } from "./ThemeStoreProvider";
 import { TabStoreProvider } from "./TabStoreProvider";
 import { AppGlobalShortcut } from "./AppGlobalShortcut";
+import { LauncherStoreProvider } from "./LauncherStoreProvider";
 
 export class App extends React.PureComponent {
     public render() {
@@ -17,16 +18,18 @@ export class App extends React.PureComponent {
                 <FilterStoreProvider>
                     <ResizerStoreProvider>
                         <ApplicationsStoreProvider>
-                            <SearchStoreProvider>
-                                <TabStoreProvider>
-                                    <ThemeStoreProvider>
-                                        <AppTheme>
-                                            <AppGlobalShortcut />
-                                            <AppShell />
-                                        </AppTheme>
-                                    </ThemeStoreProvider>
-                                </TabStoreProvider>
-                            </SearchStoreProvider>
+                            <LauncherStoreProvider>
+                                <SearchStoreProvider>
+                                    <TabStoreProvider>
+                                        <ThemeStoreProvider>
+                                            <AppTheme>
+                                                <AppGlobalShortcut />
+                                                <AppShell />
+                                            </AppTheme>
+                                        </ThemeStoreProvider>
+                                    </TabStoreProvider>
+                                </SearchStoreProvider>
+                            </LauncherStoreProvider>
                         </ApplicationsStoreProvider>
                     </ResizerStoreProvider>
                 </FilterStoreProvider>

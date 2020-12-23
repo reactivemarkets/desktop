@@ -1,4 +1,3 @@
-import { IConfiguration } from "@reactivemarkets/desktop-sdk";
 import { IApplication } from "./iApplication";
 
 export interface IApplicationsStore {
@@ -7,6 +6,5 @@ export interface IApplicationsStore {
 
     load(): void;
 
-    launch(application: IApplication): Promise<IConfiguration>;
     remove(application: IApplication): Promise<void>;
 }
