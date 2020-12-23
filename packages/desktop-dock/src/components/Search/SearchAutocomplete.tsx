@@ -1,5 +1,3 @@
-// Copyright © 2020 Reactive Markets. All rights reserved.
-
 import { createStyles, InputAdornment, TextField, Theme, withStyles, WithStyles } from "@material-ui/core";
 import { FilterOptionsState } from "@material-ui/lab";
 import Autocomplete, {

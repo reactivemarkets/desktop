@@ -11,6 +11,10 @@ export class System {
         });
     }
 
+    public focus = () => {
+        return ipcRenderer.invoke(ReservedChannels.system_focus);
+    };
+
     public getAppName = () => {
         return ipcRenderer.invoke(ReservedChannels.system_getAppName);
     };

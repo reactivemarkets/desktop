@@ -1,4 +1,4 @@
-import { BrowserWindow, ipcMain, Rectangle } from "electron";
+import { BrowserWindow, Display, ipcMain, Rectangle, screen } from "electron";
 import { ReservedChannels } from "../../common";
 
 export const windowIpcEvents = () => {
@@ -7,8 +7,25 @@ export const windowIpcEvents = () => {
     ipcMain.handle(ReservedChannels.window_blur, (event) => {
         BrowserWindow.fromWebContents(event.sender)?.blur();
     });
-    ipcMain.handle(ReservedChannels.window_center, (event) => {
-        BrowserWindow.fromWebContents(event.sender)?.center();
+    ipcMain.handle(ReservedChannels.window_center, (event, display?: Display) => {
+        const window = BrowserWindow.fromWebContents(event.sender);
+        if (window === null) {
+            return;
+        }
+
+        const { height, width, x, y } = window.getBounds();
+
+        let displayToCenterOn = display;
+        if (displayToCenterOn === undefined) {
+            displayToCenterOn = screen.getDisplayNearestPoint({ x, y });
+        }
+
+        const { bounds } = displayToCenterOn;
+
+        const newX = bounds.x + (bounds.width - width) / 2;
+        const newY = bounds.y + (bounds.height - height) / 2;
+
+        window.setBounds({ x: newX, y: newY });
     });
     ipcMain.handle(ReservedChannels.window_close, (event) => {
         const window = BrowserWindow.fromWebContents(event.sender);

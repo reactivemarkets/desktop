@@ -1,4 +1,4 @@
-import { ipcRenderer, Rectangle } from "electron";
+import { Display, ipcRenderer, Rectangle } from "electron";
 import { TypedEmitter } from "tiny-typed-emitter";
 import { ReservedChannels } from "../../common";
 
@@ -12,7 +12,7 @@ class CurrentWindow {
     }
 
     public blur = () => ipcRenderer.invoke(ReservedChannels.window_blur);
-    public center = () => ipcRenderer.invoke(ReservedChannels.window_center);
+    public center = (display?: Display) => ipcRenderer.invoke(ReservedChannels.window_center, display);
     public close = () => ipcRenderer.invoke(ReservedChannels.window_close);
     public flashFrame = (flash: boolean) => ipcRenderer.invoke(ReservedChannels.window_flashFrame, flash);
     public focus = () => ipcRenderer.invoke(ReservedChannels.window_focus);

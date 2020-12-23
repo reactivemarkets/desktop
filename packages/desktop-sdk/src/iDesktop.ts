@@ -15,6 +15,11 @@ export interface IDesktop {
     readonly isHostedInDesktop: boolean;
 
     /**
+     * Focus the application.
+     */
+    focus(): Promise<void>;
+
+    /**
      * Gets the application name.
      */
     getAppName(): Promise<string>;

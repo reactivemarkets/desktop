@@ -1,6 +1,7 @@
 import { IDesktop } from "./iDesktop";
 import { IDesktopWindow } from "./iDesktopWindow";
-import { IRectangle } from "./Rectangle";
+import { IDisplay } from "./iDisplay";
+import { IRectangle } from "./iRectangle";
 import { WindowEvents } from "./windowEvents";
 
 export class DesktopWindow implements IDesktopWindow {
@@ -14,8 +15,8 @@ export class DesktopWindow implements IDesktopWindow {
         return this.desktop.api.window.current.blur();
     }
 
-    public center(): Promise<void> {
-        return this.desktop.api.window.current.center();
+    public center(display?: IDisplay): Promise<void> {
+        return this.desktop.api.window.current.center(display);
     }
 
     public close(): Promise<void> {
