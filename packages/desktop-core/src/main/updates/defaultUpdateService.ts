@@ -26,7 +26,7 @@ export class DefaultUpdateService implements IUpdateService {
                 this.cronJob?.stop();
             })
             .on("update-not-available", () => {
-                logger.info("Update not available.");
+                logger.info("No updates available.");
             })
             .on("error", (error) => {
                 logger.info(`Error in auto-updater. ${error?.message}`);
@@ -53,7 +53,8 @@ export class DefaultUpdateService implements IUpdateService {
                     body: `${app.name} version ${version} has been downloaded, click to restart now.`,
                 });
                 notification.once("click", () => {
-                    autoUpdater.quitAndInstall(true, true);
+                    logger.info("Quiting and restarting app.");
+                    this.quitAndRestart();
                 });
                 notification.show();
             });
@@ -82,4 +83,9 @@ export class DefaultUpdateService implements IUpdateService {
 
         return Promise.resolve(configuration);
     }
+
+    private readonly quitAndRestart = () => {
+        app.removeAllListeners("window-all-closed");
+        autoUpdater.quitAndInstall(true, true);
+    };
 }
