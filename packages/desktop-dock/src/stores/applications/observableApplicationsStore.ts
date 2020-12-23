@@ -1,4 +1,4 @@
-import { desktop, launcher, registry, IConfiguration, WellKnownConfigurationKind } from "@reactivemarkets/desktop-sdk";
+import { desktop, registry, IConfiguration, WellKnownConfigurationKind } from "@reactivemarkets/desktop-sdk";
 import { from } from "ix/iterable";
 import { distinct, filter, map, orderBy, thenBy } from "ix/iterable/operators";
 import { observable, action, computed } from "mobx";
@@ -70,12 +70,6 @@ export class ObservableApplicationsStore implements IApplicationsStore {
         } catch (error) {
             console.error(`Failed to get list of applications: ${error}`);
         }
-    }
-
-    public launch({ configuration }: IApplication) {
-        console.info("Launching application", configuration);
-
-        return launcher.launch(configuration);
     }
 
     public async remove({ configuration }: IApplication) {

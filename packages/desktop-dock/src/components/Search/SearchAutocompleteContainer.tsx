@@ -7,6 +7,7 @@ import {
     IApplicationsStore,
     IFilterStore,
     IFocusStore,
+    ILauncherStore,
     IResizerStore,
     ISearchStore,
     ITabStore,
@@ -18,6 +19,7 @@ interface ISearchAutocompleteContainerProps {
     readonly endAdornment?: React.ReactNode;
     readonly filterStore?: IFilterStore;
     readonly focusStore?: IFocusStore;
+    readonly launcherStore?: ILauncherStore;
     readonly resizerStore?: IResizerStore;
     readonly searchStore?: ISearchStore;
     readonly startAdornment?: React.ReactNode;
@@ -27,6 +29,7 @@ interface ISearchAutocompleteContainerProps {
 @inject("applicationsStore")
 @inject("filterStore")
 @inject("focusStore")
+@inject("launcherStore")
 @inject("resizerStore")
 @inject("searchStore")
 @inject("tabStore")
@@ -86,12 +89,8 @@ export class SearchAutocompleteContainer extends React.Component<ISearchAutocomp
         this.ref.current?.focus();
     };
 
-    private readonly onChange = async (selected: IApplication) => {
-        try {
-            await this.props.applicationsStore?.launch(selected);
-        } catch (error) {
-            console.error(`Failed to launch application: ${error}`);
-        }
+    private readonly onChange = async ({ configuration }: IApplication) => {
+        await this.props.launcherStore?.launch(configuration);
     };
 
     private readonly onInputChange = (

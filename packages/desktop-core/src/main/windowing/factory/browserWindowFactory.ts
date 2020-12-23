@@ -1,5 +1,6 @@
 import { IConfiguration, IApplicationSpecification } from "@reactivemarkets/desktop-types";
 import { BrowserWindow, BrowserWindowConstructorOptions, WebPreferences } from "electron";
+import { defaultWindowParameters } from "./defaultWindowParameters";
 import { IWindowFactory } from "./iWindowFactory";
 
 export class BrowserWindowFactory implements IWindowFactory {
@@ -13,6 +14,7 @@ export class BrowserWindowFactory implements IWindowFactory {
         const spec = configuration.spec as IApplicationSpecification | undefined;
         if (spec === undefined) {
             const defaultWindow = new BrowserWindow({
+                ...defaultWindowParameters,
                 webPreferences: this.defaultWebPreferences,
             });
 
@@ -33,7 +35,7 @@ export class BrowserWindowFactory implements IWindowFactory {
         }
 
         const options: BrowserWindowConstructorOptions = {
-            backgroundColor: "#ffffff",
+            ...defaultWindowParameters,
             ...window,
             webPreferences,
         };
