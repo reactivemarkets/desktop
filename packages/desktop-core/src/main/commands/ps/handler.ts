@@ -1,4 +1,5 @@
 import { IConfiguration } from "@reactivemarkets/desktop-types";
+import Table from "easy-table";
 import { app } from "electron";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -17,7 +18,7 @@ export const handler = async ({ context, quiet, output, kind, namespace }: IPsOp
     try {
         await ipcExternal.whenReady(context);
 
-        const containers = await ipcExternal.invoke<any, IConfiguration[]>(ReservedChannels.instances_list, {
+        const containers = await ipcExternal.invoke<unknown, IConfiguration[]>(ReservedChannels.instances_list, {
             kind,
             namespace,
         });
@@ -41,20 +42,17 @@ export const handler = async ({ context, quiet, output, kind, namespace }: IPsOp
                     break;
                 }
                 default: {
-                    const details = containers.reduce((prev, c) => {
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                        // @ts-ignore
-                        prev[c.metadata.uid] = {
+                    const instances = containers.map((c) => {
+                        return {
+                            uid: c.metadata.uid,
                             name: c.metadata.name,
                             namespace: c.metadata.namespace,
                             kind: c.kind,
                             created: dayjs(c.status?.startTime).fromNow(),
                         };
+                    });
 
-                        return prev;
-                    }, {});
-
-                    console.table(details);
+                    console.log(Table.print(instances));
                 }
             }
         }

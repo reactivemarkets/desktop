@@ -5,7 +5,7 @@ export interface ITrayService {
     /**
      * Get all current trays.
      */
-    all(): TrayInstance[];
+    all(): readonly TrayInstance[];
 
     /**
      * The window with the given `identifier`.
