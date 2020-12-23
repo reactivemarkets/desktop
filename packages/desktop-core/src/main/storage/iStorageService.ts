@@ -5,7 +5,7 @@ export interface IStorageService {
     /**
      * Get all storage instances.
      */
-    all(): StorageInstance[];
+    all(): readonly StorageInstance[];
 
     /**
      * Get the storage instance for the given identifier

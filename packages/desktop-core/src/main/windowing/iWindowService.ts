@@ -5,7 +5,7 @@ export interface IWindowService {
     /**
      * Get all current windows.
      */
-    all(): WindowInstance[];
+    all(): readonly WindowInstance[];
 
     /**
      * The window with the given `identifier`.
