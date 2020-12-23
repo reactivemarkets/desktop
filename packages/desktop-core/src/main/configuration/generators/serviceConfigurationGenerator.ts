@@ -16,7 +16,6 @@ export class ServiceConfigurationGenerator implements IConfigurationGenerator {
                 namespace: WellKnownNamespace.default,
             },
             spec: {
-                affinity: "service host",
                 main: `${name}.asar`,
                 options: {
                     config: "value",
