@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.35.0](https://github.com/reactivemarkets/desktop/compare/v0.34.0...v0.35.0) (2020-12-23)
+
+
+### Bug Fixes
+
+* **core:** correcting cli descriptions ([9326557](https://github.com/reactivemarkets/desktop/commit/9326557cad51a10d819258dd7a3c4de59f6c5b54))
+
+
+### Features
+
+* **core:** adding shutdown command to cli ([f035b6e](https://github.com/reactivemarkets/desktop/commit/f035b6e65fefb50a31d59ba4b41788bd0bf581a7))
+* **core:** adding support for checking for updates on schedule ([af6f46b](https://github.com/reactivemarkets/desktop/commit/af6f46bd7db57062a3cf52f03a5de597f2dd5237))
+* **core:** restart can now take multiple uid's ([3ac4b25](https://github.com/reactivemarkets/desktop/commit/3ac4b25e051e866ed8f7a2906215de2cd574fcda))
+* **core:** using a custom alpabet for uid ([621c876](https://github.com/reactivemarkets/desktop/commit/621c87630c3f39b74ce826d637238a1097cd7423))
+
+
+
+
+
 # [0.34.0](https://github.com/reactivemarkets/desktop/compare/v0.33.0...v0.34.0) (2020-12-22)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-core

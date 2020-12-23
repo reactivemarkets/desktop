@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.35.0](https://github.com/reactivemarkets/desktop/compare/v0.34.0...v0.35.0) (2020-12-23)
+
+**Note:** Version bump only for package @reactivemarkets/desktop-api
+
+
+
+
+
 # [0.34.0](https://github.com/reactivemarkets/desktop/compare/v0.33.0...v0.34.0) (2020-12-22)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-api

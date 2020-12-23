@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.35.0](https://github.com/reactivemarkets/desktop/compare/v0.34.0...v0.35.0) (2020-12-23)
+
+
+### Features
+
+* **core:** adding support for checking for updates on schedule ([af6f46b](https://github.com/reactivemarkets/desktop/commit/af6f46bd7db57062a3cf52f03a5de597f2dd5237))
+
+
+
+
+
 # [0.34.0](https://github.com/reactivemarkets/desktop/compare/v0.33.0...v0.34.0) (2020-12-22)
 
 **Note:** Version bump only for package @reactivemarkets/desktop-types

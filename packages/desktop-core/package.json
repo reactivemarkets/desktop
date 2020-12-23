@@ -1,6 +1,6 @@
 {
   "name": "@reactivemarkets/desktop-core",
-  "version": "0.34.0",
+  "version": "0.35.0",
   "description": "A cross platform hosting environment for multi-window applications",
   "publishConfig": {
     "access": "public"
