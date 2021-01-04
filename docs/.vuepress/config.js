@@ -21,7 +21,10 @@ module.exports = {
             '@vuepress/pwa',
             {
                 serviceWorker: true,
-                updatePopup: true
+                updatePopup: true,
+                generateSWConfig: {
+                    importWorkboxFrom: "local"
+                }
             }
         ]
     ],
