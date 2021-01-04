@@ -35,7 +35,7 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@reactivemarkets/desktop-sdk": "file:../desktop-sdk",
     "ix": "^4.0.0",
-    "match-sorter": "^6.0.2",
+    "match-sorter": "^6.1.0",
     "mdi-material-ui": "^6.21.0",
     "mobx": "^5.15.7",
     "mobx-react": "^6.3.0",
