@@ -18,7 +18,7 @@ To run that config file specifiy the [`--file`](/cli/#start-up-run-open) flag:
 desktop --file application.yaml
 ```
 
-Configuration can be loaded dynamically, locally from a from or from a url:
+Configuration can be loaded dynamically, locally from a file or from a url:
 
 ```bash
 desktop -f https://raw.githubusercontent.com/desktop-examples/config/master/examples/single-window.yaml

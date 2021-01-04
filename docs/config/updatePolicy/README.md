@@ -17,7 +17,7 @@ The specification for an update policy.
 | --------------- | ------------------ | ---------------------------------------------------------------------- |
 | allowDowngrade  | `boolean`          | Whether to allow version downgrade.                                    |
 | allowPrerelease | `boolean`          | Whether to allow update to pre-release versions.                       |
-| channel         | `string`           | Sets the channel to recieve updates from.                              |
+| channel         | `string`           | Sets the channel to receive updates from.                              |
 | checkForUpdates | `boolean`          | Whether to check for updates.                                          |
 | parameters      | `UpdateParameters` | Key value map to override parameters in the specified update provider. |
 | provider        | `string`           | The update source.                                                     |
