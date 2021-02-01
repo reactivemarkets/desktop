@@ -1,6 +1,6 @@
 {
   "name": "@reactivemarkets/desktop-types",
-  "version": "0.37.0",
+  "version": "0.38.0",
   "description": "Common types for desktop.",
   "publishConfig": {
     "access": "public"

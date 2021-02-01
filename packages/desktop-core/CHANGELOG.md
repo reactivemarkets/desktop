@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.38.0](https://github.com/reactivemarkets/desktop/compare/v0.37.0...v0.38.0) (2021-02-01)
+
+
+### Bug Fixes
+
+* **core:** remove any existing default protocol on windows ([2bbb6c1](https://github.com/reactivemarkets/desktop/commit/2bbb6c1e7f3187b40fc6f46c094312bc078502e3))
+
+
+
+
+
 # [0.37.0](https://github.com/reactivemarkets/desktop/compare/v0.36.0...v0.37.0) (2020-12-23)
 
 
