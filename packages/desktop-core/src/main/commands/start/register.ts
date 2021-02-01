@@ -61,11 +61,17 @@ export const registerProtocol = () => {
         return;
     }
 
-    app.setAppUserModelId(`com.reactivemarkets.${app.name}`);
     const lowerCaseName = app.name.toLowerCase();
-    logger.verbose(`Registering app as default protocol for ${lowerCaseName}`);
+    logger.info(`Registering app as default protocol for ${lowerCaseName}`);
+
+    if (process.platform === "win32") {
+        if (!app.removeAsDefaultProtocolClient(lowerCaseName)) {
+            logger.warn(`Failed to remove existing default protocol client for ${lowerCaseName}`);
+        }
+    }
+
     if (!app.setAsDefaultProtocolClient(lowerCaseName)) {
-        logger.warn(`Failed to register default protocol client for ${lowerCaseName}`);
+        logger.warn(`Failed to register new default protocol client for ${lowerCaseName}`);
     }
 };
 
