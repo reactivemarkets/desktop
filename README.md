@@ -2,9 +2,9 @@
 
 > **NOTE** pre v1 this is considered beta quality
 
-[![CircleCI](https://circleci.com/gh/reactivemarkets/desktop/tree/master.svg?style=shield)](https://circleci.com/gh/reactivemarkets/desktop/tree/master)
-[![codecov](https://codecov.io/gh/reactivemarkets/desktop/branch/master/graph/badge.svg)](https://codecov.io/gh/reactivemarkets/desktop)
-[![GitHub license](https://img.shields.io/badge/license-Apache-brightgreen.svg)](https://github.com/reactivemarkets/desktop/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/@reactivemarkets/desktop.svg?style=flat)](https://www.npmjs.com/package/@reactivemarkets/desktop)
+[![CircleCI](https://circleci.com/gh/reactivemarkets/desktop/tree/main.svg?style=shield)](https://circleci.com/gh/reactivemarkets/desktop/tree/main)
+[![codecov](https://codecov.io/gh/reactivemarkets/desktop/branch/main/graph/badge.svg)](https://codecov.io/gh/reactivemarkets/desktop)
+[![GitHub license](https://img.shields.io/badge/license-Apache-brightgreen.svg)](https://github.com/reactivemarkets/desktop/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/@reactivemarkets/desktop.svg?style=flat)](https://www.npmjs.com/package/@reactivemarkets/desktop)
 
 Desktop is an open source application for managing multi-window, cross-platform desktop applications; providing deployment, configuration, notifications, logging, monitoring...
 
@@ -83,7 +83,7 @@ desktop --file application.yaml
 Configuration can be loaded locally or from a url:
 
 ```bash
-desktop -f https://raw.githubusercontent.com/desktop-examples/config/master/examples/single-window.yaml
+desktop -f https://raw.githubusercontent.com/desktop-examples/config/main/examples/single-window.yaml
 ```
 
 ## Building from source
