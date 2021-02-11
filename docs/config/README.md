@@ -21,5 +21,5 @@ desktop --file application.yaml
 Configuration can be loaded dynamically, locally from a file or from a url:
 
 ```bash
-desktop -f https://raw.githubusercontent.com/desktop-examples/config/master/examples/single-window.yaml
+desktop -f https://raw.githubusercontent.com/desktop-examples/config/main/examples/single-window.yaml
 ```
