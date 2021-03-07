@@ -37,7 +37,7 @@
     "ix": "^4.0.0",
     "match-sorter": "^6.1.0",
     "mdi-material-ui": "^6.21.0",
-    "mobx": "^5.15.7",
+    "mobx": "^6.1.8",
     "mobx-react": "^6.3.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
