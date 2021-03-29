@@ -36,8 +36,8 @@
     "mdi-material-ui": "^6.21.0",
     "mobx": "^5.15.7",
     "mobx-react": "^6.3.0",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "typeface-manrope": "^1.0.0"
   }
 }
