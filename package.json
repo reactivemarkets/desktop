@@ -62,7 +62,7 @@
     "@types/react-window": "^1.8.2",
     "@types/response-time": "^2.3.4",
     "@types/yargs": "^15.0.12",
-    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.19.0",
     "@vuepress/plugin-active-header-links": "^1.8.2",
     "@vuepress/plugin-back-to-top": "^1.8.2",
