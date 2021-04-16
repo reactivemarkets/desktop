@@ -2,7 +2,7 @@ appId: com.reactivemarkets.desktop
 productName: Desktop
 directories:
   output: pack
-electronVersion: 12.0.2
+electronVersion: 12.0.4
 extraResources: 
   - from: dist
     filter: "*.asar"
