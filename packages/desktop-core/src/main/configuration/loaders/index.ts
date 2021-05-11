@@ -34,10 +34,11 @@ const remoteYamlConfigurationLoader = new RemoteFileConfigurationLoader<IConfigu
     "yml",
 );
 
-export const configurationLoader: IConfigurationLoader<IConfiguration> = new CompositeConfigurationLoader<IConfiguration>(
-    localYamlConfigurationLoader,
-    remoteYamlConfigurationLoader,
-    directoryConfigurationLoader,
-    localJsonConfigurationLoader,
-    remoteJsonConfigurationLoader,
-);
+export const configurationLoader: IConfigurationLoader<IConfiguration> =
+    new CompositeConfigurationLoader<IConfiguration>(
+        localYamlConfigurationLoader,
+        remoteYamlConfigurationLoader,
+        directoryConfigurationLoader,
+        localJsonConfigurationLoader,
+        remoteJsonConfigurationLoader,
+    );
