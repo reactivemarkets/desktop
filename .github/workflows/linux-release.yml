@@ -39,7 +39,7 @@ jobs:
         id: version
         shell: bash
       - name: Upload Snap
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -48,7 +48,7 @@ jobs:
           asset_name: Desktop-${{ steps.version.outputs.version }}-linux-amd64.snap
           asset_content_type: application/zip
       - name: Upload AppImage
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -57,7 +57,7 @@ jobs:
           asset_name: Desktop-${{ steps.version.outputs.version }}-linux-x86_64.AppImage
           asset_content_type: application/octet-stream
       - name: Upload Deb
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -66,7 +66,7 @@ jobs:
           asset_name: Desktop-${{ steps.version.outputs.version }}-linux-amd64.deb
           asset_content_type: application/octet-stream
       - name: Upload Zip
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -75,7 +75,7 @@ jobs:
           asset_name: Desktop-${{ steps.version.outputs.version }}-linux-x64.zip
           asset_content_type: application/octet-stream
       - name: Upload Latest.yml
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
