@@ -114,7 +114,7 @@
     "numeral": "^2.0.6",
     "optimize-css-assets-webpack-plugin": "^5.0.6",
     "prettier": "^2.3.0",
-    "renamer": "^2.0.1",
+    "renamer": "^3.0.2",
     "replace": "^1.2.1",
     "response-time": "^2.3.2",
     "rimraf": "^3.0.2",
