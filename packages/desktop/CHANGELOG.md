@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.39.0](https://github.com/reactivemarkets/desktop/compare/v0.38.0...v0.39.0) (2021-06-08)
+
+
+### Bug Fixes
+
+* **deps:** bump electron from 12.0.1 to 12.0.2 ([8e455d4](https://github.com/reactivemarkets/desktop/commit/8e455d4c47d46c9d09dfdda741ca81cd9832f706))
+* **deps:** bump electron from 12.0.7 to 12.0.9 ([c412320](https://github.com/reactivemarkets/desktop/commit/c41232009ceeeffe4f031d592406a013249456de))
+* **desktop:** bump electron from 12.0.2 to 12.0.4 ([61d285c](https://github.com/reactivemarkets/desktop/commit/61d285c7d168d83972043b2feedfc7c0affa1337))
+* **electron:** bump from 12.0.6 to 12.0.7 ([166d680](https://github.com/reactivemarkets/desktop/commit/166d68092cf8b2c3b152014327d1478ee12b7c48))
+
+
+### Features
+
+* **deps:** bump electron from 11.2.1 to 11.2.3 ([312cda0](https://github.com/reactivemarkets/desktop/commit/312cda09f5311187a6173ef17f24a0c290f19db5))
+* **deps:** bump electron from 11.2.3 to 11.3.0 ([cf18b85](https://github.com/reactivemarkets/desktop/commit/cf18b8579cc2f2de7ade99d375c2a991d9fbffc4))
+* **deps:** bump electron from 11.3.0 to 12.0.0 ([cc1823b](https://github.com/reactivemarkets/desktop/commit/cc1823b6ac7d0c9cfa58b21ce121507ad445a5e1))
+* **deps:** bump electron from 12.0.9 to 13.1.1 ([275d3b6](https://github.com/reactivemarkets/desktop/commit/275d3b6f3da912357a3af8e9d6d2af2f4772c6bb))
+
+
+
+
+
 # [0.38.0](https://github.com/reactivemarkets/desktop/compare/v0.37.0...v0.38.0) (2021-02-01)
 
 
