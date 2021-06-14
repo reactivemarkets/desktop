@@ -84,7 +84,7 @@
     "dayjs": "^1.10.5",
     "easy-table": "^1.1.1",
     "electron": "^13.1.1",
-    "electron-builder": "^22.11.5",
+    "electron-builder": "^22.11.7",
     "electron-fetch": "^1.7.3",
     "electron-notarize": "^1.0.0",
     "electron-store": "^5.2.0",
