@@ -20,7 +20,7 @@
     "asar:pack": "asar pack ./dist ./dist/app.asar",
     "asar:post": "rimraf ./dist/package.json",
     "prepublishOnly": "run-s build asar",
-    "serve": "electron ./dist/index.js --url https://desktop.reactivemarkets.com",
+    "serve": "electron ./dist/index.js --url https://reactivemarkets.github.io/desktop/",
     "start": "run-s build:dev serve",
     "test": "jest"
   },

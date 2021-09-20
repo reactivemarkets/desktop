@@ -33,7 +33,7 @@ desktop init
 <code-block title="Application details">
 
 ```bash
-desktop init -n "Desktop Site" -u https://desktop.reactivemarkets.com
+desktop init -n "Desktop Site" -u https://reactivemarkets.github.io/desktop/
 ```
 
 </code-block>

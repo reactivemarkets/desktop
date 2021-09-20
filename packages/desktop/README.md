@@ -24,7 +24,7 @@ Desktop builds on the [Electron Framework](https://github.com/electron/electron)
 
 ## Documentation
 
-See [Documentation](https://desktop.reactivemarkets.com).
+See [Documentation](https://reactivemarkets.github.io/desktop/).
 
 ## Quick Start
 

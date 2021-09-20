@@ -3,7 +3,7 @@
   "productName": "Desktop",
   "version": "0.39.0",
   "description": "Multi-window, cross-platform desktop applications.",
-  "homepage": "https://desktop.reactivemarkets.com",
+  "homepage": "https://reactivemarkets.github.io/desktop/",
   "bin": {
     "desktop": "cli.js"
   },

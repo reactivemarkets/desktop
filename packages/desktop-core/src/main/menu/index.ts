@@ -11,7 +11,7 @@ export const registerApplicationMenu = () => {
 
     const openDocs = async () => {
         try {
-            await shellService.openExternal("https://desktop.reactivemarkets.com");
+            await shellService.openExternal("https://reactivemarkets.github.io/desktop/");
         } catch (error) {
             const title = "Can't open documentation url";
             const content = `${error}`;

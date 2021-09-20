@@ -1,5 +1,5 @@
 module.exports = {
-    base: "/",
+    base: "/desktop/",
     title: "Desktop",
     description: "Desktop by Reactive Markets",
     head: [
