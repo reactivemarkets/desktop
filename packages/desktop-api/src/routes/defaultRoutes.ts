@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 
-const documentation_url = "https://desktop.reactivemarkets.com";
+const documentation_url = "https://reactivemarkets.github.io/desktop/";
 const notFound = 404;
 const router = Router();
 

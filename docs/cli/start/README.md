@@ -18,7 +18,7 @@ A url to open.
 <code-block title="Start from url">
 
 ```bash
-desktop start -u https://desktop.reactivemarkets.com
+desktop start -u https://reactivemarkets.github.io/desktop/
 ```
 
 </code-block>

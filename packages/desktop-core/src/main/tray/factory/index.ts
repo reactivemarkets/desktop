@@ -21,7 +21,7 @@ switch (process.platform) {
 
 const trayIcon = path.join(appPath, icon);
 
-const defaultDocumentationUrl = "https://desktop.reactivemarkets.com";
+const defaultDocumentationUrl = "https://reactivemarkets.github.io/desktop/";
 
 const defaultTrayFactory = new DefaultTrayFactory({
     defaultIcon: trayIcon,

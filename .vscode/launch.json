@@ -55,7 +55,7 @@
             "args": [
                 "${workspaceFolder}/packages/desktop-core/dist/index.js",
                 "--url",
-                "https://desktop.reactivemarkets.com"
+                "https://reactivemarkets.github.io/desktop/"
             ],
             "env": {
                 "DESKTOP_LOG_LEVEL": "debug",
