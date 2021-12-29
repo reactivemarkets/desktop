@@ -44,7 +44,7 @@
   "devDependencies": {
     "@types/compression": "^1.7.0",
     "@types/cors": "2.8.8",
-    "@types/cron": "^1.7.2",
+    "@types/cron": "^1.7.3",
     "@types/easy-table": "0.0.32",
     "@types/express": "^4.17.12",
     "@types/express-useragent": "^1.0.0",
