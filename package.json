@@ -54,7 +54,7 @@
     "@types/hpp": "^0.2.1",
     "@types/jest": "^26.0.23",
     "@types/js-yaml": "^3.12.6",
-    "@types/node-ipc": "^9.1.4",
+    "@types/node-ipc": "^9.2.0",
     "@types/numeral": "^2.0.1",
     "@types/react": "^17.0.16",
     "@types/react-dom": "^17.0.7",
