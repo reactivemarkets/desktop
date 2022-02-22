@@ -7,6 +7,7 @@ import { systemIpcEvents } from "./systemIpcEvents";
 import { launcherIpcEvents } from "./launcherIpcEvents";
 import { externalIpcEvents } from "./externalIpcEvents";
 import { screenIpcEvents } from "./screenIpcEvents";
+import { storageIpcEvents } from "./storageIpcEvents";
 
 export const registerIpcEventHandlers = (context?: string) => {
     externalIpcEvents(context);
@@ -16,6 +17,7 @@ export const registerIpcEventHandlers = (context?: string) => {
     registryIpcEvents();
     routerIpcEvents();
     screenIpcEvents();
+    storageIpcEvents();
     systemIpcEvents();
     windowIpcEvents();
 };

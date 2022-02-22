@@ -38,6 +38,7 @@ export enum ReservedChannels {
     screen_off = "@desktop:screen/off",
     screen_on = "@desktop:screen/on",
     screen_primaryDisplay = "@desktop:screen/primaryDisplay",
+    storage_get = "@desktop:storage/get",
     system_events = "@desktop:system/events",
     system_focus = "@desktop:system/focus",
     system_getAppName = "@desktop:system/getAppName",
