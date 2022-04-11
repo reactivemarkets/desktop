@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.3.5
       - name: Setup Node 12
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: '12'
       - name: Install npm dependencies
