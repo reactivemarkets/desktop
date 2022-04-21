@@ -11,7 +11,7 @@ jobs:
       USE_HARD_LINKS: false
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.5
+        uses: actions/checkout@v3.0.2
       - name: Setup Node 12
         uses: actions/setup-node@v2.5.1
         with:
