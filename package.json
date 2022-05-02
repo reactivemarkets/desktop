@@ -42,7 +42,7 @@
     "watch": "lerna run watch --parallel"
   },
   "devDependencies": {
-    "@types/compression": "^1.7.0",
+    "@types/compression": "^1.7.2",
     "@types/cors": "2.8.8",
     "@types/cron": "^1.7.2",
     "@types/easy-table": "0.0.32",
