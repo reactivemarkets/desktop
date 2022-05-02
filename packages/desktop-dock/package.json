@@ -43,6 +43,6 @@
     "react-dom": "^16.14.0",
     "react-virtualized-auto-sizer": "^1.0.3",
     "react-window": "^1.8.6",
-    "tiny-typed-emitter": "^2.0.3"
+    "tiny-typed-emitter": "^2.1.0"
   }
 }
