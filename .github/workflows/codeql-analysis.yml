@@ -18,7 +18,7 @@ jobs:
       matrix:
         language: ['typescript']
     steps:
-    - uses: actions/checkout@v3.0.2
+    - uses: actions/checkout@v3.3.0
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
